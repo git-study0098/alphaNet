@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">		
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.debug">true</prop> 
+			</props>
+		</property>
+		<property name="defaultEncoding" value="utf-8" />
+		<property name="protocol" value="smtps" />		
+		<property name="username" value="아이디" />
+		<property name="password" value="비밀번호" />
+		
+		<!-- daum:stmp.daum.net -->		
+		<property name="host" value="smtp.naver.com" />		
+		<property name="port" value="465" /> 				
+	</bean>
+
+<!-- 	<bean id="simpleMessageMail" -->
+<!-- 		  class="com.test.mail.SimpleMessageMail" -->
+<!-- 		  p:mailSender-ref="mailSender" -->
+<!-- 	/> -->
+	
+<!-- 	<bean id="simpleMessageMail2" -->
+<!-- 		  class="com.test.mail.SimpleMessageMail2" -->
+<!-- 		  p:mailSender-ref="mailSender" -->
+<!-- 		  p:templateMessage-ref="templateMailMessage" -->
+<!-- 	/>  -->
+	
+<!-- 	<context:property-placeholder -->
+<!-- 		location="classpath:mail.properties" file-encoding="utf-8" -->
+<!-- 	/> -->
+<!-- 	<bean id="templateMailMessage" -->
+<!-- 		  class="org.springframework.mail.SimpleMailMessage" -->
+<!-- 		  p:subject="${title}" -->
+<!-- 		  p:from="${sender}" -->
+<!-- 		  p:text="${content}" -->
+<!-- 		  p:to="${receiver}"   -->
+<!-- 	/> -->
+	
+<!-- 	<bean id="htmlMailMessage" -->
+<!-- 		  class="com.test.mail.HtmlMailMessage" -->
+<!-- 		  p:mailSender-ref="mailSender" -->
+<!-- 		  p:title="${title}" -->
+<!-- 		  p:sender="${sender}" -->
+<!-- 		  p:content="${content}" -->
+<!-- 		  p:receiver="${receiver}"   -->
+<!-- 	/> -->
+	
+<!-- 	<bean id="inlineMailMessage" -->
+<!-- 		  class="com.test.mail.InlineMailMessage" -->
+<!-- 		  p:mailSender-ref="mailSender" -->
+<!-- 	/> -->
+	
+<!-- 	<bean id="attachmentMailMessage" -->
+<!-- 		  class="com.test.mail.AttachmentMailMessage" -->
+<!-- 		  p:mailSender-ref="mailSender" -->
+<!-- 	/> -->
+	
+</beans>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<http pattern="/images/**" security="none" />
+<!-- 	<http pattern="/js/**" security="none" /> -->
+<!-- 	<http pattern="/css/**" security="none" /> -->
+	<http pattern="/**/*.css" security="none" />
+	<http pattern="/**/*.js" security="none" />
+
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select mem_code as username,mem_pwd as password, enabled
+										 from mem
+										 where mem_code=?"
+				authorities-by-username-query="select mem_code as username, authorities asauthority 
+											   from mem
+											   where mem_code=?" />
+		</authentication-provider>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select admin_code as username,admin_pwd as password, enabled
+										 from admin
+										 where admin_code=?"
+				authorities-by-username-query="select admin_code as username, authorities asauthority 
+											   from admin
+											   where admin_code=?" />
+		</authentication-provider>
+	</authentication-manager>
+
+
+	<http pattern="/admin/**" use-expressions="true">
+		<form-login login-page="/admin/loginForm"
+			login-processing-url="/admin/login"		
+			username-parameter="id"
+			password-parameter="pwd"
+			default-target-url="/admin/main"
+			authentication-failure-url="/admin/loginForm"			
+		 />
+			 
+		<logout logout-success-url="/admin/logout" delete-cookies="true" />
+		
+		<session-management>
+			<concurrency-control max-sessions="1" expired-url="/login_duplicate"/>
+		</session-management>
+		<access-denied-handler error-page="/main" />
+
+		<intercept-url pattern="/admin/login/loginForm" access="permitAll" />
+		<intercept-url pattern="/admin/login/login" access="permitAll" />
+		<intercept-url pattern="/admin/login/**" access="permitAll" />
+		
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
+	</http>
+
+	<http pattern="/**" use-expressions="true" access-denied-page="/accessDenied">
+		<form-login login-page="/loginForm" 
+			login-processing-url="/login"
+			username-parameter="mem_id" 
+			password-parameter="mem_pswd" 
+			default-target-url="/main"
+			authentication-failure-url="/loginForm"
+		/>
+		
+		<logout logout-success-url="/logout" delete-cookies="true" />
+
+		<session-management>
+			<concurrency-control max-sessions="1" expired-url="/login_duplicate"/>
+		</session-management>
+		
+		<intercept-url pattern="/login/loginForm" access="permitAll" />
+		<intercept-url pattern="/login/login" access="permitAll" />
+		<intercept-url pattern="/login/**" access="permitAll" />
+
+		<intercept-url pattern="/member/**"	access="hasAnyRole('ROLE_MEMBER,ROLE_ADMIN')" />
+		<intercept-url pattern="/**" access="permitAll" />
+	</http>
+
+
+		<!-- <access-denied-handler error-page="/member/loginForm.do" /> -->
+		<!-- <intercept-url pattern="/main/**" access="permitAll" /> <intercept-url 
+			pattern="/product/**" access="permitAll" /> <intercept-url pattern="/member/loginForm.do" 
+			access="permitAll" /> <intercept-url pattern="/member/login.do" access="permitAll" 
+			/> -->
+<!-- 		<intercept-url pattern="/member/mypage**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" /> -->
+<!-- 		<intercept-url pattern="/cart/**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" /> -->
+<!-- 		<intercept-url pattern="/order/**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" /> -->
+<!-- 		<intercept-url pattern="/qna/**" access="hasAnyRole('ROLE_USER,ROLE_ADMIN')" /> -->
+<!-- 		<intercept-url pattern="/**" access="permitAll" /> -->
+
+<!-- 	</http> -->
+<!-- 	<beans:bean id="customAuthenticationFailureHandler" -->
+<!-- 		class="com.nonage.security.CustomAuthenticationFailureHandler" /> -->
+	
+</beans:beans>
+

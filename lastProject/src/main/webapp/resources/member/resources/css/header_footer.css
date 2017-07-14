@@ -1,0 +1,54 @@
+@CHARSET "UTF-8";
+
+#header .center_area > h1 { padding: 55px 0 0px; margin: 0;	}	
+	#header .center_area > h1 a { display: inline-block;}	
+	#header .center_area > ul { position: absolute; top: 0;	}	
+	#header .center_area > ul > li { float: left;	}	
+	#header .center_area > ul > li > button > span { display: inline-block; padding: 0 10px; height: 28px; color: #707b80; font-size: 11px;line-height: 24px;}	
+	#header .center_area > ul > li > .notice > span { padding-left: 40px; background: url(../images/bg_ico_notice.gif) no-repeat left top;	}	
+	#header .center_area > ul > li > a { display: inline-block; padding: 0 10px; height: 28px; color: #707b80; font-size: 11px; line-height: 24px;	}	
+	#header .center_area > ul { position: absolute; top: 0;	}	
+	#header .center_area > ul.left {  left: 0;  border-right: 1px solid #cdced1;	}		
+	#header .center_area > ul.left > li { border-left: 1px solid #cdced1;	}	
+	#header .center_area > ul.right { right: 0;	}
+	
+	button {overflow: visible; position: relative; margin: 0; padding: 0; border: 0; background-color: transparent; cursor: pointer; vertical-align: middle; text-indent: 0;}	
+	.total_search { position: absolute; right: 0; top: 82px;	}	
+	.total_search > span { display: inline-block; padding: 0 0 0 5px; width: 277px;  height: 31px; border: 1px solid #d5d5d5; vertical-align: top;	}	
+	span.dSelect { display: inline-block; margin: 3px 10px 0 0; background: #fff url(../images/bg_select_arr.gif) no-repeat right center; color: #555; overflow: hidden;  vertical-align: top;	}	
+	span.dSelect > select { padding: 0 15px 2px 0; min-width: 80px; background: none; border: 0;font-size: 12px;color: #555;font-weight: bold;-webkit-appearance: none;	}
+	
+	input[type="text"] {padding-top: 2px;}
+	.total_search > span input[type="text"] {padding: 1px 0 0;width: 164px;height: 25px;background: none;border: 0;font-size: 15px;color: #016cbc;line-height: 25px;font-weight: bold;vertical-align: top;}
+	.total_search > input[type="submit"] {padding: 0;width: 59px;height: 33px;background: #2f5586 url(../images/bg_ico_search.png) no-repeat center center;border: 1px solid #00477c;text-indent: -999px;overflow: hidden;vertical-align: top;border-radius: 3px;}
+	input[type="submit"] {cursor: pointer;}
+	.gnb_area {position: relative;height: 34px;background-color: #2d2e33;}
+	.gnb {position: relative;margin: 0 auto;width: 980px;overflow: hidden;height: 34px;}
+	.gnb > ul > li {float: left;min-width: 183px;border-left: 1px solid #888b95;text-align: center;font-size: 15px;font-weight: boldl;}
+	.gnb > ul > li > a {display: block;height: 34px;line-height: 30px;background-color: #52535d;color: #ccc;font-weight: bold;}
+	.gnb_area > button {z-index: 200;position: absolute;left: 50%;top: 0;margin-left: 430px;height: 34px;background: #01345b url(../images/bg_total.png) no-repeat center 23px;border-left: 1px solid #888b95;border-right: 1px solid #888b95;}
+	.gnb_area > button > span {display: inline-block;padding-bottom: 10px;width: 58px;height: 24px;line-height: 20px;text-align: center;font-size: 11px;color: #97b8d2;overflow: hidden;}
+	.interval{height:10px;}
+
+	.footer {background: url(../images/bg_footer.gif) repeat-x left top;	}
+	.footer .footer_menu {padding-top: 8px;height: 26px;overflow: hidden;font-size: 12px;}
+	.footer .footer_menu ul {float: left;margin-top: 2px;margin-right: 10px;}
+	.footer .footer_menu li:first-child {padding: 0;background: none;}
+	.footer .footer_menu li a {color: #666;}
+	.footer .footer_menu li a span{color:red;font-weight:bold;}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0)
+.footer .footer_menu li {
+    background-position: 6px 3px;
+}
+	
+	.footer .site_go select {padding: 0;margin-left: 5px;height: 18px;background: #fff;border: 1px solid #999;line-height: 15px;font-size: 11px;color: #333;}
+	.footer .site_go .move {background-color: #6b6b6b;border-radius: 3px;}
+	.footer .site_go .move > span {display: inline-block;padding: 0 1px 0 0;width: 45px;height: 18px;line-height: 15px;text-align: center;color: #fff;font-size: 11px;}
+	.footer .footer_menu li {float: left;padding-left: 14px;background: url(../images/common/bg_footer_line.gif) no-repeat 6px 2px;}
+	.footer .site_go {position: absolute;right: 0;top: 7px;}
+	.footer .center_area {position: relative;margin: 0 auto;width: 980px;}
+	.address{margin:0; padding:0;}	
+	.footer .address {position: relative;margin-top: 35px;padding: 0 0 20px 190px;line-height: 18px;font-size: 12px;}
+	.footer .address .logo {position: absolute;left: 0;top: 5px;}
+	.footer .address p {color: #999;}

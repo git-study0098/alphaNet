@@ -1,0 +1,29 @@
+디펜던시
+	-오라클
+	-아이바티스
+	-커넥션풀
+	-메일
+	-엑셀   **다운로드뭘로할지정해야하고
+	-pdf
+	
+
+
+com.final.alphanet
+
+
+
+AA
+=====================================
+STS
+MAVEN
+encoding
+jdk1.7
+tomcat
+git
+project
+package
+class
+interface(method)
+
+
+

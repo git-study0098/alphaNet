@@ -1,0 +1,74 @@
+@CHARSET "UTF-8";
+
+	* {margin:0; padding:0}
+	html {margin:0; padding:0}
+	body {margin:0; padding:0; height:100%; font-size:13px; color:#666; line-height:1.2em}
+	label {vertical-align:middle; cursor:pointer}
+	
+	label {position:relative; top:-2px}
+	th label {position:relative; top:0}
+	
+	td span > label {position:relative; top:-3px; line-height:1.2em; vertical-align:middle} 
+	td span > input[type="radio"] {position:relative; top:-2px; vertical-align:middle}
+	td span > input[type="checkbox"] {position:relative; top:-3px; vertical-align:middle}
+	
+	/* ie8 */
+	@media \0screen {
+		td span > label {top:-2px}
+		td span > input[type="radio"],
+		td span > input[type="checkbox"] {top:-1px}
+		label {top:0} 
+	}  
+	
+	/* 크롬 */
+	@media screen and (-webkit-min-device-pixel-ratio:0) {
+		 td span > label {top:-4px} 
+	td span > input[type="checkbox"] {top:-2px} 
+	label {top:-2px} 
+	}
+	
+	
+	address,em {font-style:normal}
+	strong,b,th {font-weight:bold}
+	fieldset, img {border: 0; vertical-align: middle;}
+	#ac_img {width:7px; height:4px}
+	#ac_img img {vertical-align:top}
+	caption,legend {width:1px; text-align:left; font-size:0; line-height:0; text-indent:-999em; padding:0; margin:0;}
+	ul, ol, dl, dt, dd, li {list-style: none;}	
+	h1,h2,h3,h4,h5,h6 {font-weight:bold; font-size:100%}
+	input,textarea,select {border:0; color:#666; vertical-align:middle}
+	article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary {display:block}
+	div, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, p, form, fieldset, input, table, tr, th, td, button, textarea, select, thead, tbody, tfoot, pre, option {margin: 0; padding: 0; font-family: Malgun Gothic,'맑은고딕', '돋움', Dotum, '굴림',Gulim,Helvetica,sans-serif !important;	}
+	div,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,p,form,fieldset,input,table,tr,th,td,button,textarea,select, thead, tbody, tfoot, pre, option {margin:0; padding:0; font-family:Malgun Gothic,'맑은고딕', '돋움', Dotum, '굴림',Gulim,Helvetica,sans-serif !important}
+	
+	ul.mLink, .view_pc, #content > .bbs_list, .mMenu_open, #header p.mText, .footer .mLogo, .mMenu_list, #content .tableInfo, #content .tableInfo_dt, #content .mStep_list, #content .mTable, #content .mw700, #content .mCont, #content .jungbu30, #content .jungbo30_list, #content .mTest, #content .mw700, #content .mw600 {display: none;}
+	a.btn, a.btn2, a.btn4, a.btn3_type1, a.btn3_type2, a.btn3_type3, a.btn3_type4, a.btn3_icon, a.btn3_icon2, a.btn3_icon3, a.btn_login, a.btn_login2, a.btn_login3, a.btn_lpoginapp, a.btn_loginsend, a.btn_big, a.golink01 { display: inline-block;vertical-align: middle;text-indent: 0;}
+
+/* public */
+	table {width:100%; border-spacing:0}
+	table th {letter-spacing:-1px; border-collapse:collapse; *border-collapse:collapse}
+	table td {border-collapse:collapse}
+	select {height:21px; border:1px solid #999; vertical-align:middle; font-size:12px}
+	button {overflow:visible; position:relative; margin:0; padding:0; border:0; background-color:transparent; cursor:pointer; vertical-align:middle; text-indent:0;}
+
+	.clear{clear:both;}	
+	
+	a {font-family:Malgun Gothic,'맑은고딕', '돋움',Dotum,'굴림',Gulim,Helvetica,sans-serif; color:#666; text-decoration:none}
+	
+	input[type="text"],
+	input[type="password"] {height:15px; line-height:14px; padding:2px 5px; vertical-align:middle; border:1px solid #999; background:#f0f0f0; color:#666; font-size:12px}
+	input[type="radio"],
+	input[type="checkbox"] {cursor:pointer}
+	input[readonly="readonly"] {background:#cccccc; color:#555555; cursor: default}
+	input[type="text"]:disabled, input[type="password"]:disabled, select[disabled="disabled"] {background:#cccccc; color:#555555; cursor:default}
+	input[type="submit"] {cursor:pointer}
+	input:disabled, input:disabled + label {cursor:default}
+	
+/*location*/
+	.location {padding-top:9px; line-height:8px; font-size:11px; overflow:hidden}
+	.location ul {float:right}
+	.location ul:after {content:""; display:block; clear:both}
+	.location ul li {float:left; padding-left:12px; height:12px; background:url(../images/common/bg_bar10.gif) no-repeat 6px 1px; color:#757575}
+	.location ul li:first-child {background:none}
+	.location ul li a {color:#757575}
+	.location ul li strong {color:#333}

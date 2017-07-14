@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Pds">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="pds" type="com.last.common.vo.Notice1VO"/>
+	
+	<select id="selectPdsCount" resultClass="int">
+		SELECT COUNT(*) FROM notice
+	</select>
+	
+	<select id="selectPdsList" parameterClass="str" resultClass="pds">
+		select * from notice 
+<!-- 		where notice_code=#noticeCode# -->
+	</select>
+	
+	<select id="selectListPds" parameterClass="str" resultClass="pds">
+		select * from notice where notice_code like '%'||#notice_code#||'%'
+	</select>
+	
+	<update id="updatePds" parameterClass="pds">
+		update notice set notice_content=#notice_content# where notice_code=#notice_code#
+	</update>
+	
+	<update id="deletePds" parameterClass="str">
+		delete from notice where notice_code=#notice_code#
+	</update>
+	
+	<update id="insertPds" parameterClass="pds">
+		insert into notice(notice_code,title,notice_content,attach_file,enroll_date,admin_code) 
+					values(#notice_code#,#title#,#notice_content#,#attach_file#,sysdate,#admin_code#)
+	</update>
+	
+</sqlMap>

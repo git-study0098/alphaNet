@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<!-- mysql::dao,service 붙이기 aa라는 daoImpl이 있을경우-->
+	
+	<!-- mybatis -->
+<!-- 	<bean id="memberDao" -->
+<!-- 		  abstract="true" -->
+<!-- 		  class="com.last.member.MemberDao" -->
+<!-- 		  p:session-ref="mysqlSession" -->
+<!-- 	/> -->
+<!-- 	<bean id="aa" -->
+<!-- 		  parent="memberDao" -->
+<!-- 		  class="com.last.member.aa" -->
+<!-- 	/> -->
+		  
+	<!-- ibatis -->
+<!-- 	<bean id="memberDao" -->
+<!-- 		  class="com.last.member.MemberDao" -->
+<!-- 		  abstract="true" -->
+<!-- 		  p:client-ref="mysqlClient" -->
+<!-- 	/> -->
+<!-- 	<bean id="aa" -->
+<!-- 		  class="com.last.member.aa" -->
+<!-- 		  parent="memberDao" -->
+<!-- 	/> -->
+	
+	
+	<!-- Service -->
+	
+<!-- 	<bean id="memberService" -->
+<!-- 		  class="com.last.service.MemberService" -->
+<!-- 		  p:memberDao-ref="aa" -->
+<!-- 	/>	 -->
+
+</beans>
