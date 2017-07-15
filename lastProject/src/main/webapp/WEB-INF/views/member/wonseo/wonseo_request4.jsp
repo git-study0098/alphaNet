@@ -238,7 +238,7 @@
 
 
 					<button name="btnGoNext" id="btnGoNext" type="button"
-						class="btn2 btncolor1" onclick="location.href='6결제.jsp'">
+						class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq4'">
 						<span>접수하기</span>
 					</button>
 				</div>

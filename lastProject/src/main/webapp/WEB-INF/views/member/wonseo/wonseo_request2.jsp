@@ -584,9 +584,9 @@
 				</div>
 
 				<div class="btn_center">
-					<a href="#" name="Button2235" class="btn2 btncolor1" onclick="location.href='2wonseo.jsp'"><span>이전</span></a> 
+					<a href="#" name="Button2235" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq1'"><span>이전</span></a> 
 					<!-- 경로 설정 -->
-					<a href="#"	name="Button2235" class="btn2 btncolor1" onclick="location.href='4응시유형.jsp'"><span>다음</span></a>
+					<a href="#"	name="Button2235" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq3'"><span>다음</span></a>
 				</div>
 			</div>
 		</div>
