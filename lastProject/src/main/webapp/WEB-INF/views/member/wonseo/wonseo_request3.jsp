@@ -88,7 +88,7 @@
 
 					<div class="btn_center">
 						<a href="#" class="btn2 btncolor1" onclick="location.href='3choice_jongmok.jsp'"><span>이전</span></a>
-						<a href="#" class="btn2 btncolor1" onclick="location.href='5장소선택.jsp'"><span>다음</span></a>
+						<a href="#" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq4'"><span>다음</span></a>
 					</div>
 				</form>
 

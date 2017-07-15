@@ -1,7 +1,22 @@
-﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+﻿<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.last.common.vo.Notice1VO"%>
+
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
+<script type="text/javascript">
+	function file_change(file){
+	var str=file.lastIndexOf("\\")+1;   //파일 마지막 "\" 루트의 길이 이후부터 글자를 잘라 파일명만 가져온다.
+	file = file.substring(str, file.length);
+	document.getElementsByName('attach_file')[0].value=file;
+}
+</script>
+
 <style>
 	* {	box-sizing: content-box;}
 	
@@ -115,12 +130,22 @@
 		</div>
 
 		<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
-		<div class="content">
+		<div id="content">
 				<!-- 컨텐츠 타이틀 -->
+				<div class="location">
+					<ul>
+						<li>홈</li>
+						<li>게시판</li>
+						<li>관리자</li>
+						<li><strong>글 등록/수정/삭제</strong></li>
+					</ul>
+				</div>
+				
+			<div class="content">
 				<h3 class="tit_content">공지사항</h3>
 				<!-- //컨텐츠 타이틀 -->
-
 				<!-- 컨텐츠 내용 -->
+			<form style="display: inline" method="post" action="boardInsert2" enctype="multipart/form-data">
 				<div>
 					<div class="tbl_type2 leftPd">
 						<table summary="공지사항 게시글 보기를 물건구분, 물품명, 지사, 등록일자, 시험장 정보제공">
@@ -133,41 +158,53 @@
 								<col width="12%">
 								<col width="20%">
 							</colgroup>
+							
 							<tbody>
 								<tr>
 									<th scope="row">제목</th>
-									<td colspan="5"><input type="text" placeholder="제목을 입력해주세요." style="width:95%; background-color: #ffffff;"></td>
+									<td colspan="5"><input name="title" type="text" placeholder="제목을 입력해주세요." style="width:95%; background-color: #ffffff;"></td>
 								</tr>
 								<tr>
 									<th scope="row">담당부서</th>
-									<td><input type="text" placeholder="담당부서를 입력해주세요." style="width:95%;  background-color: #ffffff;"></td>
+									<td><input name="adminCode" type="text" placeholder="담당부서를 입력해주세요." style="width:95%;  background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td>
-										<c:if test=""></c:if>
+											<c:set var="now" value="<%=new java.util.Date()%>" />
+											<input name="registDate" value="<fmt:formatDate value="${now}" pattern="yy/MM/dd" />" readonly="readonly"/>
 									</td>
 									<th scope="row">최종수정일</th>
-									<td></td>
+									<td>
+									<c:set var="now" value="<%=new java.util.Date()%>" />
+											<input name="enrollDate" value="<fmt:formatDate value="${now}" pattern="yy/MM/dd" />" readonly="readonly"/>
+									</td>
 								</tr>
 
 								<tr>
 									<th scope="row">첨부파일</th>
 									<td colspan="5">
-										<a href="#" class="btn3_icon download"><input type="file"></a>
+										<a href="#" class="btn3_icon download">
+											<input type="file" name="f" onchange="javascript:file_change(this.value);">
+										</a>
+										<input type="text" name="attach_file" readonly>
+										
 									</td>
 								</tr>
 
 								<tr>
 								<td colspan="6">
-									<textarea id="contents_text" style="width: 100%;" rows="10"></textarea>
+									<textarea name="noticeContent" id="contents_text" style="width: 100%;" rows="10"></textarea>
 								</td>
 							</tr>
 							</tbody>
 						</table>
+						
 					</div>
 					<p class="txt_right">
-						<button type="button" class="btn btncolor1" onclick="goList()"><span>등록</span></button>
-						<button type="button" class="btn btncolor1" onclick=""><span>돌아가기</span></button>
+						<input type="submit" class="btn btncolor2" value="등록" style="color:#ffffff"/>
+						<a class="btn btncolor2" href="#" onclick="history.go(-1)" style="color:#ffffff">돌아가기</a>
 					</p>
+				</div>
+				</form>
 				</div>
 			</div>
 	</div>

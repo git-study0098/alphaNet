@@ -23,7 +23,7 @@ import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
 
 @Controller
-public class AdminNotice1Controller {
+public class AdminNotice2Controller {
 	
 	@Autowired
 	private AdminNotice1Service adminNotice1Service;
@@ -32,13 +32,13 @@ public class AdminNotice1Controller {
 		this.adminNotice1Service = adminNotice1Service;
 	}
 	
-	@RequestMapping("/adminRegist")
-	   public String listRegist(){
-		      return "admin/notice_1_registry";
-		   }
+	@RequestMapping("/adminRegist2")
+	public String listRegist2(){
+		return "admin/notice_2_registry";
+	}
 	
-	@RequestMapping("/notice")
-	public String listNotice(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice01" )String notice_code)throws SQLException, ServiceException{
+	@RequestMapping("/qualificationsSystem")
+	public String listNotice(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice02" )String notice_code)throws SQLException, ServiceException{
 		PagingVO viewData=null;
 	      try {
 	          viewData= adminNotice1Service.selectNotice1List(pageNumber,notice_code);
@@ -62,11 +62,11 @@ public class AdminNotice1Controller {
 	      return "admin/admin_notice";
 	}
 	
-	@RequestMapping(value="/boardInsert",headers=("content-type=multipart/*"),method=RequestMethod.POST)
-	public String boardInsert(HttpServletRequest request,Model model,@RequestParam("f") MultipartFile multipartFile,@RequestParam(value="notice_code" , defaultValue="notice01")String notice){
+	@RequestMapping(value="/boardInsert2",headers=("content-type=multipart/*"),method=RequestMethod.POST)
+	public String boardInsert(HttpServletRequest request,Model model,@RequestParam("f") MultipartFile multipartFile,@RequestParam(value="notice_code" , defaultValue="notice02")String notice){
 		
 		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
-		 String url ="redirect:notice";
+		 String url ="redirect:qualificationsSystem";
 		 
 		 
 		 String str = multipartFile.getOriginalFilename();
@@ -116,7 +116,7 @@ public class AdminNotice1Controller {
 		return url;
 	}
 	
-	@RequestMapping("/boardUpdateForm")
+	@RequestMapping("/boardUpdateForm2")
 	public String boardUpdate(@RequestParam(value="notice_code") String noticeCode,Model model){
 		String url ="notice_1_update";
 		
@@ -131,7 +131,7 @@ public class AdminNotice1Controller {
 		return url;
 	}
 	
-	@RequestMapping("/boardUpdate")
+	@RequestMapping("/boardUpdate2")
 	public String boardUpdate(HttpServletRequest request,Model model){
 		String url ="redirect:notice";
 		System.out.println("성공");
