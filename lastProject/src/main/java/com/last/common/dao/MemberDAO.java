@@ -1,8 +1,10 @@
 package com.last.common.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.last.common.vo.CalendarVO;
 import com.last.common.vo.MemberVo;
 
 
@@ -24,5 +26,6 @@ public abstract class MemberDAO{
 
 	public abstract int idCheck(String userId) throws SQLException;
 	public abstract int insert(MemberVo vo) throws SQLException ;
+	public abstract List<CalendarVO> calendarInfo() throws SQLException ;
 
 }

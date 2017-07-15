@@ -27,16 +27,16 @@
 		  p:adminDao-ref="adminUseInfo1Dao"/> 
 	
 	
-<!-- 	<bean id="memDao" -->
-<!-- 	      class="com.last.common.dao.MemberDAO" -->
-<!-- 	      abstract="true" -->
-<!-- 	      p:client-ref="client" -->
-<!-- 	     /> -->
+	<bean id="memDao"
+	      class="com.last.common.dao.MemberDAO"
+	      abstract="true"
+	      p:client-ref="client"
+	     />
 	
-<!-- 	<bean id ="memDaoImpl" -->
-<!-- 	      class="com.last.common.dao.MemberDAOImpl" -->
-<!-- 	      parent="memDao" -->
-<!-- 	       /> -->
+	<bean id ="memDaoImpl"
+	      class="com.last.common.dao.MemberDAOImpl"
+	      parent="memDao"
+	       />
 	      
 <!-- 	<bean id = "memService" -->
 <!-- 	      class="com.last.common.service.MemberService" -->

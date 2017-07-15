@@ -1,10 +1,9 @@
 package com.last.common.dao;
 
 import java.sql.SQLException;
+import java.util.List;
 
-import org.springframework.stereotype.Controller;
-
-import com.ibatis.sqlmap.client.SqlMapClient;
+import com.last.common.vo.CalendarVO;
 import com.last.common.vo.MemberVo;
 
 public class MemberDAOImpl extends MemberDAO{
@@ -81,6 +80,15 @@ public class MemberDAOImpl extends MemberDAO{
 		}
 		
 		return result;
+	}
+
+
+	@Override
+	public List<CalendarVO> calendarInfo() throws SQLException {
+		List<CalendarVO> calList = (List<CalendarVO>)client.queryForList("selectCalendar", null);
+		System.out.println(calList+"캘린더다오임플");
+	
+		return calList;
 	}
 
 }
