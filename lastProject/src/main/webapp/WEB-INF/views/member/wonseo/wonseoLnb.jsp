@@ -83,15 +83,6 @@
 					<div class="my_list">
 						<a href="https://www.q-net.or.kr/myp002.do?id=myp00201&amp;gSite=Q&amp;gId=" class="golink01"><span>나의 접수내역 바로가기</span></a>
 					</div>
-					<div>
-						<a href="#" class="btn_loginsend" onclick="popup1('http://m.q-net.or.kr/relay/index.html','certiMoveInfo','620','560','30','30')">
-							<span>
-								<strong>공인인증서 전송</strong>
-								<span><em>PC</em><em>스마트폰</em></span>
-							</span>
-						</a>
-						<a href="https://www.q-net.or.kr/man001.do?id=man00104&amp;gSite=Q&amp;gId=" class="btn_lpoginapp"><span>공인인증서 등록</span></a>
-					</div>
 					</sec:authorize>
 					<!-- //로그인 후 -->
 

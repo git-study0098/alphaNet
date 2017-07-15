@@ -69,7 +69,7 @@
 									<td>2017년 7월 7일 (금) 오전 09:00 ~ 2017년 7월 13일 (목) 오후 06:00</td>
 									
 									<!-- 경로 설정-->
-									<td><button type="button" class="btn3_type1" title="접수하기" onclick="location.href='3choice_jongmok.jsp'"><span>접수하기</span></button></td>
+									<td><button type="button" class="btn3_type1" title="접수하기" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq2'"><span>접수하기</span></button></td>
 								</tr>
 
 							</tbody>

@@ -10,7 +10,7 @@
 			classpath:root-context.xml
 			classpath:dataSource-context.xml
 			classpath:mongoContext.xml
-			/WEB-INF/spring/security-context.xml
+			classpath:security-context.xml
 		</param-value>
 	</context-param>
 <!-- 			classpath:security-context.xml -->
@@ -25,14 +25,14 @@
 	</listener>
 
 	<!-- Spring Security -->
-<!-- 	<filter> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> -->
-<!-- 	</filter> -->
-<!-- 	<filter-mapping> -->
-<!-- 		<filter-name>springSecurityFilterChain</filter-name> -->
-<!-- 		<url-pattern>/*</url-pattern> -->
-<!-- 	</filter-mapping> -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<!-- Processes application requests -->
 	<servlet>

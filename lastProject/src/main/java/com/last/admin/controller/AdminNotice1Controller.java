@@ -163,11 +163,11 @@ public class AdminNotice1Controller {
 		return url;
 	}
 	
-	@RequestMapping("/exam")
-	public String admin1(){
-		String url ="admin/exam_admin";
-		return url;
-	}
+//	@RequestMapping("/exam")
+//	public String admin1(){
+//		String url ="admin/exam_admin";
+//		return url;
+//	}
 	@RequestMapping("/cbt")
 	public String admin2(){
 		String url ="admin/cbt_admin";
