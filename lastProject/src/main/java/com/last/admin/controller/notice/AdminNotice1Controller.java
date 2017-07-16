@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.admin.controller.notice;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,9 +25,6 @@ import com.last.common.vo.PagingVO;
 @Controller
 public class AdminNotice1Controller {
 	
-	
-	private String uploadPath=System.getProperty("java.io.tmpdir");
-	
 	@Autowired
 	private AdminNotice1Service adminNotice1Service;
 
@@ -37,7 +34,7 @@ public class AdminNotice1Controller {
 	
 	@RequestMapping("/adminRegist")
 	   public String listRegist(){
-		      return "admin/notice_1_registry";
+		      return "admin/board/notice/notice_1_registry";
 		   }
 	
 	@RequestMapping("/notice")
@@ -62,7 +59,7 @@ public class AdminNotice1Controller {
 	      model.addAttribute("viewData",viewData);
 	      model.addAttribute("pageNumber",pageNumber);
 	      
-	      return "admin/admin_notice";
+	      return "admin/board/notice/admin_notice";
 	}
 	
 	@RequestMapping(value="/boardInsert",headers=("content-type=multipart/*"),method=RequestMethod.POST)
@@ -121,7 +118,7 @@ public class AdminNotice1Controller {
 	
 	@RequestMapping("/boardUpdateForm")
 	public String boardUpdate(@RequestParam(value="notice_code") String noticeCode,Model model){
-		String url ="notice_1_update";
+		String url ="admin/board/notice/notice_1_update";
 		
 		Notice1VO vo = null;
 		try {
@@ -154,44 +151,6 @@ public class AdminNotice1Controller {
 			e.printStackTrace();
 		}
 		
-		return url;
-	}
-	
-	@RequestMapping("/admin2")
-	public String admin(){
-		String url ="admin/admin_main";
-		return url;
-	}
-	
-//	@RequestMapping("/exam")
-//	public String admin1(){
-//		String url ="admin/exam_admin";
-//		return url;
-//	}
-	@RequestMapping("/cbt")
-	public String admin2(){
-		String url ="admin/cbt_admin";
-		return url;
-	}
-	@RequestMapping("/client")
-	public String admin3(){
-		String url ="admin/client_board_admin";
-		return url;
-	}
-	@RequestMapping("/write")
-	public String admin4(){
-		String url ="admin/write_board";
-		return url;
-	}
-	@RequestMapping("/mem")
-	public String admin5(){
-		String url ="admin/mem_admin";
-		return url;
-	}
-	
-	@RequestMapping("/badim")
-	public String admin6(){
-		String url ="admin/board_admin";
 		return url;
 	}
 		

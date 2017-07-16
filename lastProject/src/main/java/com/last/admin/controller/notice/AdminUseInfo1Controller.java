@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.admin.controller.notice;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,7 +35,7 @@ public class AdminUseInfo1Controller {
 	
 	@RequestMapping("/adminUseInfoRegist")
 	   public String listUseInfoRegist(){
-		      return "/useInfo1_registry";
+		      return "admin/board/useinfo/useInfo1_registry";
 		   }
 	
 	@RequestMapping("/useInfo")
@@ -60,7 +60,7 @@ public class AdminUseInfo1Controller {
 	      
 	      model.addAttribute("viewData",viewData);
 	      model.addAttribute("pageNumber",pageNumber);
-	      return "/member/notice/useInfo";
+	      return "/member/board/useinfo/useInfo";
 	}
 	
 	
@@ -109,7 +109,7 @@ public class AdminUseInfo1Controller {
 	
 	@RequestMapping("/useInfoUpdateForm")
 	public String useInfoUpdate(@RequestParam(value="notice_code") String noticeCode,Model model){
-		String url ="useInfo1_update";
+		String url ="admin/board/useinfo/useInfo1_update";
 		
 		Notice1VO vo = null;
 		try {

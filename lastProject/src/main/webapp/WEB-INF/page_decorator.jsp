@@ -250,7 +250,7 @@ var speed = 800;
 			<div id="header">
 				<div class="center_area">
 				<!-- 경로 설정 -->
-					<h1><a id="lnkMoveToMain" href="1main.jsp"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
+					<h1><a id="lnkMoveToMain" href="main"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
 					<button type="button" class="mMenu_open" title="메뉴 열기"><img src="<%=request.getContextPath()%>/resources/images/btn_menu.png" alt="메뉴 열기"></button>
 					<ul class="left">
 						<li><button type="button" class="notice" id="topNoticeBtn" title="긴급공지 열기"><span>긴급공지</span></button></li>

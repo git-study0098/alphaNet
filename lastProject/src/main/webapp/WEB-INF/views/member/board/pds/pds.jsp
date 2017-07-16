@@ -36,20 +36,19 @@
 </style>
 <article>
 	<div id="container">
-		<!-- 좌측 메뉴바 -->
 		<div>
-			<!-- 좌측 메뉴바 끝-->
-			<jsp:include page="noticeLnb.jsp"/>
+			<jsp:include page="../../../lnb/noticeLnb.jsp"/>
 			<div id="lnb2"></div>
 		</div>
+		
 		<div id="content">
 			<!-- location -->
 			<div class="location">
 				<ul>
 					<li>홈</li>
 					<li>고객지원</li>
-					<li>이용안내</li>
-					<li><strong>사이트 이용방법</strong></li>
+					<li>자료실</li>
+					<li><strong>각종서식</strong></li>
 				</ul>
 			</div>
 			<!-- //location -->
@@ -144,21 +143,21 @@
 							</button>
 							<span class="page"> 
 							<%
-									for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
-										if(pageNumber==i){
-								%>	
-										<strong class="on" title="<%=i %>페이지"><%=i %></strong>
-									<%
-										
-										}else{
-									%>
-										<button type="button" class="btn5" onclick="goPage(<%=i%>);"
-											title="<%=i%>페이지">
-											<span><%=i%></span>
-										</button> 
-										<% }
-									}
+								for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
+									if(pageNumber==i){
+							%>	
+									<strong class="on" title="<%=i %>페이지"><%=i %></strong>
+								<%
+									
+									}else{
 								%>
+									<button type="button" class="btn5" onclick="goPage(<%=i%>);"
+										title="<%=i%>페이지">
+										<span><%=i%></span>
+									</button> 
+									<% }
+								}
+							%>
 							</span>
 							<button type="button" class="btn3_icon3 btn_next_page"
 								onclick="goPage(2);" title="다음 페이지">
