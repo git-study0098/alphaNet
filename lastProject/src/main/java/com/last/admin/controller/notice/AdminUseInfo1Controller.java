@@ -23,9 +23,6 @@ import com.last.common.vo.PagingVO;
 @Controller
 public class AdminUseInfo1Controller {
 	
-	
-	private String uploadPath=System.getProperty("java.io.tmpdir");
-	
 	@Autowired
 	private AdminUseInfo1Service adminUseInfo1Service;
 

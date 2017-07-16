@@ -434,20 +434,6 @@ var speed = 800;
 									<ul style="min-height: 235px;">
 										<li><a href="#/man001.do?id=&amp;gId=07&amp;gSite=L"
 											target="_blank" title="새 창">가맹거래사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=64&amp;gSite=L"
-											target="_blank" title="새 창">감정사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=60&amp;gSite=L"
-											target="_blank" title="새 창">감정평가사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=63&amp;gSite=L"
-											target="_blank" title="새 창">검량사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=62&amp;gSite=L"
-											target="_blank" title="새 창">검수사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=46&amp;gSite=L"
-											target="_blank" title="새 창">경매사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=09&amp;gSite=L"
-											target="_blank" title="새 창">경비지도사</a></li>
-										<li><a href="#/man001.do?id=&amp;gId=49&amp;gSite=L"
-											target="_blank" title="새 창">경영지도사</a></li>
 									</ul>
 									<p>- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
