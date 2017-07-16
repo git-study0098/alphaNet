@@ -20,10 +20,10 @@
 
 <link href="<%=request.getContextPath()%>/<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/common.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header_footer.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/left_menu.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/content.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header_footer.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/mobile.css">
 
 <style>	
@@ -32,6 +32,56 @@
 	#container {position: relative; width: 980px;margin: 0 auto; background: url(<%=request.getContextPath()%>/resources/images/common/bg_container.gif) repeat-y left top;}
 	.main #content{float:left; margin:0 auto; width:725px; padding-bottom: 100px;}
 	.center_area, .footer_top {position: relative; margin: 0 auto; width: 980px;	}
+	
+	.gnb_area {position:relative; height:34px; background-color:#2d2e33}
+	.gnb_area > button {z-index:200; position:absolute; left:50%; top:0; margin-left:430px; height:34px; background:#01345b url('<%=request.getContextPath()%>/resources/images/common/bg_total.png') no-repeat center 23px; border-left:1px solid #888b95; border-right:1px solid #888b95}
+	.gnb_area > button > span {display:inline-block; padding-bottom:10px; width:58px; height:24px; line-height:20px; text-align:center; font-size:11px; color:#97b8d2; overflow:hidden}
+		.gnb {position:relative; margin:0 auto; width:980px; overflow:hidden; height:34px}
+		.gnb > ul {}
+		.gnb > ul > li {float:left; min-width:183px; border-left:1px solid #888b95; text-align:center; font-size:15px; font-weight:boldl}
+		.gnb > ul > li > a {display:block; height:34px; line-height:30px; background-color:#52535d; color:#ccc; font-weight:bold}
+		.gnb > ul > li > a:hover, .gnb > ul > li > a:focus {background-color:#1d7abd; color:#fff}
+		.gnb > ul > li > span {display:none}
+		.gnb > ul > li.on > a {background-color:#1d7abd; color:#fff}
+		.gnb > ul > li > div {z-index:1002; position:absolute; left:50%; top:34px; margin-left:-490px; padding:40px 0; width:980px; min-height:211px}
+		.gnb > ul > li > div.sub01 {background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_01.png') no-repeat left top}
+		.gnb > ul > li > div.sub02 {padding-top:50px; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_02.png') no-repeat left top}
+		.gnb > ul > li > div.sub02 > p {position:absolute; left:0; top:20px; width:100%; font-size:13px; color:#1d7abd}
+		.gnb > ul > li > div.sub03 {background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_03.png') no-repeat left top}
+		.gnb > ul > li > div.sub04 {background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_04.png') no-repeat left top}
+		.gnb > ul > li > div.sub05 {background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_05.png') no-repeat left top}
+		.gnb > ul > li > div.sub06 {background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_06.png') no-repeat left top}
+		.gnb > ul > li > div > p {float:right}
+		.gnb > ul > li > div > ul {float:left; padding:0 0 5px 0; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_line.gif') repeat-y left top}
+			.gnb > ul > li > div.sub02 > ul {padding:0 7px 5px 21px}
+		.gnb > ul > li > div > ul:first-child {padding-left:0; background:none}
+		.gnb > ul > li > div > ul > li {min-width:100px; padding-right:10px; padding-top:10px; text-align:left; font-size:13px; font-weight:normal}
+			.gnb > ul > li > div.sub02 > ul li {min-width:0; padding-right:0}
+		.gnb > ul > li > div > ul > li:first-child {padding-top:5px}
+		.gnb > ul > li > div > ul > li > a {display:inline-block; padding:2px 5px 5px 10px; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot.png') no-repeat left 8px; line-height:1.0em; color:#333}
+			.gnb > ul > li > div.sub02 > ul > li > a {margin-right:10px; white-space:nowrap}
+		.gnb > ul > li > div > ul > li.on {background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_arr.png') no-repeat right 15px}
+		.gnb > ul > li > div > ul > li.on:first-child {background-position:right 10px}
+		.gnb > ul > li > div > ul > li.on > a {background-image:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_on.png'); color:#1163a0; font-weight:bold}
+			.gnb > ul > li > div.sub02 > ul li.on {background:none}
+		.gnb > ul > li > div > ul > li.on > a:hover, .gnb > ul > li > div > ul > li > a:hover, .gnb > ul > li > div > ul > li > a:focus {background-image:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_hover.png'); background-position:5px 8px; padding-left:15px; background-color:#1d7abd; color:#fff; font-weight:normal}
+			.gnb > ul > li > div.sub02 > ul > li.on > a:hover, .gnb > ul > li > div.sub02 > ul > li > a:hover, .gnb > ul > li > div.sub02 > ul > li > a:focus {margin-right:5px}
+		.gnb > ul > li > div > ul > li > ul {display:none; position:absolute; top:40px; padding:0 31px 5px 20px; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_line.gif') repeat-y left top; font-size:12px}
+		.gnb > ul > li > div > ul > li.on > ul {display:block}
+		.gnb > ul > li > div > ul > li > ul > li {padding-top:7px;}
+		.gnb > ul > li > div > ul > li > ul > li:first-child {padding-top:2px}
+		.gnb > ul > li > div > ul > li > ul > li > a {display:inline-block; padding:2px 5px 5px 10px; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_sub.png') no-repeat left 8px; line-height:1.0em}
+		.gnb > ul > li > div > ul > li > ul > li > a:hover, .gnb > ul > li > div > ul > li > ul > li > a:focus {padding-left:15px; background-color:#1d7abd; color:#fff}
+		.gnb > ul > li > div > ul > li > ul > li.on > a {padding-left:15px; background-image:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_sub_on.png'); background-position:5px 8px; background-color:#1d7abd; color:#fff}
+		.gnb > ul > li > div > ul > li > ul > li > ul {display:none; position:absolute; top:0; padding:0 31px 5px 20px; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_line.gif') repeat-y left top; font-size:12px}
+		.gnb > ul > li > div > ul > li > ul > li.on > ul {display:block}
+		.gnb > ul > li > div > ul > li > ul > li.on > ul > li {padding-top:9px; white-space:nowrap}
+		.gnb > ul > li > div > ul > li > ul > li.on > ul > li:first-child {padding-top:0}
+		.gnb > ul > li > div > ul > li > ul > li > ul > li > a {display:inline-block; padding:2px 5px 5px 10px; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_sub.png') no-repeat left 8px; line-height:1.0em}
+		.gnb > ul > li > div > ul > li > ul > li > ul > li > a:hover, .gnb > ul > li > div > ul > li > ul > li > a:focus {padding-left:15px; background-image:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_sub_on.png'); background-position:5px 8px; background-color:#1d7abd; color:#fff}
+		.gnb > ul > li > div > ul > li > ul > li > ul > li.on > a {padding-left:15px; background-image:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb_dot_sub_on.png'); background-position:5px 8px; background-color:#1d7abd; color:#fff}
+		.gnb_bg {z-index:199; position:absolute; left:0; top:34px; width:100%; height:0; background:url('<%=request.getContextPath()%>/resources/images/common/bg_gnb.png') repeat-x left bottom}
+		.qnet .gnb_bg {z-index:1001}
 </style>
 
 <script>
@@ -239,7 +289,6 @@ var speed = 800;
 	.focusin(function(){
 		$(this).mouseenter();
 	});
-	
 });
 </script>
 </head>
@@ -291,7 +340,7 @@ var speed = 800;
 					<div class="gnb" style="height: 34px;">
 						<ul>
 							<li class=""><a href="exam">정기시험</a>
-								<div class="sub01" style="display: none;">
+								<div class="sub01" >
 									<ul style="min-height: 235px;">
 										<li class=""><a
 											onclick="return NetFunnel_goUrl({},this.href);" href="#">원서접수</a>

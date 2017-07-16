@@ -22,13 +22,8 @@
 	.total_search > span input[type="text"] {padding: 1px 0 0;width: 164px;height: 25px;background: none;border: 0;font-size: 15px;color: #016cbc;line-height: 25px;font-weight: bold;vertical-align: top;}
 	.total_search > input[type="submit"] {padding: 0;width: 59px;height: 33px;background: #2f5586 url(../images/bg_ico_search.png) no-repeat center center;border: 1px solid #00477c;text-indent: -999px;overflow: hidden;vertical-align: top;border-radius: 3px;}
 	input[type="submit"] {cursor: pointer;}
-	.gnb_area {position: relative;height: 34px;background-color: #2d2e33;}
-	.gnb {position: relative;margin: 0 auto;width: 980px;overflow: hidden;height: 34px;}
-	.gnb > ul > li {float: left;min-width: 183px;border-left: 1px solid #888b95;text-align: center;font-size: 15px;font-weight: boldl;}
-	.gnb > ul > li > a {display: block;height: 34px;line-height: 30px;background-color: #52535d;color: #ccc;font-weight: bold;}
-	.gnb_area > button {z-index: 200;position: absolute;left: 50%;top: 0;margin-left: 430px;height: 34px;background: #01345b url(../images/bg_total.png) no-repeat center 23px;border-left: 1px solid #888b95;border-right: 1px solid #888b95;}
-	.gnb_area > button > span {display: inline-block;padding-bottom: 10px;width: 58px;height: 24px;line-height: 20px;text-align: center;font-size: 11px;color: #97b8d2;overflow: hidden;}
-	.interval{height:10px;}
+	
+	
 
 	.footer {background: url(../images/bg_footer.gif) repeat-x left top;	}
 	.footer .footer_menu {padding-top: 8px;height: 26px;overflow: hidden;font-size: 12px;}

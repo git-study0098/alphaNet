@@ -37,7 +37,7 @@ public class AdminNotice5Controller {
 		      return "admin/board/notice/notice_5_registry";
 		   }
 	
-	@RequestMapping("/notice")
+	@RequestMapping("/notice5")
 	public String listNotice(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice05" )String notice_code)throws SQLException, ServiceException{
 		PagingVO viewData=null;
 	      try {
