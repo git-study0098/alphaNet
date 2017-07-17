@@ -7,6 +7,8 @@
  		<typeAlias alias="str" type="java.lang.String" /> 
 <!-- 	<typeAlias alias="int" type="java.lang.Integer"/> -->
 	<typeAlias alias="member" type="com.last.common.vo.MemberVo"/>
+	<typeAlias alias="calendar" type="com.last.common.vo.CalendarVO"/>
+	
 	
 <!-- 	<select id="selectMemberCount" resultClass="int"> -->
 <!-- 		select count(*) from member -->
@@ -28,6 +30,14 @@
 		insert into mem (mem_code,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_photo,mem_bir,enabled,authorities) 
 		values (#id# ,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_photo#,#mem_bir#,'1','Role_member')
 	</update>
+	
+	<select id="selectCalendar" resultClass="calendar"> 
+			select n.numg_stare_date, n.numg_app_receipt_begin, n.numg_app_receipt_end , n.numg_pass_p_anno_date,t.em_nm ,n.numg_color
+			from numg n,em_info t
+			where numg_code = t.em_numg_code
+	</select>
+	
+	
 	
 <!-- 	<select id="selectMemberList" parameterClass="str" resultClass="member"> -->
 <!-- 		select * from member where id like '%'||#id#||'%' -->

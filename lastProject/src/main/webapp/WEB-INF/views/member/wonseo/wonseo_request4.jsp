@@ -8,7 +8,7 @@
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
 		<div>
-		<jsp:include page="wonseoLnb.jsp"/>
+		<jsp:include page="../../lnb/wonseoLnb.jsp"/>
 		<!-- 좌측 메뉴바 끝-->
 		<div id="lnb2"></div>
 		</div>
