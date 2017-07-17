@@ -26,6 +26,14 @@
 		  class="com.last.common.service.AdminUseInfo1Service"
 		  p:adminDao-ref="adminUseInfo1Dao"/> 
 	
+	<bean id="wonseoDao"
+		  class="com.last.common.dao.WonseoDAO"
+		  p:client-ref="client"/>
+	
+	<bean id="wonseoService"
+		  class="com.last.common.service.WonseoService"
+		  p:wonseoDao-ref="wonseoDao"/>
+	
 	
 <!-- 	<bean id="memDao" -->
 <!-- 	      class="com.last.common.dao.MemberDAO" -->

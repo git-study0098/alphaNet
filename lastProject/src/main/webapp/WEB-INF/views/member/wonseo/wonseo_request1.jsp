@@ -60,18 +60,17 @@
 									<th scope="col">선택</th>
 								</tr>
 							</thead>
-							<tbody>
-
+							<tbody> 
+								<c:forEach items="${numgInfo}" var="numgInfo">
 								<tr>
-									<td class="left">2017년 정보처리기사 4회 필기 </td>
-						
-						
-									<td>2017년 7월 7일 (금) 오전 09:00 ~ 2017년 7월 13일 (목) 오후 06:00</td>
+									<td class="left">${numgInfo.em_nm}</td>
+									
+									<td>${numgInfo.numg_app_receipt_begin} 오전 09:00 ~ ${numgInfo.numg_app_receipt_end} 오후 06:00</td>
 									
 									<!-- 경로 설정-->
-									<td><button type="button" class="btn3_type1" title="접수하기" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq2'"><span>접수하기</span></button></td>
+									<td><button type="button" class="btn3_type1" title="접수하기" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq2?em_nm=${numgInfo.em_nm}'"><span>접수하기</span></button></td>
 								</tr>
-
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
