@@ -31,28 +31,15 @@ public class LoginController {
 		this.loginService = loginService;
 	}
 	
-	@RequestMapping("member/list")
-	public String getMemberList(Model model,Principal principal){
-		
-		System.out.println(principal.getName());
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(user.getUsername());
-		
-		return "1main";
-	}
 	
 	@RequestMapping("login")
 	public String login(){
 		return "1main";
 	}
-	@RequestMapping("admin/a")
-	public String a(){
-		return "login/a";
-	}
-	@RequestMapping("member/b")
-	public String b(){
-		return "login/b";
-	}
+	
+	
+	
+	
 //	public static final int KEY_SIZE = 1024;
 
 //	@RequestMapping("loginForm")
