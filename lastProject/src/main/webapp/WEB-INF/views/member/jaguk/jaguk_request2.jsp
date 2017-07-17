@@ -9,7 +9,7 @@
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
 <div>
-		<jsp:include page="jagukLnb.jsp" />
+		<jsp:include page="../../lnb/jagukLnb.jsp"/>
 	   <div id="lnb2"></div>
 	</div>
 		<!-- 좌측 메뉴바 끝-->

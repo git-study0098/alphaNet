@@ -336,7 +336,7 @@ a:-webkit-any-link {
 <article>
 <div id="container">
 		<div>
-			<jsp:include page="jagukLnb.jsp" />
+			<jsp:include page="../../lnb/jagukLnb.jsp"/>
 			<div id="lnb2"></div>
 		</div>
 		<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->

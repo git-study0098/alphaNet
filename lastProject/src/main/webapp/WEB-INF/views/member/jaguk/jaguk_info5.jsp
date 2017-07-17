@@ -7,7 +7,7 @@
 <article>
 <div id="container">
 <div>
-		<jsp:include page="jagukLnb.jsp" />
+		<jsp:include page="../../lnb/jagukLnb.jsp"/>
 	   <div id="lnb2"></div>
 	</div>
    
