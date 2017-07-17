@@ -4,6 +4,7 @@
 
 <sqlMapConfig>
   <sqlMap resource="com/last/db/sqlmap/i-Member.xml"/>
+  <sqlMap resource="com/last/db/sqlmap/wonseo.xml"/>
   
   <sqlMap resource="com/last/db/sqlmap/i-Notice1.xml"/>
   <sqlMap resource="com/last/db/sqlmap/i-UseInfo1.xml"/>
