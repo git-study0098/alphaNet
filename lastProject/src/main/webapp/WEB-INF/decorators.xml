@@ -17,5 +17,6 @@
 		<pattern>/login/loginForm</pattern>
 		<pattern>/jusoPopup.jsp</pattern>
 	</excludes>
+<!-- 		<pattern>/admin/**/*</pattern> -->
 
 </decorators>
