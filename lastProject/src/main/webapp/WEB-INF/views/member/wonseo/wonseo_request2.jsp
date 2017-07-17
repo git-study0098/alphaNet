@@ -9,7 +9,7 @@
 		<!-- 좌측 메뉴바 -->
 		<div>
 			<!-- 좌측 메뉴바 끝-->
-			<jsp:include page="wonseoLnb.jsp"/>
+			<jsp:include page="../../lnb/wonseoLnb.jsp"/>
 			<div id="lnb2"></div>
 		</div>
 
