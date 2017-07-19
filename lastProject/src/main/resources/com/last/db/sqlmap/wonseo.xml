@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="wonseo">
+
+	<typeAlias alias="str" type="java.lang.String" /> 
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="wonseo" type="com.last.common.vo.WonseoInfoVo"/>
+	<typeAlias alias="place" type="com.last.common.vo.PlaceVO"/>
+	
+	<insert id="insertStare" parameterClass="java.util.HashMap">
+	insert into stare(stare_code,docu_code,stare_date,mem_code,em_info_code,app_receipt_date)
+	values(#stare_code#,'DOCU010',#stare_date#,#mem_code#,#em_info_code#,to_char(sysdate,'yy/mm/dd'))
+	</insert>
+	
+	<select id="selectStareDate" parameterClass="str" resultClass="str">
+		select to_char(numg_stare_date,'yyyy-mm-dd')as numg_stare_date
+		from em_info em, numg n
+		where em.em_numg_code = n.numg_code
+		and numg_code = (
+		              select em_numg_code
+		              from em_info
+		              where em_info_code = #em_info_code#
+						)
+	</select>
+	
+	<select id="selectNumgInfo" resultClass="wonseo">
+		select e.em_info_code,e.em_nm,to_char(n.numg_app_receipt_begin,'yyyy-mm-dd') numg_app_receipt_begin,to_char(n.numg_app_receipt_end,'yyyy-mm-dd') numg_app_receipt_end
+		from numg n, em_info e
+		where e.em_numg_code=n.numg_code
+	</select>
+	
+	<select id="selectPlaceList" parameterClass="str" resultClass="place">
+		select 
+		  place_code
+		  ,place_nm
+		  ,substr(substr(place_add,instr(place_add,' ',1)+1,instr(place_add,' ',-1)),
+		          0
+		          ,instr(substr(place_add,instr(place_add,' ',1)+1,instr(place_add,' ',-1)),' ',1)-1
+		          ) as place_add
+		  ,place_location
+		  ,place_pp
+		  ,place_phone
+		  ,place_p
+		from place
+		where place_p=#place_p#
+	</select>
+	
+	<select id="selectPlacep" resultClass="place">
+		select distinct
+			place_p
+		from place
+	</select>
+	
+	<select id="selectExamPlace" parameterClass="java.util.HashMap" resultClass="place">
+		select p.place_code, p.place_nm , p.place_add, p.place_location,p.place_pp,p.place_phone,p.place_p,ep.em_stare_place_pp, (p.place_pp-ep.em_stare_place_pp)as place_ppp , to_char(n.numg_stare_date,'yyyy-mm-dd')as numg_stare_date,to_char(n.numg_app_receipt_end,'yyyy-mm-dd')as numg_app_receipt_end  
+		from em_info em , place p , numg n ,em_place ep
+		where em.em_numg_code = n.numg_code
+		and ep.em_info_code = em.em_info_code
+		and ep.place_code = p.place_code
+		and ep.em_info_code = #em_info_code#
+		and p.place_p=#place_p#
+		<isNotEmpty prepend="and" property="place_add">
+		substr(substr(p.place_add,instr(p.place_add,' ',1)+1,instr(p.place_add,' ',-1)),
+		          0
+		          ,instr(substr(p.place_add,instr(p.place_add,' ',1)+1,instr(p.place_add,' ',-1)),' ',1)-1
+          )=#place_add#
+		</isNotEmpty>          
+	</select>
+	
+	<select id="selectPlaceData" parameterClass="str" resultClass="wonseo">
+		select  to_char(numg_stare_date,'YYYY-MM-DD') as numg_stare_date 
+		, em_nm, em_pay_pr, em_info_code
+		from numg, em_info
+		where em_numg_code = numg_code
+		and em_info_code = #em_info_code#
+	</select>
+	
+</sqlMap>

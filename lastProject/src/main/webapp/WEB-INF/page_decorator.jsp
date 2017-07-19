@@ -524,12 +524,12 @@ var speed = 800;
 									</p>
 								</div>
 							</li>
-							<li class=""><a href="notice">고객지원</a>
+							<li class=""><a href="memberNotice1">고객지원</a>
 								<div class="sub05" style="display: none;">
 									<ul style="min-height: 295px;">
-										<li class="on"><a href="notice">공지사항</a>
+										<li class="on"><a href="memberNotice1">공지사항</a>
 											<ul style="min-height: 295px; left: 154px;">
-												<li><a href="notice">공지사항</a></li>
+												<li><a href="memberNotice1">공지사항</a></li>
 												<li><a href="#">자격제도</a></li>
 												<li><a href="#">시행자료</a></li>
 												<li><a href="#">출제자료</a></li>

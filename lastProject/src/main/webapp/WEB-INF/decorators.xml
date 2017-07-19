@@ -16,6 +16,7 @@
 		<pattern>/**/*Json.do</pattern>
 		<pattern>/login/loginForm</pattern>
 		<pattern>/jusoPopup.jsp</pattern>
+		<pattern>/member/wonseoPayment*</pattern>
 	</excludes>
 
 </decorators>
