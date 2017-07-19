@@ -2,6 +2,7 @@ package com.last.common.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -24,6 +25,14 @@ public class AdminNotice1DAO {
 		public List<String> selectNoticeCode()throws SQLException{
 			List<String> selectNoticeCode = (ArrayList<String>)client.queryForList("selectNoticeCode");
 			return selectNoticeCode;
+		}
+		public int selectCount(String notice_code, String schType, String schText) throws SQLException{
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("notice_code", notice_code);
+			map.put("schType", schType);
+			map.put("schText", schText);
+			int result = (Integer) client.queryForObject("selectCount",map);
+			return result;
 		}
 		
 		/**
@@ -92,4 +101,15 @@ public class AdminNotice1DAO {
 		}
 		
 		/////////////////////
+		//member로 옮길거야
+		public List<Notice1VO> searchNoticeList(int firstRow, int endRow,String notice_code,String schType, String schText) throws SQLException{
+			HashMap<String,String> map = new HashMap<String,String>();
+			map.put("notice_code", notice_code);
+			map.put("schType", schType);
+			map.put("schText", schText);
+			List<Notice1VO> searchNoticeList = (ArrayList<Notice1VO>)client.queryForList("searchNoticeList",map,firstRow-1 , endRow-firstRow+1);
+			return searchNoticeList;
+		}
+		
+		
 }

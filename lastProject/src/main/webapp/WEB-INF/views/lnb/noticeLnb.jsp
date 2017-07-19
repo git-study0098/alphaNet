@@ -49,7 +49,7 @@
 				<ul id="lnbNavi" class="lnb on">
 					<li class="low active"><a>공지사항</a>
 						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/notice">공지사항</a></li>
+							<li><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a></li>
 							<li><a>자격제도</a></li>
 							<li><a>시행</a></li>
 							<li><a>출제</a></li>

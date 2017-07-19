@@ -6,8 +6,21 @@ public class WonseoInfoVo {
 	private String em_nm;
 	private String numg_app_receipt_begin;
 	private String numg_app_receipt_end;
+	private String numg_stare_date;
+	private int em_pay_pr;
 	
-	
+	public String getNumg_stare_date() {
+		return numg_stare_date;
+	}
+	public void setNumg_stare_date(String numg_stare_date) {
+		this.numg_stare_date = numg_stare_date;
+	}
+	public int getEm_pay_pr() {
+		return em_pay_pr;
+	}
+	public void setEm_pay_pr(int em_pay_pr) {
+		this.em_pay_pr = em_pay_pr;
+	}
 	public String getEm_info_code() {
 		return em_info_code;
 	}
