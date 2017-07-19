@@ -16,7 +16,4 @@ public class AdminJagukGet1Controller {
 	public String jagukGet2(){
 		return "member/jaguk/jaguk_get2";
 	}
-	
-	
-	
 }

@@ -44,6 +44,14 @@
 	      class="com.last.common.dao.MemberDAOImpl"
 	      parent="memDao"
 	       />
+
+	<bean id="adminQualifiDao" 
+		class="com.last.common.dao.AdminQualifiDAO"
+		p:client-ref="client" />
+
+	<bean id="adminQualifiService" 
+		class="com.last.common.service.AdminQualifiService"
+		p:adminDao-ref="adminQualifiDao" />
 	      
 <!-- 	<bean id = "memService" -->
 <!-- 	      class="com.last.common.service.MemberService" -->
