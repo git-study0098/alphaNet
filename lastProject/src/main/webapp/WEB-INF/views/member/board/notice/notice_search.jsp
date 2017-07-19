@@ -9,8 +9,9 @@
 
 <%
    Integer pageNumber = (Integer)request.getAttribute("pageNumber");
-   PagingVO viewData =
-   (PagingVO)request.getAttribute("viewData");
+   PagingVO viewData =  (PagingVO)request.getAttribute("viewData");
+   PagingVO viewData2 = (PagingVO)request.getAttribute("viewData2");
+   Integer count = (Integer)request.getAttribute("count");
 %>
 
 
@@ -119,8 +120,8 @@
 									<!-- 게시판 테이블 내용 -->
 										<c:choose>
 
-										<c:when test="${viewData.notice1CountPerPage > 0 }">
-										<c:forEach items="${viewData.notice1List }" var="notice" varStatus="number">
+										<c:when test="${viewData2.notice1CountPerPage > 0 }">
+										<c:forEach items="${viewData2.notice1List }" var="notice" varStatus="number">
 										<tr>
 											<td>${number.count}</td> <!-- 글번호 -->
 											<td><a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a></td>
@@ -152,16 +153,23 @@
 								</button>
 								
 								<span class="page"> 
-								<%
-									for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
+								<%	
+									if(count/10 < 1){
+										count=1;
+									}else if(count%10==0){
+										count /=10;
+									}else{
+										count = count/10 +1;
+									}
+									for(int i = 1; i<count+1; i++){
 										if(pageNumber==i){
-								%>	
+								%>		
 										<strong class="on" title="<%=i %>페이지"><%=i %></strong>
 									<%
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="location.href='memberNotice1?page=<%=i %>'" title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='memberNotice2?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }
@@ -169,6 +177,9 @@
 								%>
 									
 								</span>
+								
+								
+								
 								<button type="button" class="btn3_icon3 btn_next_page"
 									onclick="goPage(2);" title="다음 페이지">
 									<span class="blind">다음 페이지</span>

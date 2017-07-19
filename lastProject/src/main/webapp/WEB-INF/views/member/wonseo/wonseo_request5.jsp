@@ -106,12 +106,18 @@
 									<td colspan="3">
 
 										<p class="sch_adr2">
-											<span class="name"> <!-- 1차시험 : 대구공업고등학교(필답형) --> 필기시험
+											<span class="name">
 												${placeNm}
 
 
-											</span> 날짜/시간<span> ${placeData.numg_stare_date}<br>
 
+											</span>
+										</p>
+										<th scope="row">날짜/시간
+										</th>
+										<td colspan="3">
+										<p class="sch_adr2">
+											<span class="name">${placeData.numg_stare_date}
 											</span>
 										</p>
 

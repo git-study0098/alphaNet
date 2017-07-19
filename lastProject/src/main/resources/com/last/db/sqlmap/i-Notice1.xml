@@ -14,6 +14,22 @@
 		SELECT COUNT(*) FROM notice where substr(notice_code,1,8)=#notice_code#
 	</select>
 	
+	<select id="selectCount" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT COUNT(*) FROM notice where substr(notice_code,1,8)=#notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="adm">
+			and admin_code like '%'||#schText#||'%'
+		</isEqual>
+	</select>
+	
 	<select id="selectNotice1List" parameterClass="str" resultClass="notice1">
 		select * from notice where substr(notice_code,1,8)=#notice_code#
 	</select>
@@ -38,5 +54,19 @@
 		insert into notice(notice_code,title,notice_content,attach_file,enroll_date,regist_date,admin_code) 
 					values(#notice_code#,#title#,#notice_content#,#attach_file#,sysdate,sysdate,#admin_code#)
 	</update>
-	
+	<select id="searchNoticeList" parameterClass="java.util.HashMap" resultClass="notice1">
+		select * from notice where substr(notice_code,1,8)=#notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="adm">
+			and admin_code like '%'||#schText#||'%'
+		</isEqual>
+	</select>
 </sqlMap>
