@@ -12,10 +12,15 @@ public class QualifiMemberVO {
 	private String mem_add2;
 	private String mem_add3;
 	private String mem_photo;
+	private String app_receipt_date;
 	
 	
-	
-	
+	public String getApp_receipt_date() {
+		return app_receipt_date;
+	}
+	public void setApp_receipt_date(String app_receipt_date) {
+		this.app_receipt_date = app_receipt_date;
+	}
 	public String getMem_code() {
 		return mem_code;
 	}
