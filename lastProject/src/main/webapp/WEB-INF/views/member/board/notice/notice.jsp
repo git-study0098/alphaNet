@@ -15,6 +15,11 @@
 
 
 <script>
+	function getNoticeList(searchValue){
+		var search = searchValue;
+		location.href="<%=request.getContextPath()%>/searchNotice1?searchValue="+search;
+	}
+
 	function go_noticeDetail(noticeCode){
 		var noticeForm = document.noticeDetail;
 		noticeForm.action = "/boardUpdateForm?notice_code="+noticeCode;
@@ -72,27 +77,20 @@
 				<!-- 컨텐츠 내용 -->
 				<div class="content">
 					<div>
+						<form name="noticeDetail">
 						<div class="searchType">
-							<span> <label for="notiType">검색</label> <select
-								name="notiType" id="notiType" title="검색 카테고리 선택" class="m0">
-									<option value="10" selected="selected">전체</option>
-									<option value="00">긴급</option>
-									<option value="20">자격제도</option>
-									<option value="30">시행</option>
-									<option value="40">출제</option>
-									<option value="50">서비스개선</option>
-							</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
-									<option value="A" selected="selected">전체</option>
-									<option value="T">글제목</option>
-									<option value="C">내용</option>
-									<option value="D">담당부서</option>
+							<span> <label for="notiType">검색</label>
+							<select name="schType" id="schType" title="검색 구분 선택" class="m0">
+									<option value="all" selected="selected">전체</option>
+									<option value="글제목">글제목</option>
+									<option value="내용">내용</option>
+									<option value="담당부서">담당부서</option>
 							</select> <input type="text" name="schText" style="width: 150px"
 								id="schText" title="검색어 입력"> <a href="#"
-								class="btn3_icon search" onclick="getNoticeList(1)"><span
+								class="btn3_icon search" onclick="getNoticeList(this.value)"><span
 									class="blind">검색</span></a>
 							</span>
 						</div>
-						<form name="noticeDetail">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"

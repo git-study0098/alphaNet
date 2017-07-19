@@ -1,11 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 * {
 	box-sizing: content-box;
 }
 </style>
+<script>
+ function showCard() {
+	window.open("wonseoPayment?placeNm=${placeNm}&em_pay_pr=${placeData.em_pay_pr}" ,"pop","width:600px,height:300px");
+ }
+ function paymentCheck(){
+	 location.href='<%=request.getContextPath()%>/member/wonseoReq6?placeNm=${placeNm}&em_info_code=${em_info_code}';
+ }
+
+</script>
 <article>
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
@@ -80,11 +90,12 @@
 								<col width="25%">
 							</colgroup>
 							<tbody>
+							<c:set value="${placeData}" var="placeData"/>
 								<tr>
 									<th scope="row">접수종목</th>
-									<td><span class="blue">정보관리기술사</span></td>
+									<td><span class="blue">${placeData.em_nm}</span></td>
 									<th scope="row">검정수수료</th>
-									<td><span class="blue">67,800원</span></td>
+									<td><span class="blue">${placeData.em_pay_pr}</span></td>
 								</tr>
 
 
@@ -96,18 +107,16 @@
 
 										<p class="sch_adr2">
 											<span class="name"> <!-- 1차시험 : 대구공업고등학교(필답형) --> 필기시험
-												: 대구공업고등학교(필답형)
+												${placeNm}
 
 
-											</span> <span> 2017-08-12&nbsp;08:30(필답형)<br>
+											</span> 날짜/시간<span> ${placeData.numg_stare_date}<br>
 
 											</span>
 										</p>
 
 									</td>
 								</tr>
-
-
 							</tbody>
 						</table>
 					</div>
@@ -157,7 +166,7 @@
 					</button>
 					<!-- 접수번호:[R10048091258] -->
 					<button type="button" name="payBtn" id="payBtn"
-						class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/resources/11결제.jsp'">
+						class="btn2 btncolor1" onclick="showCard();">
 						<span>결제하기</span>
 					</button>
 				</div>
