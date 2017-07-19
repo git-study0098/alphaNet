@@ -15,7 +15,7 @@ public class AdminNotice1DAO {
 			this.client = client;
 		}
 		
-		
+		//노티스코드를 꺼내옴
 		public List<String> selectNoticeCode()throws SQLException{
 			List<String> selectNoticeCode = (ArrayList<String>)client.queryForList("selectNoticeCode");
 			return selectNoticeCode;

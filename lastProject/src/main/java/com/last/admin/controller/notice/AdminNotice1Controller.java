@@ -46,6 +46,8 @@ public class AdminNotice1Controller {
 	         e.printStackTrace();
 	      }
 	      
+	      System.out.println(viewData.getPageTotalCount());
+	      
 	      if(viewData.getNotice1List().isEmpty()){
 	         pageNumber--;
 	         if(pageNumber<=0) pageNumber=1;
