@@ -20,7 +20,6 @@ public class MemberVo {
 	private String mem_post_numb1;
 	private String mem_post_numb2;
 	private String mem_gender;
-	private String mem_photo;
 	private String mem_bir;
 	private String enabled;
 	private String authority;
@@ -28,8 +27,8 @@ public class MemberVo {
 	private String mem_pass_em;
 	
 	//파일 업로드
-	private String attach_file;	//첨부파일
-	private MultipartFile uploadfile;
+	private String mem_photo; //파일 이름
+	private MultipartFile uploadfile; //업로드될 파일
 	
 	//학교
 	private String sch_code; //학교코드
@@ -40,12 +39,6 @@ public class MemberVo {
 	
 	
 	
-	public String getAttach_file() {
-		return attach_file;
-	}
-	public void setAttach_file(String attach_file) {
-		this.attach_file = attach_file;
-	}
 	public MultipartFile getUploadfile() {
 		return uploadfile;
 	}

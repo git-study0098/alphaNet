@@ -213,19 +213,22 @@ $(function(){
 
 											<li>
 												<ul>
-
-													<li><a
-														href="javascript:goHiddenChk('05','Q','2017','26','PL2017457026','Y2','20170703','S','Y', '2017년 제 26회 공인노무사 2,3차 동시', '1', 'nomu','A');">
-															<strong>2017년 제 26회 공인노무사 2,3차 동시</strong> <em>접수 :
-																2017. 07. 03 ~ 2017. 07. 12</em>
-													</a></li>
-
-													<li><a
-														href="javascript:goHiddenChk('45','Q','2017','14','PL2017459003','2','20170703','S','Y', '2017년 제 14회 농산물품질관리사 2차', '1', 'nongsanmul','A');">
-															<strong>2017년 제 14회 농산물품질관리사 2차</strong> <em>접수 :
-																2017. 07. 03 ~ 2017. 07. 12</em>
-													</a></li>
-
+													<c:choose>
+														<c:when test="${not empty viewData2}">
+															<c:forEach var="wonseoList" items="${viewData2}">
+																<li>
+																	<a>
+																		<strong>${wonseoList.em_nm }</strong>
+																		<em>접수 : ${wonseoList.numg_app_receipt_begin} ~ ${wonseoList.numg_app_receipt_end}</em>
+																	</a>
+																</li>
+															</c:forEach>
+														
+														</c:when>
+														<c:otherwise>
+															<li>원서접수 진행중인 시험이 존재하지 않습니다.</li>
+														</c:otherwise>
+													</c:choose>
 												</ul>
 											</li>
 
@@ -300,7 +303,7 @@ $(function(){
 									<c:when test="${viewData.notice1CountPerPage > 0 }">
 										<c:forEach items="${viewData.notice1List }" var="notice" begin="0" end="6" varStatus="number">
 											<li>
-												<a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a>
+												<a href="<%=request.getContextPath() %>/detailNotice?notice_code=${notice.notice_code }" >${notice.title}</a>
 												<span><fmt:formatDate value="${notice.enroll_date}"/></span>
 											</li>
 											<input type="hidden" value="${notice.notice_code}" name="noticeCode"/>

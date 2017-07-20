@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<script type="text/javascript" src="../resources/js/member.js"></script>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+
+
 <style>
 	* {	box-sizing: content-box;}
 	
 	.searchType {padding-top:10px; margin-bottom:10px; text-align:right; font-size:13px; font-family:naumB}
 	.searchType span {color:#666666}
-	.searchType span label {position:relative; top:-1px; margin-left:10px; color:#000; vertical-align:middle; letter-spacing:-1px; font-weight:bold}
+	.searchType span label {position:relative; top:-1px; margin-left:10px; color:#000; vertical-align:midd..le; letter-spacing:-1px; font-weight:bold}
 	.searchType span:first-child label {margin-left:0}
 	.searchType select {width:107px; margin-right:40px}
 	.searchType input[type="text"] {background:#f9f9f9}
@@ -24,6 +31,34 @@
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
 	
 </style>
+
+<script>
+function jusoCallBack4(mem_post_numb1,mem_add1,mem_add2) {
+	document.getElementById("mem_post_numb1").value = mem_post_numb1;
+	document.getElementById("mem_add1").value = mem_add1;
+	document.getElementById("mem_add2").value = mem_add2;
+}
+
+function jusoCallBack5(mem_post_numb2,mem_add3,mem_add4) {
+	document.getElementById("mem_post_numb2").value = mem_post_numb2;
+	document.getElementById("mem_add3").value = mem_add3;
+	document.getElementById("mem_add4").value = mem_add4;
+}
+
+function go_pop() {
+	var pop = window.open("<%=request.getContextPath()%>/juso4","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+}
+
+function go_pop2() {
+	var pop = window.open("<%=request.getContextPath()%>/juso5","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+}
+
+</script>
+
+
+
+
+
 <article>
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
@@ -96,7 +131,7 @@
 								<th scope="row"><label for="member_id">아이디</label> <strong class="fc_r" title="필수">*</strong></th>
 								<td colspan="3">
 
-									<input type="text" id="member_id" name="memId" class="form_mid" value="ghs0218" readonly="readonly">
+									<input type="text" id="member_id" name="memId" class="form_mid" value="${member.id}" readonly="readonly">
 
 
 									<a href="#" class="btn btncolor2"><span>실명인증 회원입니다.</span></a>
@@ -105,7 +140,7 @@
 								<td rowspan="9" class="photo">
 									<p>
 <!-- 										<img id="viewImg" src="/common/loadimg.do?div=M" width="120" height="160">//사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
-										<img id="viewImg" src="<%=request.getContextPath()%>/resources/images/step/sora.jpg" width="120" height="160"><!-- //사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
+										<img id="viewImg" src="C:/git/alpha_net/lastProject/src/main/webapp/${member.mem_photo}" width="120" height="160"><!-- //사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
 									</p>
 									<div class="regi">
 										<button type="button" class="btn3_type2" onclick="openFileDialog();" title="파일첨부"><span>사진등록</span></button>
@@ -163,14 +198,14 @@
 							</tr>
 							<tr>
 								<th scope="row">이 름<strong class="fc_r" title="필수">*</strong></th>
-								<td colspan="3">김재</td>
+								<td colspan="3">${member.name}</td>
 							</tr>
 							<tr>
 								<th scope="row">
 									<label for="member_name_e">이 름(영문)</label>
 								</th>
 								<td colspan="3">
-									<input type="text" id="member_name_e" name="userEng" class="form_mid">
+									<input type="text" id="member_name_e" name="userEng" class="form_mid" value="${member.mem_enName} ">
 									<span class="txt_add">(여권과 동일하게 입력)</span>
 								</td>
 							</tr>
@@ -193,27 +228,7 @@
 									<strong class="info_tool ml5" title="비밀번호 조합예시 : korea123@ 입력가능 특수문자 : ! @ # $ % ^ &amp; * (보안지침에 의거하여 비밀번호는 9~16자리이며, 반드시 영문자·숫자·특수문자를 모두 혼합하여 입력하시기 바랍니다. 대소문자 구분되므로 주의!)" tabindex="0">비밀번호 유의사항</strong>
 								</td>
 							</tr>
-							<tr>
-								<th scope="row">
-									<label for="member_pw_q">비밀번호 질문</label> <strong class="fc_r" title="필수">*</strong>
-								</th>
-								<td colspan="3">
-									<select id="member_pw_q" name="pwHnt" title="비밀번호 답변" class="member_pw_q">
-										<option value="">- 선택하세요 -</option><option value="가장 많이 이용하는 교통수단은?">가장 많이 이용하는 교통수단은?</option><option value="가장 친한 친구의 이름은?">가장 친한 친구의 이름은?</option><option value="기억에 남는 추억의 장소는?">기억에 남는 추억의 장소는?</option><option value="당신의 별명은?">당신의 별명은?</option><option value="당신의 신발사이즈는?">당신의 신발사이즈는?</option><option value="당신이 가장 좋아하는 동물은?">당신이 가장 좋아하는 동물은?</option><option value="당신이 가장 좋아하는 색깔은?">당신이 가장 좋아하는 색깔은?</option><option value="어머니의 고향은 어디일까요?">어머니의 고향은 어디일까요?</option><option value="제일 좋아하는 연예인은?">제일 좋아하는 연예인은?</option><option value="가장 좋아하는 음식은?">가장 좋아하는 음식은?</option><option value="첫사랑의 이름은?">첫사랑의 이름은?</option><option value="애완동물 이름은?">애완동물 이름은?</option><option value="출신 초등학교는?">출신 초등학교는?</option><option value="출신 중학교는?">출신 중학교는?</option><option value="출신 고등학교는?">출신 고등학교는?</option><option value="가장 좋아하는 색깔은?">가장 좋아하는 색깔은?</option><option value="어릴적 짝꿍이름은?">어릴적 짝꿍이름은?</option><option value="좋아하는 스포츠는?">좋아하는 스포츠는?</option><option value="사용안함">사용안함</option>
-									</select>
-									<span class="txt_add">(서비스 이용시 질문을 선택해주세요.)</span>
-								</td>
-							</tr>
-							<tr>
-								<th scope="row">
-									<label for="member_pw_a">비밀번호 답변</label> <strong class="fc_r" title="필수">*</strong>
-								</th>
-								<td colspan="4">
-									<input type="text" id="member_pw_a" name="pwHntAns" class="member_pw_a">
-									<span class="txt_add">(비밀번호 분실시 사용됩니다. 질문의 답변을 잘 기억해 두세요.)</span><br>
-									<span class="txt_add">(안전한 답변 작성 예시 : 걸어다닙니다.(서술형))</span>
-								</td>
-							</tr>
+				
 							<tr>
 								<th scope="row">
 									장애여부 
@@ -269,7 +284,7 @@
 									<label for="member_mail_add"> 이메일 <strong class="fc_r" title="필수">*</strong></label>
 								</th>
 								<td>
-									<input type="text" class="join_email" id="member_mail_add" name="email">
+									<input type="text" class="join_email" id="member_mail_add" name="email" value="${member.mem_email} ">
 								</td>
 								<th scope="row" class="txt_center">
 									이메일 수신여부 <!-- <strong class="fc_r" title="필수">*</strong> -->
@@ -317,9 +332,11 @@
 										<option value="0502">0502</option>
 									</select>
 									<span>-</span>
-									<input type="text" name="phone02" class="form_short numInput" title="전화번호 가운데 자리" maxlength="4">
+
+								<c:set var="phone" value="${member.mem_phone} "></c:set>
+									<input type="text" name="phone02" class="form_short numInput" value=" ${fn:substring(phone,4,8)}" title="전화번호 가운데 자리" maxlength="4">
 									<span>-</span>
-									<input type="text" name="phone03" class="form_short numInput" title="전화번호 마지막 자리" maxlength="4">
+									<input type="text" name="phone03" class="form_short numInput" title="전화번호 마지막 자리" value="${fn:substring(phone,9,13)}"  vamaxlength="4">
 									<span class="txt_add">(예 : 02-111-1111)</span>
 								</td>
 							</tr>
@@ -369,9 +386,9 @@
 								</th>
 								<td colspan="4">
 									<label for="zip01" class="txt_addr">우편번호 입력</label> 
-									<input type="text" id="zip01" name="zip01" class="form_short numInput" readonly="readonly" title="우편번호" maxlength="5">
+									<input type="text" id="mem_post_numb1" name="mem_post_numb1" class="form_short numInput" readonly="readonly" title="우편번호" maxlength="5" value="${member.mem_post_numb1}">
 									
-									<button type="button" class="btn3_type1" name="addrPop" id="01"><span>주소검색</span></button>
+									<button type="button" class="btn3_type1" name="addrPop" id="01" onclick="go_pop();"><span>주소검색</span></button>
 									
 									<strong class="info_tool" title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다. " tabindex="0">주소입력방법 안내</strong>
 								</td>
@@ -380,14 +397,14 @@
 							<tr>
 								<td colspan="4">
 									<label for="addr01" class="txt_addr">주소</label>
-									<input type="text" style="width: 414px;" id="addr01" name="addr01" class="member_addr1" readonly="readonly">
+									<input type="text" style="width: 414px;" id="mem_add1" name="mem_add1" class="member_addr1" readonly="readonly" value="${member.mem_add1 }">
 
 								</td>
 							</tr>
 							<tr>
 								<td colspan="4">
 									<label for="addr02" class="txt_addr">나머지 주소 입력</label>
-									<input type="text" id="addr02" name="addr02" class="member_addr3" value="1동 1호">
+									<input type="text" id="mem_add2" name="mem_add2" class="member_addr3" value="${member.mem_add2 }">
 									<input type="hidden" name="gibunResdAddr" id="gibunResdAddr" value="대전광역시 서구 복수동">
 								</td>
 							</tr>
@@ -401,9 +418,9 @@
 								</th>
 								<td colspan="4">
 									<label for="dZip01" class="txt_addr">우편번호 입력</label>
-									<input type="text" id="dZip01" name="dZip01" class="form_short numInput" readonly="readonly" title="우편번호" maxlength="5">
+									<input type="text" id="mem_post_numb2" name="mem_post_numb2" class="form_short numInput" readonly="readonly" title="우편번호" maxlength="5" value="${member.mem_post_numb2}">
 									
-									<button type="button" class="btn3_type1" name="addrPop" id="02"><span>주소검색</span></button>
+									<button type="button" class="btn3_type1" name="addrPop" id="02" onclick="go_pop2()"><span>주소검색</span></button>
 									
 									<strong class="info_tool" title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다." tabindex="0">주소입력방법 안내</strong>
 								</td>
@@ -411,14 +428,14 @@
 							<tr>
 								<td colspan="4">
 									<label for="dAddr01" class="txt_addr">주소</label>
-									<input type="text" style="width: 414px;" id="dAddr01" name="dAddr01" class="member_addr1" readonly="readonly">
+									<input type="text" style="width: 414px;" id="mem_add3" name="mem_add3" class="member_addr1" readonly="readonly" value="${member.mem_add3}">
 
 								</td>
 							</tr>
 							<tr>
 								<td colspan="4">
 									<label for="dAddr02" class="txt_addr">나머지 주소 입력</label>
-									<input type="text" id="dAddr02" name="dAddr02" class="member_addr3" value="1동 1호">
+									<input type="text" id="mem_add4" name="mem_add4" class="member_addr3" value="${member.mem_add4}">
 									<input type="hidden" name="gibunAbdAddr" id="gibunAbdAddr" value="대전광역시 서구 복수동 ">
 								</td>
 							</tr>

@@ -331,7 +331,7 @@ $(function(){
 									<c:when test="${viewData.notice1CountPerPage > 0 }">
 										<c:forEach items="${viewData.notice1List }" var="notice" begin="0" end="6" varStatus="number">
 											<li>
-												<a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a>
+												<a href="<%=request.getContextPath() %>/detailNotice?notice_code=${notice.notice_code }" >${notice.title}</a>
 												<span><fmt:formatDate value="${notice.enroll_date}"/></span>
 											</li>
 											<input type="hidden" value="${notice.notice_code}" name="noticeCode"/>

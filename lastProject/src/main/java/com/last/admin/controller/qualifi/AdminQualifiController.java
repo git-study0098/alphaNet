@@ -229,9 +229,9 @@ public class AdminQualifiController {
 	}
 	
 
-	@RequestMapping("/juso")
+	@RequestMapping("/juso3")
 	public String juso_go(){
-		return "member/jusoPopup";
+		return "member/jusoPopup3";
 	}
 	
 	

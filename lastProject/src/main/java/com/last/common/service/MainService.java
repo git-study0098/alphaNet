@@ -7,6 +7,7 @@ import java.util.List;
 import com.last.common.dao.MainDAO;
 import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
+import com.last.common.vo.WonseoInfoVo;
 
 public class MainService {
 
@@ -144,5 +145,21 @@ public class MainService {
 		}
 	}
 	
+	/**
+	 * 원서접수 중인 시험 불러오는 서비스 메서드
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<WonseoInfoVo> selectWonseoList() throws SQLException{
+		List<WonseoInfoVo> wonseoList = null;
+		
+		wonseoList = mainDao.selectWonseoList();
+		return wonseoList;
+	}
 	
+	public Notice1VO detailNotice(String notice_code) throws SQLException{
+		Notice1VO vo = null;
+		vo = mainDao.detailNotice(notice_code);
+		return vo;
+	}
 }

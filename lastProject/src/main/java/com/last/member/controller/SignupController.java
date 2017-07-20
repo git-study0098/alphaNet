@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.last.common.dao.MemberDAOImpl;
@@ -30,20 +31,16 @@ public class SignupController {
 	}
 
 
-	@RequestMapping("/juso1")
+	@RequestMapping("/juso")
 	public String juso(){
-		return "member/jusoPopup";
+		return "member/juso/jusoPopup";
 		
 	}
 	
 	@RequestMapping("/juso2")
 	public String juso2(){
-		return "member/jusoPopup2";
-		
+		return "member/juso/jusoPopup2";
 	}
-	
-	
-	
 	
 	@RequestMapping("/signup")
 	public String signUp(MemberVo vo, HttpServletRequest request){
@@ -58,6 +55,15 @@ public class SignupController {
 		
 		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
 		 String url ="redirect:notice";
+		 
+		 String year = request.getParameter("mem_bir1");
+		 String month = request.getParameter("mem_bir2");
+		 String day = request.getParameter("mem_bir3");
+		 
+		 String school = request.getParameter("daschool2"); //대덕대
+		 String school4 = request.getParameter("daschool4"); //충남대
+		 
+		 
 		 
 		 
 		 String str = multipartFile.getOriginalFilename();
@@ -90,11 +96,26 @@ public class SignupController {
 		vo.setId(request.getParameter("id"));
 		vo.setPwd(request.getParameter("mem_pwd"));
 		vo.setName(request.getParameter("name"));
-		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);
+		vo.setMem_bir(year+"/"+month+"/"+day);
+		if(school == null){
+			vo.setSch_code("SCH2"); // 대덕대학교			 
+		}else{
+			vo.setSch_code("SCH1"); // 충남대학교
+		}
+		vo.setMem_photo(fileName[0]+uuid.toString()+"."+fileName[1]);
 		
 		memberDaoImpl.insert(vo);
 		
 		return "redirect:main";
+	}
+	
+	@RequestMapping(value="idCheck", method=RequestMethod.POST)
+	@ResponseBody
+	public int idCheck(String id){
+		int result = -1;
+		result = memberDaoImpl.idCheck(id);
+		
+		return result;
 	}
 	
 	
