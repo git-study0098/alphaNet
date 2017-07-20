@@ -292,7 +292,7 @@ $(function(){
 				<div class="right">
 					<dl class="bbs_list">
 						<dt class="on bbs_notice">
-							<a href="<%=request.getContextPath() %>/mainNotice1" name="bbs" id="notice">공지사항</a>
+							<a href="<%=request.getContextPath() %>/main" name="bbs" id="notice">공지사항</a>
 						</dt>
 						<dd class="on" id="bbs_notice">
 							<ul>
