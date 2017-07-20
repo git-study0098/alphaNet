@@ -194,11 +194,41 @@ public class AdminQualifiController {
 	
 	
 	@RequestMapping("/member/request6")
-	public String jagukRequest6(){
-		System.out.println("^번왓따요");
-		
+	public String jagukRequest6(HttpServletRequest request,String mem_code,Model model){
 		String url = "member/jaguk/jaguk_request6";
 		
+		
+		QualifiMemberVO viewData = null;
+		List<QualifiCertiVO> viewData2 = null;
+		
+		try {
+			viewData = adminService.selectMemberInfoList(mem_code); 		//회원정보
+			viewData2=adminService.selectQualifiCertiList(mem_code);		//회원의 자격증 정보
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		//자격증 관련 정보
+		System.out.println(viewData.toString());
+		System.out.println(viewData2.toString());
+		
+		//회원 정보 가져오는 부분
+		
+		ArrayList<String> idList = new ArrayList<String>();
+		for(int i=0; i<idList.size(); i++){
+			String qualifi_certi_code = idList.get(i);
+			System.out.println(qualifi_certi_code+"서티코드");
+			try {
+				viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
+		}
+		
+		
+		model.addAttribute("mem_code", mem_code);
+		model.addAttribute("viewData", viewData);
+		model.addAttribute("viewData2", viewData2);
 		
 		return url;
 	}

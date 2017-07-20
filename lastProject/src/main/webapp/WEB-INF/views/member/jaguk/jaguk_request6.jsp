@@ -43,27 +43,27 @@
 						<tbody>
 							<tr>
 								<th scope="row">성명</th>
-								<td>황병준</td>
+								<td>${viewData.mem_nm }</td>
 								<th scope="row">주민번호</th>
-								<td>920412-*******</td>
+								<td>${viewData.reg_num1}-*******</td>
 								<td class="photo" rowspan="5">
 									<p><img src="<%=request.getContextPath()%>/resources/images/step/sora.jpg" alt="신청 사진"><!-- //2014.11.21 이미지에 맞는 alt값 필요 : 성명+사진 --></p>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">전화번호</th>
-								<td>042-625-2834</td>
+								<td>${viewData.mem_phone}</td>
 								<th scope="row">휴대전화</th>
-								<td>010-5140-2834</td>
+								<td>${viewData.mem_phone}</td>
 							</tr>
 							<tr>
 								<th scope="row">주소</th>
-								<td colspan="3"><p style="width:444px">(34383) 대전광역시 대덕구 계족로663번길 30, 1동306호(법동, 삼정하이츠타운)</p></td>
+								<td colspan="3"><p style="width:444px">${viewData.mem_add1}${viewData.mem_add2}${viewData.mem_add3}</p></td>
 							</tr>
 							<tr>
 								<th scope="row">
 
-			관할지사
+									관할지사
 
 								</th>
 								<td colspan="3">대전지역본부 042-580-9136</td>
