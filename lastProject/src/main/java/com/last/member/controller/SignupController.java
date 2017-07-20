@@ -21,7 +21,7 @@ public class SignupController {
 	}
 
 
-	@RequestMapping("/juso")
+	@RequestMapping("/juso1")
 	public String juso(){
 		return "member/jusoPopup";
 		

@@ -23,7 +23,7 @@ public class MainController {
 		this.mainService = mainService;
 	}
 
-	@RequestMapping("/main/notice1")
+	@RequestMapping("/mainNotice1")
 	public String listNotice1(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice01" )String notice_code)throws SQLException{
 		  PagingVO viewData=null;
 		  try {
@@ -37,7 +37,7 @@ public class MainController {
 	      return "1main";
 	}
 	
-	@RequestMapping("/main/notice2")
+	@RequestMapping("/mainNotice2")
 	public String listNotice2(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice02" )String notice_code)throws SQLException{
 		  PagingVO viewData=null;
 		  try {
@@ -52,7 +52,7 @@ public class MainController {
 	}
 	
 	
-	@RequestMapping("/main/notice3")
+	@RequestMapping("/mainNotice3")
 	public String listNotice3(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice03" )String notice_code)throws SQLException{
 		  PagingVO viewData=null;
 		  try {
@@ -66,7 +66,7 @@ public class MainController {
 	      return "3main";
 	}
 	
-	@RequestMapping("/main/notice4")
+	@RequestMapping("/mainNotice4")
 	public String listNotice4(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice04" )String notice_code)throws SQLException{
 		  PagingVO viewData=null;
 		  try {
@@ -80,7 +80,7 @@ public class MainController {
 	      return "4main";
 	}
 	
-	@RequestMapping("/main/notice5")
+	@RequestMapping("/mainNotice5")
 	public String listNotice5(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice05" )String notice_code)throws SQLException{
 		  PagingVO viewData=null;
 		  try {
