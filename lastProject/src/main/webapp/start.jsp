@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <script>
-    	location.href="mainNotice1";
+    	location.href="main";
     </script>
     
     
