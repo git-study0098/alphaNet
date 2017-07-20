@@ -15,7 +15,11 @@ public class AdminNotice1DAO {
 			this.client = client;
 		}
 		
-		
+		/**
+		 * 게시판 분류번호
+		 * @return
+		 * @throws SQLException
+		 */
 		public List<String> selectNoticeCode()throws SQLException{
 			List<String> selectNoticeCode = (ArrayList<String>)client.queryForList("selectNoticeCode");
 			return selectNoticeCode;
@@ -49,5 +53,4 @@ public class AdminNotice1DAO {
 			return result;
 		}
 		
-		/////////////////////
 }

@@ -81,8 +81,7 @@ public class AdminNotice1Service {
 	   
 	public Notice1VO selectNoticeCodeList(String notice_code) throws SQLException{
 		Notice1VO vo = adminDao.selectNotice1(notice_code);
-		return vo;
-		
+		return vo;		
 	}
 	
 	public void updateNotice1(Notice1VO notice1VO) throws SQLException{

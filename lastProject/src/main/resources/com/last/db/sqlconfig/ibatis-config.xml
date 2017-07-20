@@ -9,6 +9,7 @@
   <sqlMap resource="com/last/db/sqlmap/i-Notice1.xml"/>
   <sqlMap resource="com/last/db/sqlmap/i-UseInfo1.xml"/>
   <sqlMap resource="com/last/db/sqlmap/i-Pds2.xml"/> 
+  <sqlMap resource="com/last/db/sqlmap/i-Main.xml"/> 
 <!--   <sqlMap resource="com/last/db/sqlmap/i-Notice3.xml"/> -->
 <!--   <sqlMap resource="com/last/db/sqlmap/i-Notice4.xml"/> -->
 <!--   <sqlMap resource="com/last/db/sqlmap/i-Notice5.xml"/> -->

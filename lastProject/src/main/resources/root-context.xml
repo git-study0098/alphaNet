@@ -14,6 +14,15 @@
 	<bean id="adminNotice1Service"
 		  class="com.last.common.service.AdminNotice1Service"
 		  p:adminDao-ref="adminNotice1Dao"/>
+		  
+	<bean id="mainDao"
+		  class="com.last.common.dao.MainDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="mainService"
+		  class="com.last.common.service.MainService"
+		  p:mainDao-ref="mainDao" />
 		
 		   
 	<bean id="adminUseInfo1Dao"

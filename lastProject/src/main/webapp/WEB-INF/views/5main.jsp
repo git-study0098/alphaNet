@@ -290,29 +290,13 @@ $(function(){
 				</div>
 				<div class="right">
 					<dl class="bbs_list">
-						<dt class="on bbs_notice">
+						<dt class="bbs_notice">
 							<a href="<%=request.getContextPath() %>/main/notice1" name="bbs" id="notice">공지사항</a>
 						</dt>
-						<dd class="on" id="bbs_notice">
-							<ul>
-								<c:choose>
-									<c:when test="${viewData.notice1CountPerPage > 0 }">
-										<c:forEach items="${viewData.notice1List }" var="notice" begin="0" end="6" varStatus="number">
-											<li>
-												<a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a>
-												<span><fmt:formatDate value="${notice.enroll_date}"/></span>
-											</li>
-											<input type="hidden" value="${notice.notice_code}" name="noticeCode"/>
-										</c:forEach>
-									</c:when>
-									<c:otherwise>
-										<li>
-											<p>내용이 없습니다</p>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</ul>
-							<a href="#"	class="more">더보기</a>
+						<dd class="" id="bbs_notice">
+							<p class="none">
+								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
+							</p>
 						</dd>
 						<dt class="bbs_system">
 							<a href="<%=request.getContextPath() %>/main/notice2" name="bbs" id="system">자격제도</a>
@@ -338,14 +322,29 @@ $(function(){
 								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
 							</p>
 						</dd>
-						<!-- 2015.08.31 jws : 이종용대리 요청 서비스 개선 추가 -->
-						<dt class="bbs_improve">
+						<dt class="on bbs_improve">
 							<a href="<%=request.getContextPath() %>/main/notice5" name="bbs" id="improve">서비스 개선</a>
 						</dt>
-						<dd id="bbs_improve">
-							<p class="none">
-								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
-							</p>
+						<dd class="on" id="bbs_improve">
+							<ul>
+								<c:choose>
+									<c:when test="${viewData.notice1CountPerPage > 0 }">
+										<c:forEach items="${viewData.notice1List }" var="notice" begin="0" end="6" varStatus="number">
+											<li>
+												<a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a>
+												<span><fmt:formatDate value="${notice.enroll_date}"/></span>
+											</li>
+											<input type="hidden" value="${notice.notice_code}" name="noticeCode"/>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<p>내용이 없습니다</p>
+										</li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
+							<a href="#"	class="more">더보기</a>
 						</dd>
 
 					</dl>

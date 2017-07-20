@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-//@RequestMapping("/jaguk")
 public class AdminJagukRequest1Controller {
 
 	@RequestMapping("/request1")
@@ -12,7 +11,7 @@ public class AdminJagukRequest1Controller {
 		return "member/jaguk/jaguk_request1";
 	}
 	
-	@RequestMapping("/request2")
+	@RequestMapping("/member/request2")
 	public String jagukRequest2(){
 		return "member/jaguk/jaguk_request2";
 	}
