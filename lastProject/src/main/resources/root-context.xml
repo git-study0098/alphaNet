@@ -23,10 +23,7 @@
 	<bean id="mainService"
 		  class="com.last.common.service.MainService"
 		  p:mainDao-ref="mainDao" />
-		   
-		  p:adminDao-ref="adminNotice1Dao"
-	/>
-		
+		  
 	<bean id="adminUseInfo1Dao"
 		  class="com.last.common.dao.AdminUseInfo1DAO"
 		  p:client-ref="client"
