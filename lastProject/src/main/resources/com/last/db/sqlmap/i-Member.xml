@@ -14,13 +14,61 @@
 <!-- 		select count(*) from member -->
 <!-- 	</select> -->
 	
-<!-- 	<select id="selectMember" parameterClass="str" resultClass="member"> -->
-<!-- 		select * from member where id=#id# -->
-<!-- 	</select> -->
+	<select id="selectMember" parameterClass="str" resultClass="member">
+		select 
+			mem_nm as name,
+			mem_pwd as pwd,
+			mem_photo,
+			mem_phone,
+			mem_email,
+			mem_lately_log_date,
+			mem_add1,
+			mem_kor_for,
+			mem_gender,
+			mem_bir,
+			type_di,
+			non_mem_at,
+			consulting,
+			open_at,
+			attach_file,
+			privacy_collect_agree,
+			mem_post_numb1,
+			mem_pass_em,
+			mem_enabled,
+			sch_code,
+			career_ind_code,
+			career_job_code,
+			ca_comp_nm,
+			ca_work_content,
+			ca_func_compet_aw_at,
+			ca_compet_di,
+			ca_rank,
+			ca_compet_nm,
+			ca_aw_date,
+			ca_work_bd,
+			ca_work_ed,
+			career_code,
+			sch_major_code,
+			sch_coll,
+			sch_major_nm,
+			sch_code_nm,
+			authorities,
+			enabled,
+			mem_enname,
+			mem_add2,
+			mem_post_numb2,
+			mem_add3,
+			mem_add4,
+			mem_jang,
+			reg_num1,
+			reg_num2
+		from mem where mem_code=#id#
+	</select>
 
 	<select id="selectLoginMember" parameterClass="member" resultClass="member">
 		select * from mem where mem_code=#id# and mem_pwd=#pwd#
 	</select>
+	
 	
 	<select id="selectMemberId" resultClass="member"> 
 		select mem_code from mem where mem_code = #id#

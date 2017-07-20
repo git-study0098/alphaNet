@@ -22,9 +22,23 @@ public class MemberVo {
 	private String mem_bir;
 	private String enabled;
 	private String authority;
+	private String mem_jang;
+	private String mem_pass_em;
 	
 	
 	
+	public String getMem_pass_em() {
+		return mem_pass_em;
+	}
+	public void setMem_pass_em(String mem_pass_em) {
+		this.mem_pass_em = mem_pass_em;
+	}
+	public String getMem_jang() {
+		return mem_jang;
+	}
+	public void setMem_jang(String mem_jang) {
+		this.mem_jang = mem_jang;
+	}
 	public String getMem_add1() {
 		return mem_add1;
 	}

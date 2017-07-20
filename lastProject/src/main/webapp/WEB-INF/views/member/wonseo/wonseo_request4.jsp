@@ -1,6 +1,229 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.HashSet"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.last.common.vo.PlaceVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>  
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%
+	List<PlaceVO> daejeonList = (ArrayList<PlaceVO>)request.getAttribute("daejeonList");
+	List<PlaceVO> seoulList = (ArrayList<PlaceVO>)request.getAttribute("seoulList");
+	List<PlaceVO> busanList = (ArrayList<PlaceVO>)request.getAttribute("busanList");
+	List<PlaceVO> gangwonList = (ArrayList<PlaceVO>)request.getAttribute("gangwonList");
+	List<PlaceVO> gwangjuList = (ArrayList<PlaceVO>)request.getAttribute("gwangjuList");
+	List<PlaceVO> ulsanList = (ArrayList<PlaceVO>)request.getAttribute("ulsanList");
+	List<PlaceVO> incheonList = (ArrayList<PlaceVO>)request.getAttribute("incheonList");
+	List<PlaceVO> jejuList = (ArrayList<PlaceVO>)request.getAttribute("jejuList");
+	List<PlaceVO> gyunggiList = (ArrayList<PlaceVO>)request.getAttribute("gyunggiList");
+	List<PlaceVO> placepList = (ArrayList<PlaceVO>)request.getAttribute("placepList");
+	
+	List<String> list = null;
+	HashSet<String> set = null;
+	Iterator<String> it = null;
+%>
+<script>
+
+		function checkeSiGunGu(value0){
+			if (schfrm.sel_zone.value == '대전광역시') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+					for(int i=0; i<daejeonList.size(); i++){
+						set.add(daejeonList.get(i).getPlace_add());
+					}
+					int j=0;
+					it = set.iterator();
+					while(it.hasNext()){
+						list.add(j, it.next());
+						j++;
+					}
+					for(int i=0; i<list.size(); i++){
+				%>
+				$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+				<%}%>
+				
+			}else if (schfrm.sel_zone.value == '서울특별시') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<seoulList.size(); i++){
+					if(seoulList.get(i).getPlace_add()!=null){
+						set.add(seoulList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}else if (schfrm.sel_zone.value == '울산광역시') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<ulsanList.size(); i++){
+					if(ulsanList.get(i).getPlace_add()!=null){
+						set.add(ulsanList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}else if (schfrm.sel_zone.value == '부산광역시') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<busanList.size(); i++){
+					if(busanList.get(i).getPlace_add()!=null){
+						set.add(busanList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}else if (schfrm.sel_zone.value == '경기도') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<gyunggiList.size(); i++){
+					if(gyunggiList.get(i).getPlace_add()!=null){
+						set.add(gyunggiList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}else if (schfrm.sel_zone.value == '강원도') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<gangwonList.size(); i++){
+					if(gangwonList.get(i).getPlace_add()!=null){
+						set.add(gangwonList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}else if (schfrm.sel_zone.value == '제주특별자치도') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<jejuList.size(); i++){
+					if(jejuList.get(i).getPlace_add()!=null){
+						set.add(jejuList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}else if (schfrm.sel_zone.value == '인천광역시') {
+				$('.list').remove();
+				<%
+					set = new HashSet<String>();
+					list = new ArrayList<String>();
+				for(int i=0; i<incheonList.size(); i++){
+					if(incheonList.get(i).getPlace_add()!=null){
+						set.add(incheonList.get(i).getPlace_add());
+					}
+				}
+				j=0;
+					it = set.iterator();
+				while(it.hasNext()){
+					list.add(j, it.next());
+					j++;
+				}
+				for(int i=0; i<list.size(); i++){
+			%>
+			$('<option/>',{"class":"list","value":"<%=list.get(i)%>","text":"<%=list.get(i)%>"}).appendTo('select#sel_cities');
+			<%}%>
+			}
+			vall = value0;
+		}
+		
+		
+</script>
+<script>
+// $(function(){
+	
+// 	$("#sel_zone option").attr("selected","selected");
+// 	$("#sel_cities option").attr("selected","selected");
+// })
+
+
+function checkDetail(value2){
+	value3 = value2;
+}
+
+function go_wonseo(){
+	em_info_code = document.getElementById('em_info_code').value;
+	location.href="<%=request.getContextPath()%>/member/wonseoReq4_1?si="+vall+"&gu="+value3+"&em_info_code="+em_info_code;
+}
+
+	var place= "";
+	$(function(){
+		$('input:radio[name="radio1"]').click(function(){
+			place=$('input:radio[name="radio1"]:checked').val();
+		});
+	})
+	function payment(){
+		if(place==""){
+			alert('장소를 선택해주세요.');
+		}else{
+			location.href='<%=request.getContextPath()%>/member/wonseoReq5?em_info_code=${em_info_code}&place_nm='+place;
+		}
+	}
+</script>
+
 <style>
 	*{box-sizing:content-box;}
 </style>
@@ -29,8 +252,9 @@
 
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
+				
 				<h3 class="tit_content">
-					원서접수 신청<span class="sel_subject">(응시종목:정보관리기술사)</span>
+					원서접수 신청<span class="sel_subject">(응시종목:${exam }(${exam2}))</span>
 				</h3>
 				<!-- //컨텐츠 타이틀 -->
 
@@ -49,40 +273,47 @@
 				</div>
 
 
-				<form name="schfrm" method="post">
+				<form id="schfrm" name="schfrm" method="post">
+				<input type="hidden" value="${exam}" id="exam">
+				<input type="hidden" value="${exam2}" id="exam2">
+				<input type="hidden" value="${em_info_code}" id="em_info_code">
 					<!-- 지역 선택 및 조회 폼 -->
 					<div class="place_selct mb40">
-						<!-- 2016.08.10 jws : 장민우대리 요청 16년 5회 기능사 조건(기간) 추가  PL2016573000 : 시범 , PL2016433003 : 운영-->
 
 						<span class="zone"> <!--  jhh--> <label for="sel_zone">지역</label>
 
 							<select name="sido" id="sel_zone"
-							onchange="getSiGunGu(this.value)" title="지역 선택">
+							onChange="checkeSiGunGu(this.value);" title="지역 선택">
 								<option value="">-선택-</option>
-								<option value="대전광역시">대전광역시</option>
-								<option value="강원도">강원도</option>
-								<option value="경기도">경기도</option>
-								<option value="광주광역시">광주광역시</option>
-								<option value="대구광역시">대구광역시</option>
-								<option value="부산광역시">부산광역시</option>
-								<option value="서울특별시">서울특별시</option>
-								<option value="울산광역시">울산광역시</option>
-								<option value="인천광역시">인천광역시</option>
-								<option value="제주특별자치도">제주특별자치도</option>
-								<option value="Y">전체</option>
+								<option class="siGunGuSelect" value="대전광역시">대전광역시</option>
+								<option class="siGunGuSelect" value="강원도">강원도</option>
+								<option class="siGunGuSelect" value="경기도">경기도</option>
+								<option class="siGunGuSelect" value="광주광역시">광주광역시</option>
+								<option class="siGunGuSelect" value="대구광역시">대구광역시</option>
+								<option class="siGunGuSelect" value="부산광역시">부산광역시</option>
+								<option class="siGunGuSelect" value="서울특별시">서울특별시</option>
+								<option class="siGunGuSelect" value="울산광역시">울산광역시</option>
+								<option class="siGunGuSelect" value="인천광역시">인천광역시</option>
+								<option class="siGunGuSelect" value="제주특별자치도">제주특별자치도</option>
+								<option class="siGunGuSelect" value="Y">전체</option>
 
 						</select>
 						</span> <span class="cities"> <label for="sel_cities">시/군/구
 						</label> <span id="viewSiGunGu"> <select name="sigungu"
-								id="sel_cities" title="시/구/군 선택" disabled="">
-									<option value="동구">동구	</option>
+								id="sel_cities" title="시/구/군 선택" onChange="checkDetail(this.value)">
+								
+								<option>-선택-</option>
+								<option value="">전체</option>
+								
 							</select>
 						</span>
 						</span> <span>조 회
 							<button type="button" name="schBtn" class="btn3_icon search"
-								onclick="getAreaList(this.form,'1','viewList')">
+								onclick="go_wonseo();">
 								<span class="blind">조회</span>
 							</button>
+							<input type="hidden" value="" id="vall">
+							<input type="hidden" value="" id="value3">
 						</span>
 					</div>
 				</form>
@@ -118,41 +349,6 @@
 					<div class="msg_info noData" id="msgInfo">
 						<p>“시험장소는 행정구역기준으로 안내됩니다.”</p>
 					</div>
-
-
-					<h4 class="mt35">내가 선택한 장소</h4>
-					<div class="tbl_normal tdCenter mb20">
-						<table id="actInfo" summary="수험자가 선택한 시험 장소">
-							<caption>수험자가 선택한 장소</caption>
-							<colgroup></colgroup>
-							<thead>
-								<tr>
-									<th scope="col">지역</th>
-									<th scope="col">시험장소</th>
-									<th scope="col">시험일자</th>
-									<th scope="col">입실시간</th>
-									<th scope="col">변경</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr class="noData">
-									<td colspan="5" class="noData">조회된 시험장소에서 선택 하십시오.</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<div id="tblGoNext" class="btn_center">
-						<button name="btnBack" id="btnBack" type="button"
-							class="btn2 btncolor1" onclick="location.href='4응시유형.jsp'">
-							<span>이전</span>
-						</button>
-						<button name="btnGoNext" id="btnGoNext" type="button"
-							class="btn2 btncolor1" onclick="location.href='6결제.jsp'">
-							<span>접수하기</span>
-						</button>
-					</div>
-
 
 					<div id="addInfo"></div>
 
@@ -193,14 +389,18 @@
 							</thead>
 							<tbody>
 
+								<!-- 반복문시작 -->
+								<c:choose>
+								<c:when test="${!empty examPlace}">
+								<c:forEach items="${examPlace}" var="examPlace" varStatus="current">
 								<tr>
-									<td>대전광역시</td>
-									<td>2017-08-12</td>
-									<td>1</td>
+									<td>${examPlace.place_p}</td>
+									<td>${examPlace.numg_stare_date}</td>
+									<td>${current.count}</td>
 									<td>08:30</td>
 									<td>
 										<p class="sch_adr" style="display:;">
-											<span class="name" title="대전광역시 동구 충정로 97 (자양동)">동아마이스터고등학교(교내주차불가)</span>
+											<span class="name" title="${exam.place_add}">${examPlace.place_nm}</span>
 											<button title="새 창" type="button" class="btn3_type3"
 												onclick="viewExemArea('4516')">
 												<span>약도보기</span>
@@ -208,20 +408,21 @@
 										</p>
 
 									</td>
-									<td>2017-07-13</td>
-									<td>900</td>
-									<td>707</td>
+									<td>${examPlace.numg_app_receipt_end}</td>
+									<td>${examPlace.place_pp}</td>
+									<td>${examPlace.place_ppp}</td>
 									<td>
 
 
-										<button type="button" class="btn3_type1"
-											onclick="chkIsSameSectExam('','1','1','0080','00','1','1','1','13','N','대전광역시','4516','동아마이스터고등학교(교내주차불가)','2017-08-12','08:30','1','1');">
-											<span>선택</span>
-										</button>
-
+										<input type="radio" class="radio1" name="radio1" value="${examPlace.place_nm}"
+											onclick="chkIsSameSectExam('','1','1','0080','00','1','1','1','13','N','대전광역시','4516','동아마이스터고등학교(교내주차불가)','2017-08-12','08:30','1','1');"/>
 									</td>
 								</tr>
-
+							</c:forEach>
+							</c:when>
+							<c:otherwise>
+							</c:otherwise>
+							</c:choose>
 							</tbody>
 						</table>
 					</div>
@@ -231,14 +432,14 @@
 				<div id="tblGoNext" class="btn_center">
 
 					<button name="btnBack" id="btnBack" type="button"
-						class="btn2 btncolor1" onclick="location.href='4응시유형.jsp'">
+						class="btn2 btncolor1" onclick="location.href=history.go(-1)">
 						<span>이전</span>
 					</button>
 
 
 
 					<button name="btnGoNext" id="btnGoNext" type="button"
-						class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq4'">
+						class="btn2 btncolor1" onclick="payment()">
 						<span>접수하기</span>
 					</button>
 				</div>

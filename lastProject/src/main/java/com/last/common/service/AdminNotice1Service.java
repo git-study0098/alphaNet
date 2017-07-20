@@ -90,6 +90,10 @@ public class AdminNotice1Service {
 		return vo;
 
 	}
+		public int selectCount(String notice_code, String schType, String schText)throws SQLException{
+		int result = adminDao.selectCount(notice_code,schType,schText);
+		return result;
+	}
 
 	public void updateNotice1(Notice1VO notice1VO) throws SQLException {
 		adminDao.updateNotice1(notice1VO);
@@ -106,4 +110,29 @@ public class AdminNotice1Service {
 		return result;
 	}
 
+	
+	public PagingVO searchNoticeList(int pageNumber,String notice_code,String schType, String schText) throws ServiceException {
+
+	      int currentPageNumber = pageNumber;
+	      try {
+	         
+	         int notice1TotalCount = adminDao.selectNotice1Count(notice_code);
+
+	         List<Notice1VO> notice1List = null;
+	         int firstRow = 0;
+	         int endRow = 0;
+	         if (notice1TotalCount > 0) {
+	            firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
+	            endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
+	            notice1List = adminDao.searchNoticeList(firstRow, endRow,notice_code,schType, schText);
+	         } else {
+	            currentPageNumber = 0;
+	            notice1List = Collections.emptyList();
+	         }
+	         return new PagingVO(notice1List, notice1TotalCount,
+	               currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
+	      } catch (Exception e) {
+	    	  throw new ServiceException("게시판 리스트 구하기 실패!",e);
+	      } 
+	   }
 }
