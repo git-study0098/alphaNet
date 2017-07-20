@@ -11,8 +11,8 @@ public class Notice1VO {
 	private String notice_code;
 	private String notice_content;
 	private String attach_file;	//첨부파일
-	private Date enroll_date;
-	private Date regist_date;
+	private Date enroll_date; //최종수정일
+	private Date regist_date; //등록일
 	private MultipartFile uploadfile;
 	
 	

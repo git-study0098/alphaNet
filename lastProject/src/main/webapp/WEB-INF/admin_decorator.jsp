@@ -19,6 +19,7 @@
 <link href='http://fonts.googleapis.com/ccss?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 </head>
+
 <body>
 
 	<div id="wrapper">
@@ -30,9 +31,7 @@
 						<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 							class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"> <img
-						src="resources/assets/img/logo.png" />
-					</a>
+					
 				</div>
 
 				<span class="logout-spn"> <a href="#" style="color: #fff;">LOGOUT</a>
@@ -47,7 +46,7 @@
 
 					<li><a href="<%=request.getContextPath() %>/admin/login/main2"><i class="fa fa-gear fa-2x"></i>메인화면
 					</a></li>
-					<li><a href="<%=request.getContextPath() %>/admin/notice"><i
+					<li><a href="<%=request.getContextPath() %>/admin/nomain"><i
 							class="fa fa-desktop fa-2x"></i>게시판관리 </a></li>
 
 					<li><a href="<%=request.getContextPath() %>/admin/exam"><i
@@ -55,11 +54,14 @@
 					<li class="active-link"><a href="<%=request.getContextPath() %>/admin/cbt"> <i
 							class="fa fa-edit fa-2x"></i>CBT관리
 					</a></li>
-					<li><a href="<%=request.getContextPath() %>/admin/mem"><i class="fa fa-users fa-2x"></i>회원관리
+					<li><a href="<%=request.getContextPath() %>"><i class="fa fa-users fa-2x"></i>회원관리
 					</a></li>
 <!-- 					<li><a href="admin/mem/ad_stare_mem.jsp"><i -->
 <!-- 							class="fa fa-bar-chart-o fa-2x"></i> 응시시험회원관리</a></li> -->
 					</ul>
+					<a class="navbar-brand" href="<%=request.getContextPath()%>"/ad_main.jsp> <img
+						src="<%=request.getContextPath() %>/resources/admin2/img/logo.png" style="width:200px;height:200px;"/>
+					</a>
 			</div>
 		</nav>
 		<!-- /. NAV SIDE  -->
@@ -74,16 +76,6 @@
 			</div>
 		</div>
 	</div>
-
-
-	<!-- /. WRAPPER  -->
-	<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-	<!-- JQUERY SCRIPTS -->
-	<script src="assets/js/jquery-1.10.2.js"></script>
-	<!-- BOOTSTRAP SCRIPTS -->
-	<script src="assets/js/bootstrap.min.js"></script>
-	<!-- CUSTOM SCRIPTS -->
-	<script src="assets/js/custom.js"></script>
 </body>
 </html>
 

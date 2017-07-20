@@ -17,7 +17,7 @@
 		<div class="row text-center pad-top">
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="notice/ad_notice.jsp"> <i class="fa fa-desktop fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/nomain"> <i class="fa fa-desktop fa-5x"></i>
 						<h4>게시판관리</h4>
 					</a>
 				</div>
@@ -25,14 +25,14 @@
 
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="exam/ad_cbt.jsp"> <i class="fa fa-table fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/examsch"> <i class="fa fa-table fa-5x"></i>
 						<h4>시험일정관리</h4>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="mem/ad_mem.jsp"> <i class="fa fa-users fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/mem"> <i class="fa fa-users fa-5x"></i>
 						<h4>회원관리</h4>
 					</a>
 				</div>
@@ -43,21 +43,21 @@
 
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="cbt/admin_cbt.jsp"> <i class="fa fa-clipboard fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/cbt"> <i class="fa fa-clipboard fa-5x"></i>
 						<h4>CBT</h4>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="blank.html"> <i class="fa fa-bar-chart-o fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/smem"> <i class="fa fa-bar-chart-o fa-5x"></i>
 						<h4>응시시험회원관리</h4>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="exam/ad_exam.jsp"> <i class="fa fa-qrcode fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/examin1"> <i class="fa fa-qrcode fa-5x"></i>
 						<h4>시험종목추가</h4>
 					</a>
 				</div>

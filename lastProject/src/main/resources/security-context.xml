@@ -33,11 +33,11 @@
 
 
 	<http pattern="/admin/**" use-expressions="true">
-		<form-login login-page="/admin/loginForm"
+		<form-login login-page="/admin/login/main2"
 			login-processing-url="/admin/login"		
 			username-parameter="id"
 			password-parameter="pwd"
-			default-target-url="/admin/main"
+			default-target-url="/admin/login/main2"
 			authentication-failure-url="/admin/loginForm"			
 		 />
 			 

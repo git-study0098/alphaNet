@@ -14,7 +14,6 @@
 	<bean id="adminNotice1Service"
 		  class="com.last.common.service.AdminNotice1Service"
 		  p:adminDao-ref="adminNotice1Dao"/>
-		
 		   
 	<bean id="adminUseInfo1Dao"
 		  class="com.last.common.dao.AdminUseInfo1DAO"
@@ -79,10 +78,14 @@
 		  class="com.last.login.LoginService"
 		  p:loginDao-ref="loginDaoImpl"
 	/>	
+	
+
+
 <!-- 	<bean id="noticeService" -->
 <!-- 		  class="com.last.board.service.NoticeService" -->
 <!-- 		  p:noticeDao-ref="notice" -->
 <!-- 	/>	 -->
+
 
 <!-- mysqlSession, mysqlClient -->
 		  

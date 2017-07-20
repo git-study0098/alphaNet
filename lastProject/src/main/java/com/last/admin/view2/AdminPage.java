@@ -81,10 +81,56 @@ public class AdminPage {
 	
 	
 	
-	@RequestMapping("/admin/notice")
-	public String notice(){
-		return "admin/notice/ad_notice";
-	}
+//	@RequestMapping("/admin/notice1")
+//	public String notice1(){
+//		return "admin/notice/ad_notice_1_list";
+//	}
+//	@RequestMapping("/admin/notice1_re")
+//	public String notice1re(){
+//		return "admin/notice/ad_notice_1_registry";
+//	}
+//	@RequestMapping("/admin/notice2")
+//	public String notice2(){
+//		return "admin/notice/ad_notice_2_list";
+//	}
+//	@RequestMapping("/admin/notice2_re")
+//	public String notice2re(){
+//		return "admin/notice/ad_notice_2_registry";
+//	}
+//	@RequestMapping("/admin/notice3")
+//	public String notice3(){
+//		return "admin/notice/ad_notice_3_list";
+//	}
+//	@RequestMapping("/admin/notice3_re")
+//	public String notice3re(){
+//		return "admin/notice/ad_notice_3_registry";
+//	}
+//	@RequestMapping("/admin/notice4")
+//	public String notice4(){
+//		return "admin/notice/ad_notice_4_list";
+//	}
+//	@RequestMapping("/admin/notice4_re")
+//	public String notice4re(){
+//		return "admin/notice/ad_notice_4_registry";
+//	}
+//	@RequestMapping("/admin/notice5")
+//	public String notice5(){
+//		return "admin/notice/ad_notice_5_list";
+//	}
+//	@RequestMapping("/admin/notice5_re")
+//	public String notice5re(){
+//		return "admin/notice/ad_notice_5_registry";
+//	}
+	
+	
+//	@RequestMapping("/admin/client")
+//	public String notice6(){
+//		return "admin/notice/ad_notice_6_list";
+//	}
+//	@RequestMapping("/admin/client")
+//	public String notice6re(){
+//		return "admin/notice/ad_notice_6_registry";
+//	}
 	
 	
 	@RequestMapping("/admin/cbt")
