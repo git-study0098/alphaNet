@@ -55,10 +55,10 @@
 	
 	<select id="selectMemberInfoList" parameterClass="str" resultClass="qualifiMember">
 		select mem_nm, mem_enname, reg_num1, mem_phone, mem_post_numb1, mem_add1, mem_add2, mem_add3,mem_photo
-<!-- 		#mem_nm#, #mem_enname#, #reg_num1#, #mem_phone#, #mem_post_numb1#, #mem_add1#, #mem_add2#, #mem_add3# -->
-		from mem 
+			from mem 
 		where mem_code = #mem_code#
 	</select>
+<!-- 		#mem_nm#, #mem_enname#, #reg_num1#, #mem_phone#, #mem_post_numb1#, #mem_add1#, #mem_add2#, #mem_add3# -->
 	
 	<select id="selectMemAuth" parameterClass="str" resultClass="qualifiMember">
 		select mem_nm,reg_num1 from mem where mem_code = #mem_code#	
