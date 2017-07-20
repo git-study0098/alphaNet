@@ -188,7 +188,7 @@ function idCheck(){
 											<strong class="fc_r" title="필수">*</strong>
 										</th>
 										<td colspan="2">
-											<input type="text" style="ime-mode: inactive;" id="id" name="id2" class="member_id">
+											<input type="text" style="ime-mode: inactive;" id="id" name="id" class="member_id">
 											<button type="button" id="memIdChkBtn" class="btn3_type1 chk_id ml5" onclick="javascript:idCheck();">
 												<span>아이디중복 확인</span>
 											</button> <span id="idChk"></span></td>
@@ -202,7 +202,7 @@ function idCheck(){
 
 										<th scope="row"><label for="birth_yy">생년월일</label><strong
 											class="fc_r" title="필수">*</strong></th>
-										<td colspan="2"><select id="birth_yy" title="생년월일 년도"
+										<td colspan="2"><select id="birth_yy" name = "mem_bir1" title="생년월일 년도"
 											style="width: 71px"><option value=""
 													selected="selected">년도</option>
 												<option value="17">2017</option>
@@ -305,7 +305,7 @@ function idCheck(){
 												<option value="20">1920</option>
 												<option value="19">1919</option>
 												<option value="18">1918</option>
-												</select> <select id="birth_mm" title="생년월일 월" style="width: 59px">
+												</select> <select id="birth_mm" name="mem_bir2" title="생년월일 월" style="width: 59px">
 											<option value="" selected="">월</option>
 												<option value="01">01</option>
 												<option value="02">02</option>
@@ -318,7 +318,8 @@ function idCheck(){
 												<option value="09">09</option>
 												<option value="10">10</option>
 												<option value="11">11</option>
-												<option value="12">12</option></select> <select id="birth_dd"
+												<option value="12">12</option></select> 
+												<select id="birth_dd" name="mem_bir3"
 											title="생년월일 일" style="width: 59px"><option value=""
 													selected="">일</option>
 												<option value="01">01</option>
@@ -352,8 +353,8 @@ function idCheck(){
 												<option value="29">29</option>
 												<option value="30">30</option>
 												<option value="31">31</option></select> 
-												<input type="hidden" name="jumin01" value=""> 
-												<input type="hidden" name="jumin02" value="9999999">
+												<input type="hidden" name="reg_num1" value=""> 
+												<input type="hidden" name="reg_num2" value="9999999">
 												<span class="txt_add">(법정생년월일6자리)</span>
 												</td>
 
@@ -389,14 +390,14 @@ function idCheck(){
 									<tr>
 										<th scope="row"><label for="member_name">이 름</label><strong
 											class="fc_r" title="필수">*</strong></th>
-										<td colspan="2"><input type="text" id="member_name"
+										<td colspan="2"><input type="text" id="name"
 											name="name" class="form_mid"></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="member_name_e">이
 												름(영문)</label></th>
-										<td colspan="2"><input type="text" id="member_name_e"
-											name="userEng" class="form_mid"> <span
+										<td colspan="2"><input type="text" id="mem_enname"
+											name="mem_enname" class="form_mid"> <span
 											class="txt_add">(여권과 동일하게 입력해주세요)</span></td>
 									</tr>
 
@@ -404,54 +405,19 @@ function idCheck(){
 										<th scope="row"><label for="member_pw">비밀번호</label><strong
 											class="fc_r" title="필수">*</strong></th>
 										<td colspan="2"><input type="password" class="join_pw"
-											id="member_pw" name="" maxlength="16"></td>
+											id="mem_pwd" name="mem_pwd" maxlength="16"></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="member_pw_c">비밀번호 확인</label><strong
 											class="fc_r" title="필수">*</strong></th>
 										<td colspan="2"><input type="password" class="join_pw"
-											id="member_pw_c" name="newPwdChk" maxlength="16"> <strong
+											id="mem_pwd_confirm" name="mem_pwd_confirm" maxlength="16"> <strong
 											class="info_tool"
 											title="비밀번호 조합예시 : korea123@ 입력가능 특수문자 : ! @ # $ % ^ &amp; * (보안지침에 의거하여 비밀번호는 9~16자리이며, 반드시 영문자·숫자·특수문자를 모두 혼합하여 입력하시기 바랍니다. 대소문자 구분되므로 주의!)"
 											tabindex="0">비밀번호 유의사항</strong></td>
 									</tr>
-									<tr>
-										<th scope="row"><label for="member_pw_q">비밀번호 질문</label><strong
-											class="fc_r" title="필수">*</strong></th>
-										<td colspan="2"><select title="비밀번호 질문" id="member_pw_q"
-											name="pwHnt" class="member_pw_q">
-												<option value="0">- 선택하세요 -</option>
-												<option value="1">가장 많이 이용하는 교통수단은?</option>
-												<option value="2">가장 친한 친구의 이름은?</option>
-												<option value="3">기억에 남는 추억의 장소는?</option>
-												<option value="4">당신의 별명은?</option>
-												<option value="5">당신의 신발사이즈는?</option>
-												<option value="6">당신이 가장 좋아하는 동물은?</option>
-												<option value="7">당신이 가장 좋아하는 색깔은?</option>
-												<option value="8">어머니의 고향은 어디일까요?</option>
-												<option value="9">제일 좋아하는 연예인은?</option>
-												<option value="10">가장 좋아하는 음식은?</option>
-												<option value="11">첫사랑의 이름은?</option>
-												<option value="12">애완동물 이름은?</option>
-												<option value="13">출신 초등학교는?</option>
-												<option value="14">출신 중학교는?</option>
-												<option value="15">출신 고등학교는?</option>
-												<option value="16">가장 좋아하는 색깔은?</option>
-												<option value="17">어릴적 짝꿍이름은?</option>
-												<option value="18">좋아하는 스포츠는?</option>
-												<option value="19" selected="">사용안함</option>
-
-										</select> <span class="txt_add">(서비스 이용시 질문을 선택해주세요.)</span></td>
-									</tr>
-									<tr>
-										<th scope="row"><label for="member_pw_a">비밀번호 답변</label><strong
-											class="fc_r" title="필수">*</strong></th>
-										<td colspan="3"><input type="text" id="member_pw_a"
-											name="pwHntAns" class="member_pw_a">
-											<span class="txt_add">(비밀번호 분실시 사용됩니다. 질문의 답변을 잘 기억해
-												두세요.)</span><br> <span class="txt_add">(안전한 답변 작성 예시 :
-												걸어다닙니다.(서술형))</span></td>
-									</tr>
+									
+									
 									<tr>
 										<th scope="row">장애여부</th>
 										<td colspan="3">

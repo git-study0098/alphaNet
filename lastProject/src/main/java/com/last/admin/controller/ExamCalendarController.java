@@ -37,9 +37,5 @@ public class ExamCalendarController {
 		return "member/wonseo/examCalender";
 	}	
 	
-	@RequestMapping("/signup")
-	public String signup(Model model){
-		return "member/sign_up";
-	}
 	
 }
