@@ -45,7 +45,7 @@ public class MemberNoticeController {
 	            e.printStackTrace();
 	         }
 	      }
-	      
+	      System.out.println();
 	      model.addAttribute("viewData",viewData);
 	      model.addAttribute("pageNumber",pageNumber);
 	      
