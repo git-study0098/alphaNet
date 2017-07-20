@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <!-- /. NAV SIDE  -->
+<style>
+.dropbtn {background-color: #337197;color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;}
+.dropdown {position: relative;display: inline-block;}
+.dropdown-content {display: none;position: absolute;background-color: #f9f9f9;min-width: 160px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);z-index: 1;}
+.dropdown-content a {color: black; padding: 12px 16px;text-decoration: none;display: block;}
+.dropdown-content a:hover {background-color: #f1f1f1}
+.dropdown:hover .dropdown-content {display: block;}
+.dropdown:hover .dropbtn { background-color: #337197;}
+</style>
 
 <div id="page-wrapper">
 	<div id="page-inner">
@@ -12,6 +21,14 @@
 		</div>
 		<!-- /. ROW  -->
 		<hr />
+		<div class="dropdown">
+					<button class="dropbtn">이용안내 게시판</button>
+					<div class="dropdown-content">
+						<a href="<%=request.getContextPath()%>/admin/pds">각종서식</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">출제기준</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">관련법령</a> 
+					</div>
+				</div>
 		<!-- 내용 -->
 		<div class="container" style="text: center;">
 			<a href="ad_exam_detail1.jsp">

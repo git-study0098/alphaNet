@@ -21,9 +21,18 @@
 		  p:client-ref="client"
 	/>
 	
+	<bean id="adminPdsDao"
+		  class="com.last.common.dao.AdminPdsDAO"
+		  p:client-ref="client"
+	/>
+	
 	<bean id="adminUseInfo1Service"
 		  class="com.last.common.service.AdminUseInfo1Service"
 		  p:adminDao-ref="adminUseInfo1Dao"/> 
+		  
+	<bean id="adminPdsService"
+		  class="com.last.common.service.AdminPdsService"
+		  p:adminDao-ref="adminPdsDao"/> 
 	
 	<bean id="wonseoDao"
 		  class="com.last.common.dao.WonseoDAO"
