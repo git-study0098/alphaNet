@@ -75,7 +75,7 @@ pageEncoding="UTF-8"%>
 
  
  function goRequest6(){
-	 location.href="<%=request.getContextPath()%>/member/request6";
+	 location.href="<%=request.getContextPath()%>/member/request6?mem_code=${viewData.mem_code}&qualifi_certi_code=${qualifi_certi_code}";
  }
  
 </script>
@@ -126,7 +126,9 @@ pageEncoding="UTF-8"%>
 <input type="hidden" name="mem_nm" value="${mem_nm }">
 <input type="hidden" name="reg_num1" value="${reg_num1} ">
 <input type="hidden" name = "mem_code" value="${mem_code}"/>
+<input type="text" name = "qualifi_certi_iss_pr" value="${price}"/>
 <input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
+
 
 					<div class="tbl_normal isr_app">
 						<p class="txt_right mb10">

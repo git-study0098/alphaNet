@@ -75,7 +75,7 @@
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
 				<h3 class="tit_content">공지사항</h3>
-
+				
 				<!-- 컨텐츠 내용 -->
 				<div class="content">
 					<div>

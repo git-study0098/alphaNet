@@ -142,7 +142,7 @@
 								<th scope="row">결제방법</th>
 								<td>미결제</td>
 								<th scope="row">결제금액</th>
-								<td>5,440 원 (발급수수료 : 3,100 원  배송비 : 2,340원)</td>
+								<td>(발급수수료 : 3,100 원  배송비 : 2,340원)</td>
 							</tr>
 						</tbody>
 					</table>
@@ -162,11 +162,11 @@
 								<th scope="row">배송방법</th>
 								<td>배송</td>
 								<th scope="row">배송지주소</th>
-								<td> &nbsp; 대전광역시 대덕구 계족로663번길 30, 1동306호(법동, 삼정하이츠타운)</td>
+								<td> ${viewData.add1}${viewData.add2 }${viewData.add3 }</td>
 							</tr>
 							<tr>
 								<th scope="row">연락처</th>
-								<td>010-5140-2834</td>
+								<td>${viewData.mem_phone}</td>
 								<th scope="row">배송시유의사항</th>
 								<td></td>
 							</tr>
@@ -189,7 +189,7 @@
 				</div>
 
 				<div class="btn_center m0">
-					<button type="button" id="payBtn" class="btn2 btncolor2 btn-sm btn-primary" onclick="location.href='11결제.jsp'"><span>결제</span></button>
+					<button type="button" id="payBtn" class="btn2 btncolor2 btn-sm btn-primary" onclick="location.href='jaguk_true'"><span>결제</span></button>
  					<button type="button" id="modifyBtn" class="btn2 btncolor3 btn-sm btn-warning" onclick="frmSubmit();"><span>수정</span></button>
 					<button type="button" id="cancelBtn" class="btn2 btncolor4 btn-sm btn-danger" onclick="location.href='1main.jsp'"><span>메인으로</span></button>
 

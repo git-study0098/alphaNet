@@ -105,4 +105,6 @@ function openPop(){
 				<p class="cont_txtSty2 mt10">※ 발급신청자의 성명과 생년월일(예 : 850204(법정생년월일 6자리))을<br>&nbsp;&nbsp;&nbsp;입력 후 확인을 눌러주세요.</p>
 				<p class="cont_txtSty2 mt10"><a href="#" onclick="openPop();">※ 기본인증 시 다음 화면으로 넘어가지 않을때 조치방법</a> <button type="button" class="btn3_type1" onclick="openPop();"><span>바로가기</span></button></p>
 			</div><!-- // pop_content -->
-		</div></div></div>
+		</div>
+	</div>
+</div>

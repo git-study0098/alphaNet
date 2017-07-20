@@ -24,6 +24,9 @@
 		  class="com.last.common.service.MainService"
 		  p:mainDao-ref="mainDao" />
 		   
+		  p:adminDao-ref="adminNotice1Dao"
+	/>
+		
 	<bean id="adminUseInfo1Dao"
 		  class="com.last.common.dao.AdminUseInfo1DAO"
 		  p:client-ref="client"
@@ -49,6 +52,14 @@
 	<bean id="wonseoService"
 		  class="com.last.common.service.WonseoService"
 		  p:wonseoDao-ref="wonseoDao"/>
+		  
+  	<bean id="jagukDao"
+		  class="com.last.common.dao.JagukDAO"
+		  p:client-ref="client"/>
+	
+	<bean id="jagukService"
+		  class="com.last.common.service.JagukService"
+		  p:jagukDao-ref="jagukDao"/>
 	
 	
 	<bean id="memDao"

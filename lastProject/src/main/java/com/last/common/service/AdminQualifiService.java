@@ -98,4 +98,9 @@ public class AdminQualifiService {
 		return vo;
 	}
 	
+	public int selectCertiPrice(String qualifi_certi_code)throws SQLException{
+		int result = adminQualifiDao.selectCertiPrice(qualifi_certi_code);
+		return result;
+	}
+	
 }

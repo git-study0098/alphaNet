@@ -28,6 +28,7 @@
 	<view-controller view-name="login/logout" path="/logout"/>
 	<view-controller view-name="login/login_duplicate" path="/login_duplicate"/>
 	<view-controller view-name="sign_up" path="/signUp"/>
+	<view-controller view-name="member/jaguk/jaguk_true" path="/jaguk_true"/>
 	
 	<!-- 대분류링크 -->
 	
