@@ -8,6 +8,7 @@ public class Notice1VO {
 	
 	private String title;
 	private String admin_code;
+	private String manager_dep; //담당 부서명
 	private String notice_code;
 	private String notice_content;
 	private String attach_file;	//첨부파일
@@ -15,7 +16,21 @@ public class Notice1VO {
 	private Date regist_date; //등록일
 	private MultipartFile uploadfile;
 	
+	private String notice_kind; //고객의 소리 분류
 	
+	
+	public String getNotice_kind() {
+		return notice_kind;
+	}
+	public void setNotice_kind(String notice_kind) {
+		this.notice_kind = notice_kind;
+	}
+	public String getManager_dep() {
+		return manager_dep;
+	}
+	public void setManager_dep(String manager_dep) {
+		this.manager_dep = manager_dep;
+	}
 	
 	public String getAttach_file() {
 		return attach_file;
@@ -66,13 +81,17 @@ public class Notice1VO {
 	public void setRegist_date(Date regist_date) {
 		this.regist_date = regist_date;
 	}
+	
 	@Override
 	public String toString() {
 		return "Notice1VO [title=" + title + ", admin_code=" + admin_code
-				+ ", notice_code=" + notice_code + ", notice_content="
-				+ notice_content + ", attach_file=" + attach_file
-				+ ", enroll_date=" + enroll_date + ", regist_date="
-				+ regist_date + ", uploadfile=" + uploadfile + "]";
+				+ ", manager_dep=" + manager_dep + ", notice_code="
+				+ notice_code + ", notice_content=" + notice_content
+				+ ", attach_file=" + attach_file + ", enroll_date="
+				+ enroll_date + ", regist_date=" + regist_date
+				+ ", uploadfile=" + uploadfile + ", notice_kind=" + notice_kind
+				+ "]";
 	}
-
+	
+	
 }

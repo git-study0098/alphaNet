@@ -1,11 +1,15 @@
 ﻿<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
+<%@page import="java.io.File"%>
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+
 
 
 <script type="text/javascript">
@@ -45,11 +49,11 @@
 			<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
 			<div class="row">
 				<div class="col-md-12">
-					<h2>사이트 이용안내</h2>
+					<h2>자료실</h2>
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" method="post" action="useInfoInsert"
+			<form style="display: inline" method="post" action="pdsInsert"
 				enctype="multipart/form-data">
 				<div>
 					<div class="tbl_type2 leftPd">
@@ -73,7 +77,7 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-										placeholder="담당부서를 입력해주세요."
+										value="${admin}" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td><c:set var="now" value="<%=new java.util.Date()%>" />

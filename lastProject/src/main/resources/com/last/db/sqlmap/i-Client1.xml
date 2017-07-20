@@ -2,7 +2,7 @@
 <!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
  "http://www.ibatis.com/dtd/sql-map-2.dtd">
  
-<sqlMap namespace="Notice1">
+<sqlMap namespace="Client1">
 
 	<typeAlias alias="str" type="java.lang.String" />
 	<typeAlias alias="int" type="java.lang.Integer"/>
@@ -10,7 +10,7 @@
 	
 		
 	
-	<select id="selectNotice1_Count" parameterClass="str" resultClass="int">
+	<select id="selectClient1_Count" parameterClass="str" resultClass="int">
 		SELECT COUNT(*) FROM notice where substr(notice_code,1,8)=#notice_code#
 	</select>
 	
@@ -58,8 +58,8 @@
 	</update>
 	
 	<update id="insertNotice1" parameterClass="notice1">
-		insert into notice(notice_code,title,notice_content,attach_file,enroll_date,regist_date,admin_code) 
-					values(#notice_code#,#title#,#notice_content#,#attach_file#,sysdate,sysdate,#admin_code#)
+		insert into notice(notice_code,title,notice_content,attach_file,enroll_date,regist_date,admin_code,notice_kind) 
+					values(#notice_code#,#title#,#notice_content#,#attach_file#,sysdate,sysdate,#admin_code#,#notice_kind#)
 	</update>
 	<select id="searchNoticeList" parameterClass="java.util.HashMap" resultClass="notice1">
 		select * from notice where substr(notice_code,1,8)=#notice_code#

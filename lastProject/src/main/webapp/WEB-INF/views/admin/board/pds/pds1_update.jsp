@@ -1,6 +1,9 @@
 ﻿<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
+<%@page import="java.io.File"%>
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -33,8 +36,8 @@
 </style>
 
 <script>
-	function useInfoDelete(){
-		location.href="<%=request.getContextPath() %>/admin/useInfoDelete?notice_code=${vo.notice_code}";
+	function pdsDelete(){
+		location.href="<%=request.getContextPath() %>/admin/pdsDelete?notice_code=${vo.notice_code}";
 	}
 </script>
 
@@ -43,11 +46,11 @@
 		<div id="page-inner">
 			<div class="row">
 				<div class="col-md-12">
-					<h2>사이트 이용안내</h2>
+					<h2>자료실</h2>
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" action="useInfoUpdate"
+			<form style="display: inline" action="pdsUpdate"
 				enctype="multipart/form-data">
 				<input type="hidden" name="noticeCode" value="${vo.notice_code}">
 				<div>
@@ -72,7 +75,7 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-										value="${vo.admin_code}"
+										value="${admin}" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td>
@@ -80,15 +83,22 @@
 										<%-- 											<input name="enrolldate" value="${date.registDate}" readonly="readonly"/> --%>
 										<%-- 										</c:when> --%> <%-- 										<c:otherwise> --%>
 										<c:set var="now" value="<%=new java.util.Date()%>" /> <input
-										name="registDate" value="${vo.regist_date}"
+										name="registDate" value="${vo.enroll_date}"
 										readonly="readonly" /> <%-- 										</c:otherwise> --%> <%-- 									</c:choose> --%>
 									</td>
 
 								</tr>
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5"><a href="#" class="btn3_icon download"><input
-											type="file"></a></td>
+									<td colspan="5">
+										<a href="#" class="btn3_icon download"><input type="file"></a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">기존 첨부파일</th>
+									<td colspan="5">
+										<a href="#"><span style="width: 95%; margin-bottom:10px;">${vo.attach_file}</span></a>
+									</td>
 								</tr>
 								<tr>
 									<td colspan="6"><textarea name="noticeContent"
@@ -103,7 +113,7 @@
 						<input type="submit" class="btn btncolor1" value="수정"
 							style="color: #ffffff"/> 
 							<input type="button" class="btn btncolor2" value="삭제"
-							onclick="useInfoDelete()" style="color: #ffffff" />
+							onclick="pdsDelete()" style="color: #ffffff" />
 					</p>
 				</div>
 			</form>

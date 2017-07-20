@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -19,6 +20,8 @@
 <link href='http://fonts.googleapis.com/ccss?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
 </head>
+
+
 
 <body>
 

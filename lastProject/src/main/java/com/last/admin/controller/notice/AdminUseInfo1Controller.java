@@ -33,7 +33,6 @@ public class AdminUseInfo1Controller {
 		this.adminUseInfo1Service = adminUseInfo1Service;
 	}
 
-
 	@RequestMapping("/admin/adminUseInfoRegist")
 	public String listUseInfoRegist() {
 		return "admin/board/useinfo/useInfo1_registry";
@@ -48,7 +47,8 @@ public class AdminUseInfo1Controller {
 			throws SQLException, ServiceException {
 		PagingVO viewData = null;
 		try {
-			viewData = adminUseInfo1Service.selectUseInfo1List(pageNumber,notice_code);
+			viewData = adminUseInfo1Service.selectUseInfo1List(pageNumber,
+					notice_code);
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +57,8 @@ public class AdminUseInfo1Controller {
 			if (pageNumber <= 0)
 				pageNumber = 1;
 			try {
-				viewData = adminUseInfo1Service.selectUseInfo1List(pageNumber,notice_code);
+				viewData = adminUseInfo1Service.selectUseInfo1List(pageNumber,
+						notice_code);
 			} catch (ServiceException e) {
 				e.printStackTrace();
 			}
@@ -69,26 +70,26 @@ public class AdminUseInfo1Controller {
 	}
 
 	@RequestMapping(value = "/admin/useInfoInsert", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
-	public String useInfoInsert(HttpServletRequest request, Model model,
-			@RequestParam("f") MultipartFile multipartFile ,
-			@RequestParam(value="notice_code" , defaultValue="useinfo01")String useinfo){
-		String upload = request.getSession().getServletContext()
-				.getRealPath("upload");
+	public String useInfoInsert(
+			HttpServletRequest request,
+			Model model,
+			@RequestParam("f") MultipartFile multipartFile,
+			@RequestParam(value = "notice_code", defaultValue = "useinfo01") String useinfo) {
+		String upload = "C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
 		String url = "redirect:useInfo";
-		
-		 
-		 String str = multipartFile.getOriginalFilename();
-		 
-		 StringTokenizer tokens = new StringTokenizer( str, "." );
-		 String[] fileName = {"1","txt"};
-		 int i=0;
-		 while(tokens.hasMoreTokens()){
-			 fileName[i] = tokens.nextToken();
-			 i++;
-		 }
-		 
-		 UUID uuid = UUID.randomUUID();
-	
+
+		String str = multipartFile.getOriginalFilename();
+
+		StringTokenizer tokens = new StringTokenizer(str, ".");
+		String[] fileName = { "1", "txt" };
+		int i = 0;
+		while (tokens.hasMoreTokens()) {
+			fileName[i] = tokens.nextToken();
+			i++;
+		}
+
+		UUID uuid = UUID.randomUUID();
+
 		if (!multipartFile.isEmpty()) {
 			File file = new File(upload, multipartFile.getOriginalFilename()
 					+ "$$" + System.currentTimeMillis());
@@ -109,8 +110,8 @@ public class AdminUseInfo1Controller {
 		vo.setEnroll_date(new Date(12));
 		vo.setNotice_code(adminUseInfo1Service.registNotice(useinfo));
 		vo.setNotice_content(request.getParameter("noticeContent"));
-		vo.setAttach_file(request.getParameter(fileName[0]+uuid.toString()+"."+fileName[1]));
-		// vo.setRegist_date(new Date(12));
+		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);
+//		 vo.setRegist_date(new Date(12));
 		vo.setTitle(request.getParameter("title"));
 
 		model.addAttribute(vo);
