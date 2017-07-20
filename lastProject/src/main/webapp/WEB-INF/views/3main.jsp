@@ -4,8 +4,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>
-<%@ page import="com.last.util.SystemUtils" %>  
+<%@ page trimDirectiveWhitespaces="true"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -291,10 +290,26 @@ $(function(){
 				</div>
 				<div class="right">
 					<dl class="bbs_list">
-						<dt class="on bbs_notice">
+						<dt class="bbs_notice">
 							<a href="<%=request.getContextPath() %>/main/notice1" name="bbs" id="notice">공지사항</a>
 						</dt>
-						<dd class="on" id="bbs_notice">
+						<dd id="bbs_notice">
+							<p class="none">
+								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
+							</p>
+						</dd>
+						<dt class="bbs_system">
+							<a href="<%=request.getContextPath() %>/main/notice2" name="bbs" id="system">자격제도</a>
+						</dt>
+						<dd id="bbs_system">
+							<p class="none">
+								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
+							</p>
+						</dd>
+						<dt class="on bbs_test">
+							<a href="<%=request.getContextPath() %>/main/notice3" name="bbs" id="test">시행</a>
+						</dt>
+						<dd id="bbs_test" class="on">
 							<ul>
 								<c:choose>
 									<c:when test="${viewData.notice1CountPerPage > 0 }">
@@ -314,22 +329,6 @@ $(function(){
 								</c:choose>
 							</ul>
 							<a href="#"	class="more">더보기</a>
-						</dd>
-						<dt class="bbs_system">
-							<a href="<%=request.getContextPath() %>/main/notice2" name="bbs" id="system">자격제도</a>
-						</dt>
-						<dd id="bbs_system">
-							<p class="none">
-								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
-							</p>
-						</dd>
-						<dt class="bbs_test">
-							<a href="<%=request.getContextPath() %>/main/notice3" name="bbs" id="test">시행</a>
-						</dt>
-						<dd id="bbs_test">
-							<p class="none">
-								<img src="<%=request.getContextPath()%>/resources/images/ajax-loader_s.gif" alt="데이터 처리 중입니다.">
-							</p>
 						</dd>
 						<dt class="bbs_question">
 							<a href="<%=request.getContextPath() %>/main/notice4" name="bbs" id="question">출제</a>
@@ -377,4 +376,4 @@ $(function(){
 		</div>	
 </div>
 </article>
-<%=SystemUtils.displayJspID(request)%>
+	

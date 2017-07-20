@@ -103,7 +103,6 @@ public class AdminNotice1DAO {
 			return result;
 		}
 		
-		/////////////////////
 		//member로 옮길거야
 		public List<Notice1VO> searchNoticeList(int firstRow, int endRow,String notice_code,String schType, String schText) throws SQLException{
 			HashMap<String,String> map = new HashMap<String,String>();
@@ -113,6 +112,5 @@ public class AdminNotice1DAO {
 			List<Notice1VO> searchNoticeList = (ArrayList<Notice1VO>)client.queryForList("searchNoticeList",map,firstRow-1 , endRow-firstRow+1);
 			return searchNoticeList;
 		}
-		
 		
 }
