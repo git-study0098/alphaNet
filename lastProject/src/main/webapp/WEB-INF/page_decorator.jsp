@@ -319,6 +319,7 @@ var speed = 800;
 						<li><a>English</a></li>
 						<li><a>이용안내</a></li>
 						<li><a>큐넷길라잡이</a></li>
+						<li><a href="<%=request.getContextPath() %>/admin/login/main2">관리자 페이지</a></li>
 					</ul>
 					<form method="get" class="header_form" role="search">
 						<fieldset class="total_search">

@@ -16,6 +16,7 @@ public class AdminNotice1DAO {
 			this.client = client;
 		}
 		
+
 		/**
 		 * 게시판 분류코드
 		 * @return selectNoticeCode
@@ -24,6 +25,7 @@ public class AdminNotice1DAO {
 		 
 		public List<String> selectNoticeCode()throws SQLException{
 			List<String> selectNoticeCode = (ArrayList<String>)client.queryForList("selectNoticeCode");
+			System.out.println("셀렉트 게시판 코드 잘라서 가져오는거");
 			return selectNoticeCode;
 		}
 		public int selectCount(String notice_code, String schType, String schText) throws SQLException{
@@ -43,21 +45,20 @@ public class AdminNotice1DAO {
 		 */
 		public List<Notice1VO> selectNotice1List(int firstRow, int endRow,String notice_code) throws SQLException{
 			List<Notice1VO> selectNotice1List = (ArrayList<Notice1VO>)client.queryForList("selectNotice1List",notice_code,firstRow-1 , endRow-firstRow+1);
+			System.out.println("셀렉트 전체리스트");
 			return selectNotice1List;
 		}
-		
 		/**
 		 * 해당 게시판 분류코드 별 페이지 수 처리
 		 * @param notice_code
 		 * @return result
 		 * @throws SQLException
 		 */
-		
 		public int selectNotice1Count(String notice_code) throws SQLException{
 			int result = (Integer) client.queryForObject("selectNotice1_Count",notice_code);
+			System.out.println("셀렉트 게시클 카운트");
 			return result;
 		}
-		
 		/**
 		 * 해당 게시글의 상세보기
 		 * @param notice_code
@@ -66,6 +67,7 @@ public class AdminNotice1DAO {
 		 */
 		public Notice1VO selectNotice1(String notice_code) throws SQLException{
 			Notice1VO selectNotice1List = (Notice1VO) client.queryForObject("selectNotice1",notice_code);
+			System.out.println("셀렉트 한행 상세보기");
 			return selectNotice1List;
 		}
 		
@@ -97,6 +99,7 @@ public class AdminNotice1DAO {
 		 */
 		public int insertNotice1(Notice1VO notice1VO) throws SQLException{
 			int result = (Integer) client.update("insertNotice1",notice1VO);
+			System.out.println("여기까지 들어오나 인서트");
 			return result;
 		}
 		

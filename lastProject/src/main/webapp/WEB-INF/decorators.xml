@@ -19,5 +19,6 @@
 		<pattern>/jusoPopup.jsp</pattern>
 		<pattern>/member/wonseoPayment*</pattern>
 	</excludes>
+<!-- 		<pattern>/admin/**/*</pattern> -->
 
 </decorators>
