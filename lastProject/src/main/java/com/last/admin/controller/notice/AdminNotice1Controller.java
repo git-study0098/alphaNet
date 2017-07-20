@@ -31,13 +31,20 @@ public class AdminNotice1Controller {
 	public void setAdminNotice1Service(AdminNotice1Service adminNotice1Service) {
 		this.adminNotice1Service = adminNotice1Service;
 	}
+
+	//관리자 게시판 메인 페이지
+	@RequestMapping("/admin/nomain")
+	public String notice(){
+		return "admin/board/notice/ad_notice";
+	}
 	
-	@RequestMapping("/adminRegist")
+	@RequestMapping("/admin/adminRegist")
 	   public String listRegist(){
 		      return "admin/board/notice/notice_1_registry";
 		   }
 	
-	@RequestMapping("/notice")
+	//공지사항
+	@RequestMapping("/admin/notice") 
 	public String listNotice(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice01" )String notice_code)throws SQLException, ServiceException{
 		PagingVO viewData=null;
 	      try {
@@ -57,15 +64,17 @@ public class AdminNotice1Controller {
 	            e.printStackTrace();
 	         }
 	      }
-	      
+
 	      model.addAttribute("viewData",viewData);
 	      model.addAttribute("pageNumber",pageNumber);
 	      
-	      return "admin/board/notice/admin_notice";
+	      return "admin/board/notice/admin_notice1";
 	}
 	
-	@RequestMapping(value="/boardInsert",headers=("content-type=multipart/*"),method=RequestMethod.POST)
-	public String boardInsert(HttpServletRequest request,Model model,@RequestParam("f") MultipartFile multipartFile,@RequestParam(value="notice_code" , defaultValue="notice01")String notice){
+	@RequestMapping(value="/admin/boardInsert",headers=("content-type=multipart/*"),method=RequestMethod.POST)
+	public String boardInsert(HttpServletRequest request,Model model,
+			@RequestParam("f") MultipartFile multipartFile,
+			@RequestParam(value="notice_code" , defaultValue="notice01")String notice){
 		
 		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
 		 String url ="redirect:notice";
@@ -118,7 +127,8 @@ public class AdminNotice1Controller {
 		return url;
 	}
 	
-	@RequestMapping("/boardUpdateForm")
+	//상세보기
+	@RequestMapping("/admin/boardUpdateForm")
 	public String boardUpdate(@RequestParam(value="notice_code") String noticeCode,Model model){
 		String url ="admin/board/notice/notice_1_update";
 		
@@ -133,7 +143,8 @@ public class AdminNotice1Controller {
 		return url;
 	}
 	
-	@RequestMapping("/boardUpdate")
+	//수정 실행시켜주는 화면
+	@RequestMapping("/admin/boardUpdate")
 	public String boardUpdate(HttpServletRequest request,Model model){
 		String url ="redirect:notice";
 		System.out.println("성공");
@@ -153,6 +164,22 @@ public class AdminNotice1Controller {
 			e.printStackTrace();
 		}
 		
+		return url;
+	}
+	
+	//삭제 실행시켜주는 화면
+	@RequestMapping("/admin/boardDelete")
+	public String boardDelete(@RequestParam(value="notice_code") String noticeCode){
+		String url="redirect:notice";
+		System.out.println(noticeCode);
+		System.out.println("삭제");
+		Notice1VO vo = new Notice1VO();
+		System.out.println(vo.getNotice_code()); 
+		try {
+			adminNotice1Service.deleteNotice1(noticeCode);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return url;
 	}
 		

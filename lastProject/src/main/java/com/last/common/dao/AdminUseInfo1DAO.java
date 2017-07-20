@@ -15,14 +15,19 @@ public class AdminUseInfo1DAO {
 		this.client = client;
 	}
 	
+	//게시판에서 코드 가져오기
+	public List<String> selectNoticeCode()throws SQLException{
+		List<String> selectNoticeCode = (ArrayList<String>)client.queryForList("selectUseInfo1Code");
+		return selectNoticeCode;
+	}
 	
-	public List<Notice1VO> selectUseInfo1List(int firstRow, int endRow) throws SQLException{
-		List<Notice1VO> selectUseInfo1List = (ArrayList<Notice1VO>)client.queryForList("selectUseInfo1List",firstRow-1 , endRow-firstRow+1);
+	public List<Notice1VO> selectUseInfo1List(int firstRow, int endRow,String notice_code) throws SQLException{
+		List<Notice1VO> selectUseInfo1List = (ArrayList<Notice1VO>)client.queryForList("selectUseInfo1List",notice_code,firstRow-1 , endRow-firstRow+1);
 		return selectUseInfo1List;
 	}
 	
-	public int selectUseInfo1Count() throws SQLException{
-		int result = (Integer) client.queryForObject("selectUseInfo1_Count");
+	public int selectUseInfo1Count(String notice_code) throws SQLException{
+		int result = (Integer) client.queryForObject("selectUseInfo1_Count",notice_code);
 		return result;
 	}
 	

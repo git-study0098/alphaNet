@@ -10,24 +10,31 @@
 	
 	
 	<select id="selectUseInfo1_Count" resultClass="int">
-		SELECT COUNT(*) FROM notice
+		SELECT COUNT(*) FROM notice where substr(notice_code,1,9)=#notice_code#
 	</select>
 	
 	<select id="selectUseInfo1List" parameterClass="str" resultClass="notice1">
 		select * from notice 
-<!-- 		where notice_code=#noticeCode# -->
+		where substr(notice_code,1,9)=#notice_code#
 	</select>
 	
-<!-- 	<select id="selectNoticeCode" parameterClass="str" resultClass="notice1"> -->
-<!-- 		select notice_code from notice  -->
-<!-- 	</select> -->
+	<select id="selectUseInfo1Code" parameterClass="str" resultClass="str">
+		select notice_code from notice 
+	</select>
 	
 	<select id="selectUseInfo1" parameterClass="str" resultClass="notice1">
-		select * from notice where notice_code = #notice_code#
+		select * from notice 
+		where notice_code = #notice_code#
 	</select>
 	
 	<update id="updateUseInfo1" parameterClass="notice1">
-		update notice set notice_content=#notice_content# where notice_code=#notice_code#
+		update notice 
+		set 
+			title=#title#,
+			attach_file=#attach_file#, 
+			notice_content=#notice_content#,
+			regist_date=sysdate
+		where notice_code=#notice_code#
 	</update>
 	
 	<update id="deleteUseInfo1" parameterClass="str">
@@ -36,7 +43,7 @@
 	
 	<update id="insertUseInfo1" parameterClass="notice1">
 		insert into notice(notice_code,title,notice_content,attach_file,regist_date,admin_code) 
-					values(#notice_code#,#title#,#notice_content#,#attach_file#,#regist_date#,#admin_code#)
+					values(#notice_code#,#title#,#notice_content#,#attach_file#,sysdate,#admin_code#)
 	</update>
 	
 </sqlMap>

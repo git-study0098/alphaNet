@@ -4,10 +4,10 @@ import java.util.List;
 
 public class PagingVO {
 	private int notice1TotalCount;
-	private int currentPageNumber;
 	private List<Notice1VO> notice1List;
-	private int pageTotalCount;
 	private int notice1CountPerPage;
+	private int currentPageNumber;
+	private int pageTotalCount;
 	private int firstRow;
 	private int endRow;
 	private int size;

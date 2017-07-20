@@ -1,7 +1,19 @@
+<%@page import="com.last.common.vo.PagingVO"%>
+<%@page import="com.last.common.vo.Notice1VO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>  
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ page import="com.last.util.SystemUtils" %>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
+<%
+   Integer pageNumber = (Integer)request.getAttribute("pageNumber");
+   PagingVO viewData =  (PagingVO)request.getAttribute("viewData");
+%>
+
 <style>
 	.qnet.main #container{background:url(<%=request.getContextPath()%>/resources/images/main/bg_container.gif) repeat-x left top;}	
 	.main #container{ width:100%;}	
@@ -280,51 +292,31 @@ $(function(){
 				<div class="right">
 					<dl class="bbs_list">
 						<dt class="on bbs_notice">
-							<a href="#" name="bbs" id="notice">공지사항</a>
+							<a href="<%=request.getContextPath() %>/main/notice1" name="bbs" id="notice">공지사항</a>
 						</dt>
 						<dd class="on" id="bbs_notice">
 							<ul>
-								<li><a href="#" title="2017년도 제28회 공인중개사 자격시험 예정 공고(2차시험 교시분리)">
-								<b><font color="#ff0000">2017년도 제28회 공인중개사 자격시험 예정 공고(2차시험 교시분리)</font></b></a> <span>2017.06.14</span></li>
-
-								<li><a
-									href="#"
-									title="SMS(카카오톡 포함) 서비스 일시 중단 알림"><b><font
-											color="#ff0000">SMS(카카오톡 포함) 서비스 일시 중단 알림</font></b></a> <span>2017.06.02</span>
-								</li>
-
-								<li><a
-									href="#"
-									title="국가자격 능력평가전문가 인력풀 모집 안내">국가자격 능력평가전문가 인력풀 모집 안내</a> <img
-									src="<%=request.getContextPath()%>/resources/images/common/ico_new.gif" alt="새로운 글"> <span>2017.07.05</span>
-								</li>
-
-								<li><a
-									href="#"
-									title="지도제작기능사 실기시험 방법 개선(재공지)"><b>지도제작기능사 실기시험 방법
-											개선(재공지)</b></a> <img src="<%=request.getContextPath()%>/resources/images/common/ico_new.gif"
-									alt="새로운 글"> <span>2017.07.04</span></li>
-
-								<li><a
-									href="#"
-									title="CQ-Net 홈페이지 오픈 및 이벤트 개최 안내">CQ-Net 홈페이지 오픈 및 이벤트 개최
-										안내</a> <span>2017.06.29</span></li>
-
-								<li><a
-									href="#"
-									title="양복기능사/양장기능사/한복기능사/한복산업기사 실기시험 변경 안내"><b>양복기능사/양장기능사/한복기능사/한복산업기사
-											실기시험 변경 안내</b></a> <span>2017.06.29</span></li>
-
-								<li><a
-									href="#"
-									title="조리(한식/양식)기능사 추가 신규과제 안내 (2018년 적용)">조리(한식/양식)기능사 추가
-										신규과제 안내 (2018년 적용)</a> <span>2017.06.28</span></li>
-
+								<c:choose>
+									<c:when test="${viewData.notice1CountPerPage > 0 }">
+										<c:forEach items="${viewData.notice1List }" var="notice" begin="0" end="6" varStatus="number">
+											<li>
+												<a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a>
+												<span><fmt:formatDate value="${notice.enroll_date}"/></span>
+											</li>
+											<input type="hidden" value="${notice.notice_code}" name="noticeCode"/>
+										</c:forEach>
+									</c:when>
+									<c:otherwise>
+										<li>
+											<p>내용이 없습니다</p>
+										</li>
+									</c:otherwise>
+								</c:choose>
 							</ul>
 							<a href="#"	class="more">더보기</a>
 						</dd>
 						<dt class="bbs_system">
-							<a href="#" name="bbs" id="system">자격제도</a>
+							<a href="<%=request.getContextPath() %>/main/notice2" name="bbs" id="system">자격제도</a>
 						</dt>
 						<dd id="bbs_system">
 							<p class="none">
@@ -332,7 +324,7 @@ $(function(){
 							</p>
 						</dd>
 						<dt class="bbs_test">
-							<a href="#" name="bbs" id="test">시행</a>
+							<a href="<%=request.getContextPath() %>/main/notice3" name="bbs" id="test">시행</a>
 						</dt>
 						<dd id="bbs_test">
 							<p class="none">
@@ -340,7 +332,7 @@ $(function(){
 							</p>
 						</dd>
 						<dt class="bbs_question">
-							<a href="#" name="bbs" id="question">출제</a>
+							<a href="<%=request.getContextPath() %>/main/notice4" name="bbs" id="question">출제</a>
 						</dt>
 						<dd id="bbs_question">
 							<p class="none">
@@ -349,7 +341,7 @@ $(function(){
 						</dd>
 						<!-- 2015.08.31 jws : 이종용대리 요청 서비스 개선 추가 -->
 						<dt class="bbs_improve">
-							<a href="#" name="bbs" id="improve">서비스 개선</a>
+							<a href="<%=request.getContextPath() %>/main/notice5" name="bbs" id="improve">서비스 개선</a>
 						</dt>
 						<dd id="bbs_improve">
 							<p class="none">
@@ -385,4 +377,4 @@ $(function(){
 		</div>	
 </div>
 </article>
-	
+<%=SystemUtils.displayJspID(request)%>

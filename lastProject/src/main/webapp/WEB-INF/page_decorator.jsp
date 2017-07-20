@@ -319,6 +319,7 @@ var speed = 800;
 						<li><a>English</a></li>
 						<li><a>이용안내</a></li>
 						<li><a>큐넷길라잡이</a></li>
+						<li><a href="<%=request.getContextPath() %>/admin/login/main2">관리자 페이지</a></li>
 					</ul>
 					<form method="get" class="header_form" role="search">
 						<fieldset class="total_search">
@@ -438,41 +439,39 @@ var speed = 800;
 									<p>- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
 							</li>								
-							<li class=""><a href="jaguk">자격증/확인서</a>
+							<li class=""><a href="request1">자격증/확인서</a>
 								<div class="sub03" style="display: none;">
 									<ul style="min-height: 145px;">
-										<li class=""><a href="member/jaguk/infoRequest">자격증발급안내</a>
+										<li class=""><a href="infoRequest">자격증발급안내</a>
 											<ul style="min-height: 145px; left: 180px; display: none;">
-												<li><a href="member/jaguk/infoRequest">자격증발급/발급처</a></li>
-												<li><a href="member/jaguk/infoNew">신규/인정/재발급</a></li>
-												<li><a href="member/jaguk/infoFunc">기능사보기능자격부여</a></li>
-												<li><a href="member/jaguk/infoTarget">면허발급대상종목</a></li>
-												<li><a href="member/jaguk/infoWarn">국가자격취득자주의사항</a></li>
-												<li><a href="member/jaguk/infoEdu">보수교육갱신등록폐지</a></li>
-												<li><a href="member/jaguk/infoNon">폐지종목자격발급</a></li>
+												<li><a href="infoRequest">자격증발급/발급처</a></li>
+												<li><a href="infoNew">신규/인정/재발급</a></li>
+												<li><a href="infoFunc">기능사보기능자격부여</a></li>
+												<li><a href="infoTarget">면허발급대상종목</a></li>
+												<li><a href="infoWarn">국가자격취득자주의사항</a></li>
+												<li><a href="infoEdu">보수교육갱신등록폐지</a></li>
+												<li><a href="infoNon">폐지종목자격발급</a></li>
 											</ul></li>
-										<li><a href="jaguk">자격증발급</a>
+										<li><a href="request1">자격증발급</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
 												<li><a href="jaguk">자격증발급신청</a></li>
 												<li><a href="#">자격증발급내역</a></li>
 											</ul></li>
-										<li><a href="member/jaguk/confirminfo">확인서발급</a>
+										<li><a href="confirminfo">확인서발급</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="member/jaguk/confirminfo">확인서발급안내</a></li>
+												<li><a href="confirminfo">확인서발급안내</a></li>
 												<li><a href="member/jaguk/confirmRequest">확인서발급신청</a></li>
 												<li><a href="member/jaguk/confirmSelect">확인서발급내역</a></li>
-												<li><a href="#">기능경기확인서신청</a></li>
 											</ul></li>
-										<li><a href="member/jaguk/get">자격취득/미발급조회</a>
+										<li><a href="member/get">자격취득/미발급조회</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="member/jaguk/get">자격증취득조회</a></li>
-												<li><a href="member/jaguk/nonGet">자격증미발급조회</a></li>
+												<li><a href="member/get">자격증취득조회</a></li>
+												<li><a href="nonGet">자격증미발급조회</a></li>
 											</ul></li>
-										<li><a href="member/jaguk/jagukTrue">확인서/자격증진위확인</a>
+										<li><a href="jagukTrue">확인서/자격증진위확인</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="member/jaguk/jagukTrue">확인서진위확인</a></li>
-												<li><a href="member/jaguk/confirmTrue">자격증진위확인</a></li>
-												<li><a href="#">단체 진위확인</a></li>
+												<li><a href="jagukTrue">확인서진위확인</a></li>
+												<li><a href="confirmTrue">자격증진위확인</a></li>
 											</ul></li>
 									</ul>
 									<p class="blind">
