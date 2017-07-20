@@ -25,8 +25,38 @@ public class MemberVo {
 	private String mem_jang;
 	private String mem_pass_em;
 	
+	//학교
+	private String sch_code; //학교코드
+	private String sch_coll; //학교2년제4년제
+	
+	private String sch_major_code;//학과코드
+	private String sch_major_nm; //학과이름
 	
 	
+	public String getSch_code() {
+		return sch_code;
+	}
+	public void setSch_code(String sch_code) {
+		this.sch_code = sch_code;
+	}
+	public String getSch_coll() {
+		return sch_coll;
+	}
+	public void setSch_coll(String sch_coll) {
+		this.sch_coll = sch_coll;
+	}
+	public String getSch_major_code() {
+		return sch_major_code;
+	}
+	public void setSch_major_code(String sch_major_code) {
+		this.sch_major_code = sch_major_code;
+	}
+	public String getSch_major_nm() {
+		return sch_major_nm;
+	}
+	public void setSch_major_nm(String sch_major_nm) {
+		this.sch_major_nm = sch_major_nm;
+	}
 	public String getMem_pass_em() {
 		return mem_pass_em;
 	}
@@ -147,6 +177,22 @@ public class MemberVo {
 	}
 	public void setMem_enName(String mem_enName) {
 		this.mem_enName = mem_enName;
+	}
+	@Override
+	public String toString() {
+		return "MemberVo [id=" + id + ", pwd=" + pwd + ", name=" + name
+				+ ", mem_enName=" + mem_enName + ", mem_phone=" + mem_phone
+				+ ", mem_email=" + mem_email + ", mem_add1=" + mem_add1
+				+ ", mem_add2=" + mem_add2 + ", mem_add3=" + mem_add3
+				+ ", mem_add4=" + mem_add4 + ", mem_kor_for=" + mem_kor_for
+				+ ", mem_post_numb1=" + mem_post_numb1 + ", mem_post_numb2="
+				+ mem_post_numb2 + ", mem_gender=" + mem_gender
+				+ ", mem_photo=" + mem_photo + ", mem_bir=" + mem_bir
+				+ ", enabled=" + enabled + ", authority=" + authority
+				+ ", mem_jang=" + mem_jang + ", mem_pass_em=" + mem_pass_em
+				+ ", sch_code=" + sch_code + ", sch_coll=" + sch_coll
+				+ ", sch_major_code=" + sch_major_code + ", sch_major_nm="
+				+ sch_major_nm + "]";
 	}
 
 }

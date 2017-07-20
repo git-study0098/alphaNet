@@ -27,18 +27,87 @@
 </style>
 
 <script>
-function jusoCallback(mem_post_numb1,mem_add1,mem_add2) {
+function jusoCallBack(mem_post_numb1,mem_add1,mem_add2) {
 	document.getElementById("mem_post_numb1").value = mem_post_numb1;
 	document.getElementById("mem_add1").value = mem_add1;
 	document.getElementById("mem_add2").value = mem_add2;
 
 }
 
-function jusoCallback2(mem_post_numb2,mem_add3,mem_add4) {
+function jusoCallBack2(mem_post_numb2,mem_add3,mem_add4) {
 	document.getElementById("mem_post_numb2").value = mem_post_numb2;
 	document.getElementById("mem_add3").value = mem_add3;
 	document.getElementById("mem_add4").value = mem_add4;
 }
+
+ //대전 서울 == > 2년제 4년제 가는거
+function showSub1(obj){
+	if(obj.value=="대전"){
+		alert("대전선택");
+		document.regMEM.dacoll.style.display="";
+		document.regMEM.suocoll.style.display="none";
+		document.regMEM.daschool2.style.display="";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="none";
+		
+	}else if(obj.value=="서울"){
+		alert("서울선택");
+		document.regMEM.dacoll.style.display="none";
+		document.regMEM.suocoll.style.display="";
+		document.regMEM.daschool2.style.display="";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschoo2.style.display="none";
+		document.regMEM.seoschoo4.style.display="none";
+	}
+
+
+}
+
+//대전 2년제 4년제
+function showSub24(obj) {
+	if(obj.value=="2년제"){
+		alert("2년제선택");
+		document.regMEM.dacoll.style.display="";
+		document.regMEM.suocoll.style.display="none";
+		document.regMEM.daschool2.style.display="";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="none";
+		
+	}else if(obj.value=="4년제"){
+		alert("4년제선택");
+		document.regMEM.dacoll.style.display="";
+		document.regMEM.suocoll.style.display="none";
+		document.regMEM.daschool2.style.display="none";
+		document.regMEM.daschool4.style.display="";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="none";
+	}
+}
+
+//서울 2년제 4년제
+function showSub242(obj) {
+	if(obj.value=="2년제"){
+		alert("2년제선택");
+		document.regMEM.dacoll.style.display="none";
+		document.regMEM.suocoll.style.display="";
+		document.regMEM.daschool2.style.display="none";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="";
+		document.regMEM.seoschool4.style.display="none";
+		
+	}else if(obj.value=="4년제"){
+		alert("4년제선택");
+		document.regMEM.dacoll.style.display="none";
+		document.regMEM.suocoll.style.display="";
+		document.regMEM.daschool2.style.display="none";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="";
+	}
+}
+
 
 function idCheck(){
     var id = $('#id').val();
@@ -114,7 +183,7 @@ function idCheck(){
 						</li>
 					</ul>
 				</div>
-				<form name="regMEM" id="regMEM" method="post" action="insert">
+				<form name="regMEM" id="regMEM" method="post" action="insertMember">
 					<fieldset>
 						<input type="hidden" name="memIdChk" value="N"> <input
 							type="hidden" name="juminRes"> <input type="hidden"
@@ -470,7 +539,7 @@ function idCheck(){
 												<strong class="fc_r" title="필수">*</strong>
 										</label></th>
 										<td colspan="3"><input type="text" class="join_email"
-											id="member_mail_add" name="email"></td>
+											id="mem_email" name="mem_email"></td>
 									</tr>
 									<tr>
 										<th scope="row">이메일 수신여부<!-- <strong class="fc_r" title="필수">*</strong> -->
@@ -555,6 +624,68 @@ function idCheck(){
 										</td>
 									</tr>
 									<tr>
+										<th scope="row">
+										 학교선택<strong class="fc_r" title="필수">*</strong>
+										</th>											
+										<td colspan="3">
+											<div class="group_form1">
+										
+												<select name="area" onchange="showSub1(this);">
+													<option value="">지역선택</option>
+													<option value="대전">대전</option>
+													<option value="서울">서울</option>
+												</select>
+												
+												
+												<select name = "dacoll" style="display:"   onchange="showSub24(this);">
+													<option value="">학년제선택</option>
+													<option value="2년제">2년제</option>
+													<option value="4년제">4년제</option>
+												</select>
+												
+												<select name = "suocoll" style="display:none;"   onchange="showSub242(this);">
+													<option value="">학년제선택</option>
+													<option value="2년제">2년제</option>
+													<option value="4년제">4년제</option>
+												</select>
+												<select name="daschool2" style="display:''">
+													<option value="">대학교선택</option>
+													<option value="대덕대학교">대덕대학교</option>
+													<option value="우송정보대학교">우송정보대학교</option>
+													<option value="대전보건대학교">대전보건대학교</option>
+													<option value="대전과학기술대학교">대전과학기술대학교</option>
+												</select>
+												<select name="daschool4" style="display:none">
+													<option value="">대학교선택</option>
+													<option value="대전대학교">대전대학교</option>
+													<option value="한남대학교">한남대학교</option>
+													<option value="충남대학교">충남대학교</option>
+													<option value="건양대학교">건양대학교</option>
+													<option value="을지대학교">을지대학교</option>
+												</select>
+												
+												<select name="seoschool2" style="display:none;">
+													<option value="">대학교선택</option>
+													<option value="서울대">서울대</option>
+													<option value="힌양대">힌양대</option>
+												</select>
+												
+												<select name="seoschool4" style="display:none;">
+													<option value="">대학교선택</option>
+													<option value="명지전문대학교">명지전문대학교</option>
+													<option value="배화여자대학교">배화여자대학교</option>
+												</select>
+		
+											</div>
+										</td>
+									</tr>
+									
+									
+									
+									
+									
+									
+									<tr>
 										<th scope="row" rowspan="3">주민등록 거주지<strong class="fc_r"
 											title="필수">*</strong>
 										</th>
@@ -565,7 +696,7 @@ function idCheck(){
 											onkeyup="nextFocus('regMEM', 'zip01', 'addr01');">
 
 											<button type="button" class="btn3_type1" name="addrPop"
-												id="01" onclick="addr();">
+												id="01" onclick="add();">
 												<span>주소검색</span>
 											</button> <strong class="info_tool"
 											title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다.  "
@@ -599,7 +730,7 @@ function idCheck(){
 											onkeyup="nextFocus('regMEM', 'dZip01', 'dAddr01');">
 
 											<button type="button" class="btn3_type1" name="addrPop"
-												id="02" onclick="addr2();">
+												id="02" onclick="add2();">
 												<span>주소검색</span>
 											</button> <strong class="info_tool"
 											title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다. "
@@ -631,21 +762,6 @@ function idCheck(){
 					</button>
 				</div>
 				</form>
-
-				<form name="iPinHiddenForm" method="post"
-					style="margin-top: 0; margin-bottom: 0;">
-					<input type="hidden" name="regNo" value="">
-				</form>
-
-				<form name="regFrm" method="post">
-					<input type="hidden" id="peopleCk" name="peopleCk"
-						value="nationality01"> <input type="hidden" id="isChk"
-						name="isChk" value="true"> <input type="hidden"
-						name="rcvFlag" value="">
-				</form>
-				<iframe title="빈프레임" name="iframeHiddenIpin" frameborder="0" src=""
-					width="0" height="0"></iframe>
-				<!-- //컨텐츠 내용 -->
 			</div>
 		</div>
 </article>

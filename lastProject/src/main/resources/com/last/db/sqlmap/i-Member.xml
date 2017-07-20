@@ -86,7 +86,9 @@
 	</select>
 	
 	
-	
+	<select id="selectSchool" resultClass="member">
+		select * from sch
+	</select>
 <!-- 	<select id="selectMemberList" parameterClass="str" resultClass="member"> -->
 <!-- 		select * from member where id like '%'||#id#||'%' -->
 <!-- 	</select> -->

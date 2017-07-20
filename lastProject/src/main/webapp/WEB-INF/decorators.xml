@@ -15,7 +15,7 @@
 		<pattern>/**/*Xml.do</pattern>
 		<pattern>/**/*Json.do</pattern>
 		<pattern>/login/loginForm</pattern>
-		<pattern>/jusoPopup.jsp</pattern>
+		<pattern>/juso*</pattern>
 		<pattern>/member/wonseoPayment*</pattern>
 	</excludes>
 

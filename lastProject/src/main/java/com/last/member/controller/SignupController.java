@@ -1,8 +1,5 @@
-package com.last.admin.controller;
+package com.last.member.controller;
 
-import java.io.Reader;
-
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +21,40 @@ public class SignupController {
 	}
 
 
+	@RequestMapping("/juso")
+	public String juso(){
+		return "member/jusoPopup";
+		
+	}
+	
+	@RequestMapping("/juso2")
+	public String juso2(){
+		return "member/jusoPopup2";
+		
+	}
+	
+	
+	
+	
 	@RequestMapping("/signup")
 	public String signUp(MemberVo vo, HttpServletRequest request){
+
+		
+		return "member/signup";
+	}
+	
+	@RequestMapping("/insertMember")
+	public String insert(MemberVo vo ,HttpServletRequest request){
 		
 		System.out.println("컨트롤러 회원가입");
-		vo.setId(request.getParameter("mem_code"));
+		
+		vo.setId(request.getParameter("id"));
 		vo.setPwd(request.getParameter("mem_pwd"));
-		vo.setName(request.getParameter("mem_nm"));
+		vo.setName(request.getParameter("name"));
 		
 		memberDaoImpl.insert(vo);
 		
-		
-		
-		return "member/signup";
+		return "redirect:main";
 	}
 	
 	
