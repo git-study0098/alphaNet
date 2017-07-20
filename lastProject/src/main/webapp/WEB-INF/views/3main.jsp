@@ -291,7 +291,7 @@ $(function(){
 				<div class="right">
 					<dl class="bbs_list">
 						<dt class="bbs_notice">
-							<a href="<%=request.getContextPath() %>/main/notice1" name="bbs" id="notice">공지사항</a>
+							<a href="<%=request.getContextPath() %>/mainNotice1" name="bbs" id="notice">공지사항</a>
 						</dt>
 						<dd id="bbs_notice">
 							<p class="none">
@@ -299,7 +299,7 @@ $(function(){
 							</p>
 						</dd>
 						<dt class="bbs_system">
-							<a href="<%=request.getContextPath() %>/main/notice2" name="bbs" id="system">자격제도</a>
+							<a href="<%=request.getContextPath() %>/mainNotice2" name="bbs" id="system">자격제도</a>
 						</dt>
 						<dd id="bbs_system">
 							<p class="none">
@@ -307,7 +307,7 @@ $(function(){
 							</p>
 						</dd>
 						<dt class="on bbs_test">
-							<a href="<%=request.getContextPath() %>/main/notice3" name="bbs" id="test">시행</a>
+							<a href="<%=request.getContextPath() %>/mainNotice3" name="bbs" id="test">시행</a>
 						</dt>
 						<dd id="bbs_test" class="on">
 							<ul>
@@ -331,7 +331,7 @@ $(function(){
 							<a href="#"	class="more">더보기</a>
 						</dd>
 						<dt class="bbs_question">
-							<a href="<%=request.getContextPath() %>/main/notice4" name="bbs" id="question">출제</a>
+							<a href="<%=request.getContextPath() %>/mainNotice4" name="bbs" id="question">출제</a>
 						</dt>
 						<dd id="bbs_question">
 							<p class="none">
@@ -340,7 +340,7 @@ $(function(){
 						</dd>
 						<!-- 2015.08.31 jws : 이종용대리 요청 서비스 개선 추가 -->
 						<dt class="bbs_improve">
-							<a href="<%=request.getContextPath() %>/main/notice5" name="bbs" id="improve">서비스 개선</a>
+							<a href="<%=request.getContextPath() %>/mainNotice5" name="bbs" id="improve">서비스 개선</a>
 						</dt>
 						<dd id="bbs_improve">
 							<p class="none">
