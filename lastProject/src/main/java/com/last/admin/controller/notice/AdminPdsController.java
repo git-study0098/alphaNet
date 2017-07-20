@@ -17,38 +17,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.last.common.service.AdminUseInfo1Service;
+import com.last.common.service.AdminPdsService;
 import com.last.common.service.ServiceException;
 import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
 
 @Controller
-public class AdminUseInfo1Controller {
+public class AdminPdsController {
 
 	@Autowired
-	private AdminUseInfo1Service adminUseInfo1Service;
+	private AdminPdsService adminPdsService;
 
-	public void setAdminUseInfo1Service(
-			AdminUseInfo1Service adminUseInfo1Service) {
-		this.adminUseInfo1Service = adminUseInfo1Service;
+	public void setadminPdsService(AdminPdsService adminInfo1Service) {
+		this.adminPdsService = adminPdsService;
 	}
 
 
-	@RequestMapping("/admin/adminUseInfoRegist")
-	public String listUseInfoRegist() {
-		return "admin/board/useinfo/useInfo1_registry";
+	@RequestMapping("/admin/adminpdsRegist")
+	public String listpdsRegist() {
+		return "admin/board/pds/pds_registry";
 	}
 
 	// 사이트이용안내 리스트
-	@RequestMapping("/admin/useInfo")
-	public String listUseInfo(
+	@RequestMapping("/admin/pds")
+	public String listpds(
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
 			Model model,
-			@RequestParam(value = "notice_code", defaultValue = "useinfo01") String notice_code)
+			@RequestParam(value = "notice_code", defaultValue = "pds00001") String notice_code)
 			throws SQLException, ServiceException {
 		PagingVO viewData = null;
 		try {
-			viewData = adminUseInfo1Service.selectUseInfo1List(pageNumber,notice_code);
+			viewData = adminPdsService.selectNotice1List(pageNumber,notice_code);
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -57,7 +56,7 @@ public class AdminUseInfo1Controller {
 			if (pageNumber <= 0)
 				pageNumber = 1;
 			try {
-				viewData = adminUseInfo1Service.selectUseInfo1List(pageNumber,notice_code);
+				viewData = adminPdsService.selectNotice1List(pageNumber,notice_code);
 			} catch (ServiceException e) {
 				e.printStackTrace();
 			}
@@ -65,16 +64,16 @@ public class AdminUseInfo1Controller {
 
 		model.addAttribute("viewData", viewData);
 		model.addAttribute("pageNumber", pageNumber);
-		return "/admin/board/useinfo/useInfo1_notice";
+		return "/admin/board/pds/pds1_notice";
 	}
 
-	@RequestMapping(value = "/admin/useInfoInsert", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
-	public String useInfoInsert(HttpServletRequest request, Model model,
+	@RequestMapping(value = "/admin/pdsInsert", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
+	public String pdsInsert(HttpServletRequest request, Model model,
 			@RequestParam("f") MultipartFile multipartFile ,
-			@RequestParam(value="notice_code" , defaultValue="useinfo01")String useinfo){
+			@RequestParam(value="notice_code" , defaultValue="pds01")String pds){
 		String upload = request.getSession().getServletContext()
 				.getRealPath("upload");
-		String url = "redirect:useInfo";
+		String url = "redirect:pds";
 		
 		 
 		 String str = multipartFile.getOriginalFilename();
@@ -107,7 +106,7 @@ public class AdminUseInfo1Controller {
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
 		vo.setEnroll_date(new Date(12));
-		vo.setNotice_code(adminUseInfo1Service.registNotice(useinfo));
+		vo.setNotice_code(adminPdsService.registNotice(pds));
 		vo.setNotice_content(request.getParameter("noticeContent"));
 		vo.setAttach_file(request.getParameter(fileName[0]+uuid.toString()+"."+fileName[1]));
 		// vo.setRegist_date(new Date(12));
@@ -117,7 +116,7 @@ public class AdminUseInfo1Controller {
 
 		int result = 0;
 		try {
-			result = adminUseInfo1Service.insertUseInfo1(vo);
+			result = adminPdsService.insertNotice1(vo);
 			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -126,14 +125,14 @@ public class AdminUseInfo1Controller {
 		return url;
 	}
 
-	@RequestMapping("/admin/useInfoUpdateForm")
-	public String useInfoUpdate(
+	@RequestMapping("/admin/pdsUpdateForm")
+	public String pdsUpdate(
 			@RequestParam(value = "notice_code") String noticeCode, Model model) {
-		String url = "admin/board/useinfo/useInfo1_update";
+		String url = "admin/board/pds/pds1_update";
 
 		Notice1VO vo = null;
 		try {
-			vo = adminUseInfo1Service.selectUseInfoCodeList(noticeCode);
+			vo = adminPdsService.selectNoticeCodeList(noticeCode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -142,9 +141,9 @@ public class AdminUseInfo1Controller {
 		return url;
 	}
 
-	@RequestMapping("/admin/useInfoUpdate")
-	public String useInfoUpdate(HttpServletRequest request, Model model) {
-		String url = "redirect:useInfo";
+	@RequestMapping("/admin/pdsUpdate")
+	public String pdsUpdate(HttpServletRequest request, Model model) {
+		String url = "redirect:pds";
 		System.out.println("성공");
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
@@ -157,7 +156,7 @@ public class AdminUseInfo1Controller {
 		model.addAttribute(vo);
 
 		try {
-			adminUseInfo1Service.updateUseInfo1(vo);
+			adminPdsService.updateNotice1(vo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -166,16 +165,16 @@ public class AdminUseInfo1Controller {
 	}
 
 	// 삭제 실행시켜주는 화면
-	@RequestMapping("/admin/useInfoDelete")
-	public String useInfoDelete(
+	@RequestMapping("/admin/pdsDelete")
+	public String pdsDelete(
 			@RequestParam(value = "notice_code") String noticeCode) {
-		String url = "redirect:useInfo";
+		String url = "redirect:pds";
 		System.out.println(noticeCode);
 		System.out.println("삭제");
 		Notice1VO vo = new Notice1VO();
 		System.out.println(vo.getNotice_code());
 		try {
-			adminUseInfo1Service.deleteUseInfo1(noticeCode);
+			adminPdsService.deleteNotice1(noticeCode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

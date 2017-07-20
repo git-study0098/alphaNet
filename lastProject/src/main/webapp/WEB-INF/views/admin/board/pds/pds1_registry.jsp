@@ -49,7 +49,7 @@
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" method="post" action="pdsInsert"
+			<form style="display: inline" method="post" action="useInfoInsert"
 				enctype="multipart/form-data">
 				<div>
 					<div class="tbl_type2 leftPd">

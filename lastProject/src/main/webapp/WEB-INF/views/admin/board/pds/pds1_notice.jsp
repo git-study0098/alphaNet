@@ -31,7 +31,7 @@
 <script>
 	function go_noticeDetail(noticeCode) {
 		var noticeForm = document.noticeDetail;
-		noticeForm.action = "/useInfoUpdateForm?notice_code=" + noticeCode;
+		noticeForm.action = "/pdsUpdateForm?notice_code=" + noticeCode;
 		noticeForm.submit();
 	}
 </script>
@@ -74,15 +74,15 @@
 		<div id="page-wrapper">
 			<div id="page-inner">
 				<div class="col-md-12">
-					<h2>사이트 이용안내</h2>
+					<h2>자료실</h2>
 				</div>
 				<hr />
 				<div class="dropdown">
 					<button class="dropbtn">이용안내 게시판</button>
 					<div class="dropdown-content">
-						<a href="<%=request.getContextPath()%>/admin/useInfo">사이트 이용방법</a> 
-						<a href="<%=request.getContextPath()%>/admin/useInfo">자주찾는 질문</a> 
-						<a href="<%=request.getContextPath()%>/admin/useInfo">큐넷체험하기</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">각종서식</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">출제기준</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">관련법령</a> 
 					</div>
 				</div>
 				<div>
@@ -106,7 +106,7 @@
 						</span>
 					</div>
 					<form name="noticeDetail">
-						<input type="hidden" name="notice_code" value="useinfo01">
+						<input type="hidden" name="notice_code" value="pds01">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"
@@ -138,7 +138,7 @@
 														<td>${number.count}</td>
 														<!-- 글번호 -->
 														<td><a
-															href="<%=request.getContextPath() %>/admin/useInfoUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
+															href="<%=request.getContextPath() %>/admin/pdsUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
 														<td>${notice.admin_code}</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
 														<td><input type="hidden"
@@ -156,7 +156,7 @@
 									</tbody>
 								</table>
 							</div>
-							<a href="<%=request.getContextPath()%>/admin/adminUseInfoRegist"><input
+							<a href="<%=request.getContextPath()%>/admin/adminpdsRegist"><input
 								type="button" class="btn btncolor2" value="글쓰기"
 								style="color: #ffffff" /></a>
 							<div class="pagination1 mb20">

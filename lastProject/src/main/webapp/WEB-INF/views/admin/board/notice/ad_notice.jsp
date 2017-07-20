@@ -33,7 +33,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/notice2"> <i class="fa fa-users fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/pds"> <i class="fa fa-users fa-5x"></i>
 						<h4>자료실</h4>
 					</a>
 				</div>
