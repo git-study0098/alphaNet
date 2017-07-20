@@ -13,7 +13,8 @@
 	
 	<bean id="adminNotice1Service"
 		  class="com.last.common.service.AdminNotice1Service"
-		  p:adminDao-ref="adminNotice1Dao"/>
+		  p:adminDao-ref="adminNotice1Dao"
+	/>
 		
 		   
 	<bean id="adminUseInfo1Dao"
