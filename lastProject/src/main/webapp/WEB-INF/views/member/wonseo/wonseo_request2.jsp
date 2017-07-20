@@ -1,6 +1,36 @@
+<%@page import="com.last.common.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>  
+<%
+	MemberVo memberVo = (MemberVo)request.getAttribute("memberVo");
+	String fullNum = memberVo.getMem_phone();
+	String[] a = fullNum.split("-");
+	String firstNum = a[0];
+	String midNum = a[1];
+	String lastNum = a[2];
+	
+%>
+<!-- getSelField(this.value,this.form,'43'); -->
+<script type="text/javascript">
+// 	$(function(){
+// 		if($('#sel_01 option:eq(1)').prop('selected')==true){
+// 			$('#schStr').val($('#sel_01 option:eq(1)').text());
+// 		}
+// 	})
+//이메일 체크부분 
+function getSelField(){
+	schfrm.schStr.value=schfrm.sel_01.value;
+}
+</script>
+<script>
+	function nennex(){
+		var jM = schfrm.schStr.value;
+		var em_nm = schfrm.em_nm.value;
+		var em_info_code = schfrm.em_info_code.value;
+		location.href='<%=request.getContextPath()%>/member/wonseoReq3?JongMook='+jM+'&em_nm='+em_nm+'&em_info_code='+em_info_code;
+	}
+</script>
 <style>
 	*{box-sizing:content-box;}
 </style>
@@ -49,23 +79,26 @@
 							type="hidden" name="chkFlag" value=""> <input
 							type="hidden" name="suhmTrgt" value="A"> <input
 							type="hidden" name="selSubject" value="">
-
+						<input type="hidden" id="em_nm" name="em_nm" value="${em_nm}">
+						<input type="hidden" id="em_info_code" name="em_info_code" value="${em_info_code}"> 
+						
 						<table summary="응시시험 및 종목 선택으로, 응시시험명, 응시종목명, 응시관련 정보 제공">
 							<caption>응시시험 및 종목 선택</caption>
 							<colgroup>
 								<col width="20%">
 								<col width="*">
 							</colgroup>
+							
 							<tbody>
 								<tr>
 									<th scope="row">응시시험명</th>
-									<td>2017년 정기 기술사 113회 필기</td>
+									<td>${em_nm}</td>
 								</tr>
 								<tr>
 									<th scope="row"><label for="sel_01">응시종목명</label></th>
 									<td>
 										<div class="select_subject">
-											<span class="left"> <input type="text"
+											<span class="left"> <input type="text" id="schStr"
 												title="응시종목명 입력" name="schStr" style="width: 150px" value=""
 												onkeydown="searchEnter(event.keyCode, this.form);">
 												<button type="button" class="btn3_icon search"
@@ -77,9 +110,9 @@
 
 												<select id="sel_01" name="JongMook" style="width: 196px"
 													title="응시종목 선택"
-													onchange="getSelField(this.value,this.form,'43');">
-													<option value="">종목을 선택하세요.</option>
-													<option value="0">정보처리기사</option>
+													onchange="getSelField();">
+													<option value="" selected>종목을 선택하세요.</option>
+													<option value="정보처리기사">정보처리기사</option>
 													<option value="1">정보처리 산업기사</option>
 													<option value="2">건설안전기술사</option>
 													<option value="3">건축구조기술사</option>
@@ -394,14 +427,14 @@
 								<tr>
 									<th scope="row"><label for="cellphone_num">핸드폰</label></th>
 									<td class="cellph_num"><input class="fc_6" type="text"
-										name="mPhone01" maxlength="3" value="010"
+										name="mPhone01" maxlength="3" value="<%=firstNum %>"
 										onfocus="this.select()" style="ime-mode: disabled"
 										readonly="readonly" title="핸드폰 번호 앞자리 입력"> - <input
 										class="fc_6" type="text" name="mPhone02" maxlength="4"
-										value="8000" onfocus="this.select()"
+										value="<%=midNum%>" onfocus="this.select()"
 										style="ime-mode: disabled" readonly="readonly"
 										title="핸드폰 번호 가운데자리 입력"> - <input class="fc_6"
-										type="text" name="mPhone03" maxlength="4" value="4098"
+										type="text" name="mPhone03" maxlength="4" value="<%=lastNum %>"
 										onfocus="this.select()" style="ime-mode: disabled"
 										readonly="readonly" title="핸드폰 번호 뒷자리 입력"> <a
 										href="/myp001.do?id=myp00101&amp;gSite=Q&amp;gId=01&amp;rcvPFlag=Y&amp;gTitle="
@@ -586,7 +619,7 @@
 				<div class="btn_center">
 					<a href="#" name="Button2235" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq1'"><span>이전</span></a> 
 					<!-- 경로 설정 -->
-					<a href="#"	name="Button2235" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq3'"><span>다음</span></a>
+					<a href="#"	name="Button2235" class="btn2 btncolor1" onclick="nennex()"><span>다음</span></a>
 				</div>
 			</div>
 		</div>
