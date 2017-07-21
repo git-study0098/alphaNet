@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Notice1">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="notice1" type="com.last.common.vo.Notice1VO"/>
+	<typeAlias alias="wonseo" type="com.last.common.vo.WonseoInfoVo"/>
+	
+	<select id="selectMainNotice1" parameterClass="str" resultClass="notice1">
+		select * from notice where substr(notice_code,1,8) = #notice_code#
+	</select>
+	<select id="selectMainNotice2" parameterClass="str" resultClass="notice1">
+		select title, enroll_date from notice where substr(notice_code,1,8) = #notice_code#
+	</select>
+	<select id="selectMainNotice3" parameterClass="str" resultClass="notice1">
+		select title, enroll_date from notice where substr(notice_code,1,8) = #notice_code#
+	</select>
+	<select id="selectMainNotice4" parameterClass="str" resultClass="notice1">
+		select title, enroll_date from notice where substr(notice_code,1,8) = #notice_code#
+	</select>
+	<select id="selectMainNotice5" parameterClass="str" resultClass="notice1">
+		select title, enroll_date from notice where substr(notice_code,1,8) = #notice_code#
+	</select>
+	
+	<select id="selectWonseoList" resultClass="wonseo">
+		select em.em_nm, to_char(n.numg_app_receipt_begin,'yyyy-MM-dd')as numg_app_receipt_begin, to_char(n.numg_app_receipt_end,'yyyy-MM-dd')as numg_app_receipt_end
+			from numg n, em_info em
+			where 
+			em.em_numg_code = n.numg_code
+			and em.em_numg_code = (select numg_code
+			from numg
+			where to_char(sysdate,'yyyy-MM-dd') between to_char(numg_app_receipt_begin,'yyyy-MM-dd') and to_char(numg_app_receipt_end,'yyyy-MM-dd'))
+	</select>
+	
+	<select id="detailNotice" parameterClass="str" resultClass="notice1">
+		select * from notice where notice_code = #notice_code#
+	</select>
+</sqlMap>

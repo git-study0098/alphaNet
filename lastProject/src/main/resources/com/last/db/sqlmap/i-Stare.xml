@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Stare">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="stare" type="com.last.common.vo.StareVO"/>
+	
+	<select id="selectStareList" parameterClass="str" resultClass="stare">
+		select m.mem_code,
+			s.stare_code,
+			to_char(s.stare_date,'yy/mm/dd') stare_date,
+			e.em_nm,
+			ex.exkind_nm
+			from stare s, mem m, em_info e, exkind ex
+			where m.mem_code = s.mem_code
+			and s.em_info_code = e.em_info_code
+			and ex.exkind_code = e.em_exkind
+			and m.mem_code = #mem_code#
+	</select>
+	
+	
+	
+</sqlMap>

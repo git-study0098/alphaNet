@@ -1,6 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<script>
+function showCard() {
+	window.open("jagukPayment?mem_code=${viewData.mem_code}&qualifi_certi_iss_pr=${price}" ,"pop","left=650,top=150,width=850px,height=650px");
+ }
+function paymentCheck(){
+	 location.href="<%=request.getContextPath()%>/main";
+}
+// 마이페이지 -> 자격증 발급 내역
+<%-- location.href='<%=request.getContextPath()%>/member/wonseoReq6?placeNm=${placeNm}&em_info_code=${em_info_code}'; --%>	
+</script>
+
 <style>
 	*{box-sizing:content-box;}
 </style>
@@ -43,27 +58,27 @@
 						<tbody>
 							<tr>
 								<th scope="row">성명</th>
-								<td>황병준</td>
+								<td>${viewData.mem_nm }</td>
 								<th scope="row">주민번호</th>
-								<td>920412-*******</td>
+								<td>${viewData.reg_num1}-*******</td>
 								<td class="photo" rowspan="5">
-									<p><img src="<%=request.getContextPath()%>/resources/images/step/sora.jpg" alt="신청 사진"><!-- //2014.11.21 이미지에 맞는 alt값 필요 : 성명+사진 --></p>
+									<p><img src="<%=request.getContextPath() %>/${viewData.mem_photo}" alt="신청 사진"><!-- //2014.11.21 이미지에 맞는 alt값 필요 : 성명+사진 --></p>
 								</td>
 							</tr>
 							<tr>
 								<th scope="row">전화번호</th>
-								<td>042-625-2834</td>
+								<td>${viewData.mem_phone}</td>
 								<th scope="row">휴대전화</th>
-								<td>010-5140-2834</td>
+								<td>${viewData.mem_phone}</td>
 							</tr>
 							<tr>
 								<th scope="row">주소</th>
-								<td colspan="3"><p style="width:444px">(34383) 대전광역시 대덕구 계족로663번길 30, 1동306호(법동, 삼정하이츠타운)</p></td>
+								<td colspan="3"><p style="width:444px">(${viewData.mem_post_numb1}) ${viewData.mem_add1} ${viewData.mem_add2} ${viewData.mem_add3}</p></td>
 							</tr>
 							<tr>
 								<th scope="row">
 
-			관할지사
+									관할지사
 
 								</th>
 								<td colspan="3">대전지역본부 042-580-9136</td>
@@ -78,7 +93,8 @@
 
 							<tr>
 								<th scope="row">신청일자</th>
-								<td>2017.07.07</td>
+								<c:set var="now" value="<%=new java.util.Date()%>" />
+								<td><fmt:formatDate value="${now}" pattern="yyyy/MM/dd"/></td>
 								<th scope="row">발급예정일</th>
 								<td colspan="2">발급일로부터 5일 후 수령가능(토,일,공휴일 제외)</td>
 							</tr>
@@ -111,16 +127,17 @@
 
 						</thead>
 						<tbody>
-							<tr>
-								<td>16201130169Z</td>
-								<td>정보처리기사</td>
-								<td>2016.03.17</td>
-								<td>2016.05.06</td>
-								<td>신규발급</td>
-
-								<td>3,100원</td>
-							</tr>
-
+							<c:forEach items="${viewData2}" var="qualifi" varStatus="numbering">
+										<tr> 
+										<input type="hidden" name="choice" value="${qualifi.qualifi_certi_code}">
+											<td>${qualifi.qualifi_certi_code }</td>
+											<td>${qualifi.exkind_nm }</td>
+											<td>${qualifi.written_pass_date }</td>
+											<td>${qualifi.actual_pass_date }</td>
+											<td>${qualifi.qualifi_certi_count }</td>
+											<td>${qualifi.qualifi_certi_iss_pr}</td>
+										</tr>
+									</c:forEach>
 							
 						</tbody>
 					</table>
@@ -142,7 +159,7 @@
 								<th scope="row">결제방법</th>
 								<td>미결제</td>
 								<th scope="row">결제금액</th>
-								<td>5,440 원 (발급수수료 : 3,100 원  배송비 : 2,340원)</td>
+								<td>(발급수수료 : ${price} 원  배송비 : 2,340원)</td>
 							</tr>
 						</tbody>
 					</table>
@@ -162,21 +179,13 @@
 								<th scope="row">배송방법</th>
 								<td>배송</td>
 								<th scope="row">배송지주소</th>
-								<td> &nbsp; 대전광역시 대덕구 계족로663번길 30, 1동306호(법동, 삼정하이츠타운)</td>
+								<td> ${viewData.mem_add1}${viewData.mem_add2 }${viewData.mem_add3 }</td>
 							</tr>
 							<tr>
 								<th scope="row">연락처</th>
-								<td>010-5140-2834</td>
+								<td>${viewData.mem_phone}</td>
 								<th scope="row">배송시유의사항</th>
-								<td></td>
-							</tr>
-
-							<tr>
-								<th scope="row">택배사</th>
-								<td></td>
-								<th scope="row">등기번호</th>
-								<td><button onclick="showDeliveryStatus_pop('')"><span style="color:blue;"><b></b></span></button> <span style="color:blue;">등기번호를 클릭하시면 배송조회를 할 수 있습니다.</span>
-								</td>
+								<td>${dlvrHhCautionMatt}</td>
 							</tr>
 
 						</tbody>
@@ -189,7 +198,7 @@
 				</div>
 
 				<div class="btn_center m0">
-					<button type="button" id="payBtn" class="btn2 btncolor2 btn-sm btn-primary" onclick="location.href='11결제.jsp'"><span>결제</span></button>
+					<button type="button" id="payBtn" class="btn2 btncolor2 btn-sm btn-primary" onclick="showCard()"><span>결제</span></button>
  					<button type="button" id="modifyBtn" class="btn2 btncolor3 btn-sm btn-warning" onclick="frmSubmit();"><span>수정</span></button>
 					<button type="button" id="cancelBtn" class="btn2 btncolor4 btn-sm btn-danger" onclick="location.href='1main.jsp'"><span>메인으로</span></button>
 

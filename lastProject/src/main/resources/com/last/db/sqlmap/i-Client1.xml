@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Client1">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="notice1" type="com.last.common.vo.Notice1VO"/>
+	
+		
+	
+	<select id="selectClient1_Count" parameterClass="str" resultClass="int">
+		SELECT COUNT(*) FROM notice where substr(notice_code,1,8)=#notice_code#
+	</select>
+	
+	<select id="selectCount" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT COUNT(*) FROM notice where substr(notice_code,1,8)=#notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="adm">
+			and admin_code like '%'||#schText#||'%'
+		</isEqual>
+	</select>
+	
+	<select id="selectNotice1List" parameterClass="str" resultClass="notice1">
+		select * from notice where substr(notice_code,1,8)=#notice_code#
+	</select>
+	
+	<select id="selectNoticeCode" resultClass="str">
+		select notice_code from notice 
+	</select>
+	
+	<!-- 상세보기-->
+	<select id="selectNotice1" parameterClass="str" resultClass="notice1">
+		select * from notice where notice_code = #notice_code#
+	</select>
+	
+	<update id="updateNotice1" parameterClass="notice1">
+		update notice 
+		set 
+			title=#title#,
+			attach_file=#attach_file#, 
+			notice_content=#notice_content#,
+			enroll_date=sysdate
+		where notice_code=#notice_code#
+	</update>
+	
+	<update id="deleteNotice1" parameterClass="str">
+		delete from notice where notice_code=#notice_code#
+	</update>
+	
+	<update id="insertNotice1" parameterClass="notice1">
+		insert into notice(notice_code,title,notice_content,attach_file,enroll_date,regist_date,admin_code,notice_kind) 
+					values(#notice_code#,#title#,#notice_content#,#attach_file#,sysdate,sysdate,#admin_code#,#notice_kind#)
+	</update>
+	<select id="searchNoticeList" parameterClass="java.util.HashMap" resultClass="notice1">
+		select * from notice where substr(notice_code,1,8)=#notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="adm">
+			and admin_code like '%'||#schText#||'%'
+		</isEqual>
+	</select>
+</sqlMap>

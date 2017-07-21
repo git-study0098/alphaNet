@@ -15,9 +15,11 @@
 
 
 <script>
-	function getNoticeList(searchValue){
-		var search = searchValue;
-		location.href="<%=request.getContextPath()%>/searchNotice1?searchValue="+search;
+	function getNoticeList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var notice_code = document.getElementsByName('notice_code')[0].value;
+		location.href="<%=request.getContextPath()%>/memberNotice2?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
 
 	function go_noticeDetail(noticeCode){
@@ -73,21 +75,22 @@
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
 				<h3 class="tit_content">공지사항</h3>
-
+				
 				<!-- 컨텐츠 내용 -->
 				<div class="content">
 					<div>
 						<form name="noticeDetail">
+						<input type="hidden" name="notice_code" value="notice01">
 						<div class="searchType">
 							<span> <label for="notiType">검색</label>
 							<select name="schType" id="schType" title="검색 구분 선택" class="m0">
 									<option value="all" selected="selected">전체</option>
-									<option value="글제목">글제목</option>
-									<option value="내용">내용</option>
-									<option value="담당부서">담당부서</option>
+									<option value="title">글제목</option>
+									<option value="content">내용</option>
+									<option value="adm">담당부서</option>
 							</select> <input type="text" name="schText" style="width: 150px"
 								id="schText" title="검색어 입력"> <a href="#"
-								class="btn3_icon search" onclick="getNoticeList(this.value)"><span
+								class="btn3_icon search" onclick="getNoticeList();"><span
 									class="blind">검색</span></a>
 							</span>
 						</div>
@@ -120,7 +123,7 @@
 										<c:forEach items="${viewData.notice1List }" var="notice" varStatus="number">
 										<tr>
 											<td>${number.count}</td> <!-- 글번호 -->
-											<td><a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a></td>
+											<td><a href="<%=request.getContextPath() %>/detailNotice?notice_code=${notice.notice_code }" >${notice.title}</a></td>
 											<td>${notice.admin_code}</td>
 											<td><fmt:formatDate value="${notice.enroll_date}"/></td>
 											<td><input type="hidden" value="${notice.notice_code}" name="noticeCode"/></td>
@@ -137,6 +140,8 @@
 									</tbody>
 								</table>
 							</div>
+							
+							
 							<div class="pagination1 mb20">
 								<button type="button" class="btn3_icon3 btn_prev_first"
 									title="이전10페이지">
@@ -149,7 +154,6 @@
 								</button>
 								
 								<span class="page"> 
-								
 								<%
 									for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
 										if(pageNumber==i){
@@ -159,7 +163,7 @@
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="location.href='notice?page=<%=i %>'" title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='memberNotice1?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }
@@ -176,6 +180,12 @@
 									<span class="blind">다음10페이지</span>
 								</button>
 							</div>
+							
+							
+							
+							
+							
+							
 						</div>
 						</form>
 					</div>

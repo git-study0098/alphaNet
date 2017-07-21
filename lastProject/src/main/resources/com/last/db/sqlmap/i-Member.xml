@@ -15,7 +15,8 @@
 <!-- 	</select> -->
 	
 	<select id="selectMember" parameterClass="str" resultClass="member">
-		select 
+		select
+			mem_code as id, 
 			mem_nm as name,
 			mem_pwd as pwd,
 			mem_photo,
@@ -81,13 +82,13 @@
 	</select>
 	
 	
-	<select id="selectMemberId" resultClass="member"> 
-		select mem_code from mem where mem_code = #id#
+	<select id="selectMemberId" parameterClass="str" resultClass="member"> 
+		select mem_code as id from mem where mem_code = #id#
 	</select>
 	
 	<update id="insertMember" parameterClass="member">
-		insert into mem (mem_code,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_photo,mem_bir,enabled,authorities) 
-		values (#id# ,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_photo#,#mem_bir#,'1','Role_member')
+		insert into mem (mem_code,mem_photo,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_bir,enabled,authorities) 
+		values (#id#,#mem_photo#,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_bir#,'1','ROLE_MEMBER')
 	</update>
 	
 	<update id="updatePwd" parameterClass="java.util.HashMap">
@@ -103,7 +104,9 @@
 	</select>
 	
 	
-	
+	<select id="selectSchool" resultClass="member">
+		select * from sch
+	</select>
 <!-- 	<select id="selectMemberList" parameterClass="str" resultClass="member"> -->
 <!-- 		select * from member where id like '%'||#id#||'%' -->
 <!-- 	</select> -->

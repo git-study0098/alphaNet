@@ -27,40 +27,130 @@
 </style>
 
 <script>
-function jusoCallback(mem_post_numb1,mem_add1,mem_add2) {
+function jusoCallBack(mem_post_numb1,mem_add1,mem_add2) {
 	document.getElementById("mem_post_numb1").value = mem_post_numb1;
 	document.getElementById("mem_add1").value = mem_add1;
 	document.getElementById("mem_add2").value = mem_add2;
 
 }
 
-function jusoCallback2(mem_post_numb2,mem_add3,mem_add4) {
+function jusoCallBack2(mem_post_numb2,mem_add3,mem_add4) {
 	document.getElementById("mem_post_numb2").value = mem_post_numb2;
 	document.getElementById("mem_add3").value = mem_add3;
 	document.getElementById("mem_add4").value = mem_add4;
 }
 
-function idCheck(){
-    var id = $('#id').val();
-    $.ajax({
-    url : 'idCheck',
-    type : 'post',
-    data : {'id' : id},
-    success : function(res){
-       var code ="";
-       if(res.Status =="ok"){
-          code+=res.id+"사용 가능합니다.";
-          idch=true;
-          $('#idChk').html(code).css('color','blue');
-       }else{
-          alert("aaa");
-          code+=res.id+"사용 불가능합니다.";
-          $('#idChk').html(code).css('color','red');
-       }
-    }
- })
-} 
+ //대전 서울 == > 2년제 4년제 가는거
+function showSub1(obj){
+	if(obj.value=="대전"){
+		document.regMEM.dacoll.style.display="";
+		document.regMEM.suocoll.style.display="none";
+		document.regMEM.daschool2.style.display="";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="none";
+		
+	}else if(obj.value=="서울"){
+		document.regMEM.dacoll.style.display="none";
+		document.regMEM.suocoll.style.display="";
+		document.regMEM.daschool2.style.display="";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschoo2.style.display="none";
+		document.regMEM.seoschoo4.style.display="none";
+	}
 
+
+}
+
+//대전 2년제 4년제
+function showSub24(obj) {
+	if(obj.value=="2년제"){
+		document.regMEM.dacoll.style.display="";
+		document.regMEM.suocoll.style.display="none";
+		document.regMEM.daschool2.style.display="";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="none";
+		
+	}else if(obj.value=="4년제"){
+		document.regMEM.dacoll.style.display="";
+		document.regMEM.suocoll.style.display="none";
+		document.regMEM.daschool2.style.display="none";
+		document.regMEM.daschool4.style.display="";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="none";
+	}
+}
+
+//서울 2년제 4년제
+function showSub242(obj) {
+	if(obj.value=="2년제"){
+		document.regMEM.dacoll.style.display="none";
+		document.regMEM.suocoll.style.display="";
+		document.regMEM.daschool2.style.display="none";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="";
+		document.regMEM.seoschool4.style.display="none";
+		
+	}else if(obj.value=="4년제"){
+		document.regMEM.dacoll.style.display="none";
+		document.regMEM.suocoll.style.display="";
+		document.regMEM.daschool2.style.display="none";
+		document.regMEM.daschool4.style.display="none";
+		document.regMEM.seoschool2.style.display="none";
+		document.regMEM.seoschool4.style.display="";
+	}
+}
+
+$(function(){
+	$("#idCheck").click(function(){
+		var idvalue = $('#id').val();
+		
+		$.ajax({
+			url:"member/idcheck.jsp",
+			type:"post",
+			data: "id=" + idvalue,
+			success:function(res){
+				if(res.Status == "YES"){
+					$('#idChk').html('<b style="font-size:14px; color:blue">사용가능</b>');
+				}else if(res.Status == "NO"){
+					$('#idChk').html('<b style="font-size:14px; color:red">사용불가</b>');
+				}
+			},
+			error:function(){
+				alert('Error');
+			},
+			dataType:'json'
+		});
+	});
+});
+
+function cropImage(){
+	//이미지 눌렀을 때
+	$('#viewImg').on('click', function() {
+      $("#input:file").change(function (){     
+           var file = this.files[0];
+           var reader = new FileReader();
+           reader.onload = function (e) {
+               $("#viewImg").attr('src', e.target.result);
+           }        
+          reader.readAsDataURL(file);
+       });
+   });
+}
+
+
+$(function(){
+	//파일 업로드 버튼 눌렀을 때
+	$("input:file").change(function (){     
+	    var file = this.files[0];
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	        $("#viewImg").attr('src', e.target.result);
+	    }        
+	    reader.readAsDataURL(file);
+	});		
+}) 
 
 
 // function idCheck(){
@@ -114,7 +204,7 @@ function idCheck(){
 						</li>
 					</ul>
 				</div>
-				<form name="regMEM" id="regMEM" method="post" action="insert">
+				<form name="regMEM" id="regMEM" method="post" action="insertMember", enctype="multipart/form-data">
 					<fieldset>
 						<input type="hidden" name="memIdChk" value="N"> <input
 							type="hidden" name="juminRes"> <input type="hidden"
@@ -188,21 +278,25 @@ function idCheck(){
 											<strong class="fc_r" title="필수">*</strong>
 										</th>
 										<td colspan="2">
-											<input type="text" style="ime-mode: inactive;" id="id" name="id2" class="member_id">
-											<button type="button" id="memIdChkBtn" class="btn3_type1 chk_id ml5" onclick="javascript:idCheck();">
+											<input type="text" style="ime-mode: inactive;" id="id" name="id" class="member_id">
+											<button type="button" id="idCheck" class="btn3_type1 chk_id ml5">
 												<span>아이디중복 확인</span>
-											</button> <span id="idChk"></span></td>
+											</button> 
+											<span id="idChk"></span>
+										</td>
 										<td rowspan="9" class="photo">
-												<img id="viewImg" src="resources/images/사진미등록.png"
-													alt="사진미등록" onclick="cropImage();">
-												<!-- //2014.12.08 접근성 : 사진 등록시 alt값 "이름+사진" -->
+											<div>
+												<img id="viewImg" src="resources/images/사진미등록.png" onclick="cropImage();">											
+											</div>
+										
+											<input type="file" name="f" />
 										</td>
 									</tr>
 									<tr>
 
 										<th scope="row"><label for="birth_yy">생년월일</label><strong
 											class="fc_r" title="필수">*</strong></th>
-										<td colspan="2"><select id="birth_yy" title="생년월일 년도"
+										<td colspan="2"><select id="birth_yy" name = "mem_bir1" title="생년월일 년도"
 											style="width: 71px"><option value=""
 													selected="selected">년도</option>
 												<option value="17">2017</option>
@@ -305,7 +399,7 @@ function idCheck(){
 												<option value="20">1920</option>
 												<option value="19">1919</option>
 												<option value="18">1918</option>
-												</select> <select id="birth_mm" title="생년월일 월" style="width: 59px">
+												</select> <select id="birth_mm" name="mem_bir2" title="생년월일 월" style="width: 59px">
 											<option value="" selected="">월</option>
 												<option value="01">01</option>
 												<option value="02">02</option>
@@ -318,7 +412,8 @@ function idCheck(){
 												<option value="09">09</option>
 												<option value="10">10</option>
 												<option value="11">11</option>
-												<option value="12">12</option></select> <select id="birth_dd"
+												<option value="12">12</option></select> 
+												<select id="birth_dd" name="mem_bir3"
 											title="생년월일 일" style="width: 59px"><option value=""
 													selected="">일</option>
 												<option value="01">01</option>
@@ -352,8 +447,8 @@ function idCheck(){
 												<option value="29">29</option>
 												<option value="30">30</option>
 												<option value="31">31</option></select> 
-												<input type="hidden" name="jumin01" value=""> 
-												<input type="hidden" name="jumin02" value="9999999">
+												<input type="hidden" name="reg_num1" value=""> 
+												<input type="hidden" name="reg_num2" value="9999999">
 												<span class="txt_add">(법정생년월일6자리)</span>
 												</td>
 
@@ -389,14 +484,14 @@ function idCheck(){
 									<tr>
 										<th scope="row"><label for="member_name">이 름</label><strong
 											class="fc_r" title="필수">*</strong></th>
-										<td colspan="2"><input type="text" id="member_name"
+										<td colspan="2"><input type="text" id="name"
 											name="name" class="form_mid"></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="member_name_e">이
 												름(영문)</label></th>
-										<td colspan="2"><input type="text" id="member_name_e"
-											name="userEng" class="form_mid"> <span
+										<td colspan="2"><input type="text" id="mem_enname"
+											name="mem_enname" class="form_mid"> <span
 											class="txt_add">(여권과 동일하게 입력해주세요)</span></td>
 									</tr>
 
@@ -404,54 +499,19 @@ function idCheck(){
 										<th scope="row"><label for="member_pw">비밀번호</label><strong
 											class="fc_r" title="필수">*</strong></th>
 										<td colspan="2"><input type="password" class="join_pw"
-											id="member_pw" name="" maxlength="16"></td>
+											id="mem_pwd" name="mem_pwd" maxlength="16"></td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="member_pw_c">비밀번호 확인</label><strong
 											class="fc_r" title="필수">*</strong></th>
 										<td colspan="2"><input type="password" class="join_pw"
-											id="member_pw_c" name="newPwdChk" maxlength="16"> <strong
+											id="mem_pwd_confirm" name="mem_pwd_confirm" maxlength="16"> <strong
 											class="info_tool"
 											title="비밀번호 조합예시 : korea123@ 입력가능 특수문자 : ! @ # $ % ^ &amp; * (보안지침에 의거하여 비밀번호는 9~16자리이며, 반드시 영문자·숫자·특수문자를 모두 혼합하여 입력하시기 바랍니다. 대소문자 구분되므로 주의!)"
 											tabindex="0">비밀번호 유의사항</strong></td>
 									</tr>
-									<tr>
-										<th scope="row"><label for="member_pw_q">비밀번호 질문</label><strong
-											class="fc_r" title="필수">*</strong></th>
-										<td colspan="2"><select title="비밀번호 질문" id="member_pw_q"
-											name="pwHnt" class="member_pw_q">
-												<option value="0">- 선택하세요 -</option>
-												<option value="1">가장 많이 이용하는 교통수단은?</option>
-												<option value="2">가장 친한 친구의 이름은?</option>
-												<option value="3">기억에 남는 추억의 장소는?</option>
-												<option value="4">당신의 별명은?</option>
-												<option value="5">당신의 신발사이즈는?</option>
-												<option value="6">당신이 가장 좋아하는 동물은?</option>
-												<option value="7">당신이 가장 좋아하는 색깔은?</option>
-												<option value="8">어머니의 고향은 어디일까요?</option>
-												<option value="9">제일 좋아하는 연예인은?</option>
-												<option value="10">가장 좋아하는 음식은?</option>
-												<option value="11">첫사랑의 이름은?</option>
-												<option value="12">애완동물 이름은?</option>
-												<option value="13">출신 초등학교는?</option>
-												<option value="14">출신 중학교는?</option>
-												<option value="15">출신 고등학교는?</option>
-												<option value="16">가장 좋아하는 색깔은?</option>
-												<option value="17">어릴적 짝꿍이름은?</option>
-												<option value="18">좋아하는 스포츠는?</option>
-												<option value="19" selected="">사용안함</option>
-
-										</select> <span class="txt_add">(서비스 이용시 질문을 선택해주세요.)</span></td>
-									</tr>
-									<tr>
-										<th scope="row"><label for="member_pw_a">비밀번호 답변</label><strong
-											class="fc_r" title="필수">*</strong></th>
-										<td colspan="3"><input type="text" id="member_pw_a"
-											name="pwHntAns" class="member_pw_a">
-											<span class="txt_add">(비밀번호 분실시 사용됩니다. 질문의 답변을 잘 기억해
-												두세요.)</span><br> <span class="txt_add">(안전한 답변 작성 예시 :
-												걸어다닙니다.(서술형))</span></td>
-									</tr>
+									
+									
 									<tr>
 										<th scope="row">장애여부</th>
 										<td colspan="3">
@@ -504,7 +564,7 @@ function idCheck(){
 												<strong class="fc_r" title="필수">*</strong>
 										</label></th>
 										<td colspan="3"><input type="text" class="join_email"
-											id="member_mail_add" name="email"></td>
+											id="mem_email" name="mem_email"></td>
 									</tr>
 									<tr>
 										<th scope="row">이메일 수신여부<!-- <strong class="fc_r" title="필수">*</strong> -->
@@ -589,6 +649,68 @@ function idCheck(){
 										</td>
 									</tr>
 									<tr>
+										<th scope="row">
+										 학교선택<strong class="fc_r" title="필수">*</strong>
+										</th>											
+										<td colspan="3">
+											<div class="group_form1">
+										
+												<select name="area" onchange="showSub1(this);">
+													<option value="">지역선택</option>
+													<option value="대전">대전</option>
+													<option value="서울">서울</option>
+												</select>
+												
+												
+												<select name = "dacoll" style="display:"   onchange="showSub24(this);">
+													<option value="">학년제선택</option>
+													<option value="2년제">2년제</option>
+													<option value="4년제">4년제</option>
+												</select>
+												
+												<select name = "suocoll" style="display:none;"   onchange="showSub242(this);">
+													<option value="">학년제선택</option>
+													<option value="2년제">2년제</option>
+													<option value="4년제">4년제</option>
+												</select>
+												<select name="daschool2" style="display:''">
+													<option value="">대학교선택</option>
+													<option value="대덕대학교">대덕대학교</option>
+													<option value="우송정보대학교">우송정보대학교</option>
+													<option value="대전보건대학교">대전보건대학교</option>
+													<option value="대전과학기술대학교">대전과학기술대학교</option>
+												</select>
+												<select name="daschool4" style="display:none">
+													<option value="">대학교선택</option>
+													<option value="대전대학교">대전대학교</option>
+													<option value="한남대학교">한남대학교</option>
+													<option value="충남대학교">충남대학교</option>
+													<option value="건양대학교">건양대학교</option>
+													<option value="을지대학교">을지대학교</option>
+												</select>
+												
+												<select name="seoschool2" style="display:none;">
+													<option value="">대학교선택</option>
+													<option value="서울대">서울대</option>
+													<option value="힌양대">힌양대</option>
+												</select>
+												
+												<select name="seoschool4" style="display:none;">
+													<option value="">대학교선택</option>
+													<option value="명지전문대학교">명지전문대학교</option>
+													<option value="배화여자대학교">배화여자대학교</option>
+												</select>
+		
+											</div>
+										</td>
+									</tr>
+									
+									
+									
+									
+									
+									
+									<tr>
 										<th scope="row" rowspan="3">주민등록 거주지<strong class="fc_r"
 											title="필수">*</strong>
 										</th>
@@ -599,7 +721,7 @@ function idCheck(){
 											onkeyup="nextFocus('regMEM', 'zip01', 'addr01');">
 
 											<button type="button" class="btn3_type1" name="addrPop"
-												id="01" onclick="addr();">
+												id="01" onclick="add();">
 												<span>주소검색</span>
 											</button> <strong class="info_tool"
 											title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다.  "
@@ -633,7 +755,7 @@ function idCheck(){
 											onkeyup="nextFocus('regMEM', 'dZip01', 'dAddr01');">
 
 											<button type="button" class="btn3_type1" name="addrPop"
-												id="02" onclick="addr2();">
+												id="02" onclick="add2();">
 												<span>주소검색</span>
 											</button> <strong class="info_tool"
 											title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다. "
@@ -665,21 +787,6 @@ function idCheck(){
 					</button>
 				</div>
 				</form>
-
-				<form name="iPinHiddenForm" method="post"
-					style="margin-top: 0; margin-bottom: 0;">
-					<input type="hidden" name="regNo" value="">
-				</form>
-
-				<form name="regFrm" method="post">
-					<input type="hidden" id="peopleCk" name="peopleCk"
-						value="nationality01"> <input type="hidden" id="isChk"
-						name="isChk" value="true"> <input type="hidden"
-						name="rcvFlag" value="">
-				</form>
-				<iframe title="빈프레임" name="iframeHiddenIpin" frameborder="0" src=""
-					width="0" height="0"></iframe>
-				<!-- //컨텐츠 내용 -->
 			</div>
 		</div>
 </article>

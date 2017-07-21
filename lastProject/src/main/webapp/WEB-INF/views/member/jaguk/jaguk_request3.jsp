@@ -1,6 +1,24 @@
+<%@page import="java.util.List"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.last.common.vo.QualifiCertiVO"%>
+<%@page import="org.springframework.security.core.userdetails.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="com.last.common.vo.QualifiPagingVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%
+	Integer pageNumber = (Integer)request.getAttribute("pageNumber");
+// 	QualifiPagingVO viewData = (QualifiPagingVO)request.getAttribute("viewData");
+// 	List<QualifiCertiVO> viewData2 = (ArrayList<QualifiCertiVO>)request.getAttribute("viewData2");
+	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+  String id = user.getUsername();
+%>
+
+
 <style>
 	*{box-sizing:content-box;}
 </style>
@@ -40,18 +58,21 @@
 					선택한 자격내역(<strong>1건</strong>)은 아래와 같습니다.
 				</p>
 
+			<form name="frm" action="/alphanet/member/request4?">
 				<div id="bd01_01">
-					<form name="frm">
+					<input type="hidden" name = "mem_code" value="${mem_code}"/>
+					<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
+<%-- 					<input type="hidden" name = "choice" value="${choice}"/> --%>
+					
 					<div class="tbl_type1">
 
 						<table summary="자격증번호, 자격증취득 종목명, 필기합격일자, 최종합격일자, 발급구분, 발급수수료 정보 제공">
 							<colgroup>
-								<col width="7%">
+								<col width="20%">
 								<col width="24%">
 								<col width="14%">
 								<col width="15%">
 								<col width="15%">
-								<col width="13%">
 								<col width="12%">
 							</colgroup>
 							<thead>
@@ -61,62 +82,31 @@
 									<th scope="col">필기합격일자</th>
 									<th scope="col">최종합격일자</th>
 									<th scope="col">비고</th>
-									<th scope="col">추가정보 출력</th>
 									<th scope="col">발급수수료</th>
 								</tr>
 							</thead>
-							<tbody>
-
-								<tr>
-									<td>16201130169Z
-									<input type="hidden" name="lcsNo" value="16201130169Z">
-									<input type="hidden" name="jmNm" value="정보처리기사">
-									<input type="hidden" name="fstJmNm" value="정보처리기사">
-									<input type="hidden" name="jmCd" value="1320">
-									<input type="hidden" name="examPassDt" value="20160317">
-									<input type="hidden" name="lastPassDt" value="20160506">
-									<input type="hidden" name="issuFee" value="3100">
-									<input type="hidden" name="issuGb" value="신규발급">
-									<input type="hidden" name="selAddInfrmPtr" value="0">
-									<input type="hidden" name="qualGiveGbCcd" value="1">
-									<input type="hidden" name="preQualGiveGbCcd" value="">
-									<input type="hidden" name="orgnJmCd" value="1320">
-									<input type="hidden" name="orgnJmNm" value="">
-									</td>
-									<td>정보처리기사
-
-									</td>
-									<td>2016.03.17</td>
-									<td>2016.05.06</td>
-									<td>신규발급</td>
-									<td>
-										출력안함
-
-									</td>
-									<td>3,100원</td>
-								</tr>
-							</tbody>
-						</table>
-
-						<input type="hidden" name="appGb" value="">
-						<input type="hidden" name="totFee" value="3100">
-						<input type="hidden" name="infrmCnt" value="1">
-						<input type="hidden" name="phtPath" value="PL2016392005/2/13008898">
-						<input type="hidden" name="phtPath2" value="receipt/PL2016392005/2/13008898">
-						<input type="hidden" name="imgbuf2" value="receipt/PL2016392005/2/">
-						<input type="hidden" name="chkPht" value="Y" style="width:70px;">
-						<input type="hidden" name="idenChk" value="Y" style="width:70px;">
-						<input type="hidden" name="planId" value="PL2016392005">
-						<input type="hidden" name="seqNo" value="2">
-						<input type="hidden" name="suNo" value="13008898">
-
+								<tbody>
+									<c:forEach items="${viewData2}" var="qualifi" varStatus="numbering">
+										<tr> 
+										<input type="hidden" name="choice" value="${qualifi.qualifi_certi_code}">
+											<td>${qualifi.qualifi_certi_code }</td>
+											<td>${qualifi.exkind_nm }</td>
+											<td>${qualifi.written_pass_date }</td>
+											<td>${qualifi.actual_pass_date }</td>
+											<td>${qualifi.qualifi_certi_count }</td>
+											<td>${qualifi.qualifi_certi_iss_pr}</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
 					</div> 
-				</form> 
 				</div> 
 
 				<ul class="list_lines01 type2">
 					<li>
-						<p class="tit">발급수수료 : <strong>3,100 원</strong> <span>배송비 2,340 원(별도)</span> </p>
+						<c:forEach items="${viewData2}" var="qualifi">
+							<p class="tit">발급수수료 : <strong>${qualifi.qualifi_certi_iss_pr}원</strong> <span>배송비 2,340 원(별도)</span> </p>
+						</c:forEach>
 						<ul class="list_basic list line">
 							<li>- <strong>배송신청</strong> : 인터넷으로 신청(결제) 후 우편으로 자격증 수령 (본인 확인된 사진이 공단에 등록된 경우에만 배송가능)</li>
 							<li>- <strong>방문신청</strong> : 인터넷으로 신청(결제) 후 지부(지사)로 방문하여 자격증 수령
@@ -127,12 +117,18 @@
 						</ul>
 					</li>
 				</ul>
-				<div class="btn_center btnPos">
-					<button type="button" class="btn2 btncolor1" onclick="location.href='7자격증발급신청.jsp'"><span>이전</span></button>
-					<button type="button" class="btn2 btncolor1" onclick="location.href='9신청서작성.jsp'"><span>배송신청</span></button> 
-					<button type="button" class="btn2 btncolor1" onclick="location.href='9신청서작성.jsp'"><span>방문신청</span></button>
-				</div>
-
+<!-- 				<div class="btn_center btnPos"> -->
+<%-- 					<input type="submit" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/request4'" value="배송신청"> --%>
+<!-- 				</div> -->
+				
+				<div class="btn_center mb40">
+					<button type="button" class="btn2 btncolor1" onclick="history.go(-1)"><span>이전</span></button>
+						<a class="btn2 btncolor1">
+							<span><input type="submit" value="발급신청" class="btn2 btncolor1" style="border: 0 solid; color:white"></span>
+						</a>
+					</div>
+				
+				</form> 
 			</div>
 			<!--  컨텐츠 끝 -->
 		</div>

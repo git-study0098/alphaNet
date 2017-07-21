@@ -24,15 +24,6 @@ public class LoginController {
 		this.loginService = loginService;
 	}
 	
-	@RequestMapping("member/list")
-	public String getMemberList(Model model,Principal principal){
-		
-		System.out.println(principal.getName());
-		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		System.out.println(user.getUsername());
-		
-		return "1main";
-	}
 	
 	@RequestMapping("login")
 	public String login(){

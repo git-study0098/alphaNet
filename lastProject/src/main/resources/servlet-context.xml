@@ -21,25 +21,23 @@
 <!-- 	<view-controller view-name="login/logout" path="/logout"/> -->
 <!-- 	<view-controller view-name="login/login_duplicate" path="/login_duplicate"/> -->
 	
-	<view-controller path="/main" view-name="1main"/>
+<!-- 	<view-controller path="/main" view-name="1main"/> -->
 	<view-controller view-name="login/accessDenied" path="/accessDenied"/>
 	<view-controller view-name="login/loginForm" path="/loginForm"/>
 	<view-controller view-name="login/loginForm" path="/admin/loginForm"/>
 	<view-controller view-name="login/logout" path="/logout"/>
 	<view-controller view-name="login/login_duplicate" path="/login_duplicate"/>
 	<view-controller view-name="sign_up" path="/signUp"/>
+	<view-controller view-name="member/board/haggwa/haggwa" path="/change1"/>
+	
+	<view-controller view-name="member/jaguk/jaguk_true" path="/jaguk_true"/>
 	
 	<!-- 대분류링크 -->
-<!-- 	<view-controller view-name="member/wonseo/wonseo_request1" path="/exam"/> -->
-	<view-controller view-name="member/jaguk/jaguk_request1" path="/jaguk"/>
-<!-- 	<view-controller view-name="member/mypage/mypage_dnjstj1" path="/mypage"/> -->
-<!-- 	<view-controller view-name="member/notice/notice" path="/notice"/> -->
-<!-- 	<view-controller view-name="member/notice/haggwa" path="/notice/haggwa"/> -->
 	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
-	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+<!-- llers to .jsp resources in the /WEB-INF/views directory --> 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="1">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
