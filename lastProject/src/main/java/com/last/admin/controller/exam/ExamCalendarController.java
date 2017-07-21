@@ -25,9 +25,7 @@ public class ExamCalendarController {
 	public String im(Model model){
 		List<CalendarVO> calList = null;
 		try {
-			System.out.println("컨틀로러 들어오니ㅣ");
 			calList = memDao.calendarInfo();
-			System.out.println(calList+"컨트롤러?");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -128,6 +128,7 @@
 .tit_content {
 	margin-bottom: 50px;
 }
+* { box-sizing: content-box;}
 </style>
 
 <article>
@@ -150,6 +151,14 @@
 				</ul>
 			</div>
 			<h1 class="tit_content">월간 시험일정</h1>
+			<div class="tabLayout">
+				<ul>
+					<li class="on"><a href="#"><span>월간시험일정</span></a></li>
+					<li><a href="<%=request.getContextPath()%>/wonseoExamDate" title="국가기술자격"><span>국가기술자격</span></a></li>
+					<strong><label for="jmNm1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></strong>
+				</ul>
+			</div>
+
 			<div>
 				<div class='two-col'>
 					<div id='calendar'></div>
