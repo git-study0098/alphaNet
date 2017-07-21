@@ -1,6 +1,13 @@
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.userdetails.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+
+<%
+	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+	String id = user.getUsername();
+%>
 <style>
 	* {	box-sizing: content-box;}
 	
@@ -78,6 +85,7 @@
 					</ul>
 				</div>
 				<form action="" name="form1" method="post">
+<input type="hidden" name="mem_code" value="<%=id%>">
 				<div class="tabView" style="display: block;">
 					<div class="txt_left mb10">
 						<span>
@@ -89,40 +97,15 @@
 						</span>
 					</div>
 					<div id="viewList">
-
 					<div class="take_typelist type2 mb20">
 						<ul>
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="location.href='<%=request.getContextPath()%>/member/stareCertifi?mem_code=<%=id%>'"><span>정보처리기능사</span></a></li>
 
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('3375')"><span>가스기능장</span></a></li>
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('2040')"><span>정보처리산업기사</span></a></li>
 
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('3120')"><span>정보처리기사</span></a></li>
 
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('1471')"><span>가스기사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('0752')"><span>가스기술사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('2471')"><span>가스산업기사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('2044')"><span>객화차정비산업기사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('0080')"><span>건설기계기술사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('1040')"><span>건설기계설비기사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('2040')"><span>건설기계설비산업기사</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('3120')"><span>건설기계정비기능장</span></a></li>
-
-
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('1050')"><span>건설기계정비기사</span></a></li>
-
-
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('1050')"><span>정보처리기술사</span></a></li>
 						</ul>
 					</div>
 					<!-- paging -->
@@ -131,15 +114,6 @@
 						<button type="button" class="btn3_icon3 btn_prev_page" title="이전 페이지"><span class="blind">이전 페이지</span></button>
 						<span class="page">
 							<strong class="on" title="1페이지">1</strong>
-							<button type="button" class="btn5" onclick="goPage(2);" title="2페이지"><span>2</span></button>
-							<button type="button" class="btn5" onclick="goPage(3);" title="3페이지"><span>3</span></button>
-							<button type="button" class="btn5" onclick="goPage(4);" title="4페이지"><span>4</span></button>
-							<button type="button" class="btn5" onclick="goPage(5);" title="5페이지"><span>5</span></button>
-							<button type="button" class="btn5" onclick="goPage(6);" title="6페이지"><span>6</span></button>
-							<button type="button" class="btn5" onclick="goPage(7);" title="7페이지"><span>7</span></button>
-							<button type="button" class="btn5" onclick="goPage(8);" title="8페이지"><span>8</span></button>
-							<button type="button" class="btn5" onclick="goPage(9);" title="9페이지"><span>9</span></button>
-							<button type="button" class="btn5" onclick="goPage(10);" title="10페이지"><span>10</span></button>
 						</span>
 						<button type="button" class="btn3_icon3 btn_next_page" onclick="goPage(2);" title="다음 페이지"><span class="blind">다음 페이지</span></button>
 						<button type="button" class="btn3_icon3 btn_next_end" onclick="goPage(11);" title="다음10페이지"><span class="blind">다음10페이지</span></button>

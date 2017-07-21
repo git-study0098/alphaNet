@@ -31,6 +31,8 @@
 	<view-controller view-name="member/board/haggwa/haggwa" path="/change1"/>
 	
 	<view-controller view-name="member/jaguk/jaguk_true" path="/jaguk_true"/>
+	<view-controller view-name="member/jaguk/auth.jsp" path="/auth"/>
+	
 	
 	<!-- 대분류링크 -->
 	

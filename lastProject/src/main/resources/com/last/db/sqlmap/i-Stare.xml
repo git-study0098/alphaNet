@@ -22,5 +22,20 @@
 	</select>
 	
 	
+	<select id="selectResultCheck" parameterClass="str" resultClass="stare">
+		select e.em_nm,
+		      s.stare_code,
+		      s.stare_em_pass_at,
+		      m.mem_code,
+		      ex.exkind_nm,
+		      m.mem_nm
+		      from stare s, em_info e, mem m, exkind ex
+		      where e.em_info_code = s.em_info_code
+		      and m.mem_code = s.mem_code
+		      and e.em_exkind = ex.exkind_code
+		      and m.mem_code = #mem_code#
+	</select>
+	
+	
 	
 </sqlMap>

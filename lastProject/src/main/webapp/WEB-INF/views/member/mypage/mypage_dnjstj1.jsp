@@ -153,6 +153,7 @@
 					<input type="hidden" name="RecptNo">
 					<input type="hidden" name="picChgGbn"> 
 					<input type="hidden" name="recptNo"> 
+					<input type="hidden" id="mem_code" name="mem_code" value="${id }">
 				</fieldset>
 				</form>
 				<form name="prnAdmissionForm" method="post" onsubmit="return false;" action="http://www.q-net.or.kr/myp002.do?id=myp00202&amp;gSite=Q&amp;gId=">

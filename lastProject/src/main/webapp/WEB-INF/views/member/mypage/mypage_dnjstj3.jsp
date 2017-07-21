@@ -1,6 +1,15 @@
+<%@page import="org.springframework.security.core.userdetails.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
+<%
+	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+	String id = user.getUsername();
+%>
 <style>
 	* {	box-sizing: content-box;}
 	
@@ -57,6 +66,8 @@
 			<input type="hidden" id="seqNo" name="seqNo">
 			<input type="hidden" id="suno" name="suno">
 			<input type="hidden" id="gId" name="gId">
+			<input type="hidden" id="mem_code" name="mem_code" value="${mem_code}">
+			
 			<div class="content">
 				<h3 class="tit_content">시험결과 보기</h3>
 				<div class="tbl_type1">
@@ -64,28 +75,39 @@
 						<caption>시험결과 보기</caption>
 						<colgroup>
 								<col width="25%">
-								<col width="15%">
-								<col width="15%">
 								<col width="*">
+								<col width="15%">
+								<col width="15%">
 								<col width="10%">
 							</colgroup>
 						<thead>
 							<tr>
+								<th scope="col">회원명</th>
 								<th scope="col">시험명</th>
-								<th scope="col">구분</th>
 								<th scope="col">수험번호</th>
 								<th scope="col">응시종목</th>
 								<th scope="col">시험결과</th>
 							</tr>
 						</thead>
 						<tbody>
-
-							<!-- S :조회된 데이터가 없을때 -->
-							<tr>
-								<td colspan="5" class="noData">조회된 데이터가 없습니다.</td>
-							</tr>
-							<!--// e :조회된 데이터가 없을때 -->
-
+							<c:choose>
+								<c:when test="${not empty selectResultCheck }">
+									<c:forEach items="${selectResultCheck}" var="stare">
+										<tr>
+											<td>${stare.mem_nm }</td>
+											<td>${stare.em_nm }</td>
+											<td>${stare.stare_code }</td>
+											<td>${stare.exkind_nm }</td>
+											<td>${stare.stare_em_pass_at }</td>
+										</tr>
+									</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<tr>
+										<td class="noData">조회된 데이터가 없습니.</td>
+									</tr>
+								</c:otherwise>
+							</c:choose>
 						</tbody>
 					</table>
 				</div>

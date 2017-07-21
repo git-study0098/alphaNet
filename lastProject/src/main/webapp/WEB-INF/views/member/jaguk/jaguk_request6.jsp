@@ -62,7 +62,7 @@ function paymentCheck(){
 								<th scope="row">주민번호</th>
 								<td>${viewData.reg_num1}-*******</td>
 								<td class="photo" rowspan="5">
-									<p><img src="<%=request.getContextPath() %>/${viewData.mem_photo}" alt="신청 사진"><!-- //2014.11.21 이미지에 맞는 alt값 필요 : 성명+사진 --></p>
+									<p><img src="<%=request.getContextPath() %>/resources/upload/image/${viewData.mem_photo}" alt="신청 사진"><!-- //2014.11.21 이미지에 맞는 alt값 필요 : 성명+사진 --></p>
 								</td>
 							</tr>
 							<tr>

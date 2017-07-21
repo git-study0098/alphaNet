@@ -9,9 +9,23 @@ public class StareVO {
 	private String em_nm;			//시험명
 	private String exkind_nm;		//종목명
 	private String exkind_code;		//종목코드
+	private String stare_em_pass_at;// 필기합격여부
+	private String mem_nm;
 	
 	
 	
+	public String getMem_nm() {
+		return mem_nm;
+	}
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
+	public String getStare_em_pass_at() {
+		return stare_em_pass_at;
+	}
+	public void setStare_em_pass_at(String stare_em_pass_at) {
+		this.stare_em_pass_at = stare_em_pass_at;
+	}
 	public String getMem_code() {
 		return mem_code;
 	}
@@ -54,12 +68,15 @@ public class StareVO {
 	public void setExkind_code(String exkind_code) {
 		this.exkind_code = exkind_code;
 	}
+	
 	@Override
 	public String toString() {
 		return "StareVO [stare_code=" + stare_code + ", mem_code=" + mem_code
 				+ ", stare_date=" + stare_date + ", em_info_code="
 				+ em_info_code + ", em_nm=" + em_nm + ", exkind_nm="
-				+ exkind_nm + ", exkind_code=" + exkind_code + "]";
+				+ exkind_nm + ", exkind_code=" + exkind_code
+				+ ", stare_em_pass_at=" + stare_em_pass_at + ", mem_nm="
+				+ mem_nm + "]";
 	}
 	
 }
