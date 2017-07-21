@@ -107,10 +107,10 @@
 									style="table-layout: fixed">
 									<colgroup>
 										<col width="7%">
+										<col width="10%">
 										<col width="*">
 										<col width="16%">
 										<col width="11%">
-										<col width="1%">
 									</colgroup>
 									<thead>
 										<tr>

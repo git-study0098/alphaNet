@@ -30,12 +30,19 @@
 
   
 <script>
+	//삭제 함수 
 	function go_noticeDetail(noticeCode) {
 		var noticeForm = document.noticeDetail;
 		noticeForm.action = "/boardUpdateForm?notice_code=" + noticeCode;
 		noticeForm.submit();
 	}
+	//검색함수
+	function searchList(schText){
+		action = ""
+	}
+
 </script>
+
 
 <style>
 	* {	box-sizing: content-box;}
@@ -105,7 +112,7 @@
 								<option value="D">담당부서</option>
 						</select> <input type="text" name="schText" style="width: 150px"
 							id="schText" title="검색어 입력"> <a href="#"
-							class="btn3_icon search" onclick="getNoticeList(1)"><span
+							class="btn3_icon search" onclick="searchList"><span
 								class="blind">검색</span></a>
 						</span>
 					</div>
