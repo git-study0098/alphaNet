@@ -17,6 +17,9 @@
 		<pattern>/login/loginForm</pattern>
 		<pattern>/jusoPopup.jsp</pattern>
 		<pattern>/member/wonseoPayment*</pattern>
+		<pattern>/login/goFindId*</pattern>
+		<pattern>login/findIdInput</pattern>
+		<pattern>/login/findPwdInput*</pattern>
 	</excludes>
 
 </decorators>

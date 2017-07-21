@@ -101,20 +101,18 @@
 
 
 								<tr>
-									<th scope="row">시험장소 및<br>일시
-									</th>
-									<td colspan="3">
-
-										<p class="sch_adr2">
-											<span class="name"> <!-- 1차시험 : 대구공업고등학교(필답형) --> 필기시험
-												${placeNm}
-
-
-											</span> 날짜/시간<span> ${placeData.numg_stare_date}<br>
-
-											</span>
-										</p>
-
+									<th scope="row">시험장소 및<br>일시</th>
+									
+									<td>
+											<span class="name"> 
+												${placeNm}								
+											</span> 
+									</td>
+									
+									<th scope="row">날짜/시간</th>
+									 
+									<td>	
+										<span> ${placeData.numg_stare_date}</span>
 									</td>
 								</tr>
 							</tbody>

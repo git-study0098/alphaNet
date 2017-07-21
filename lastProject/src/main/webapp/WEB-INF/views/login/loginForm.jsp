@@ -26,6 +26,7 @@
 </style>
 
 <script>
+
 	$(document).ready(function(){
 		$('.btn_login').click(function(){
 			if($('#mem_id').val() == ""){
@@ -39,6 +40,10 @@
 				$('#loginForm').submit();
 			}
 		})
+		finId = '<c:out value="${findId}"/>';		
+		if(finId!=null && finId!=""){
+			$('#mem_id').val(finId);
+		}
 		
 	})
 </script>
@@ -72,7 +77,7 @@
 					<div class="pubcont login">
 						<div class="enter">
 							<div class="left">
-								<p><span><label for="mem_id">아이디</label></span><input type="text" id="mem_id" name="mem_id" style="width:203px"></p>
+								<p><span><label for="mem_id">아이디</label></span><input type="text" id="mem_id" name="mem_id" style="width:203px" value=""></p>
 								<p><span><label for="mem_pswd">비밀번호</label></span><input type="password" id="mem_pswd" name="mem_pswd" style="width:203px" maxlength="16"></p>
 							</div>
 							<div class="right">
