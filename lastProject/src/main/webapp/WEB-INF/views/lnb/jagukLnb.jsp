@@ -58,6 +58,8 @@
 				<li class="low active on"><a>자격증 발급</a>
 					<ul style="display: block;">
 						<li class="on"><a href="<%=request.getContextPath() %>/request1">자격증발급신청</a></li>
+						<li><a>자격증발급신청내역조회</a></li>
+						<li class="on"><a href="<%=request.getContextPath() %>/request1">자격증발급신청</a></li>
 						<li><a href="<%=request.getContextPath() %>/member/request2">자격증발급신청내역조회</a></li>
 					</ul></li>
 				<li class="low"><a>확인서 발급</a>
@@ -75,8 +77,8 @@
 					<ul style="display: block;">
 						<li><a href="<%=request.getContextPath() %>/confirmTrue">확인서진위확인</a></li>
 						<li><a href="<%=request.getContextPath() %>/jagukTrue">자격증진위확인</a></li>
+						<li><a>단체진위확인</a></li>
 					</ul></li>
 			</ul>
-			
 			<!-- menu리스트 끝 -->
 		</div>

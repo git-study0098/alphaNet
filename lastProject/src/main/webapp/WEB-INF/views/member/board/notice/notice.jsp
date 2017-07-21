@@ -75,7 +75,7 @@
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
 				<h3 class="tit_content">공지사항</h3>
-
+				
 				<!-- 컨텐츠 내용 -->
 				<div class="content">
 					<div>
@@ -123,7 +123,7 @@
 										<c:forEach items="${viewData.notice1List }" var="notice" varStatus="number">
 										<tr>
 											<td>${number.count}</td> <!-- 글번호 -->
-											<td><a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a></td>
+											<td><a href="<%=request.getContextPath() %>/detailNotice?notice_code=${notice.notice_code }" >${notice.title}</a></td>
 											<td>${notice.admin_code}</td>
 											<td><fmt:formatDate value="${notice.enroll_date}"/></td>
 											<td><input type="hidden" value="${notice.notice_code}" name="noticeCode"/></td>
@@ -140,6 +140,8 @@
 									</tbody>
 								</table>
 							</div>
+							
+							
 							<div class="pagination1 mb20">
 								<button type="button" class="btn3_icon3 btn_prev_first"
 									title="이전10페이지">
@@ -178,6 +180,12 @@
 									<span class="blind">다음10페이지</span>
 								</button>
 							</div>
+							
+							
+							
+							
+							
+							
 						</div>
 						</form>
 					</div>

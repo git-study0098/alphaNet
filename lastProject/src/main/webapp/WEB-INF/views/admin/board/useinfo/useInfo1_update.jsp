@@ -31,31 +31,25 @@
 	.pagination1 .page {margin:0 15px}
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
 </style>
+
+<script>
+	function useInfoDelete(){
+		location.href="<%=request.getContextPath() %>/admin/useInfoDelete?notice_code=${vo.notice_code}";
+	}
+</script>
+
 <article>
-
-	<div id="container">
-			<jsp:include page="../../../lnb/noticeLnb.jsp"/>
-			<div id="lnb2"></div>
-		</div>
-
-		<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
-		<div id="content">
-				<!-- 컨텐츠 타이틀 -->
-				<div class="location">
-					<ul>
-						<li>홈</li>
-						<li>게시판</li>
-						<li>관리자</li>
-						<li><strong>글 등록/수정/삭제</strong></li>
-					</ul>
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>사이트 이용안내</h2>
 				</div>
-				
-			<div class="content">
-				<h3 class="tit_content">사이트 이용안내</h3>
-				<!-- //컨텐츠 타이틀 -->
-				<!-- 컨텐츠 내용 -->
-			<form style="display: inline" action="useInfoUpdate" enctype="multipart/form-data">
-			<input type="hidden" name="noticeCode" value="${vo.notice_code}">
+			</div>
+			<hr />
+			<form style="display: inline" action="useInfoUpdate"
+				enctype="multipart/form-data">
+				<input type="hidden" name="noticeCode" value="${vo.notice_code}">
 				<div>
 					<div class="tbl_type2 leftPd">
 						<table summary="사이트 이용안내 소개">
@@ -71,50 +65,48 @@
 							<tbody>
 								<tr>
 									<th scope="row">제목</th>
-									<td colspan="5"><input name="title" type="text" value="${vo.title}" style="width:95%; background-color: #ffffff;"></td>
+									<td colspan="5"><input name="title" type="text"
+										value="${vo.title}"
+										style="width: 95%; background-color: #ffffff;"></td>
 								</tr>
 								<tr>
 									<th scope="row">담당부서</th>
-									<td><input name="adminCode" type="text" value="${vo.admin_code}" style="width:95%;  background-color: #ffffff;"></td>
+									<td><input name="adminCode" type="text"
+										value="${vo.admin_code}"
+										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td>
-<%-- 									<c:choose> --%>
-<%-- 										<c:when test="${!empty '${date.enrollDate}'}"> --%>
-<%-- 											<input name="enrolldate" value="${date.registDate}" readonly="readonly"/> --%>
-<%-- 										</c:when> --%>
-<%-- 										<c:otherwise> --%>
-											<c:set var="now" value="<%=new java.util.Date()%>" />
-											<input name="registDate" value="${vo.regist_date}" readonly="readonly"/>
-<%-- 										</c:otherwise> --%>
-<%-- 									</c:choose> --%>
+										<%-- 									<c:choose> --%> <%-- 										<c:when test="${!empty '${date.enrollDate}'}"> --%>
+										<%-- 											<input name="enrolldate" value="${date.registDate}" readonly="readonly"/> --%>
+										<%-- 										</c:when> --%> <%-- 										<c:otherwise> --%>
+										<c:set var="now" value="<%=new java.util.Date()%>" /> <input
+										name="registDate" value="${vo.regist_date}"
+										readonly="readonly" /> <%-- 										</c:otherwise> --%> <%-- 									</c:choose> --%>
 									</td>
-									
+
 								</tr>
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5">
-										<a href="#" class="btn3_icon download"><input type="file"></a>
-									</td>
+									<td colspan="5"><a href="#" class="btn3_icon download"><input
+											type="file"></a></td>
 								</tr>
 								<tr>
-								<td colspan="6">
-									<textarea name="noticeContent" id="contents_text" style="width: 100%;" rows="10">
+									<td colspan="6"><textarea name="noticeContent"
+											id="contents_text" style="width: 100%;" rows="10">
 										${vo.notice_content}
-									</textarea>
-								</td>
-							</tr>
+									</textarea></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
 					<p class="txt_right">
-<!-- 						<button type="button" class="btn btncolor1" onclick="goList()"><span>등록</span></button> -->
-<!-- 						<button type="button" class="btn btncolor1" onclick=""><span>돌아가기</span></button> -->
-						<input type="submit" class="btn btncolor2" value="등록" style="color:#ffffff"/>
-						<a class="btn btncolor2" href="#" onclick="history.go(-1)" style="color:#ffffff">돌아가기</a>
+						<input type="submit" class="btn btncolor1" value="수정"
+							style="color: #ffffff"/> 
+							<input type="button" class="btn btncolor2" value="삭제"
+							onclick="useInfoDelete()" style="color: #ffffff" />
 					</p>
 				</div>
-				</form>
-				</div>
-			</div>
+			</form>
+		</div>
 	</div>
 </article>

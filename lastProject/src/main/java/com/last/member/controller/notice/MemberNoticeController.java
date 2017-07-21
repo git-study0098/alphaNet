@@ -1,7 +1,6 @@
 package com.last.member.controller.notice;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.last.common.service.AdminNotice1Service;
 import com.last.common.service.ServiceException;
-import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
 
 @Controller
@@ -21,7 +19,7 @@ public class MemberNoticeController {
 	
 	@Autowired
 	private AdminNotice1Service adminNotice1Service;
-
+	
 	public void setAdminNotice1Service(AdminNotice1Service adminNotice1Service) {
 		this.adminNotice1Service = adminNotice1Service;
 	}
@@ -47,7 +45,7 @@ public class MemberNoticeController {
 	            e.printStackTrace();
 	         }
 	      }
-	      
+	      System.out.println();
 	      model.addAttribute("viewData",viewData);
 	      model.addAttribute("pageNumber",pageNumber);
 	      

@@ -112,7 +112,7 @@
 	<bean id="mypageService" 
 		class="com.last.common.service.MypageService"
 		p:mypageDao-ref="mypageDao" />
-	      
+		
 <!-- 	<bean id = "memService" -->
 <!-- 	      class="com.last.common.service.MemberService" -->
 <!-- 	      p:memDao-ref="memDaoImpl"></bean> -->
@@ -147,10 +147,14 @@
 		  class="com.last.login.LoginService"
 		  p:loginDao-ref="loginDaoImpl"
 	/>	
+	
+
+
 <!-- 	<bean id="noticeService" -->
 <!-- 		  class="com.last.board.service.NoticeService" -->
 <!-- 		  p:noticeDao-ref="notice" -->
 <!-- 	/>	 -->
+
 
 <!-- mysqlSession, mysqlClient -->
 		  
