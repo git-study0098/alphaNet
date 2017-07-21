@@ -73,11 +73,7 @@ function paymentCheck(){
 							</tr>
 							<tr>
 								<th scope="row">주소</th>
-<<<<<<< HEAD
-								<td colspan="3"><p style="width:444px">${viewData.mem_add1}${viewData.mem_add2}${viewData.mem_add3}</p></td>
-=======
 								<td colspan="3"><p style="width:444px">(${viewData.mem_post_numb1}) ${viewData.mem_add1} ${viewData.mem_add2} ${viewData.mem_add3}</p></td>
->>>>>>> refs/heads/sibal
 							</tr>
 							<tr>
 								<th scope="row">

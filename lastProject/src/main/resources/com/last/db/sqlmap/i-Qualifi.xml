@@ -54,11 +54,6 @@
 	</select>
 	
 	<select id="selectMemberInfoList" parameterClass="str" resultClass="qualifiMember">
-<<<<<<< HEAD
-		select mem_nm, mem_enname, reg_num1, mem_phone, mem_post_numb1, mem_add1, mem_add2, mem_add3,mem_photo
-			from mem 
-		where mem_code = #mem_code#
-=======
 		select mem_nm, 
 				m.mem_enname, 
 				m.reg_num1, 
@@ -72,13 +67,10 @@
 		from mem m
 		where m.mem_code = #mem_code#
 	</select>
-<!-- 		#mem_nm#, #mem_enname#, #reg_num1#, #mem_phone#, #mem_post_numb1#, #mem_add1#, #mem_add2#, #mem_add3# -->
 
 	<select id="selectCertiPrice" parameterClass="str" resultClass="int">
 		select qualifi_certi_iss_pr from qualifi_certi where qualifi_certi_code = #qualifi_certi_code#
->>>>>>> refs/heads/sibal
 	</select>
-<!-- 		#mem_nm#, #mem_enname#, #reg_num1#, #mem_phone#, #mem_post_numb1#, #mem_add1#, #mem_add2#, #mem_add3# -->
 	
 	<select id="selectMemAuth" parameterClass="str" resultClass="qualifiMember">
 		select mem_code,mem_nm,reg_num1 from mem where mem_code = #mem_code#	
