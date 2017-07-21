@@ -1,3 +1,4 @@
+<%@page import="com.last.common.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
@@ -24,6 +25,8 @@
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
 	
 </style>
+
+
 <article>
 	<div id="container">
 		<!-- 좌측 메뉴바 -->

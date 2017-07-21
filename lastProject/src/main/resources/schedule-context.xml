@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:task="http://www.springframework.org/schema/task"	
 	xsi:schemaLocation="http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-	<!-- <task:annotation-driven/> -->
-<!-- 	<task:scheduler id="scheduler" pool-size="5"/> -->
-<!-- 	<task:scheduled-tasks scheduler="scheduler"> -->
+<!-- 	<task:scheduler id="scheduler" pool-size="4"/> -->
+<!-- 	<task:executor id="executor" keep-alive="10" pool-size="10-20" queue-capacity="10" rejection-policy="ABORT"  /> -->
+	
+<!-- 		<task:scheduler id="scheduler" pool-size="5"/> -->
+<!-- 		<task:scheduled-tasks scheduler="scheduler"> -->
 <!-- 		<task:scheduled ref="productDAO" method="setProductList" fixed-rate="30000"/> -->
 <!-- 	</task:scheduled-tasks> -->
+
+<!-- 	<task:annotation-driven executor="executor" scheduler="scheduler" proxy-target-class="false"/> -->
+<!-- 	<bean id ="mainScheduled" class="com.last.common.dao.MainDAO"/> -->
 	
 </beans>

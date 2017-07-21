@@ -43,7 +43,6 @@ function jusoCallBack2(mem_post_numb2,mem_add3,mem_add4) {
  //대전 서울 == > 2년제 4년제 가는거
 function showSub1(obj){
 	if(obj.value=="대전"){
-		alert("대전선택");
 		document.regMEM.dacoll.style.display="";
 		document.regMEM.suocoll.style.display="none";
 		document.regMEM.daschool2.style.display="";
@@ -52,7 +51,6 @@ function showSub1(obj){
 		document.regMEM.seoschool4.style.display="none";
 		
 	}else if(obj.value=="서울"){
-		alert("서울선택");
 		document.regMEM.dacoll.style.display="none";
 		document.regMEM.suocoll.style.display="";
 		document.regMEM.daschool2.style.display="";
@@ -67,7 +65,6 @@ function showSub1(obj){
 //대전 2년제 4년제
 function showSub24(obj) {
 	if(obj.value=="2년제"){
-		alert("2년제선택");
 		document.regMEM.dacoll.style.display="";
 		document.regMEM.suocoll.style.display="none";
 		document.regMEM.daschool2.style.display="";
@@ -76,7 +73,6 @@ function showSub24(obj) {
 		document.regMEM.seoschool4.style.display="none";
 		
 	}else if(obj.value=="4년제"){
-		alert("4년제선택");
 		document.regMEM.dacoll.style.display="";
 		document.regMEM.suocoll.style.display="none";
 		document.regMEM.daschool2.style.display="none";
@@ -89,7 +85,6 @@ function showSub24(obj) {
 //서울 2년제 4년제
 function showSub242(obj) {
 	if(obj.value=="2년제"){
-		alert("2년제선택");
 		document.regMEM.dacoll.style.display="none";
 		document.regMEM.suocoll.style.display="";
 		document.regMEM.daschool2.style.display="none";
@@ -98,7 +93,6 @@ function showSub242(obj) {
 		document.regMEM.seoschool4.style.display="none";
 		
 	}else if(obj.value=="4년제"){
-		alert("4년제선택");
 		document.regMEM.dacoll.style.display="none";
 		document.regMEM.suocoll.style.display="";
 		document.regMEM.daschool2.style.display="none";
@@ -108,28 +102,55 @@ function showSub242(obj) {
 	}
 }
 
+$(function(){
+	$("#idCheck").click(function(){
+		var idvalue = $('#id').val();
+		
+		$.ajax({
+			url:"member/idcheck.jsp",
+			type:"post",
+			data: "id=" + idvalue,
+			success:function(res){
+				if(res.Status == "YES"){
+					$('#idChk').html('<b style="font-size:14px; color:blue">사용가능</b>');
+				}else if(res.Status == "NO"){
+					$('#idChk').html('<b style="font-size:14px; color:red">사용불가</b>');
+				}
+			},
+			error:function(){
+				alert('Error');
+			},
+			dataType:'json'
+		});
+	});
+});
 
-function idCheck(){
-    var id = $('#id').val();
-    $.ajax({
-    url : 'idCheck',
-    type : 'post',
-    data : {'id' : id},
-    success : function(res){
-       var code ="";
-       if(res.Status =="ok"){
-          code+=res.id+"사용 가능합니다.";
-          idch=true;
-          $('#idChk').html(code).css('color','blue');
-       }else{
-          alert("aaa");
-          code+=res.id+"사용 불가능합니다.";
-          $('#idChk').html(code).css('color','red');
-       }
-    }
- })
-} 
+function cropImage(){
+	//이미지 눌렀을 때
+	$('#viewImg').on('click', function() {
+      $("#input:file").change(function (){     
+           var file = this.files[0];
+           var reader = new FileReader();
+           reader.onload = function (e) {
+               $("#viewImg").attr('src', e.target.result);
+           }        
+          reader.readAsDataURL(file);
+       });
+   });
+}
 
+
+$(function(){
+	//파일 업로드 버튼 눌렀을 때
+	$("input:file").change(function (){     
+	    var file = this.files[0];
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	        $("#viewImg").attr('src', e.target.result);
+	    }        
+	    reader.readAsDataURL(file);
+	});		
+}) 
 
 
 // function idCheck(){
@@ -183,7 +204,7 @@ function idCheck(){
 						</li>
 					</ul>
 				</div>
-				<form name="regMEM" id="regMEM" method="post" action="insertMember">
+				<form name="regMEM" id="regMEM" method="post" action="insertMember", enctype="multipart/form-data">
 					<fieldset>
 						<input type="hidden" name="memIdChk" value="N"> <input
 							type="hidden" name="juminRes"> <input type="hidden"
@@ -258,13 +279,17 @@ function idCheck(){
 										</th>
 										<td colspan="2">
 											<input type="text" style="ime-mode: inactive;" id="id" name="id" class="member_id">
-											<button type="button" id="memIdChkBtn" class="btn3_type1 chk_id ml5" onclick="javascript:idCheck();">
+											<button type="button" id="idCheck" class="btn3_type1 chk_id ml5">
 												<span>아이디중복 확인</span>
-											</button> <span id="idChk"></span></td>
+											</button> 
+											<span id="idChk"></span>
+										</td>
 										<td rowspan="9" class="photo">
-												<img id="viewImg" src="resources/images/사진미등록.png"
-													alt="사진미등록" onclick="cropImage();">
-												<!-- //2014.12.08 접근성 : 사진 등록시 alt값 "이름+사진" -->
+											<div>
+												<img id="viewImg" src="resources/images/사진미등록.png" onclick="cropImage();">											
+											</div>
+										
+											<input type="file" name="f" />
 										</td>
 									</tr>
 									<tr>

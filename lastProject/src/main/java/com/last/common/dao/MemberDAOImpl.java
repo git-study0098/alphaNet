@@ -69,7 +69,6 @@ public class MemberDAOImpl extends MemberDAO{
 		MemberVo member=null;
 		try {
 			member = (MemberVo) client.queryForObject("selectMemberId", id);
-			System.out.println(member+"다오임플");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -89,6 +88,14 @@ public class MemberDAOImpl extends MemberDAO{
 		System.out.println(calList+"캘린더다오임플");
 	
 		return calList;
+	}
+
+
+	@Override
+	public MemberVo member(String id) throws SQLException {
+		
+		MemberVo member = (MemberVo) client.queryForObject("selectMember" ,id);
+		return member;
 	}
 
 

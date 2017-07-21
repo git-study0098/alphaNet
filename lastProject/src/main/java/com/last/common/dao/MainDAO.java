@@ -4,9 +4,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.scheduling.annotation.Scheduled;
+
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
+import com.last.common.vo.WonseoInfoVo;
 
 public class MainDAO {
 	private SqlMapClient client;
@@ -70,4 +73,21 @@ public class MainDAO {
 		return selectMainNotice5List;
 	}
 
+	/**
+	 * 원서접수 중인 시험 불러오는 다오 메서드
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<WonseoInfoVo> selectWonseoList() throws SQLException{
+		List<WonseoInfoVo> selectWonseoList = (ArrayList<WonseoInfoVo>)client.queryForList("selectWonseoList");
+		System.out.println("ㅎㅇ");
+		System.out.println(selectWonseoList.size());
+		return selectWonseoList;
+	}
+	
+	public Notice1VO detailNotice(String notice_code) throws SQLException{
+		Notice1VO vo = null;
+		vo = (Notice1VO) client.queryForObject("detailNotice", notice_code);
+		return vo;
+	}
 }

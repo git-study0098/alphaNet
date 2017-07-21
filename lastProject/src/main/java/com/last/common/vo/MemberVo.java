@@ -1,5 +1,7 @@
 package com.last.common.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class MemberVo {
 
 	private String id; 
@@ -18,12 +20,15 @@ public class MemberVo {
 	private String mem_post_numb1;
 	private String mem_post_numb2;
 	private String mem_gender;
-	private String mem_photo;
 	private String mem_bir;
 	private String enabled;
 	private String authority;
 	private String mem_jang;
 	private String mem_pass_em;
+	
+	//파일 업로드
+	private String mem_photo; //파일 이름
+	private MultipartFile uploadfile; //업로드될 파일
 	
 	//학교
 	private String sch_code; //학교코드
@@ -33,6 +38,13 @@ public class MemberVo {
 	private String sch_major_nm; //학과이름
 	
 	
+	
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
+	}
 	public String getSch_code() {
 		return sch_code;
 	}

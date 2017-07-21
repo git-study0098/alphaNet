@@ -52,8 +52,7 @@
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" method="post" action="boardInsert"
-				enctype="multipart/form-data">
+			<form style="display: inline" method="post" action="boardInsert" enctype="multipart/form-data">
 				<div>
 					<div class="tbl_type2 leftPd">
 						<table summary="공지사항 게시글 보기를 물건구분, 물품명, 지사, 등록일자, 시험장 정보제공">
@@ -92,10 +91,11 @@
 
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5"><a href="#" class="btn3_icon download">
-											<input type="file" name="f"
-											onchange="javascript:file_change(this.value);">
-									</a> <input type="text" name="attach_file" readonly></td>
+									<td colspan="5">
+										<a href="#" class="btn3_icon download">
+											<input type="file" name="f"	onchange="javascript:file_change(this.value);">
+										</a>
+									    <input type="text" name="attach_file" readonly></td>
 								</tr>
 
 								<tr>
