@@ -63,10 +63,9 @@
 				m.mem_add2, 
 				m.mem_add3,
 				m.mem_photo,
-				s.APP_RECEIPT_DATE
-		from mem m, stare s
-		where m.mem_code = s.mem_code
-		and m.mem_code = #mem_code#
+				m.mem_email
+		from mem m
+		where m.mem_code = #mem_code#
 	</select>
 <!-- 		#mem_nm#, #mem_enname#, #reg_num1#, #mem_phone#, #mem_post_numb1#, #mem_add1#, #mem_add2#, #mem_add3# -->
 
@@ -75,6 +74,6 @@
 	</select>
 	
 	<select id="selectMemAuth" parameterClass="str" resultClass="qualifiMember">
-		select mem_nm,reg_num1 from mem where mem_code = #mem_code#	
+		select mem_code,mem_nm,reg_num1 from mem where mem_code = #mem_code#	
 	</select>
 </sqlMap>

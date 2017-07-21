@@ -52,6 +52,14 @@
 	<bean id="adminQualifiService" 
 		class="com.last.common.service.AdminQualifiService"
 		p:adminDao-ref="adminQualifiDao" />
+		
+	<bean id="mypageDao" 
+		class="com.last.common.dao.MypageDAO"
+		p:client-ref="client" />
+
+	<bean id="mypageService" 
+		class="com.last.common.service.MypageService"
+		p:mypageDao-ref="mypageDao" />
 	      
 <!-- 	<bean id = "memService" -->
 <!-- 	      class="com.last.common.service.MemberService" -->

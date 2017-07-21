@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
 <style>
 
  .form-box{
@@ -121,7 +124,6 @@ input.btn[type="submit"] {
   border:none;
   border-radius: 2px;
   color: #fff;
-  
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
@@ -173,107 +175,28 @@ input.btn[type="button"]:hover {
   color: #175690;
   }
   </style>
+</head>
+<body>
 
-
-    
-<script type="text/JavaScript">
-var gNetFunnelUrl = "";
-
-function frmSubmit_L() {
-
-	//이름 입력수 체크
-	if ((document.getElementById("hgulNm").value.length > 50)) {
-		alert("이름을 정확히 입력 하시기바랍니다.");
-		document.getElementById("hgulNm").focus();
-		return false;
-	}
-
-	if (schPwd.hgulNm.value == "") {
-		alert('이름을 입력해주세요!!');
-		schPwd.hgulNm.focus();
-		return false;
-	}
-	if (schPwd.mPswd.value == "") {
-		alert('주민번호 앞 6자리를 입력해주세요!!');
-		schPwd.mPswd.focus();
-		return false;
-	}
-
-	//이게 뭐어어어어지?
-// 	var hp_url = "https://www.q-net.or.kr/isr002.do?id=isr002030301&gSite=Q&gId=&mPswd="+ document.schPwd.mPswd.value + "&hgulNm="+ document.schPwd.hgulNm.value + "&perId="+document.schPwd.perId.value + "&chk=";
-// 	gNetFunnelUrl = "";
-// 	gNetFunnelUrl = hp_url;
-// 	NetFunnel_init(null,{});
-// 	NetFunnel_getTidChkEnter({success:goProcFrmSubmit_L});
-
-
-	var getName = "<c:out value='${getName}'/>";
-	var getBir = "<c:out value='${getBir}'/>";
-	
-	if(getName==document.getElementById("hgulNm").value && getBir==document.getElementById("mPswd").value){
-		opener.goRequest6();
-	}else{
-		alert('입력하신 정보가 일치하지 않습니다.');
-	}
-	
-	window.close();
-}
-
-
-
-function goProcFrmSubmit_L(){
-	openSendStatus("post", gNetFunnelUrl, true, null, "showResultFrmSubmit_L(xmlHttp)");
-}
-
-function showResultFrmSubmit_L(data){
-
-	var rtnData	=	eval('(' + data.responseText + ')');
-
-	if (rtnData.err == "0" ) {
-		if (rtnData.chk == 'cncl') {
-			frmDeleteSubmit();
-		} else if (rtnData.chk == 'modi') {
-			frmModifySubmit();
-		} else {
-			frmSubmit();
-		}
-	} else {
-		if (rtnData.err=="1"){
-			alert("로그아웃 되었습니다.다시 로그인 후 자격증발급 신청이 가능합니다.");
-			document.location.href= 'https://www.q-net.or.kr/man001.do?id=man00101&gSite=Q&gId=';
-		}else if(rtnData.err=="2"){
-			alert(rtnData.errMsg);
-			$(isr002_03_03_view).dialog( "close" );
-		}
-	}
-
-	
-	NetFunnel_init(null,{});
-	NetFunnel_setComplete();
-}
-
-function openPop(){
-	window.open("/qnet/html/popUp/qnet_popSolution.html","PopCookie4","width=670,height=943,scrollbars=no,left=390,top=10");
-}
-
-</script>
-	<div class="form-box">
+<div class="form-box">
     <div class="head">인증하기</div>        
-    <form action="frmSubmit_L();" id="login-form">
+    <form action="#" id="login-form">
         <div class="form-group">
           <label class="label-control">
             <span class="label-text">이름</span>
           </label>
-          <input type="text" name="name" id="hgulNm" class="form-control" />
+          <input type="text" name="name" class="form-control" />
         </div>
         <div class="form-group">
           <label class="label-control">
             <span class="label-text">생년월일</span>
           </label> 
-          <input type="password" name="mem_bir" id="mPswd" class="form-control" />
+          <input type="password" name="mem_bir" class="form-control" />
         </div>
         <input type="submit" value="인증하기" class="btn" />
         <input type="button" value="되돌아가기" class="btn"  />
        
     </form>
   </div>
+</body>
+</html>

@@ -72,7 +72,7 @@
 				<form name="frm" action="/alphanet/member/request3">
 					<div id="bd01_01">
 						<input type="hidden" name="mem_code" value="${mem_code}" />
-						<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
+<%-- 						<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/> --%>
 						<div class="tbl_type1">
 							<table
 								summary="자격증 발급 신청을 번호, 자격증취득 종목명, 최종합격일자, 발급구분, 발급수수료, 자격증번호 정보 제공 및 선택"
@@ -102,7 +102,7 @@
 										<c:when test="${viewData.qualifiCountPerPage > 0 }">
 											<c:forEach items="${viewData.qualifiList }" var="qualifi" varStatus="numbering">
 												<tr>
-													<td><input type="checkbox" name="choice${numbering.index }"	value="${qualifi.qualifi_certi_code}"
+													<td><input type="checkbox" name="choice" value="${qualifi.qualifi_certi_code}"
 														price="${qualifi.qualifi_certi_iss_pr}" onclick="check();"></td>
 													<td>${qualifi.qualifi_certi_code }</td>
 													<td>${qualifi.exkind_nm }</td>
