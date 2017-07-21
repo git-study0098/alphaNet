@@ -77,6 +77,15 @@
 	<bean id="adminQualifiService" 
 		class="com.last.common.service.AdminQualifiService"
 		p:adminDao-ref="adminQualifiDao" />
+		
+		
+	<bean id="adminExamDao" 
+		class="com.last.common.dao.AdminExamDAO"
+		p:client-ref="client" />
+
+	<bean id="adminExamService" 
+		class="com.last.common.service.AdminExamService"
+		p:adminExamDao-ref="adminExamDao" />
 	      
 <!-- 	<bean id = "memService" -->
 <!-- 	      class="com.last.common.service.MemberService" -->

@@ -11,6 +11,7 @@
   <sqlMap resource="com/last/db/sqlmap/i-Pds2.xml"/> 
   <sqlMap resource="com/last/db/sqlmap/i-Main.xml"/> 
   <sqlMap resource="com/last/db/sqlmap/i-Qualifi.xml"/> 
+  <sqlMap resource="com/last/db/sqlmap/i-Exam.xml"/> 
 <!--   <sqlMap resource="com/last/db/sqlmap/i-Notice3.xml"/> -->
 <!--   <sqlMap resource="com/last/db/sqlmap/i-Notice4.xml"/> -->
 <!--   <sqlMap resource="com/last/db/sqlmap/i-Notice5.xml"/> -->
