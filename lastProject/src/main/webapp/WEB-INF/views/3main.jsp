@@ -200,40 +200,7 @@ $(function(){
 				</form>
 				<div class="left">
 					<div id="loadTest">
-
-						<dl class="test_ing">
-							<dt>원서접수 중인 시험</dt>
-							<dd>
-
-								<div class="appPeriod">
-
-									<div class="rollBox">
-										<ul>
-
-											<li>
-												<ul>
-
-													<li><a
-														href="javascript:goHiddenChk('05','Q','2017','26','PL2017457026','Y2','20170703','S','Y', '2017년 제 26회 공인노무사 2,3차 동시', '1', 'nomu','A');">
-															<strong>2017년 제 26회 공인노무사 2,3차 동시</strong> <em>접수 :
-																2017. 07. 03 ~ 2017. 07. 12</em>
-													</a></li>
-
-													<li><a
-														href="javascript:goHiddenChk('45','Q','2017','14','PL2017459003','2','20170703','S','Y', '2017년 제 14회 농산물품질관리사 2차', '1', 'nongsanmul','A');">
-															<strong>2017년 제 14회 농산물품질관리사 2차</strong> <em>접수 :
-																2017. 07. 03 ~ 2017. 07. 12</em>
-													</a></li>
-
-												</ul>
-											</li>
-
-										</ul>
-									</div>
-								</div>
-
-							</dd>
-						</dl>
+				<jsp:include page="ingWonseo.jsp" />
 					</div>
 					<div class="auto_banner">
 						<!-- // class="play" 자동 플레이 상태  -->
