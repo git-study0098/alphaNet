@@ -1,17 +1,7 @@
 package com.last.login;
 
-import java.security.KeyFactory;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
 import java.security.Principal;
-import java.security.PrivateKey;
-import java.security.PublicKey;
-import java.security.spec.RSAPublicKeySpec;
-
-import javax.crypto.Cipher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,6 +9,9 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.last.common.vo.MemberVo;
 
 @Controller
 //@RequestMapping("login")
@@ -37,6 +30,103 @@ public class LoginController {
 		return "1main";
 	}
 	
+	@RequestMapping("loginForm")
+	public String loginForm(@RequestParam(value="id", defaultValue="")String findId, Model model){
+		model.addAttribute("findId",findId);
+		return "login/loginForm";
+	}
+	
+	@RequestMapping("login/findIdInput")
+	public String findIdInput(){
+		return "login/findIdInput";
+	}
+	@RequestMapping("login/findPwdInput")
+	public String findPwdInput(@RequestParam(value="idd")String idd, Model model){
+		model.addAttribute("idd",idd);
+		return "login/findIdInput";
+	}
+	
+	@RequestMapping("login/findIdForm")
+	public String findIdForm(){
+		return "login/findIdForm";
+	}
+	@RequestMapping("login/goFindId")
+	public String findId(@RequestParam(value="nm")String nm, @RequestParam(value="bir")String bir,
+			@RequestParam(value="ph")String ph, Model model){
+		
+		MemberVo member = new MemberVo();
+		member.setName(nm);
+		member.setMem_bir(bir);
+		member.setMem_phone(ph);
+		
+		MemberVo result = null;
+		try {
+			result = loginService.selectFindIdPwd(member);  // 잘못된 입력하면 500터진다?
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(result != null)
+		model.addAttribute("findId", result.getId());
+		
+		return "login/findIdAlert";
+	}
+	
+	@RequestMapping("login/findPwdForm")
+	public String findPwdForm(){
+		return "login/findPwdForm";
+	}
+	@RequestMapping("login/findPwd")
+	public String findPwd(){
+		return "login/findPwd";
+	}
+	@RequestMapping("login/goFindPwd")
+	public String findPwd(@RequestParam(value="nm")String nm, @RequestParam(value="bir")String bir, @RequestParam(value="idd")String idd,
+			@RequestParam(value="ph")String ph, Model model){
+		int result = 0;
+		String url ="login/findPwdForm";
+		MemberVo vo = new MemberVo();
+		
+		vo.setId(idd);
+		vo.setMem_bir(bir);
+		vo.setMem_phone(ph);
+		vo.setName(nm);
+		
+		try {
+			result = loginService.selectCorrect(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if(result == -1){
+			//틀렸을떄 알러창띄우고 싶다고!!!!!!!
+		}else if(result == 1){
+			url = "login/pwdReset";
+		}
+		
+		model.addAttribute("idd", idd);
+		model.addAttribute("nm", nm);
+		
+		return url;
+	}
+	
+	@RequestMapping("login/updatePwd")
+	public String updatePwd(@RequestParam(value="newPw")String newPw,@RequestParam(value="id")String id
+			,@RequestParam(value="nm")String nm,Model model){
+
+		String url = "login/loginForm";
+		System.out.println("업데이트 컨트롤러"+id+", "+newPw+", "+nm);
+		try {
+			System.out.println("쿼리들어간다~");
+			loginService.updatePwd(id, newPw);
+		} catch (SQLException e) {
+			System.out.println("업데이트 뻑남");
+			url = "login/pwdReset";
+			model.addAttribute("idd",id);
+			model.addAttribute("nm",nm);
+			e.printStackTrace();
+		}
+		
+		return url;
+	}
 	
 	
 	

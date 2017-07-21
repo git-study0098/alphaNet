@@ -26,6 +26,7 @@
 </style>
 
 <script>
+
 	$(document).ready(function(){
 		$('.btn_login').click(function(){
 			if($('#mem_id').val() == ""){
@@ -39,6 +40,10 @@
 				$('#loginForm').submit();
 			}
 		})
+		finId = '<c:out value="${findId}"/>';		
+		if(finId!=null && finId!=""){
+			$('#mem_id').val(finId);
+		}
 		
 	})
 </script>
@@ -72,13 +77,13 @@
 					<div class="pubcont login">
 						<div class="enter">
 							<div class="left">
-								<p><span><label for="mem_id">아이디</label></span><input type="text" id="mem_id" name="mem_id" style="width:203px"></p>
+								<p><span><label for="mem_id">아이디</label></span><input type="text" id="mem_id" name="mem_id" style="width:203px" value=""></p>
 								<p><span><label for="mem_pswd">비밀번호</label></span><input type="password" id="mem_pswd" name="mem_pswd" style="width:203px" maxlength="16"></p>
 							</div>
 							<div class="right">
 								<button class="btn_login"><span>로그인</span></button>
 							</div>
-							<p><a href="https://www.q-net.or.kr/man002.do?id=man00201&amp;gSite=Q&amp;gId=" class="golink01"><span style="font-size:13px">아이디 찾기/비밀번호 재설정</span></a></p>
+							<p><a href="<%=request.getContextPath()%>/login/findIdForm" class="golink01"><span style="font-size:13px">아이디 찾기/비밀번호 재설정</span></a></p>
 						</div>
 						<div class="info">
 							<p>공인인증서로 로그인을 하시려면 회원가입 후 로그인하여<br>공인인증서를 등록하셔야 합니다.</p>

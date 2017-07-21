@@ -47,5 +47,11 @@ public interface LoginDao {
 	 * @throws SQLException
 	 */
 	public int insertMember(MemberVo memberVo) throws SQLException;
+
+	public MemberVo selectFindIdPwd(MemberVo member) throws SQLException;
+
+	public MemberVo selectCorrect(MemberVo vo) throws SQLException;
+
+	public int updatePwd(String id, String newPw) throws SQLException;
 	
 }
