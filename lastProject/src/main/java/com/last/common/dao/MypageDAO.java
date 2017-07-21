@@ -43,7 +43,7 @@ public class MypageDAO {
 	 * @throws SQLException
 	 */
 	public List<StareCertifiVO> selectSchoolCerti(String mem_code)throws SQLException{
-		List<StareCertifiVO> selectSchoolCerti = (ArrayList<StareCertifiVO>) client.queryForObject("selectSchoolCerti", mem_code);
+		List<StareCertifiVO> selectSchoolCerti = (ArrayList<StareCertifiVO>) client.queryForList("selectSchoolCerti", mem_code);
 		return selectSchoolCerti;
 	}
 	
@@ -54,7 +54,7 @@ public class MypageDAO {
 	 * @throws SQLException
 	 */
 	public List<StareCertifiVO> selectCareerCerti(String mem_code)throws SQLException{
-		List<StareCertifiVO> vo = (ArrayList<StareCertifiVO>) client.queryForObject("selectCareerCerti", mem_code);
+		List<StareCertifiVO> vo = (ArrayList<StareCertifiVO>) client.queryForList("selectCareerCerti", mem_code);
 		return vo;
 	}
 }

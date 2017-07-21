@@ -35,16 +35,18 @@ public class AdminQualifiController {
 
 	@RequestMapping("/request1")
 	public String jagukRequest1(){
-		return "member/jaguk/jaguk_request1";
+		return "/jaguk_request1";
 	}
 	
 	
 	@RequestMapping("/member/request2")
-	public String jagukRequest2(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,
-			@RequestParam(value="mem_code") String mem_code)
+	public String jagukRequest2(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model)
 			throws SQLException{
 		
 		QualifiPagingVO viewData = null;
+		
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String mem_code = user.getUsername();
 		
 		try {
 			viewData = adminService.selectQualifiCertiList(pageNumber, mem_code);

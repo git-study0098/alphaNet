@@ -11,7 +11,7 @@
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
 		<div>
-		<jsp:include page="../../lnb/jagukLnb.jsp"/>
+		<jsp:include page="lnb/jagukLnb.jsp"/>
 		<!-- 좌측 메뉴바 끝-->
 		<div id="lnb2"></div>
 		</div>
@@ -126,14 +126,11 @@
 						</li>
 					</ul>
 				</div>
-<%
-			User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
-	      String id = user.getUsername();
-%>
+
 				<div id="LGD_ACTIVEX_DIV" align="center"></div>
 				<div class="btn_center mb40">
 					<a class="btn2 btncolor1"
-						href="<%=request.getContextPath() %>/member/request2?mem_code=<%=id %>"><span>발급신청</span></a>
+						href="<%=request.getContextPath() %>/member/request2"><span>발급신청</span></a>
 				</div>
 
 

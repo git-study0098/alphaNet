@@ -84,7 +84,7 @@
 						<li><a href="#"><span>전문자격</span></a></li>
 					</ul>
 				</div>
-				<form action="" name="form1" method="post">
+				<form action="<%=request.getContextPath() %>/member/selfTest" name="form1" method="post">
 <input type="hidden" name="mem_code" value="<%=id%>">
 				<div class="tabView" style="display: block;">
 					<div class="txt_left mb10">
@@ -99,7 +99,7 @@
 					<div id="viewList">
 					<div class="take_typelist type2 mb20">
 						<ul>
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="location.href='<%=request.getContextPath()%>/member/stareCertifi?mem_code=<%=id%>'"><span>정보처리기능사</span></a></li>
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="location.href='<%=request.getContextPath()%>/member/selfTest2?mem_code=<%=id%>'"><span>정보처리기능사</span></a></li>
 
 							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('2040')"><span>정보처리산업기사</span></a></li>
 

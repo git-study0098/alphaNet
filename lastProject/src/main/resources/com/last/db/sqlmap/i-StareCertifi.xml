@@ -14,7 +14,7 @@
 			sch_code_nm,
 			sch_major_nm 
 			from mem
-			where mem_code = #mem_code#;
+			where mem_code = #mem_code#
 	</select>
 	
 	<select id="selectCareerCerti" parameterClass="str" resultClass="stareCerti">
@@ -25,7 +25,11 @@
 			ca_work_bd,
 			ca_work_ed
 			from mem
-			where mem_code = #mem_code#;
+			where mem_code = #mem_code#
 	</select>
+	
+	<insert id="insertMemberCareer" parameterClass="stareCerti">
+		
+	</insert>
 		
 </sqlMap>

@@ -63,23 +63,4 @@ public class MemberMypageController {
 	public String changeImg(){
 		return "member/mypage/mypage_dnjstj4";
 	}	
-	
-	@RequestMapping("/member/stareCertifi")
-	public String stareMember(@RequestParam(value="mem_code")String mem_code, Model model){
-		List<StareCertifiVO> selectSchoolCerti = null; 
-		List<StareCertifiVO> selectCareerCerti = null; 
-		
-			try {
-				selectSchoolCerti = mypageService.selectSchoolCerti(mem_code);
-				selectCareerCerti = mypageService.selectCareerCerti(mem_code);
-				System.out.println(selectSchoolCerti.toString());
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		
-		model.addAttribute("mem_code", mem_code);
-		model.addAttribute("selectSchoolCerti", selectSchoolCerti);
-		model.addAttribute("selectCareerCerti", selectCareerCerti);
-		return "member/mypage/mypage_stareCertifi";
-	}	
 }
