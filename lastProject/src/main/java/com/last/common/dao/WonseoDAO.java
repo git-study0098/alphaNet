@@ -88,6 +88,15 @@ public class WonseoDAO {
 		return result;
 	}
 	
+	/**
+	 * 원서접수 중인 시험 불러오는 다오 메서드
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<WonseoInfoVo> selectWonseoList() throws SQLException{
+		List<WonseoInfoVo> selectWonseoList = (ArrayList<WonseoInfoVo>)client.queryForList("selectWonseoList");
+		return selectWonseoList;
+	}
 	
 	
 }
