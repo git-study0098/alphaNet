@@ -28,14 +28,14 @@ public class AdminPdsController {
 	@Autowired
 	private AdminPdsService adminPdsService;
 
-	public void setadminPdsService(AdminPdsService adminInfo1Service) {
+	public void setadminPdsService(AdminPdsService adminPdsService) {
 		this.adminPdsService = adminPdsService;
 	}
 
 
 	@RequestMapping("/admin/adminpdsRegist")
 	public String listpdsRegist() {
-		return "admin/board/pds/pds_registry";
+		return "admin/board/pds/pds1_registry";
 	}
 
 	// 사이트이용안내 리스트
@@ -43,7 +43,7 @@ public class AdminPdsController {
 	public String listpds(
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
 			Model model,
-			@RequestParam(value = "notice_code", defaultValue = "pds00001") String notice_code)
+			@RequestParam(value = "notice_code", defaultValue = "pds01") String notice_code)
 			throws SQLException, ServiceException {
 		PagingVO viewData = null;
 		try {
@@ -67,14 +67,14 @@ public class AdminPdsController {
 		return "/admin/board/pds/pds1_notice";
 	}
 
-	@RequestMapping(value = "/admin/pdsInsert", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
+	@RequestMapping(value = "/admin/pdsInsert", headers=("content-type=multipart/*"), method = RequestMethod.POST)
 	public String pdsInsert(HttpServletRequest request, Model model,
 			@RequestParam("f") MultipartFile multipartFile ,
 			@RequestParam(value="notice_code" , defaultValue="pds01")String pds){
-		String upload = request.getSession().getServletContext()
-				.getRealPath("upload");
-		String url = "redirect:pds";
 		
+		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
+		 String url ="redirect:pds";
+		 
 		 
 		 String str = multipartFile.getOriginalFilename();
 		 
@@ -87,30 +87,27 @@ public class AdminPdsController {
 		 }
 		 
 		 UUID uuid = UUID.randomUUID();
-	
-		if (!multipartFile.isEmpty()) {
-			File file = new File(upload, multipartFile.getOriginalFilename()
-					+ "$$" + System.currentTimeMillis());
-
-			try {
+		 
+	      if(!multipartFile.isEmpty()){
+	         File file= new File(upload, fileName[0]+uuid.toString()+"."+fileName[1]);
+	         
+	         try {
 				multipartFile.transferTo(file);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+	         
+	      }
 
-		}
-
-		System.out.println("성공");
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
-		vo.setEnroll_date(new Date(12));
 		vo.setNotice_code(adminPdsService.registNotice(pds));
 		vo.setNotice_content(request.getParameter("noticeContent"));
-		vo.setAttach_file(request.getParameter(fileName[0]+uuid.toString()+"."+fileName[1]));
-		// vo.setRegist_date(new Date(12));
+		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);
 		vo.setTitle(request.getParameter("title"));
+		vo.setEnroll_date(new Date(12));
 
 		model.addAttribute(vo);
 
@@ -148,9 +145,7 @@ public class AdminPdsController {
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
 		vo.setNotice_code(request.getParameter("noticeCode"));
-		vo.setEnroll_date(new Date(1000000));
 		vo.setNotice_content(request.getParameter("noticeContent"));
-		// vo.setRegist_date(new Date(1000000));
 		vo.setTitle(request.getParameter("title"));
 
 		model.addAttribute(vo);

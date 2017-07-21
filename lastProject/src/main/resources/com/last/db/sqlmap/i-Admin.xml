@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Admin">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="admin" type="com.last.common.vo.AdminVO" />
+	
+	<select id="selectAdmin" parameterClass="str" resultClass="admin">
+		select admin_code, manager_dep from admin where admin_code=#admin_code#
+	</select>
+	
+
+
+</sqlMap>

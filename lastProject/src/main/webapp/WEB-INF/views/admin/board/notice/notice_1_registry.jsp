@@ -1,6 +1,9 @@
 ﻿<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
+<%@page import="java.io.File"%>
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -72,7 +75,7 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-										placeholder="담당부서를 입력해주세요."
+										value="${admin}" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td><c:set var="now" value="<%=new java.util.Date()%>" />

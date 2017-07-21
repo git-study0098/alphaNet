@@ -1,14 +1,43 @@
 package com.last.admin.view2;
 
+
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.last.common.service.AdminService;
+import com.last.common.vo.AdminVO;
 
 @Controller
 public class AdminPage {
+	
+	@Autowired
+	private AdminService adminService;
+
+	public void setAdminService(AdminService adminService) {
+		this.adminService = adminService;
+	}
 
 	@RequestMapping("/admin/login/main2")
-	public String adminmain(){
+	public String adminmain(HttpSession session){
+		
+		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		String admin = user.getUsername();
+
+		AdminVO vo = null;
+		try {
+			vo = adminService.selectAdmin(admin);
+			session.setAttribute("admin", vo.getManager_dep());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return "admin/ad_main";
 	}
 	

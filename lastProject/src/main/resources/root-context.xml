@@ -6,6 +6,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		  
+		  
 	<bean id="adminNotice1Dao"
 		  class="com.last.common.dao.AdminNotice1DAO"
 		  p:client-ref="client"
@@ -28,19 +29,37 @@
 		  class="com.last.common.dao.AdminUseInfo1DAO"
 		  p:client-ref="client"
 	/>
+	<bean id="adminUseInfo1Service"
+		  class="com.last.common.service.AdminUseInfo1Service"
+		  p:adminDao-ref="adminUseInfo1Dao"/> 
 	
 	<bean id="adminPdsDao"
 		  class="com.last.common.dao.AdminPdsDAO"
 		  p:client-ref="client"
 	/>
 	
-	<bean id="adminUseInfo1Service"
-		  class="com.last.common.service.AdminUseInfo1Service"
-		  p:adminDao-ref="adminUseInfo1Dao"/> 
-		  
 	<bean id="adminPdsService"
 		  class="com.last.common.service.AdminPdsService"
 		  p:adminDao-ref="adminPdsDao"/> 
+		  
+	<bean id="adminDao"
+		  class="com.last.common.dao.AdminDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="adminService"
+		  class="com.last.common.service.AdminService"
+		  p:adminDao-ref="adminDao"/> 
+		  
+	<bean id="adminClientDao"
+		  class="com.last.common.dao.AdminClientDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="adminClientService"
+		  class="com.last.common.service.AdminClientService"
+		  p:adminClientDao-ref="adminClientDao"/> 
+		 
 	
 	<bean id="wonseoDao"
 		  class="com.last.common.dao.WonseoDAO"

@@ -36,27 +36,27 @@
 </style>
 
 <script>
-	function boardDelete3(){
-		location.href="<%=request.getContextPath() %>/admin/boardDelete3?notice_code=${vo.notice_code}";
+	function pdsDelete(){
+		location.href="<%=request.getContextPath() %>/admin/clientDelete?notice_code=${vo.notice_code}";
 	}
 </script>
 
 <article>
 	<div id="page-wrapper">
 		<div id="page-inner">
-			<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
 			<div class="row">
 				<div class="col-md-12">
-					<h2>공지사항</h2>
+					<h2>자료실</h2>
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" action="boardUpdate3"
-				enctype="multipart/form-data" >
+			<form style="display: inline" action="clientUpdate"
+				enctype="multipart/form-data">
 				<input type="hidden" name="noticeCode" value="${vo.notice_code}">
 				<div>
 					<div class="tbl_type2 leftPd">
-						<table summary="공지사항 게시글 보기를 물건구분, 물품명, 지사, 등록일자, 시험장 정보제공">
+						<table summary="사이트 이용안내 소개">
+							<caption>사이트 이용안내 게시글 보기</caption>
 							<colgroup>
 								<col width="12%">
 								<col width="*">
@@ -65,13 +65,25 @@
 								<col width="12%">
 								<col width="20%">
 							</colgroup>
-							<!-- 									관리자용  세션아이디로 비교하세요 -->
 							<tbody>
 								<tr>
-									<th scope="row">제목</th>
+									<th scope="row">질문</th>
 									<td colspan="5"><input name="title" type="text"
 										value="${vo.title}"
 										style="width: 95%; background-color: #ffffff;"></td>
+								</tr>
+								<tr>
+									<div class="form-group">
+										<label class="col-md-2 control-label">분류</label> <span
+											style="padding: 5px; margin: 5px;"> <select
+											style="width: 150px;">
+												<option >자격시험</option>
+												<option >평생능력개발</option>
+												<option >국가직무능력표준</option>
+												<option >경영지원</option>
+										</select>
+										</span>
+									</div>
 								</tr>
 								<tr>
 									<th scope="row">담당부서</th>
@@ -79,33 +91,42 @@
 										value="${admin}" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
-									<td><c:set var="now" value="<%=new java.util.Date()%>" />
-										<input name="registDate" value="${vo.regist_date}" /></td>
-									<th scope="row">최종수정일</th>
-									<td><c:set var="now" value="<%=new java.util.Date()%>" />
-										<input name="enrollDate"
-										value="<fmt:formatDate value="${now}" pattern="yy/MM/dd" />" /></td>
+									<td>
+										<%-- 									<c:choose> --%> <%-- 										<c:when test="${!empty '${date.enrollDate}'}"> --%>
+										<%-- 											<input name="enrolldate" value="${date.registDate}" readonly="readonly"/> --%>
+										<%-- 										</c:when> --%> <%-- 										<c:otherwise> --%>
+										<c:set var="now" value="<%=new java.util.Date()%>" /> <input
+										name="registDate" value="${vo.enroll_date}"
+										readonly="readonly" /> <%-- 										</c:otherwise> --%> <%-- 									</c:choose> --%>
+									</td>
+
 								</tr>
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5"><a href="#" class="btn3_icon download"><input
-											type="file"></a></td>
+									<td colspan="5">
+										<a href="#" class="btn3_icon download"><input type="file"></a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row">기존 첨부파일</th>
+									<td colspan="5">
+										<a href="#"><span style="width: 95%; margin-bottom:10px;">${vo.attach_file}</span></a>
+									</td>
 								</tr>
 								<tr>
 									<td colspan="6"><textarea name="noticeContent"
 											id="contents_text" style="width: 100%;" rows="10">
-																	${vo.notice_content}
-													</textarea></td>
+										${vo.notice_content}
+									</textarea></td>
 								</tr>
 							</tbody>
-
 						</table>
 					</div>
 					<p class="txt_right">
 						<input type="submit" class="btn btncolor1" value="수정"
 							style="color: #ffffff"/> 
 							<input type="button" class="btn btncolor2" value="삭제"
-							onclick="boardDelete3()" style="color: #ffffff" />
+							onclick="pdsDelete()" style="color: #ffffff" />
 					</p>
 				</div>
 			</form>

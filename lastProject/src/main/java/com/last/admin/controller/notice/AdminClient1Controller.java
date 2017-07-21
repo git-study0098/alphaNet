@@ -17,48 +17,45 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.last.common.service.AdminNotice1Service;
+import com.last.common.service.AdminClientService;
 import com.last.common.service.ServiceException;
 import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
 
 @Controller
-public class AdminNotice2Controller {
+public class AdminClient1Controller {
 
 	@Autowired
-	private AdminNotice1Service adminNotice1Service;
+	private AdminClientService adminClientService;
 
-	public void setAdminNotice1Service(AdminNotice1Service adminNotice1Service) {
-		this.adminNotice1Service = adminNotice1Service;
+	public void setAdminClientService(AdminClientService adminClientService) {
+		this.adminClientService = adminClientService;
 	}
 
-	@RequestMapping("/admin/adminRegist2")
-	public String listRegist2() {
-		return "admin/board/notice/notice_2_registry";
+	@RequestMapping("/admin/clientRegist")
+	public String listclientRegist() {
+		return "admin/board/client/client1_registry";
 	}
 
-	// 자격제도
-	@RequestMapping("/admin/notice2")
-	public String listNotice(
+	// 사이트이용안내 리스트
+	@RequestMapping("/admin/client")
+	public String listclient(
 			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
 			Model model,
-			@RequestParam(value = "notice_code", defaultValue = "notice02") String notice_code)
+			@RequestParam(value = "notice_code", defaultValue = "client01") String notice_code)
 			throws SQLException, ServiceException {
 		PagingVO viewData = null;
 		try {
-			viewData = adminNotice1Service.selectNotice1List(pageNumber,
-					notice_code);
+			viewData = adminClientService.selectNotice1List(pageNumber,notice_code);
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
-
 		if (viewData.getNotice1List().isEmpty()) {
 			pageNumber--;
 			if (pageNumber <= 0)
 				pageNumber = 1;
 			try {
-				viewData = adminNotice1Service.selectNotice1List(pageNumber,
-						notice_code);
+				viewData = adminClientService.selectNotice1List(pageNumber,notice_code);
 			} catch (ServiceException e) {
 				e.printStackTrace();
 			}
@@ -66,59 +63,56 @@ public class AdminNotice2Controller {
 
 		model.addAttribute("viewData", viewData);
 		model.addAttribute("pageNumber", pageNumber);
-
-		return "admin/board/notice/admin_notice2";
+		return "/admin/board/client/client1_notice";
 	}
 
-	@RequestMapping(value = "/admin/boardInsert2", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
-	public String boardInsert(
-			HttpServletRequest request,
-			Model model,
-			@RequestParam("f") MultipartFile multipartFile,
-			@RequestParam(value = "notice_code", defaultValue = "notice02") String notice) {
-
-		String upload = "C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
-		String url = "redirect:notice2";
-
-		String str = multipartFile.getOriginalFilename();
-
-		StringTokenizer tokens = new StringTokenizer(str, ".");
-		String[] fileName = { "1", "txt" };
-		int i = 0;
-		while (tokens.hasMoreTokens()) {
-			fileName[i] = tokens.nextToken();
-			i++;
-		}
-
-		UUID uuid = UUID.randomUUID();
-
-		if (!multipartFile.isEmpty()) {
-			File file = new File(upload, fileName[0] + uuid.toString() + "."
-					+ fileName[1]);
-
-			try {
+	@RequestMapping(value = "/admin/clientInsert", headers=("content-type=multipart/*"), method = RequestMethod.POST)
+	public String clientInsert(HttpServletRequest request, Model model,
+			@RequestParam("f") MultipartFile multipartFile ,
+			@RequestParam(value="notice_code" , defaultValue="clinet01")String client){
+		
+		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
+		 String url ="redirect:client";
+		 
+		 
+		 String str = multipartFile.getOriginalFilename();
+		 
+		 StringTokenizer tokens = new StringTokenizer( str, "." );
+		 String[] fileName = {"1","txt"};
+		 int i=0;
+		 while(tokens.hasMoreTokens()){
+			 fileName[i] = tokens.nextToken();
+			 i++;
+		 }
+		 
+		 UUID uuid = UUID.randomUUID();
+		 
+	      if(!multipartFile.isEmpty()){
+	         File file= new File(upload, fileName[0]+uuid.toString()+"."+fileName[1]);
+	         
+	         try {
 				multipartFile.transferTo(file);
 			} catch (IllegalStateException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
-		}
+	         
+	      }
 
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
-		vo.setNotice_code(adminNotice1Service.registNotice(notice));
+		vo.setNotice_code(adminClientService.registNotice(client));
 		vo.setNotice_content(request.getParameter("noticeContent"));
 		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);
-		vo.setRegist_date(new Date(12));
 		vo.setTitle(request.getParameter("title"));
+		vo.setEnroll_date(new Date(12));
 
 		model.addAttribute(vo);
 
 		int result = 0;
 		try {
-			result = adminNotice1Service.insertNotice1(vo);
+			result = adminClientService.insertNotice1(vo);
 			System.out.println(result);
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -127,14 +121,14 @@ public class AdminNotice2Controller {
 		return url;
 	}
 
-	@RequestMapping("/admin/boardUpdateForm2")
-	public String boardUpdate(
+	@RequestMapping("/admin/clientUpdateForm")
+	public String clientUpdate(
 			@RequestParam(value = "notice_code") String noticeCode, Model model) {
-		String url = "admin/board/notice/notice_2_update";
+		String url = "admin/board/client/client1_update";
 
 		Notice1VO vo = null;
 		try {
-			vo = adminNotice1Service.selectNoticeCodeList(noticeCode);
+			vo = adminClientService.selectNoticeCodeList(noticeCode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -143,22 +137,21 @@ public class AdminNotice2Controller {
 		return url;
 	}
 
-	@RequestMapping("/admin/boardUpdate2")
-	public String boardUpdate(HttpServletRequest request, Model model) {
-		String url = "redirect:notice2";
+	@RequestMapping("/admin/clientUpdate")
+	public String clientUpdate(HttpServletRequest request, Model model) {
+		String url = "redirect:client";
 		System.out.println("성공");
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
 		vo.setNotice_code(request.getParameter("noticeCode"));
-		vo.setEnroll_date(new Date(1000000));
 		vo.setNotice_content(request.getParameter("noticeContent"));
-		vo.setRegist_date(new Date(1000000));
 		vo.setTitle(request.getParameter("title"));
+		vo.setNotice_kind(request.getParameter("notice_kind"));
 
 		model.addAttribute(vo);
 
 		try {
-			adminNotice1Service.updateNotice1(vo);
+			adminClientService.updateNotice1(vo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -167,16 +160,16 @@ public class AdminNotice2Controller {
 	}
 
 	// 삭제 실행시켜주는 화면
-	@RequestMapping("/admin/boardDelete2")
-	public String boardDelete(
+	@RequestMapping("/admin/clientDelete")
+	public String clientDelete(
 			@RequestParam(value = "notice_code") String noticeCode) {
-		String url = "redirect:notice2";
+		String url = "redirect:client";
 		System.out.println(noticeCode);
 		System.out.println("삭제");
 		Notice1VO vo = new Notice1VO();
 		System.out.println(vo.getNotice_code());
 		try {
-			adminNotice1Service.deleteNotice1(noticeCode);
+			adminClientService.deleteNotice1(noticeCode);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
