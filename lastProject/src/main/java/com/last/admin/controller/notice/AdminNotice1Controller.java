@@ -106,7 +106,7 @@ public class AdminNotice1Controller {
 	      }
 	      
 		Notice1VO vo = new Notice1VO();
-		vo.setAdmin_code(request.getParameter("adminCode"));
+		vo.setAdmin_code("ADM001");
 		vo.setNotice_code(adminNotice1Service.registNotice(notice));
 		vo.setNotice_content(request.getParameter("noticeContent"));
 		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);

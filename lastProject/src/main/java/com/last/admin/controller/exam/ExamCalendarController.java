@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.admin.controller.exam;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -21,7 +21,7 @@ public class ExamCalendarController {
 		this.memDao = memDao;
 	}
 
-	@RequestMapping("/im")
+	@RequestMapping("/calender")
 	public String im(Model model){
 		List<CalendarVO> calList = null;
 		try {
