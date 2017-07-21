@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.admin.controller.exam;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -38,8 +38,9 @@ public class AdminExamController {
 		String exkind_homepage = req.getParameter("exkind_homepage");
 		
 		ExkindVO vo = new ExkindVO();
+		String exkind_code = com1+com;
 		
-		vo.setExkind_code(com+com1);
+		vo.setExkind_code(exkind_code);
 		vo.setExkind_nm(exkind_nm);
 		vo.setExkind_wr_pay_pr(exkind_wr_pay_pr);
 		vo.setExkind_pr_pay_pr(exkind_pr_pay_pr);
@@ -52,7 +53,6 @@ public class AdminExamController {
 		String wsu4 = req.getParameter("wsu4");
 		String wsu5 = req.getParameter("wsu5");
 		
-		String exkind_code = com+com1;
 		
 		String psu1 = req.getParameter("psu1");
 		String psu2 = req.getParameter("psu2");
