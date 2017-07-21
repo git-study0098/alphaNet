@@ -143,13 +143,6 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-md-2 control-label">100%환불 가능 시작일</label>
-					<div class="col-md-5">
-						<input class="form-control" type="date"
-							placeholder="17/01/01형식으로 입력하세요">
-					</div>
-				</div>
-				<div class="form-group">
 					<label class="col-md-2 control-label">응시자수</label>
 					<div class="col-md-5">
 						<input class="form-control" type="text" name="">
