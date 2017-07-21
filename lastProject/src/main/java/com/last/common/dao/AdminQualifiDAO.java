@@ -65,5 +65,10 @@ public class AdminQualifiDAO {
 		return selectMemAuth;
 	}
 	
+	public int selectCertiPrice(String qualifi_certi_code) throws SQLException{
+		int result = (Integer)client.queryForObject("selectCertiPrice",qualifi_certi_code);
+		return result;
+	}
+	
 	
 }

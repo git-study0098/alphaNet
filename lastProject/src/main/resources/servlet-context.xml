@@ -29,6 +29,7 @@
 	<view-controller view-name="login/login_duplicate" path="/login_duplicate"/>
 	<view-controller view-name="sign_up" path="/signUp"/>
 	
+	
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 

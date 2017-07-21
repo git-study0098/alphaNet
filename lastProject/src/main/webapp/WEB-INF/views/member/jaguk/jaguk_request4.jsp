@@ -11,8 +11,9 @@ pageEncoding="UTF-8"%>
 %>
 
 <script>
- function setDlvr1(obj){
-	 if(!obj.checked)return;
+ 
+ //제이쿼리
+ $(function(){
 	 
 	 <%-- 우편번호 --%>
 	 var zip01          = document.getElementById("zip01");        
@@ -32,12 +33,21 @@ pageEncoding="UTF-8"%>
 	 <%-- 나머지 주소  --%>
 	 var dlvrPlcAddrDtl         = document.getElementById("dlvrPlcAddrDtl");
 	 
-	 zip01_1.value = zip01.value;
-	 dlvrPlcAddr.value = addr01.value;
-	 dlvrPlcAddrTownBldNm.value = resdTownBldNm.value;
-	 dlvrPlcAddrDtl.value = addr02.value;
-	 
- }
+	 $("#dlvrSet1").change(function(){
+		
+		 if($("#dlvrSet1").is(":checked")){
+			 zip01_1.value = zip01.value;
+			 dlvrPlcAddr.value = addr01.value;
+			 dlvrPlcAddrTownBldNm.value = resdTownBldNm.value;
+			 dlvrPlcAddrDtl.value = addr02.value;
+		 }else{
+			 zip01_1.value = "";
+			 dlvrPlcAddr.value = "";
+			 dlvrPlcAddrTownBldNm.value = "";
+			 dlvrPlcAddrDtl.value = "";
+		 }
+	 })
+ })
  
  
  
@@ -73,10 +83,14 @@ pageEncoding="UTF-8"%>
  	}
  }
 
- 
  function goRequest6(){
-	 location.href="<%=request.getContextPath()%>/member/request6";
+	 location.href="<%=request.getContextPath()%>/member/request6?mem_code=${mem_code}&choice=${choice}&dlvrHhCautionMatt="+$('#dlvrHhCautionMatt').val();
  }
+ 
+ 
+ 
+ 
+ 
  
 </script>
 
@@ -126,7 +140,10 @@ pageEncoding="UTF-8"%>
 <input type="hidden" name="mem_nm" value="${mem_nm }">
 <input type="hidden" name="reg_num1" value="${reg_num1} ">
 <input type="hidden" name = "mem_code" value="${mem_code}"/>
+<input type="hidden" name = "choice" value="${choice}"/>
+<input type="hidden" name = "qualifi_certi_iss_pr" value="${price}"/>
 <input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
+
 
 					<div class="tbl_normal isr_app">
 						<p class="txt_right mb10">
@@ -186,7 +203,7 @@ pageEncoding="UTF-8"%>
 										<strong	class="fc_r" title="필수">*</strong>
 									</th>
 									<td colspan="2">
-										<input type="text" id="abdTel" class="numInput2" title="전화번호 입력" name="abdTel" style="width: 100px ;" maxlength="13">
+										<input type="text" id="abdTel" class="numInput2" title="전화번호 입력" name="abdTel" style="width: 100px ;" maxlength="13" value="${viewData.mem_phone}">
 										<span class="txt_add">(예 : 02-111-1111)</span>
 									</td>
 								</tr>
@@ -261,7 +278,7 @@ pageEncoding="UTF-8"%>
 												<button type="button" class="btn3_type1" name="addrPop" id="02" title="주소 검색">
 													<span>주소검색</span>
 												</button> 
-											<input type="checkbox" id="dlvrSet1" title="(배송지 주소)상동"	value="" onclick="javascript:setDlvr1(this);"> 
+											<input type="checkbox" id="dlvrSet1"  name="dlvrSet1"  title="(배송지 주소)상동"	value="" > 
 											<label for="dlvrSet1">상동</label>											
 											</span> 
 											
@@ -292,9 +309,9 @@ pageEncoding="UTF-8"%>
 										</div>
 										<div>
 											<span class="txt_addr"><label for="dlvrHhCautionMatt">배송
-													시 유의사항</label></span> <input type="text" name="dlvrHhCautionMatt"
+													시 유의사항</label></span> <input type="text" name="dlvrHhCautionMatt" id="dlvrHhCautionMatt"
 												title="배송시 유의사항" style="width: 430px; margin-top: 5px"
-												value="예) 부재시 옆집에 맡겨 주십시오." onclick="setDhcm();"
+												placeholder="예) 부재시 옆집에 맡겨 주십시오." onclick="setDhcm();" value=""
 												maxlength="100">
 											<p>※ 신청인과 수령인이 다를 경우 수령인 성명 반드시 기재</p>
 										</div>
@@ -335,9 +352,9 @@ pageEncoding="UTF-8"%>
 								<tr>
 									<th scope="row">현 근무처 <strong class="fc_r" title="필수">*</strong></th>
 									<td colspan="4"><span> 
-										<input type="radio"	id="jobY" name="workAreaInputYn" onclick="setWorkArea('1');" checked=""> 
+										<input type="radio"	id="jobY" name="workAreaInputYn" onclick="setWorkArea('1');" checked="" value="Y"> 
 										<label for="jobY" class="mr10">있음</label>
-										<input type="radio" id="jobN" name="workAreaInputYn" onclick="setWorkArea('0');"> 
+										<input type="radio" id="jobN" name="workAreaInputYn" onclick="setWorkArea('0');" value="N"> 
 										<label for="jobN">없음</label>
 									</span></td>
 								</tr>
@@ -367,31 +384,31 @@ pageEncoding="UTF-8"%>
 												010-1111-1111)</span>
 										</div>
 										<div>
-											<span class="txt_addr"><label for="wrkArZip_1">우편번호
-													입력</label></span> <input type="text" id="wrkArZip_1" name="wrkArZip_1"
-												maxlength="5" class="form_short numInput"
-												readonly="readonly" title="우편번호 앞자리" value="" style="margin-top: 5px"> <span
-												id="selfSpanNo3">
-												<button type="button" class="btn3_type1" name="addrPop"
-													id="03" title="주소검색" style="margin-top: 5px">
-													<span>주소검색</span>
-												</button>
+<!-- 											<span class="txt_addr"><label for=​"wrkArZip_1">우편번호 -->
+<!-- 													입력</label></span> <input type="text" id="wrkArZip_1" name="wrkArZip_1" -->
+<!-- 												maxlength="5" class="form_short numInput" -->
+<!-- 												readonly="readonly" title="우편번호 앞자리" value="" style="margin-top: 5px"> <span -->
+<!-- 												id="selfSpanNo3"> -->
+<!-- 												<button type="button" class="btn3_type1" name="addrPop" -->
+<!-- 													id="03" title="주소검색" style="margin-top: 5px"> -->
+<!-- 													<span>주소검색</span> -->
+<!-- 												</button> -->
 
-											</span> <span id="selfSpanOk3" style="display: none">
-												<button type="button" class="btn3_type2"
-													onclick="selfAddrFn3('NO');" title="주소 직접입력 취소">
-													<span>주소 직접입력 취소</span>
-												</button>
-											</span>
+<!-- 											</span> <span id="selfSpanOk3" style="display: none"> -->
+<!-- 												<button type="button" class="btn3_type2" -->
+<!-- 													onclick="selfAddrFn3('NO');" title="주소 직접입력 취소"> -->
+<!-- 													<span>주소 직접입력 취소</span> -->
+<!-- 												</button> -->
+<!-- 											</span> -->
 										</div>
 										<div>
-											<span class="txt_addr"><label for="wrkArAddr">주소</label></span>
-											<input type="text" id="wrkArAddr" name="wrkArAddr"
-												class="member_addr1" readonly="readonly" title="주소입력"
-												value="" style="margin-top: 5px;"> <input type="text"
-												id="workAreaAddrTownBldNm" name="workAreaAddrTownBldNm"
-												style="width: 205px; margin-top: 5px;" class="member_addr2" title="주소 입력"
-												readonly="readonly" value="" maxlength="200">
+<!-- 											<span class="txt_addr"><label for="wrkArAddr">주소</label></span> -->
+<!-- 											<input type="text" id="wrkArAddr" name="wrkArAddr" -->
+<!-- 												class="member_addr1" readonly="readonly" title="주소입력" -->
+<!-- 												value="" style="margin-top: 5px;"> <input type="text" -->
+<!-- 												id="workAreaAddrTownBldNm" name="workAreaAddrTownBldNm" -->
+<!-- 												style="width: 205px; margin-top: 5px;" class="member_addr2" title="주소 입력" -->
+<!-- 												readonly="readonly" value="" maxlength="200"> -->
 										</div>
 										<div>
 											<span class="txt_addr"><label for="wrkArAddrDtl">나머지
@@ -522,7 +539,7 @@ pageEncoding="UTF-8"%>
 							<tr>
 								<th scope="row"><label for="charge_01">발급수수료</label></th>
 								<td class="bootstrap_delete">
-									<input type="text" id="charge_01" class="txt_right fc_6" title="발급 수수료 금액" style="width: 90px" value="3,100" readonly="readonly">원
+									<input type="text" id="charge_01" class="txt_right fc_6" title="발급 수수료 금액" style="width: 90px" value="${price}" readonly="readonly">원
 								</td>
 								<th scope="row"><label for="charge_02">배송비</label></th>
 								<td class="bootstrap_delete"> 
@@ -530,7 +547,7 @@ pageEncoding="UTF-8"%>
 								</td>
 								<th scope="row"><p class="txt_right"><label for="charge_03"><strong>결제 금액</strong></label></p></th>
 								<td class="bootstrap_delete">
-									<input type="text" id="charge_03" class="txt_right fc_6" title="결제 금액" style="width: 90px" value="5,440" readonly="readonly">원
+									<input type="text" id="charge_03" class="txt_right fc_6" title="결제 금액" style="width: 90px" value="${price+2340}" readonly="readonly">원
 								</td>
 							</tr>
 						</tbody>
@@ -556,10 +573,49 @@ pageEncoding="UTF-8"%>
 <!-- 					</div> -->
 					<script>
 						function go_request5(){ 
+							//유효성완료
+							var ph =document.getElementById("abdTel").value; //전화번호
+							var ph2 =document.getElementById("mphoneNo").value; //핸드폰번호
+							var add1 =document.getElementById("zip01").value; //실제주소우편번호
+							var add2 =document.getElementById("addr01").value; //실제주소주소 
+							var goAdd =document.getElementById("zip01_1").value; //배송우편번호
+							var goAdd2 =document.getElementById("dlvrPlcAddr").value; //배송주소
+							var studyCre =document.getElementById("lastEuhistCcd").value; //학력
+							var studyCol =document.getElementById("major").value; //학과
+							var jobY = $("input[type=radio][name=workAreaInputYn]:checked").val();
+							var jobNm =document.getElementById("wrkAr").value; //현근무처명
+							var jobDate =document.getElementById("MOD_DATE_1").value; //근무입사일
+							var jobPh =document.getElementById("compTel").value; //근무전화번호
+// 							var jobadd =document.getElementById("wrkArZip_1").value; //근무처우편번호
 							
-							window.open('<%=request.getContextPath()%>/request5?mem_code=${mem_code}&mem_nm=${viewData.mem_nm }&reg_num1=${viewData.reg_num1}','본인확인 인증','width=500px,height=250px,left=750px,top=350px'); 
- 						} 
-					</script> 
+							alert(jobY);
+							
+							
+							if(ph==""){
+								alert("전화번호를 입력해주세요")
+							}else if(ph2 ==""){
+								alert("핸드폰번호를 입력해주세요")
+							
+							}else if(add1 =="" && add2 ==""){
+								alert("실제주소를 등록해주세요")
+							
+							}else if(goAdd =="" && goAdd2 ==""){
+								alert("배송지수조를 등록해주세요")
+							
+							}else if(studyCol =="" && studyCre==""){
+								alert("학력과 학과를 선택/입력해주세요")
+							}else if(jobY =='Y'){
+								if(jobNm =="" ||jobDate==""||jobPh==""||jobadd=="" ){
+									alert("근무처의 정보를 입력해주세요")
+								}
+							}else if(jobY == 'N'){
+							window.open('<%=request.getContextPath()%>/member/request5?mem_code=${mem_code}&mem_nm=${viewData.mem_nm }&reg_num1=${viewData.reg_num1}','본인확인 인증','width=500px,height=250px,left=750px,top=350px'); 
+								
+							}
+						}window.open('<%=request.getContextPath()%>/member/request5?mem_code=${mem_code}&mem_nm=${viewData.mem_nm }&reg_num1=${viewData.reg_num1}','본인확인 인증','width=500px,height=250px,left=750px,top=350px');								
+						
+						
+					</script>
 
 					<div class="btn_center mb40 ">
 						<button type="button" class="btn2 btncolor1" onclick="history.go(-1)"><span>이전</span></button>

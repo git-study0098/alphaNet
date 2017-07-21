@@ -12,10 +12,16 @@ public class QualifiMemberVO {
 	private String mem_add2;
 	private String mem_add3;
 	private String mem_photo;
+	private String mem_email;
+
 	
 	
-	
-	
+	public String getMem_email() {
+		return mem_email;
+	}
+	public void setMem_email(String mem_email) {
+		this.mem_email = mem_email;
+	}
 	public String getMem_code() {
 		return mem_code;
 	}

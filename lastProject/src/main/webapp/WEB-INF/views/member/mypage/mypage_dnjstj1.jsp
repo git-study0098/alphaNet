@@ -1,6 +1,16 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.userdetails.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<%
+	User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
+	String id = user.getUsername();
+
+%>
 <style>
 	* {	box-sizing: content-box;}
 	
@@ -92,17 +102,37 @@
 					<table summary="진행중인 응시시험 원서 접수 내역 없음">
 						<caption>진행중인 원서 접수내역</caption>
 						<colgroup>
-							<col width="100%"> <!-- th -->
+							<col width="25%">
+							<col width="25%">
+							<col width="25%">
+							<col width="25%">
 						</colgroup>
 						<thead>
 							<tr>
-								<th scope="col">응시시험</th>
+								<th scope="col">시험일</th>
+								<th scope="col">시험명</th>
+								<th scope="col">종목명</th>
+								<th scope="col">수험번호</th>
 							</tr>
 						</thead>
 						<tbody>
+						<c:choose>
+							<c:when test="${not empty selectStareList }">
+							<c:forEach items="${selectStareList}" var="stare">
+								<tr>
+									<td>${stare.stare_date }</td>
+									<td>${stare.em_nm }</td>
+									<td>${stare.exkind_nm }</td>
+									<td>${stare.stare_code }</td>
+								</tr>
+								</c:forEach>
+								</c:when>
+							<c:otherwise>
 							<tr>
 								<td class="noData">진행중인 접수 내역이 없습니다.</td>
 							</tr>
+							</c:otherwise>
+						</c:choose>
 						</tbody>
 					</table>
 				</div>
@@ -131,7 +161,7 @@
 					<input type="hidden" name="repreRecptNo">
 					
 					<input type="hidden" name="prepareFiag">
-					<input type="hidden" name="implId">
+					<input type="hidden" name="implId" value=${id }>
 					<input type="hidden" name="jmCd">
 					<input type="hidden" name="selfldCd">
 					<input type="hidden" name="implsysCd">

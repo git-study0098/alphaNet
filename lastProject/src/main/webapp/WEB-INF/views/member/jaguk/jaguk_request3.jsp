@@ -58,10 +58,12 @@
 					선택한 자격내역(<strong>1건</strong>)은 아래와 같습니다.
 				</p>
 
-			<form name="frm" action="/alphanet/member/request4">
+			<form name="frm" action="/alphanet/member/request4?">
 				<div id="bd01_01">
 					<input type="hidden" name = "mem_code" value="${mem_code}"/>
 					<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
+<%-- 					<input type="hidden" name = "choice" value="${choice}"/> --%>
+					
 					<div class="tbl_type1">
 
 						<table summary="자격증번호, 자격증취득 종목명, 필기합격일자, 최종합격일자, 발급구분, 발급수수료 정보 제공">
@@ -86,7 +88,7 @@
 								<tbody>
 									<c:forEach items="${viewData2}" var="qualifi" varStatus="numbering">
 										<tr> 
-										<input type="hidden" name="choice${numbering.index}" value="${qualifi.qualifi_certi_code}">
+										<input type="hidden" name="choice" value="${qualifi.qualifi_certi_code}">
 											<td>${qualifi.qualifi_certi_code }</td>
 											<td>${qualifi.exkind_nm }</td>
 											<td>${qualifi.written_pass_date }</td>

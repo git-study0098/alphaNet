@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true"%>  
+<%@ page trimDirectiveWhitespaces="true"%>
+<%@ page import="com.last.util.SystemUtils" %>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 	.qnet.main #container{background:url(<%=request.getContextPath()%>/resources/images/main/bg_container.gif) repeat-x left top;}	
@@ -385,4 +386,4 @@ $(function(){
 		</div>	
 </div>
 </article>
-	
+<%=SystemUtils.displayJspID(request)%>
