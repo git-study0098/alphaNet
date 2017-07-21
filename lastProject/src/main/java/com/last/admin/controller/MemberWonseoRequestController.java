@@ -107,6 +107,18 @@ public class MemberWonseoRequestController {
 		return "member/wonseo/wonseo_func_place";
 	}
 	
+	//꺽은선 차트
+	@RequestMapping("/chart")
+	public String chart(){
+		return "member/wonseo/graph/chart";
+	}
+	
+	//3d 차트
+	@RequestMapping("/chart2")
+	public String chart2(){
+		return "member/wonseo/graph/chart2";
+	}
+	
 	
 	
 	@RequestMapping("/member/wonseoReq")
