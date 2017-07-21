@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.member.mypage;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

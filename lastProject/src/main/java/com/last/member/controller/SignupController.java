@@ -96,7 +96,7 @@ public class SignupController {
 		vo.setId(request.getParameter("id"));
 		vo.setPwd(request.getParameter("mem_pwd"));
 		vo.setName(request.getParameter("name"));
-		vo.setMem_bir(year+"/"+month+"/"+day);
+		vo.setMem_bir(year+month+day);
 		if(school == null){
 			vo.setSch_code("SCH2"); // 대덕대학교			 
 		}else{

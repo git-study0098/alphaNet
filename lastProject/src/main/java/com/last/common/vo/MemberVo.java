@@ -8,6 +8,7 @@ public class MemberVo {
 	private String pwd;
 	private String name;
 	private String mem_enName;
+	private String mem_ph;
 	
 	//회원가입 사용//
 	private String mem_phone;

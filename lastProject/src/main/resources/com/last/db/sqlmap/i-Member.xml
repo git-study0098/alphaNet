@@ -85,11 +85,19 @@
 			from numg n,em_info t
 			where numg_code = t.em_numg_code
 	</select>
-	
-	
+		
 	<select id="selectSchool" resultClass="member">
 		select * from sch
 	</select>
+	
+	<update id="updateMember" parameterClass="member">
+		update mem set mem_photo=#mem_photo#,mem_pwd=#pwd#,mem_phone =#mem_phone#,mem_email =#mem_email#,mem_add1=#mem_add1#,mem_add2=#mem_add2#,mem_add3=#mem_add3#,mem_add4=#mem_add4#,mem_post_numb1=#mem_post_numb1#,mem_post_numb2=#mem_post_numb2# 
+		where mem_code  = #id#		
+	</update>
+	
+	
+	
+	
 <!-- 	<select id="selectMemberList" parameterClass="str" resultClass="member"> -->
 <!-- 		select * from member where id like '%'||#id#||'%' -->
 <!-- 	</select> -->

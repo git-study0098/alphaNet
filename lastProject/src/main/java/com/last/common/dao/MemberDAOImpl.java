@@ -1,7 +1,12 @@
 package com.last.common.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.print.attribute.HashAttributeSet;
+
+import oracle.net.aso.p;
 
 import com.last.common.vo.CalendarVO;
 import com.last.common.vo.MemberVo;
@@ -96,6 +101,24 @@ public class MemberDAOImpl extends MemberDAO{
 		
 		MemberVo member = (MemberVo) client.queryForObject("selectMember" ,id);
 		return member;
+	}
+
+
+	@Override
+	public int updateMember(MemberVo vo, String id) throws SQLException {
+		int result=-1;
+		System.out.println("멤버 수정 하하하");
+		
+		vo.setId(id);
+		
+		try{
+		client.update("updateMember" ,vo);
+		result =1;
+		}catch(Exception e){
+			
+		}
+		
+		return result;
 	}
 
 

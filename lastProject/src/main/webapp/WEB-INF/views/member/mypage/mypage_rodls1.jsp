@@ -53,6 +53,21 @@ function go_pop2() {
 	var pop = window.open("<%=request.getContextPath()%>/juso5","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
 
+$(function(){
+	//파일 업로드 버튼 눌렀을 때
+	$("input:file").change(function (){     
+	    var file = this.files[0];
+	    var reader = new FileReader();
+	    reader.onload = function (e) {
+	        $("#viewImg").attr('src', e.target.result);
+	    }        
+	    reader.readAsDataURL(file);
+	});		
+}) 
+
+
+
+
 </script>
 
 
@@ -66,7 +81,7 @@ function go_pop2() {
 	<jsp:include page="../../lnb/mypageLnb.jsp"/>
 			<!-- 좌측 메뉴바 끝-->
 			<div id="lnb2"></div>
-		</div>
+		</div>a
 
 		<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
 		<div id="content">
@@ -90,7 +105,7 @@ function go_pop2() {
 
 				<!-- 컨텐츠 내용 -->
 				<!-- 입력 테이블  시작-->
-				<form name="regMEM" method="post" action="https://www.q-net.or.kr/myp001.do?id=myp00103&amp;gSite=Q&amp;gId=">
+				<form name="regMEM" method="POST" action="<%=request.getContextPath()%>/updateMember" enctype="multipart/form-data">
 				<fieldset>
 				<legend>개인정보수정 폼</legend>
 				<input name="memIdChkYn" id="memIdChkYn" type="hidden" value="N">
@@ -143,8 +158,8 @@ function go_pop2() {
 										<img id="viewImg" src="<%=request.getContextPath()%>/resources/upload/image/${member.mem_photo}" width="120" height="160"><!-- //사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
 									</p>
 									<div class="regi">
-										<button type="button" class="btn3_type2" onclick="openFileDialog();" title="파일첨부"><span>사진등록</span></button>
-										
+<!-- 										<button type="button" class="btn3_type2" onclick="openFileDialog();" title="파일첨부"><span>사진등록</span></button> -->
+										 <input type="file" multiple id="orgFile" name="f">
 										<!-- <button type="button" class="btn3_type2"><span>사진등록</span></button> -->
 										<span>자격증 발급용 사진은 <br>자격증 발급 신청 시 등록</span>
 										<p>본인 사진이 아닌 비정상적인 <br>사진(타인, 동물, 확인이 불가능한 사진등)을 등록할 경우 <span class="fc_r">시험응시에 불이익</span>을 당할 수 있습니다.</p>
@@ -205,7 +220,7 @@ function go_pop2() {
 									<label for="member_name_e">이 름(영문)</label>
 								</th>
 								<td colspan="3">
-									<input type="text" id="member_name_e" name="userEng" class="form_mid" value="${member.mem_enName} ">
+									<input type="text" id="mem_enName" name="mem_enName" class="form_mid" value="${member.mem_enName} ">
 									<span class="txt_add">(여권과 동일하게 입력)</span>
 								</td>
 							</tr>
@@ -215,7 +230,7 @@ function go_pop2() {
 									<label for="member_pw">비밀번호</label> <!-- <strong class="fc_r" title="필수">*</strong> -->
 								</th>
 								<td colspan="3">
-									<input type="password" class="form_mid" id="member_pw" name="newPwd" maxlength="16">
+									<input type="password" class="form_mid" id="pwd" name="pwd" maxlength="16">
 									<span class="txt_add">(변경하는 경우만 입력)</span>
 								</td>
 							</tr>
@@ -284,7 +299,7 @@ function go_pop2() {
 									<label for="member_mail_add"> 이메일 <strong class="fc_r" title="필수">*</strong></label>
 								</th>
 								<td>
-									<input type="text" class="join_email" id="member_mail_add" name="email" value="${member.mem_email} ">
+									<input type="text" class="join_email" id="mem_email" name="mem_email" value="${member.mem_email} ">
 								</td>
 								<th scope="row" class="txt_center">
 									이메일 수신여부 <!-- <strong class="fc_r" title="필수">*</strong> -->
@@ -309,7 +324,7 @@ function go_pop2() {
 								</th>
 								<td colspan="4">
 									<label for="member_phone" class="txt_phone">연락가능한 전화번호</label>
-									<select id="member_phone" name="phone01" class="form_short" title="전화번호 첫번째 자리">
+									<select id="phone1" name="phone1" class="form_short" title="전화번호 첫번째 자리">
 										<option value="0">선택</option>
 										<option value="02">02</option>
 										<option value="031">031</option>
@@ -334,9 +349,9 @@ function go_pop2() {
 									<span>-</span>
 
 								<c:set var="phone" value="${member.mem_phone} "></c:set>
-									<input type="text" name="phone02" class="form_short numInput" value=" ${fn:substring(phone,4,8)}" title="전화번호 가운데 자리" maxlength="4">
+									<input type="text" name="phone2" class="form_short numInput" value=" ${fn:substring(phone,4,8)}" title="전화번호 가운데 자리" maxlength="4">
 									<span>-</span>
-									<input type="text" name="phone03" class="form_short numInput" title="전화번호 마지막 자리" value="${fn:substring(phone,9,13)}"  vamaxlength="4">
+									<input type="text" name="phone3" class="form_short numInput" title="전화번호 마지막 자리" value="${fn:substring(phone,9,13)}"  vamaxlength="4">
 									<span class="txt_add">(예 : 02-111-1111)</span>
 								</td>
 							</tr>
@@ -346,7 +361,7 @@ function go_pop2() {
 								</th>
 								<td colspan="4">
 									<label for="member_mobile" class="txt_phone">이동전화 번호</label>
-									<select id="member_mobile" name="mPhone01" class="form_short" title="핸드폰번호 첫번째 자리">
+									<select id="member_mobile" name="phone1_1" class="form_short" title="핸드폰번호 첫번째 자리">
 										<option value="0">선택</option>
 										<option value="010">010</option>
 										<option value="011">011</option>
@@ -356,9 +371,9 @@ function go_pop2() {
 										<option value="019">019</option>
 									</select>
 									<span>-</span>
-									<input type="text" name="mPhone02" class="form_short numInput" title="핸드폰번호 가운데 자리" maxlength="4" onkeyup="nextFocus('regMEM', 'mPhone02', 'mPhone03');">
+									<input type="text" name="phone1_2" class="form_short numInput" title="핸드폰번호 가운데 자리" maxlength="4" onkeyup="nextFocus('regMEM', 'mPhone02', 'mPhone03');">
 									<span>-</span>
-									<input type="text" name="mPhone03" class="form_short numInput" title="핸드폰번호 마지막 자리" maxlength="4">
+									<input type="text" name="phone1_3" class="form_short numInput" title="핸드폰번호 마지막 자리" maxlength="4">
 									<span class="txt_add">(예 : 010-1111-1111)</span>
 								</td>
 							</tr>
@@ -443,7 +458,7 @@ function go_pop2() {
 					</table>
 				</div>
 				<div class="btn_center">
-					<button type="button" id="formSubmit" class="btn2 btncolor2"><span>완료</span></button>
+					<button type="submit" id="formSubmit" class="btn2 btncolor2" ><span>완료</span></button>
 					<button type="button" id="formCancel" class="btn2 btncolor4"><span>취소</span></button>
 				</div>
 				</fieldset>
