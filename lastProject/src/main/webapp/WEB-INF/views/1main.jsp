@@ -201,43 +201,7 @@ $(function(){
 				</form>
 				<div class="left">
 					<div id="loadTest">
-
-						<dl class="test_ing">
-							<dt>원서접수 중인 시험</dt>
-							<dd>
-
-								<div class="appPeriod">
-
-									<div class="rollBox">
-										<ul>
-
-											<li>
-												<ul>
-													<c:choose>
-														<c:when test="${not empty viewData2}">
-															<c:forEach var="wonseoList" items="${viewData2}">
-																<li>
-																	<a>
-																		<strong>${wonseoList.em_nm }</strong>
-																		<em>접수 : ${wonseoList.numg_app_receipt_begin} ~ ${wonseoList.numg_app_receipt_end}</em>
-																	</a>
-																</li>
-															</c:forEach>
-														
-														</c:when>
-														<c:otherwise>
-															<li>원서접수 진행중인 시험이 존재하지 않습니다.</li>
-														</c:otherwise>
-													</c:choose>
-												</ul>
-											</li>
-
-										</ul>
-									</div>
-								</div>
-
-							</dd>
-						</dl>
+						<jsp:include page="ingWonseo.jsp" />
 					</div>
 					<div class="auto_banner">
 						<!-- // class="play" 자동 플레이 상태  -->
