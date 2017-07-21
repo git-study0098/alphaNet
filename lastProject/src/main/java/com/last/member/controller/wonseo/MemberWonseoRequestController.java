@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.member.controller.wonseo;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -120,23 +120,19 @@ public class MemberWonseoRequestController {
 	}
 	
 	
-	
+	//원서접수신청 처음 페이지
 	@RequestMapping("/member/wonseoReq")
 	public String wonseoRequest1(Model model){
 		String url = "member/wonseo/wonseo_request1";
-		List<WonseoInfoVo> numgInfo=null;
-		
+		List<WonseoInfoVo> viewData2 = null;
 		
 		try {
-			numgInfo = wonseoService.selectnumgList();
-			
-			
+			viewData2 = wonseoService.selectWonseoList();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("numgInfo",numgInfo);
-		
+		model.addAttribute("numgInfo",viewData2);
 		
 		return url;
 	}

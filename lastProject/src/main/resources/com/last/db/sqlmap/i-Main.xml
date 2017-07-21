@@ -26,7 +26,7 @@
 	</select>
 	
 	<select id="selectWonseoList" resultClass="wonseo">
-		select em.em_nm, to_char(n.numg_app_receipt_begin,'yyyy-MM-dd')as numg_app_receipt_begin, to_char(n.numg_app_receipt_end,'yyyy-MM-dd')as numg_app_receipt_end
+		select em.em_info_code, em.em_nm, to_char(n.numg_app_receipt_begin,'yyyy-MM-dd')as numg_app_receipt_begin, to_char(n.numg_app_receipt_end,'yyyy-MM-dd')as numg_app_receipt_end
 			from numg n, em_info em
 			where 
 			em.em_numg_code = n.numg_code
