@@ -25,7 +25,7 @@ public abstract class MemberDAO{
 //	
 //	MongoVO getMongoVO(MongoVO mvo);
 
-	public abstract int idCheck(String userId) throws SQLException;
+	public abstract String idCheck(String userId) throws SQLException;
 	public abstract int insert(MemberVo vo) throws SQLException ;
 	public abstract List<CalendarVO> calendarInfo() throws SQLException ;
 	public abstract MemberVo member(String id) throws SQLException;

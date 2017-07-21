@@ -2,6 +2,7 @@ package com.last.member.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.StringTokenizer;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.last.common.dao.MemberDAOImpl;
 import com.last.common.vo.MemberVo;
@@ -56,12 +58,13 @@ public class SignupController {
 		 String upload="C:/git/alphaNet/lastProject/src/main/webapp/resources/upload/image";
 		 String url ="redirect:notice";
 		 
+		 
+		 
 		 String year = request.getParameter("mem_bir1");
 		 String month = request.getParameter("mem_bir2");
 		 String day = request.getParameter("mem_bir3");
 		 
-		 String school = request.getParameter("daschool2"); //대덕대
-		 String school4 = request.getParameter("daschool4"); //충남대
+		 String school = request.getParameter("dacoll"); //대전
 		 
 		 
 		 
@@ -97,11 +100,12 @@ public class SignupController {
 		vo.setPwd(request.getParameter("mem_pwd"));
 		vo.setName(request.getParameter("name"));
 		vo.setMem_bir(year+month+day);
-		if(school == null){
-			vo.setSch_code("SCH2"); // 대덕대학교			 
-		}else{
-			vo.setSch_code("SCH1"); // 충남대학교
-		}
+		vo.setMem_ph(request.getParameter("phone01")+"-"+request.getParameter("phone02")+"-"+request.getParameter("phone03"));
+		vo.setMem_phone(request.getParameter("mPhone01")+"-"+request.getParameter("mPhone02")+"-"+request.getParameter("mPhone03"));
+		
+		vo.setSch_coll(school);
+		vo.setSch_code(request.getParameter("daschool2"));
+
 		vo.setMem_photo(fileName[0]+uuid.toString()+"."+fileName[1]);
 		
 		memberDaoImpl.insert(vo);
@@ -111,11 +115,14 @@ public class SignupController {
 	
 	@RequestMapping(value="idCheck", method=RequestMethod.POST)
 	@ResponseBody
-	public int idCheck(String id){
-		int result = -1;
-		result = memberDaoImpl.idCheck(id);
+	public String idCheck(String id ,HttpServletRequest request,Model model){
+		System.out.println(" 아이티체크");
+		String id2  = null;
+		id2 = memberDaoImpl.idCheck(id); // 쿼리 id값 나오겟지 y,n
 		
-		return result;
+		
+		
+		return id2 ;
 	}
 	
 	
