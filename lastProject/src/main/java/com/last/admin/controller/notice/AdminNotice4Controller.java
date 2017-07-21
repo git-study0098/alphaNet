@@ -109,7 +109,7 @@ public class AdminNotice4Controller {
 		vo.setAdmin_code(request.getParameter("adminCode"));
 		vo.setNotice_code(adminNotice1Service.registNotice(notice));
 		vo.setNotice_content(request.getParameter("noticeContent"));
-		vo.setAttach_file(fileName[0] + uuid.toString() + "." + fileName[1]);
+		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);
 		vo.setRegist_date(new Date(12));
 		vo.setTitle(request.getParameter("title"));
 

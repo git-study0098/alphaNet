@@ -50,7 +50,6 @@
 		<div>
 			<!-- 좌측 메뉴바 끝-->
 			<jsp:include page="../../../lnb/noticeLnb.jsp"/>
-			<jsp:include page="../../../lnb/noticeLnb.jsp"/>
 			<div id="lnb2"></div>
 		</div>
 

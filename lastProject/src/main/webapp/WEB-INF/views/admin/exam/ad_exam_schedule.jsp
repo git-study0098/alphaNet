@@ -141,9 +141,12 @@
 					
 		</div>
 		<div id="calendar" style="width: 100%;height: 80%"></div>
-
-
-	</div>
+			<button class="dropbtn">시험 일정 관리</button>
+			<div class="dropdown-content">
+				<a href="<%=request.getContextPath()%>/admin/pds">전체일정</a> <a
+					href="<%=request.getContextPath()%>/admin/pds">일정등록</a>
+			</div>
+		</div>
 	<!-- 내용끝 -->
 </div>
 <!-- /. PAGE INNER  -->

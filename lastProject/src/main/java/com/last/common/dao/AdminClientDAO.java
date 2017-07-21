@@ -8,14 +8,13 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.last.common.vo.Notice1VO;
 
-public class AdminPdsDAO {
+public class AdminClientDAO {
 		
 	private SqlMapClient client;
 		
 		public void setClient(SqlMapClient client) {
 			this.client = client;
 		}
-		
 
 		/**
 		 * 게시판 분류코드

@@ -76,7 +76,7 @@ public class AdminNotice1Controller {
 			@RequestParam("f") MultipartFile multipartFile,
 			@RequestParam(value="notice_code" , defaultValue="notice01")String notice){
 		
-		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
+		String upload = "C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
 		 String url ="redirect:notice";
 		 
 		 
@@ -104,7 +104,6 @@ public class AdminNotice1Controller {
 			}
 	         
 	      }
-	      
 	      
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));

@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.last.common.dao.AdminPdsDAO;
+import com.last.common.dao.AdminClientDAO;
 import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
 
-public class AdminPdsService {
+public class AdminClientService {
 
-	private AdminPdsDAO adminDao;
+	private AdminClientDAO adminClientDao;
 
-	public void setAdminDao(AdminPdsDAO adminDao) {
-		this.adminDao = adminDao;
+	public void setAdminClientDao(AdminClientDAO adminClientDao) {
+		this.adminClientDao = adminClientDao;
 	}
 
 	private static final int NOTICE_COUNT_PER_PAGE = 10;
@@ -28,7 +28,7 @@ public class AdminPdsService {
 		int currentPageNumber = pageNumber;
 		try {
 
-			int notice1TotalCount = adminDao.selectNotice1Count(notice_code);
+			int notice1TotalCount = adminClientDao.selectNotice1Count(notice_code);
 
 			List<Notice1VO> notice1List = null;
 			int firstRow = 0;
@@ -36,7 +36,7 @@ public class AdminPdsService {
 			if (notice1TotalCount > 0) {
 				firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
 				endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
-				notice1List = adminDao.selectNotice1List(firstRow, endRow,
+				notice1List = adminClientDao.selectNotice1List(firstRow, endRow,
 						notice_code);
 			} else {
 				currentPageNumber = 0;
@@ -57,7 +57,7 @@ public class AdminPdsService {
 		List<String> temp = null;
 		List<String> codeList = new ArrayList<String>();
 		try {
-			temp = adminDao.selectNoticeCode();
+			temp = adminClientDao.selectNoticeCode();
 			for (int i = 0; i < temp.size(); i++) {
 				code = temp.get(i);
 				compare = code.substring(0, 5);
@@ -85,26 +85,26 @@ public class AdminPdsService {
 
 	public Notice1VO selectNoticeCodeList(String notice_code)
 			throws SQLException {
-		Notice1VO vo = adminDao.selectNotice1(notice_code);
+		Notice1VO vo = adminClientDao.selectNotice1(notice_code);
 		return vo;
 
 	}
 		public int selectCount(String notice_code, String schType, String schText)throws SQLException{
-		int result = adminDao.selectCount(notice_code,schType,schText);
+		int result = adminClientDao.selectCount(notice_code,schType,schText);
 		return result;
 	}
 
 	public void updateNotice1(Notice1VO notice1VO) throws SQLException {
-		adminDao.updateNotice1(notice1VO);
+		adminClientDao.updateNotice1(notice1VO);
 	}
 
 	public void deleteNotice1(String noticeCode) throws SQLException {
-		adminDao.deleteNotice1(noticeCode);
+		adminClientDao.deleteNotice1(noticeCode);
 	}
 
 	public int insertNotice1(Notice1VO notice1VO) throws SQLException {
 
-		int result = adminDao.insertNotice1(notice1VO);
+		int result = adminClientDao.insertNotice1(notice1VO);
 
 		return result;
 	}
@@ -115,7 +115,7 @@ public class AdminPdsService {
 	      int currentPageNumber = pageNumber;
 	      try {
 	         
-	         int notice1TotalCount = adminDao.selectNotice1Count(notice_code);
+	         int notice1TotalCount = adminClientDao.selectNotice1Count(notice_code);
 
 	         List<Notice1VO> notice1List = null;
 	         int firstRow = 0;
@@ -123,7 +123,7 @@ public class AdminPdsService {
 	         if (notice1TotalCount > 0) {
 	            firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
 	            endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
-	            notice1List = adminDao.searchNoticeList(firstRow, endRow,notice_code,schType, schText);
+	            notice1List = adminClientDao.searchNoticeList(firstRow, endRow,notice_code,schType, schText);
 	         } else {
 	            currentPageNumber = 0;
 	            notice1List = Collections.emptyList();

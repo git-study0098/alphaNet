@@ -58,7 +58,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath()%>/admin/notice5"> <i class="fa fa-comments-o fa-5x"></i>
+					<a href="<%=request.getContextPath()%>/admin/client"> <i class="fa fa-comments-o fa-5x"></i>
 						<h4>고객의 소리</h4>
 					</a>
 				</div>
