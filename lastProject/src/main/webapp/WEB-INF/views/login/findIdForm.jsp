@@ -21,7 +21,7 @@
 <article>
 	<div id="container" class="bgNone">
 
-<div id="content" class="main_login" style="margin-left: 200px"> <!-- w:476 -->
+<div id="content" class="main_login" style="margin-left: 100px;"> <!-- w:476 -->
 			<!-- location -->
 			<div class="location">
 				<ul>
@@ -35,7 +35,7 @@
 			<form id="find" name="findID">
 			<div class="content">
 				<h3 class="tit_content">아이디 / 비밀번호 재설정</h3>
-				<div class="new_center_area">
+				<div class="new_center_area" >
 					<div class="tabLayout" id="findTab">
 						<ul>
 							<li id="findIdOn" class="on"><a href="<%=request.getContextPath()%>/login/findIdForm" id="findId" name="findTab" title="아이디 찾기"><span>아이디 찾기</span></a></li>
@@ -45,7 +45,7 @@
 					<div class="findTab" style="display: block;">
 						<div class="new_find">
 							<div class="float_box new_find">
-								<div class="right" >
+								<div class="right" style="width:725px">
 									<h4>등록된 회원정보로 찾기</h4>
 									<div class="topArea">
 										<p><span class="fc_b2">가입 시 등록한 회원가입정보를 통해 아이디를 찾으시려는 경우</span><br> 아래 내용을 입력 후 아이디를 조회하시기 바랍니다.</p>
@@ -76,7 +76,6 @@
 								<p><span class="fc_b2">개인인증을 통해 비밀번호를 찾으시려는 경우 아이디 입력후 </span>인증절차를 선택하여 비밀번호를 재발급 받으시기 바랍니다.</p>
 								<div class="form_box">
 									<fieldset>
-										<legend>개인정보 입력</legend>
 										<p class="first"><label for="userIDpw"><strong class="mr5">아이디</strong>:</label> <input type="text" class="form_text" style="width:184px;ime-mode:inactive;" id="userIDpw" name="userID" value="" maxlength="30"></p>
 									</fieldset>
 								</div>

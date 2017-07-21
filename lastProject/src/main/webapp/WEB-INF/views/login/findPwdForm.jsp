@@ -17,7 +17,7 @@
 			alert('아이디를 입력해주세요');
 		}
 		else{
-			window.open('<%=request.getContextPath()%>/login/findPwdInput?idd='+idd,'findPwd','width=600px,height=400px')
+			window.open('<%=request.getContextPath()%>/login/findPwdInput?idd='+idd,'findPwd','width=600px,height=190px,left=300px,top=250px')
 		}
 	}
 	function getPWD(idd,bir1,ph1,nm){

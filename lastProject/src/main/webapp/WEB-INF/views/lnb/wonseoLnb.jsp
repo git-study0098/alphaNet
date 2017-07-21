@@ -55,10 +55,10 @@
 							<div class="login_yn">
 								<ul>
 									<li><a
-										href="http://www.q-net.or.kr/man003.do?id=man00301&amp;gSite=Q&amp;gId="
+										href="<%=request.getContextPath()%>/signup"
 										class="golink01"><span>회원가입</span></a></li>
 									<li><a
-										href="https://www.q-net.or.kr/man002.do?id=man00201&amp;gSite=Q&amp;gId="
+										href="<%=request.getContextPath()%>/login/findIdForm"
 										class="golink01"><span>아이디/비밀번호 찾기</span></a></li>
 								</ul>
 							</div>
@@ -77,11 +77,11 @@
 						<p><span class="fc_b"><%=user.getUsername() %></span>님 반갑습니다.</p>
 					</div>
 					<div>
-						<a href="logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
-						<a href="https://www.q-net.or.kr/myp001.do?id=myp00101&amp;gSite=Q&amp;gId=" class="btn_login3 btncolor2"><span>정보수정</span></a>
+						<a href="<%=request.getContextPath()%>/logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
+						<a href="<%=request.getContextPath()%>/updateMember" class="btn_login3 btncolor2"><span>정보수정</span></a>
 					</div>
 					<div class="my_list">
-						<a href="https://www.q-net.or.kr/myp002.do?id=myp00201&amp;gSite=Q&amp;gId=" class="golink01"><span>나의 접수내역 바로가기</span></a>
+						<a href=# class="golink01"><span>나의 접수내역 바로가기</span></a>
 					</div>
 					</sec:authorize>
 					<!-- //로그인 후 -->

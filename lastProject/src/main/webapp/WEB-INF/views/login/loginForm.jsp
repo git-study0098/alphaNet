@@ -83,7 +83,7 @@
 							<div class="right">
 								<button class="btn_login"><span>로그인</span></button>
 							</div>
-							<p><a href="https://www.q-net.or.kr/man002.do?id=man00201&amp;gSite=Q&amp;gId=" class="golink01"><span style="font-size:13px">아이디 찾기/비밀번호 재설정</span></a></p>
+							<p><a href="<%=request.getContextPath()%>/login/findIdForm" class="golink01"><span style="font-size:13px">아이디 찾기/비밀번호 재설정</span></a></p>
 						</div>
 						<div class="info">
 							<p>공인인증서로 로그인을 하시려면 회원가입 후 로그인하여<br>공인인증서를 등록하셔야 합니다.</p>

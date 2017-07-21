@@ -31,7 +31,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping("loginForm")
-	public String loginForm(@RequestParam(value="id")String findId, Model model){
+	public String loginForm(@RequestParam(value="id", defaultValue="")String findId, Model model){
 		model.addAttribute("findId",findId);
 		return "login/loginForm";
 	}
