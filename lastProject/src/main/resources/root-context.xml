@@ -6,6 +6,7 @@
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		  
+		  
 	<bean id="adminNotice1Dao"
 		  class="com.last.common.dao.AdminNotice1DAO"
 		  p:client-ref="client"
@@ -14,16 +15,51 @@
 	<bean id="adminNotice1Service"
 		  class="com.last.common.service.AdminNotice1Service"
 		  p:adminDao-ref="adminNotice1Dao"/>
-		
-		   
+		  
+	<bean id="mainDao"
+		  class="com.last.common.dao.MainDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="mainService"
+		  class="com.last.common.service.MainService"
+		  p:mainDao-ref="mainDao" />
+		  
 	<bean id="adminUseInfo1Dao"
 		  class="com.last.common.dao.AdminUseInfo1DAO"
 		  p:client-ref="client"
 	/>
-	
 	<bean id="adminUseInfo1Service"
 		  class="com.last.common.service.AdminUseInfo1Service"
 		  p:adminDao-ref="adminUseInfo1Dao"/> 
+	
+	<bean id="adminPdsDao"
+		  class="com.last.common.dao.AdminPdsDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="adminPdsService"
+		  class="com.last.common.service.AdminPdsService"
+		  p:adminDao-ref="adminPdsDao"/> 
+		  
+	<bean id="adminDao"
+		  class="com.last.common.dao.AdminDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="adminService"
+		  class="com.last.common.service.AdminService"
+		  p:adminDao-ref="adminDao"/> 
+		  
+	<bean id="adminClientDao"
+		  class="com.last.common.dao.AdminClientDAO"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="adminClientService"
+		  class="com.last.common.service.AdminClientService"
+		  p:adminClientDao-ref="adminClientDao"/> 
+		 
 	
 	<bean id="wonseoDao"
 		  class="com.last.common.dao.WonseoDAO"
@@ -32,6 +68,14 @@
 	<bean id="wonseoService"
 		  class="com.last.common.service.WonseoService"
 		  p:wonseoDao-ref="wonseoDao"/>
+		  
+  	<bean id="jagukDao"
+		  class="com.last.common.dao.JagukDAO"
+		  p:client-ref="client"/>
+	
+	<bean id="jagukService"
+		  class="com.last.common.service.JagukService"
+		  p:jagukDao-ref="jagukDao"/>
 	
 	
 	<bean id="memDao"
@@ -52,6 +96,14 @@
 	<bean id="adminQualifiService" 
 		class="com.last.common.service.AdminQualifiService"
 		p:adminDao-ref="adminQualifiDao" />
+
+	<bean id="adminExamDao" 
+		class="com.last.common.dao.AdminExamDAO"
+		p:client-ref="client" />
+
+	<bean id="adminExamService" 
+		class="com.last.common.service.AdminExamService"
+		p:adminExamDao-ref="adminExamDao" />
 		
 	<bean id="mypageDao" 
 		class="com.last.common.dao.MypageDAO"

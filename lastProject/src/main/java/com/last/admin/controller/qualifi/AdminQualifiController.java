@@ -3,9 +3,7 @@ package com.last.admin.controller.qualifi;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,14 +12,11 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.last.common.service.AdminQualifiService;
 import com.last.common.service.ServiceException;
-import com.last.common.vo.MemberVo;
 import com.last.common.vo.QualifiCertiVO;
 import com.last.common.vo.QualifiMemberVO;
 import com.last.common.vo.QualifiPagingVO;
@@ -285,9 +280,9 @@ public class AdminQualifiController {
 	}
 	
 
-	@RequestMapping("/juso")
+	@RequestMapping("/juso3")
 	public String juso_go(){
-		return "member/jusoPopup";
+		return "member/jusoPopup3";
 	}
 	
 	

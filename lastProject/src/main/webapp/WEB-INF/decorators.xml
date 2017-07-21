@@ -15,12 +15,13 @@
 		<pattern>/**/*Xml.do</pattern>
 		<pattern>/**/*Json.do</pattern>
 		<pattern>/login/loginForm</pattern>
-		<pattern>/juso</pattern>
+		<pattern>/juso*</pattern>
 		<pattern>/jusoPopup.jsp</pattern>
 		<pattern>/member/wonseoPayment*</pattern>
 		<pattern>/member/jagukPayment*</pattern>
 		<pattern>/member/request5*</pattern>
-		<pattern>/인증.jsp</pattern>
+
 	</excludes>
+
 
 </decorators>

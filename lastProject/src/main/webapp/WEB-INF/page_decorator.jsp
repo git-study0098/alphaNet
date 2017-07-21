@@ -315,10 +315,11 @@ var speed = 800;
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="login">로그인</a></li>
 					</sec:authorize>
-						<li><a>회원가입</a></li>
+						<li><a href="signup">회원가입</a></li>
 						<li><a>English</a></li>
 						<li><a>이용안내</a></li>
 						<li><a>큐넷길라잡이</a></li>
+						<li><a href="<%=request.getContextPath() %>/admin/login/main2">관리자 페이지</a></li>
 					</ul>
 					<form method="get" class="header_form" role="search">
 						<fieldset class="total_search">
@@ -363,7 +364,7 @@ var speed = 800;
 												<li><a onclick="return NetFunnel_goUrl({},this.href);"
 													href="#">가답안의견제시</a></li>
 											</ul></li>
-										<li><a href="#">시험일정</a>
+										<li><a href="<%=request.getContextPath()%>/calender">시험일정</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
 												<li><a href="#">월간 시험일정</a></li>
 												<li><a href="#">국가기술자격 시험일정</a></li>
@@ -438,7 +439,7 @@ var speed = 800;
 									<p>- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
 							</li>								
-							<li class=""><a href="request1">자격증/확인서</a>
+							<li class=""><a href="<%=request.getContextPath() %>/request1">자격증/확인서</a>
 								<div class="sub03" style="display: none;">
 									<ul style="min-height: 145px;">
 										<li class=""><a href="infoRequest">자격증발급안내</a>
@@ -480,7 +481,7 @@ var speed = 800;
 									</p>
 								</div>
 							</li>
-							<li class=""><a id="lnkMoveToMypage" href="#">마이페이지</a>
+							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/myInfo">마이페이지</a>
 								<div class="sub04" style="display: none;">
 									<ul style="min-height: 145px;">
 										<li class=""><a href="#">원서접수관리</a>
@@ -509,9 +510,9 @@ var speed = 800;
 												<li><a href="#">시험면제</a></li>
 												<li><a href="#">과목면제</a></li>
 											</ul></li>
-										<li><a href="#">개인정보관리</a>
+										<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보관리</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
-												<li><a href="#">개인정보수정</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보수정</a></li>
 												<li><a href="#">학력/경력수정</a></li>
 												<li><a href="#">회원탈퇴</a></li>
 											</ul></li>
@@ -522,12 +523,12 @@ var speed = 800;
 									</p>
 								</div>
 							</li>
-							<li class=""><a href="memberNotice1">고객지원</a>
+							<li class=""><a href="<%=request.getContextPath() %>/memberNotice1">고객지원</a>
 								<div class="sub05" style="display: none;">
 									<ul style="min-height: 295px;">
-										<li class="on"><a href="memberNotice1">공지사항</a>
+										<li class="on"><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a>
 											<ul style="min-height: 295px; left: 154px;">
-												<li><a href="memberNotice1">공지사항</a></li>
+												<li><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a></li>
 												<li><a href="#">자격제도</a></li>
 												<li><a href="#">시행자료</a></li>
 												<li><a href="#">출제자료</a></li>
