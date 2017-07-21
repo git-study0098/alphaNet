@@ -140,7 +140,7 @@ function go_pop2() {
 								<td rowspan="9" class="photo">
 									<p>
 <!-- 										<img id="viewImg" src="/common/loadimg.do?div=M" width="120" height="160">//사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
-										<img id="viewImg" src="C:/git/alpha_net/lastProject/src/main/webapp/${member.mem_photo}" width="120" height="160"><!-- //사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
+										<img id="viewImg" src="<%=request.getContextPath()%>/resources/upload/image/${member.mem_photo}" width="120" height="160"><!-- //사진에 대한 대체텍스트 필요. 2014.12.08 접근성 -->
 									</p>
 									<div class="regi">
 										<button type="button" class="btn3_type2" onclick="openFileDialog();" title="파일첨부"><span>사진등록</span></button>

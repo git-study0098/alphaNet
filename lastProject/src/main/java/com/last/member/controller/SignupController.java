@@ -53,7 +53,7 @@ public class SignupController {
 	public String insert(MemberVo vo ,HttpServletRequest request,
 			Model model,@RequestParam("f") MultipartFile multipartFile){
 		
-		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
+		 String upload="C:/git/alphaNet/lastProject/src/main/webapp/resources/upload/image";
 		 String url ="redirect:notice";
 		 
 		 String year = request.getParameter("mem_bir1");
