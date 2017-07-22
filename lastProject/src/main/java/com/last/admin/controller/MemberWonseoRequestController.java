@@ -3,6 +3,8 @@ package com.last.admin.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -359,4 +361,16 @@ public class MemberWonseoRequestController {
 		
 		return url;
 	}
+	
+	
+	@RequestMapping("/map")
+	public String map(HttpServletRequest request , PlaceVO vo){
+		System.out.println("컨트롤러안들어와요...");
+		String map_nm = request.getParameter("place_nm");
+		System.out.println(map_nm);
+		vo = wonseoService.selectMap(map_nm);
+		request.setAttribute("map_add", vo);
+		return "member/wonseo/map";
+	}
+	
 }

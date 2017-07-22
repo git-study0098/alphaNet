@@ -25,7 +25,14 @@ public class MemberVo {
 	private String authority;
 	private String mem_jang;
 	private String mem_email_agree;
+	private String mem_pass_em;
 	
+	public String getMem_pass_em() {
+		return mem_pass_em;
+	}
+	public void setMem_pass_em(String mem_pass_em) {
+		this.mem_pass_em = mem_pass_em;
+	}
 	public String getMem_email_agree() {
 		return mem_email_agree;
 	}
@@ -209,10 +216,11 @@ public class MemberVo {
 				+ ", mem_gender=" + mem_gender + ", mem_bir=" + mem_bir
 				+ ", enabled=" + enabled + ", authority=" + authority
 				+ ", mem_jang=" + mem_jang + ", mem_email_agree="
-				+ mem_email_agree + ", mem_photo=" + mem_photo
-				+ ", uploadfile=" + uploadfile + ", sch_code=" + sch_code
-				+ ", sch_coll=" + sch_coll + ", sch_major_code="
-				+ sch_major_code + ", sch_major_nm=" + sch_major_nm + "]";
+				+ mem_email_agree + ", mem_pass_em=" + mem_pass_em
+				+ ", mem_photo=" + mem_photo + ", uploadfile=" + uploadfile
+				+ ", sch_code=" + sch_code + ", sch_coll=" + sch_coll
+				+ ", sch_major_code=" + sch_major_code + ", sch_major_nm="
+				+ sch_major_nm + "]";
 	}
 
 

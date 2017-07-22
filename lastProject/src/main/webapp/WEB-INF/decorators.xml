@@ -20,6 +20,7 @@
 		<pattern>/member/wonseoPayment*</pattern>
 		<pattern>/member/jagukPayment*</pattern>
 		<pattern>/member/request5*</pattern>
+		<pattern>/map</pattern>
 
 	</excludes>
 <!-- 		<pattern>/admin/**/*</pattern> -->

@@ -60,4 +60,9 @@ public List<WonseoInfoVo> selectnumgList() throws SQLException{
 		return result;
 	}
 	
+	public PlaceVO selectMap(String place_nm){
+		PlaceVO vo = new PlaceVO();
+		vo = wonseoDao.selectMap(place_nm);
+		return vo;
+	}
 }
