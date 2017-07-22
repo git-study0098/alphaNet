@@ -5,7 +5,14 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
+<%	
+	Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+	authentication.getName();
+	String id = "";
+	User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	
+	id = user.getUsername();
+%>
 <script>
 	$(document).ready(function(){
 		$('.btn_login').click(function(){
@@ -68,13 +75,8 @@
 					<!-- 로그인 후 -->
 					<sec:authorize access="isAuthenticated()">
 					<div class="welcom">
-					<%
-						Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-						authentication.getName();
-						
-						User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-					%>
-						<p><span class="fc_b"><%=user.getUsername() %></span>님 반갑습니다.</p>
+					
+						<p><span class="fc_b"><%=id %></span>님 반갑습니다.</p>
 					</div>
 					<div>
 						<a href="<%=request.getContextPath()%>/logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
@@ -95,14 +97,14 @@
 				<ul id="lnbNavi" class="lnb on">
 					<li class="low active on"><a>원서접수관리</a>
 						<ul style="display: block;">
-							<li class="on"><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수내역</a></li>
+							<li class="on"><a href="<%=request.getContextPath() %>/member/wonseoHistory?mem_code=<%=id%>">원서접수내역</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/myPageWonseoReq">원서접수신청</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/resultCheck">시험결과보기</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/changeImg">사진변경신청/결과</a></li>
 						</ul></li>
 					<li class="low"><a>응시자격</a>
 						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/member/selfTest">응시자격자가진단</a></li>
+							<li><a href="<%=request.getContextPath() %>/member/selfTest?mem_code=<%=id%>">응시자격자가진단</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/subCheck">응시가능종목확인</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/docCheck">응시자격제출셔류확인</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/docSubmit">응시자격서류 온라인 제출</a></li>

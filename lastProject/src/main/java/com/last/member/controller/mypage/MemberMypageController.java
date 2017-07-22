@@ -4,13 +4,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.last.common.service.MypageService;
-import com.last.common.vo.StareCertifiVO;
 import com.last.common.vo.StareVO;
 
 @Controller
@@ -25,8 +26,11 @@ public class MemberMypageController {
 	
 
 	@RequestMapping("/member/wonseoHistory")
-	public String wonseoHistory(@RequestParam(value="mem_code") String mem_code,Model model){
+	public String wonseoHistory(Model model){
 		List<StareVO> selectStareList = null;
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
 		try {
 			selectStareList = mypageService.selectStareList(mem_code);
 			System.out.println(selectStareList.toString());

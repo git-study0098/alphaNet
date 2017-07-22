@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +26,12 @@ public class MypageRodlsController {
 	}
 	
 	@RequestMapping("/member/selfTest")
-	public String selfTest(@RequestParam(value="mem_code")String mem_code){
+	public String selfTest(Model model){
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
 		
+		model.addAttribute("mem_code", mem_code);
 		return "member/mypage/mypage_dmdtl1";
 	}
 	
