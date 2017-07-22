@@ -106,7 +106,7 @@
 				<li class="low"><a>자격증 발급</a>
 					<ul style="display: block;">
 						<li><a href="<%=request.getContextPath() %>/request1">자격증발급신청</a></li>
-						<li><a href="<%=request.getContextPath() %>/member/request2">자격증발급신청내역조회</a></li>
+						<li><a href="<%=request.getContextPath() %>/member/jagukRequestSearch">자격증발급신청내역조회</a></li>
 					</ul></li>
 				<li class="low"><a>확인서 발급</a>
 					<ul style="display: block;">

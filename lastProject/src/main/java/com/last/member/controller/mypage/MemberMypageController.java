@@ -42,14 +42,12 @@ public class MemberMypageController {
 		return "member/mypage/mypage_dnjstj1";
 	}
 	
-	@RequestMapping("/member/mypageWonseoReq")
-	public String wonseoReq(){
-		return "member/mypage/mypage_dnjstj2";
-	}
-	
 	@RequestMapping("/member/resultCheck")
-	public String resultCheck(@RequestParam(value="mem_code") String mem_code, Model model){
+	public String resultCheck(Model model){
 		List<StareVO> selectResultCheck = null;
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
 		try {
 			selectResultCheck = mypageService.selectResultCheck(mem_code);
 			System.out.println(selectResultCheck.toString());
@@ -66,5 +64,9 @@ public class MemberMypageController {
 	@RequestMapping("/member/changeImg")
 	public String changeImg(){
 		return "member/mypage/mypage_dnjstj4";
+	}	
+	@RequestMapping("/member/changeImg2")
+	public String changeImg2(){
+		return "member/mypage/mypage_dnjstj5";
 	}	
 }

@@ -97,8 +97,8 @@
 				<ul id="lnbNavi" class="lnb on">
 					<li class="low active on"><a>원서접수관리</a>
 						<ul style="display: block;">
-							<li class="on"><a href="<%=request.getContextPath() %>/member/wonseoHistory?mem_code=<%=id%>">원서접수내역</a></li>
-							<li><a href="<%=request.getContextPath() %>/member/myPageWonseoReq">원서접수신청</a></li>
+							<li><a href="<%=request.getContextPath() %>/member/wonseoHistory?mem_code=<%=id%>">원서접수내역</a></li>
+							<li><a href="<%=request.getContextPath() %>/member/wonseoReq">원서접수신청</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/resultCheck">시험결과보기</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/changeImg">사진변경신청/결과</a></li>
 						</ul></li>

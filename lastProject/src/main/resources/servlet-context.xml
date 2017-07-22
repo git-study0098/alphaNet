@@ -27,7 +27,7 @@
 	<view-controller view-name="login/loginForm" path="/admin/loginForm"/>
 	<view-controller view-name="login/logout" path="/logout"/>
 	<view-controller view-name="login/login_duplicate" path="/login_duplicate"/>
-	<view-controller view-name="sign_up" path="/signUp"/>
+<!-- 	<view-controller view-name="sign_up" path="/signUp"/> -->
 	<view-controller view-name="member/board/haggwa/haggwa" path="/change1"/>
 	
 	<view-controller view-name="member/jaguk/jaguk_true" path="/jaguk_true"/>

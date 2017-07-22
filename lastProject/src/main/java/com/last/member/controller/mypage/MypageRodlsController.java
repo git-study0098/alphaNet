@@ -1,4 +1,4 @@
-package com.last.admin.controller;
+package com.last.member.controller.mypage;
 
 import java.sql.SQLException;
 import java.util.List;

@@ -10,10 +10,8 @@ function showCard() {
 	window.open("jagukPayment?mem_code=${viewData.mem_code}&qualifi_certi_iss_pr=${price}" ,"pop","left=650,top=150,width=850px,height=650px");
  }
 function paymentCheck(){
-	 location.href="<%=request.getContextPath()%>/main";
+	 location.href="<%=request.getContextPath()%>/member/jagukRequestSearch";
 }
-// 마이페이지 -> 자격증 발급 내역
-<%-- location.href='<%=request.getContextPath()%>/member/wonseoReq6?placeNm=${placeNm}&em_info_code=${em_info_code}'; --%>	
 </script>
 
 <style>
@@ -204,90 +202,7 @@ function paymentCheck(){
 
 				</div>
 				<br>
-				
-					<!-- 접수증 쿠키삭제 안내문구 -->
-
-
-
-				<form name="frm" id="frm">
-
-					<input type="hidden" name="certTrnsNo" value=""> <!-- 인증거래번호 -->
-					<input type="hidden" name="certResdNo" value=""> <!-- 주민번호-->
-					<input type="hidden" name="certHgulNm" value=""> <!-- 성명-->
-					<input type="hidden" name="certGoodsNm" value=""> <!-- 상품명-->
-					<input type="hidden" name="certgoodsAmt" value=""> <!-- 상품금액-->
-					<input type="hidden" name="certSplyTrnsNo" value=""> <!-- 공급자거래번호-->
-					<input type="hidden" name="certMphoneCertRsltCcd" value=""> <!-- 휴대폰인증결과[c코드]-->
-					<input type="hidden" name="certCertDttm" value=""> <!-- 인증일시-->
-					<input type="hidden" name="certMphoneId" value=""> <!-- 휴대폰식별자-->
-					<input type="hidden" name="certmPhoneCompCcd" value=""> <!-- 이동통신사[c코드]-->
-					<input type="hidden" name="certCertSvcId" value=""> <!-- 인증서비스아이디-->
-
-					<input name="strUploadFileName" type="hidden" value="20170707100224_02157">
-					<input type="hidden" name="applNo" value="D8003849117">
-					<input type="hidden" name="resdNo" value="9204121284511">
-					<input type="hidden" name="modiYn" value="Y">
-					<input type="hidden" name="setlStat" value="미결제">
-					<input type="hidden" name="certMethCcd" value="J">
-					<input type="hidden" name="recptMethCcd" value="P">
-					<input type="hidden" name="setlStatCcd" value="">
-
-					<input type="hidden" name="phtPath" value="PL2016392005/2/13008898">
-					<input type="hidden" name="preQualGiveGbCcd" value="">
-					<input type="hidden" name="planId" value="PL2016392005">
-					<input type="hidden" name="seqNo" value="2">
-					<input type="hidden" name="suNo" value="13008898">
-					<input type="hidden" name="issuPrgsStatCcd" value="10">
-
-				</form>
-
-				<!-- [LG데이콤] 결제창에 넘길 폼 -->
-				<form name="payForm" method="post">
-					<input type="hidden" name="site_code" value="hrd_de"> <!-- 상점아이디 -->
-					<input type="hidden" name="amount" value="5440"> <!-- 결제 금액 -->
-					<input type="hidden" name="soc_no" value="920412-*******"> <!-- 주민등록번호 -->
-					<input type="hidden" name="order_id" value="D8003849117"> <!-- 주문번호 -->
-					<input type="hidden" name="ordr_good_name" value="자격증"> <!-- 상품명 -->
-					<input type="hidden" name="order_name" value="황병준"> <!-- 주문자명 -->
-					<input type="hidden" name="order_tel1" value=""> <!-- 주문자 전화번호 -->
-					<input type="hidden" name="order_tel2" value=""> <!-- 주문자 휴대폰번호 -->
-					<input type="hidden" name="order_email" value=""> <!-- 주문자 이메일 -->
-					<input type="hidden" name="good_cnt" value="000"> <!-- 상품 개수 -->
-					<input type="hidden" name="shop_value" value="D8003849117"> <!-- 쇼핑몰 추적번호(자체처리필드) -->
-					<input type="hidden" name="pay_type" value=""> <!-- 결제 수단 (CARD/BANK/VBANK/MOBL) -->
-					<input type="hidden" name="cli_type" value="issue"> <!-- 접수 종류 (ind/gro/issue/cer) -->
-					<input type="hidden" name="ret_val1" value="D8003849117"> <!-- 결과 페이지 호출용 파라미터 -->
-					<input type="hidden" name="ret_val2" value="|gSite=Q|gId="> <!-- 결과 페이지 호출용 파라미터 -->
-					<input type="hidden" name="post_dlvr_fee" value="2340"> <!-- 배송비  -->
-					<input type="hidden" name="dlvr_meth_ccd" value="P"> <!-- 배송방법  -->
-					<input type="hidden" name="give_fee_sum" value="3100"> <!-- 발급수수료 -->
-				</form>
-
-				<form name="CancelProcessForm" method="post" onsubmit="return false" action="isr003.do?id=isr00302s01&amp;gSite=Q&amp;gId=">
-					<input type="hidden" name="repreApplNo" value="D8003849117">
-					<input type="hidden" name="refundType" value="C">
-					<input type="hidden" name="refundRate" value="">
-					<input type="hidden" name="payType" value="">
-					<input type="hidden" name="stat_type" value="2">
-					<input type="hidden" name="repCertMethCcd" value="J">
-					<input type="hidden" name="repCertTrnsNo" value=""> <!-- 인증거래번호 -->
-					<input type="hidden" name="repCertResdNo" value=""> <!-- 주민번호-->
-					<input type="hidden" name="repCertHgulNm" value=""> <!-- 성명-->
-					<input type="hidden" name="repCertGoodsNm" value=""> <!-- 상품명-->
-					<input type="hidden" name="repCertgoodsAmt" value=""> <!-- 상품금액-->
-					<input type="hidden" name="repCertSplyTrnsNo" value=""> <!-- 공급자거래번호-->
-					<input type="hidden" name="repCertMphoneCertRsltCcd" value=""> <!-- 휴대폰인증결과[c코드]-->
-					<input type="hidden" name="repCertCertDttm" value=""> <!-- 인증일시-->
-					<input type="hidden" name="repCertMphoneId" value=""> <!-- 휴대폰식별자-->
-					<input type="hidden" name="repCertmPhoneCompCcd" value=""> <!-- 이동통신사[c코드]-->
-					<input type="hidden" name="repCertCertSvcId" value=""> <!-- 인증서비스아이디-->
-				</form>
-
-				<iframe name="isr00302s01" title="빈프레임" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" width="0" height="0"></iframe>
-
-				
 				<div id="payWin" class="mt20" style="text-align: center; display: block; z-index: 1;">
-					<iframe id="payFrame" name="payFrame" width="663px" style="margin: 0px auto;" title="신청 취소 상세" src="" frameborder="0" scrolling="no"></iframe>
 				</div>
 			</div>
 			<!--  컨텐츠 끝 -->

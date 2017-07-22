@@ -453,7 +453,7 @@ var speed = 800;
 											<ul style="min-height: 145px; left: 130px; display: none;">
 												<li><a href="#">원서접수내역</a></li>
 												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">원서접수신청</a></li>
+													href="<%=request.getContextPath()%>/member/wonseoReq">원서접수신청</a></li>
 												<li><a href="#">시험결과확인</a></li>
 												<li><a href="#">사진변경신청/결과</a></li>
 											</ul></li>

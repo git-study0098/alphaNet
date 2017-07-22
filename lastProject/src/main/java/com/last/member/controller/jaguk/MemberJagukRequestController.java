@@ -1,4 +1,4 @@
-package com.last.admin.controller.qualifi;
+package com.last.member.controller.jaguk;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import com.last.common.vo.QualifiPagingVO;
 
 @Controller
 //@RequestMapping("/jaguk")
-public class AdminQualifiController {
+public class MemberJagukRequestController {
 
 	@Autowired
 	private AdminQualifiService adminService;
@@ -35,7 +35,7 @@ public class AdminQualifiController {
 
 	@RequestMapping("/request1")
 	public String jagukRequest1(){
-		return "/jaguk_request1";
+		return "member/jaguk/jaguk_request1";
 	}
 	
 	
@@ -258,8 +258,6 @@ public class AdminQualifiController {
 		return url;
 	}
 	
-	
-	
 	@RequestMapping("/member/jagukPayment")
 	public String jagukPayment(@RequestParam(value="mem_code")String mem_code,Model model,
 			@RequestParam(value="qualifi_certi_iss_pr")String qualifi_certi_iss_pr){
@@ -274,7 +272,6 @@ public class AdminQualifiController {
 			e.printStackTrace();
 		}
 		
-		
 		model.addAttribute("qualifiMember", qualifiMember);
 		model.addAttribute("qualifi_certi_iss_pr",qualifi_certi_iss_pr);
 		
@@ -287,5 +284,14 @@ public class AdminQualifiController {
 		return "member/jusoPopup3";
 	}
 	
-	
+	@RequestMapping("/member/jagukRequestSearch")
+	public String jagukRequestSearch(Model model){
+		String url = "member/jaguk/jaguk_request_search";
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
+		
+		
+		return url;
+	}
 }
