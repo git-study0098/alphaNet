@@ -19,20 +19,15 @@
 </style>
 
 <script>
-
 	function check(){
 		var result = 0;
 		$(":checkbox:checked").each(function(){
 			var price =  $(this).attr("price");
-			alert(price);
 			price = Number(price);
 			result += price;
 		});
 		$("#totIssuFee").val(result);
 	}
-	
-	
-	
 </script>
 
 <article>

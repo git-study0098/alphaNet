@@ -93,9 +93,9 @@
 			<h2 id="lnbTitle" class="tit_lnb">자격증/확인서</h2>
 			<!-- menu리스트 -->
 			<ul id="lnbNavi" class="lnb on">
-				<li class="low"><a>자격증 발급 안내</a>
+				<li class="low active on"><a>자격증 발급 안내</a>
 					<ul style="display: block;">
-						<li><a href="<%=request.getContextPath() %>/infoReq">자격증발급/발급처</a></li>
+						<li class="on"><a href="<%=request.getContextPath() %>/infoReq">자격증발급/발급처</a></li>
 						<li><a href="<%=request.getContextPath() %>/infoNew">신규/인정/재발급</a></li>
 						<li><a href="<%=request.getContextPath() %>/infoFunc">기능사보기능사자격부여</a></li>
 						<li><a href="<%=request.getContextPath() %>/infoTarget">면허발급대상종목</a></li>
@@ -103,9 +103,9 @@
 						<li><a href="<%=request.getContextPath() %>/infoEdu">보수교육갱신등록폐지</a></li>
 						<li><a href="<%=request.getContextPath() %>/infoNon">폐지종목자격증발급</a></li>
 					</ul></li>
-				<li class="low active on"><a>자격증 발급</a>
+				<li class="low"><a>자격증 발급</a>
 					<ul style="display: block;">
-						<li class="on"><a href="<%=request.getContextPath() %>/request1">자격증발급신청</a></li>
+						<li><a href="<%=request.getContextPath() %>/request1">자격증발급신청</a></li>
 						<li><a href="<%=request.getContextPath() %>/member/request2">자격증발급신청내역조회</a></li>
 					</ul></li>
 				<li class="low"><a>확인서 발급</a>

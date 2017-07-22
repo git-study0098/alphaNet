@@ -314,7 +314,7 @@ var speed = 800;
 					<ul class="right">
 					
 					<sec:authorize access="isAuthenticated()">
-						<li><a href="logout">로그아웃</a></li>
+						<li><a href="<%=request.getContextPath()%>/logout">로그아웃</a></li>
 					</sec:authorize>
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="login">로그인</a></li>
