@@ -53,35 +53,144 @@ public class MemberNoticeController {
 	}
 	
 	@RequestMapping("/memberNotice2")
-	public String listNotice1(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice01" )String notice_code,
-							 HttpServletRequest request )throws SQLException, ServiceException{
+	public String listNotice2(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice02" )String notice_code,
+			HttpServletRequest request )throws SQLException, ServiceException{
 		String schType = request.getParameter("schType");
 		String schText = request.getParameter("schText");
-		PagingVO viewData2=null;
-		int count = 0;
-	      try {
-	    	  count = adminNotice1Service.selectCount(notice_code,schType,schText);
-	          viewData2= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
-	      } catch (ServiceException e) {
-	         e.printStackTrace();
-	      }
-	      
-	      if(viewData2.getNotice1List().isEmpty()){
-	         pageNumber--;
-	         if(pageNumber<=0) pageNumber=1;
-	         try {
-	            viewData2 = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
-	         } catch (ServiceException e) {
-	            e.printStackTrace();
-	         }
-	      }
-	      
-	      model.addAttribute("viewData2",viewData2);
-	      model.addAttribute("pageNumber",pageNumber);
-	      model.addAttribute("count",count);
-	      
-	      return "member/board/notice/notice_search";
+		PagingVO viewData=null;
+		try {
+			viewData= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		if(viewData.getNotice1List().isEmpty()){
+			pageNumber--;
+			if(pageNumber<=0) pageNumber=1;
+			try {
+				viewData = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+		model.addAttribute("viewData",viewData);
+		model.addAttribute("pageNumber",pageNumber);
+		
+		return "member/board/notice/notice2";
 	}
+	@RequestMapping("/memberNotice3")
+	public String listNotice3(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice03" )String notice_code,
+			HttpServletRequest request )throws SQLException, ServiceException{
+		String schType = request.getParameter("schType");
+		String schText = request.getParameter("schText");
+		PagingVO viewData=null;
+		try {
+			viewData= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		if(viewData.getNotice1List().isEmpty()){
+			pageNumber--;
+			if(pageNumber<=0) pageNumber=1;
+			try {
+				viewData = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+		model.addAttribute("viewData",viewData);
+		model.addAttribute("pageNumber",pageNumber);
+		
+		return "member/board/notice/notice3";
+	}
+	@RequestMapping("/memberNotice4")
+	public String listNotice4(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice04" )String notice_code,
+			HttpServletRequest request )throws SQLException, ServiceException{
+		String schType = request.getParameter("schType");
+		String schText = request.getParameter("schText");
+		PagingVO viewData=null;
+		try {
+			viewData= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		if(viewData.getNotice1List().isEmpty()){
+			pageNumber--;
+			if(pageNumber<=0) pageNumber=1;
+			try {
+				viewData = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+		model.addAttribute("viewData",viewData);
+		model.addAttribute("pageNumber",pageNumber);
+		
+		return "member/board/notice/notice4";
+	}
+	@RequestMapping("/memberNotice5")
+	public String listNotice5(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice05" )String notice_code,
+			HttpServletRequest request )throws SQLException, ServiceException{
+		String schType = request.getParameter("schType");
+		String schText = request.getParameter("schText");
+		PagingVO viewData=null;
+		try {
+			viewData= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+		
+		if(viewData.getNotice1List().isEmpty()){
+			pageNumber--;
+			if(pageNumber<=0) pageNumber=1;
+			try {
+				viewData = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println();
+		model.addAttribute("viewData",viewData);
+		model.addAttribute("pageNumber",pageNumber);
+		
+		return "member/board/notice/notice5";
+	}
+	
+//	@RequestMapping("/memberNotice2")
+//	public String listNotice1(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice01" )String notice_code,
+//							 HttpServletRequest request )throws SQLException, ServiceException{
+//		String schType = request.getParameter("schType");
+//		String schText = request.getParameter("schText");
+//		PagingVO viewData2=null;
+//		int count = 0;
+//	      try {
+//	    	  count = adminNotice1Service.selectCount(notice_code,schType,schText);
+//	          viewData2= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+//	      } catch (ServiceException e) {
+//	         e.printStackTrace();
+//	      }
+//	      
+//	      if(viewData2.getNotice1List().isEmpty()){
+//	         pageNumber--;
+//	         if(pageNumber<=0) pageNumber=1;
+//	         try {
+//	            viewData2 = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
+//	         } catch (ServiceException e) {
+//	            e.printStackTrace();
+//	         }
+//	      }
+//	      
+//	      model.addAttribute("viewData2",viewData2);
+//	      model.addAttribute("pageNumber",pageNumber);
+//	      model.addAttribute("count",count);
+//	      
+//	      return "member/board/notice/notice_search";
+//	}
 	
 	
 	

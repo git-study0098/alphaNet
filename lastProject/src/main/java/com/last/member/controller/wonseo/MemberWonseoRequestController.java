@@ -1,9 +1,7 @@
-package com.last.admin.controller;
+package com.last.member.controller.wonseo;
 
 import java.sql.SQLException;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,104 +27,19 @@ public class MemberWonseoRequestController {
 		this.wonseoService = wonseoService;
 	}
 	
-	//원서접수 안내
-	@RequestMapping("/wonseoInfo")
-	public String wonseoInfo(){
-		return "member/wonseo/wonseoInfo";
-	}
-	
-	//원서접수 현황
-	@RequestMapping("/wonseo_ing")
-	public String wonseo_ing(){
-		return "member/wonseo/wonseo_ing";
-	}
-	
-	//장애 유형별 편의사항
-	@RequestMapping("/wonseoDisabled")
-	public String wonseoDisabled(){
-		return "member/wonseo/wonseoDisabled";
-	}
-	
-	//합격자 발표조회
-	@RequestMapping("/wonseoPassSearch")
-	public String wonseoPassSearch(){
-		return "member/wonseo/wonseo_pass_search";
-	}
-	
-	//가답안/확정답안
-	@RequestMapping("/wonseoAnswer")
-	public String wonseoAnswer(){
-		return "member/wonseo/wonseo_answer";
-	}
-	
-	//달력은 exam폴더 ExamCalendarController에 있습니다.
-		
-	//국가 기술자격 시험안내
-	@RequestMapping("/wonseoExamDate")
-	public String wonseoExamDate(){
-		return "member/wonseo/wonseo_exam_date";
-	}	
-	
-	//필기시험접수 안내
-	@RequestMapping("/wonseoWriterInfo")
-	public String wonseoWriterInfo(){
-		return "member/wonseo/wonseo_writer_info";
-	}
-	
-	//필기시험 수수료 검색창 있는부분
-	@RequestMapping("/wonseoWriterPrice1")
-	public String wonseoWriterPrice1(){
-		return "member/wonseo/wonseo_writer_price1";
-	}
-	
-	//필기시험 수수료 검색 결과 뿌려주는 부분
-	@RequestMapping("/wonseoWriterPrice2")
-	public String wonseoWriterPrice2(){
-		return "member/wonseo/wonseo_writer_price2";
-	}
-	
-	//실기시험 접수안내
-	@RequestMapping("/wonseoFuncInfo")
-	public String wonseoFuncInfo(){
-		return "member/wonseo/wonseo_func_info";
-	}
-	
-	//실기시험 종목별 시험방법
-	@RequestMapping("/wonseoJonmokTestInfo")
-	public String wonseoJonmokTestInfo(){
-		return "member/wonseo/wonseo_jonmok_testInfo";
-	}
-	
-	//실기시험 일정 변경 기준
-	@RequestMapping("/wonseoFuncChangDate")
-	public String wonseoFuncChangDate(){
-		return "member/wonseo/wonseo_func_changDate";
-	}
-	
-	//실기시험 일정 변경 기준
-	@RequestMapping("/wonseoFuncPlace")
-	public String wonseoFuncPlace(){
-		return "member/wonseo/wonseo_func_place";
-	}
-	
-	
-	
+	//원서접수신청 처음 페이지
 	@RequestMapping("/member/wonseoReq")
 	public String wonseoRequest1(Model model){
 		String url = "member/wonseo/wonseo_request1";
-		List<WonseoInfoVo> numgInfo=null;
-		
+		List<WonseoInfoVo> viewData2 = null;
 		
 		try {
-			numgInfo = wonseoService.selectnumgList();
-			
-			
+			viewData2 = wonseoService.selectWonseoList();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
-		model.addAttribute("numgInfo",numgInfo);
-		
+		model.addAttribute("numgInfo",viewData2);
 		
 		return url;
 	}
@@ -361,16 +274,4 @@ public class MemberWonseoRequestController {
 		
 		return url;
 	}
-	
-	
-	@RequestMapping("/map")
-	public String map(HttpServletRequest request , PlaceVO vo){
-		System.out.println("컨트롤러안들어와요...");
-		String map_nm = request.getParameter("place_nm");
-		System.out.println(map_nm);
-		vo = wonseoService.selectMap(map_nm);
-		request.setAttribute("map_add", vo);
-		return "member/wonseo/map";
-	}
-	
 }

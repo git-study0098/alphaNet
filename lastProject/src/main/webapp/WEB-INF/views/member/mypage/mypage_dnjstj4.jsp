@@ -19,10 +19,6 @@
 	.searchType.txt_left > span > select {float:left}
 	.searchType.txt_left > span > select.last {width:130px; margin-right:5px}
 	
-	.pagination1{text-align:center;}
-	.pagination1 .page {margin:0 15px}
-	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
-	
 	.noData {
 	    padding: 30px 0 !important;
 	    font-size: 14px !important;
@@ -78,15 +74,10 @@
 				<!-- TAB -->
 				<div class="tabLayout">
 					<ul>
-						<li class="on"><a href="#" title="사진변경 신청"><span>사진변경 신청</span></a></li>
-						<li><a href="#" onclick="fnPageSubmit('myp004.do?id=myp00402&amp;gSite=Q&amp;gId=')"><span>사진변경 신청 진행 현황</span></a></li>
+						<li class="on"><a href="<%=request.getContextPath()%>/member/changeImg" title="사진변경 신청"><span>사진변경 신청</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/member/changeImg2"><span>사진변경 신청 진행 현황</span></a></li>
 					</ul>
 				</div>
-
-
-
-
-
 				<div class="tbl_type1">
 					<table summary="사진 변경 신청 진행 상세 현황으로, 응시시험, 접수종목, 접수일자, 사진변경여부 정보 제공">
 						<caption>사진 변경 신청 진행 상세 현황</caption>
@@ -100,7 +91,6 @@
 
 				<!-- //컨텐츠 내용 -->
 				</form>
-				<iframe name="myp00401s01" title="빈프레임" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" width="0%" height="0"></iframe>
 			</div>
 		</div>
 		

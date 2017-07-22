@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="StareCertifi">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="stareCerti" type="com.last.common.vo.StareCertifiVO"/>
+	
+	<select id="selectSchoolCerti" parameterClass="str" resultClass="stareCerti">
+		select sch_major_code,
+			sch_coll,
+			sch_code_nm,
+			sch_major_nm 
+			from mem
+			where mem_code = #mem_code#
+	</select>
+	
+	<select id="selectCareerCerti" parameterClass="str" resultClass="stareCerti">
+		select career_ind_code,
+			career_job_code,
+			ca_comp_nm,
+			ca_work_content,
+			ca_work_bd,
+			ca_work_ed
+			from mem
+			where mem_code = #mem_code#
+	</select>
+	
+	<insert id="insertMemberCareer" parameterClass="stareCerti">
+		
+	</insert>
+		
+</sqlMap>

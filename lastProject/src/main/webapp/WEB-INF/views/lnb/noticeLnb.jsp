@@ -1,6 +1,28 @@
+<%@page import="org.springframework.security.core.userdetails.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.Authentication"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 
+<script>
+	$(document).ready(function(){
+		$('.btn_login').click(function(){
+			if($('#mem_id').val() == ""){
+				alert("로그인할 아이디를 입력하세요.");
+				$('#mem_id').focus();
+			}else if($('#mem_pswd').val() == ""){
+				alert("로그인할 비밀번호를 입력하세요.");
+				$('#mem_pswd').focus();
+			}else{
+				$('#loginForm').attr("action", "<c:url value='/login'/>");
+				$('#loginForm').submit();
+			}
+		})
+		
+	})
+</script>
 
 <div id="lnb">
 				<div class="login">
@@ -22,6 +44,7 @@
 						<div class="login_area">
 
 							<!-- 로그인 전 -->
+							<sec:authorize access="!isAuthenticated()">
 							<div class="login_yn">
 								<label for="mem_id" class="blind">아이디</label> <input type="text"
 									name="mem_id" id="mem_id" style="ime-mode: disabled;">
@@ -32,14 +55,37 @@
 							<div class="login_yn">
 								<ul>
 									<li><a
-										href="http://www.q-net.or.kr/man003.do?id=man00301&amp;gSite=Q&amp;gId="
+										href="<%=request.getContextPath()%>/signup"
 										class="golink01"><span>회원가입</span></a></li>
 									<li><a
-										href="https://www.q-net.or.kr/man002.do?id=man00201&amp;gSite=Q&amp;gId="
+										href="<%=request.getContextPath()%>/login/findIdForm"
 										class="golink01"><span>아이디/비밀번호 찾기</span></a></li>
 								</ul>
 							</div>
+							</sec:authorize>
 							<!-- //로그인 전 -->
+
+					<!-- 로그인 후 -->
+					<sec:authorize access="isAuthenticated()">
+					<div class="welcom">
+					<%
+						Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+						authentication.getName();
+						
+						User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+					%>
+						<p><span class="fc_b"><%=user.getUsername() %></span>님 반갑습니다.</p>
+					</div>
+					<div>
+						<a href="<%=request.getContextPath()%>/logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
+						<a href="<%=request.getContextPath()%>/updateMember" class="btn_login3 btncolor2"><span>정보수정</span></a>
+					</div>
+					<div class="my_list">
+						<a href=# class="golink01"><span>나의 접수내역 바로가기</span></a>
+					</div>
+					</sec:authorize>
+					<!-- //로그인 후 -->
+
 						</div>
 					</form>
 				</div>

@@ -20,4 +20,29 @@ public class LoginService {
 			e.printStackTrace();
 		}
 	}
+
+	public MemberVo selectFindIdPwd(MemberVo member) throws SQLException {
+		MemberVo vo = null;
+		vo = loginDao.selectFindIdPwd(member);
+		return vo; 
+	}
+
+	public int selectCorrect(MemberVo vo) throws SQLException{
+		
+		int result = 0;
+		
+		MemberVo member = loginDao.selectCorrect(vo);
+		
+		if(member==null || member.equals("")){
+			result = -1;
+		}else{
+			result = 1;
+		}
+		
+		return result;
+	}
+
+	public int updatePwd(String id, String newPw) throws SQLException{
+		return loginDao.updatePwd(id, newPw);
+	}
 }

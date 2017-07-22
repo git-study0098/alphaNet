@@ -72,6 +72,17 @@
 		select * from mem where mem_code=#id# and mem_pwd=#pwd#
 	</select>
 	
+	<select id="selectFindIdPwd" parameterClass="member" resultClass="member">
+		select mem_code as id, mem_pwd as pwd
+		from mem
+		where mem_nm=#name#
+		and mem_bir=#mem_bir#
+		and mem_phone=#mem_phone#
+		<isNotEmpty property="id">
+		and mem_code = #id#
+		</isNotEmpty>
+	</select>
+	
 	
 	<select id="selectMemberId" parameterClass="str" resultClass="str"> 
 		select mem_code as id from mem where mem_code = #id#
@@ -80,6 +91,12 @@
 	<update id="insertMember" parameterClass="member">
 		insert into mem (mem_code,mem_photo,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_bir,mem_ph,mem_email_agree,mem_pass_em,enabled,authorities) 
 		values (#id#,#mem_photo#,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_bir#,#mem_ph#,#mem_email_agree#,'1','ROLE_MEMBER')
+	</update>
+	
+	<update id="updatePwd" parameterClass="java.util.HashMap">
+		update mem
+		set mem_pwd = #mem_pwd#
+		where mem_code = #mem_code#
 	</update>
 	
 	<select id="selectCalendar" resultClass="calendar"> 

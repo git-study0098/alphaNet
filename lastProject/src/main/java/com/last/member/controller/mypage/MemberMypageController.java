@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +26,11 @@ public class MemberMypageController {
 	
 
 	@RequestMapping("/member/wonseoHistory")
-	public String wonseoHistory(@RequestParam(value="mem_code") String mem_code,Model model){
+	public String wonseoHistory(Model model){
 		List<StareVO> selectStareList = null;
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
 		try {
 			selectStareList = mypageService.selectStareList(mem_code);
 			System.out.println(selectStareList.toString());
@@ -37,18 +42,31 @@ public class MemberMypageController {
 		return "member/mypage/mypage_dnjstj1";
 	}
 	
-	@RequestMapping("/member/mypageWonseoReq")
-	public String wonseoReq(){
-		return "member/mypage/mypage_dnjstj2";
-	}
-	
 	@RequestMapping("/member/resultCheck")
-	public String resultCheck(){
+	public String resultCheck(Model model){
+		List<StareVO> selectResultCheck = null;
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
+		try {
+			selectResultCheck = mypageService.selectResultCheck(mem_code);
+			System.out.println(selectResultCheck.toString());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("mem_code", mem_code);
+		model.addAttribute("selectResultCheck", selectResultCheck);
+		
 		return "member/mypage/mypage_dnjstj3";
 	}
 	
 	@RequestMapping("/member/changeImg")
 	public String changeImg(){
 		return "member/mypage/mypage_dnjstj4";
+	}	
+	@RequestMapping("/member/changeImg2")
+	public String changeImg2(){
+		return "member/mypage/mypage_dnjstj5";
 	}	
 }

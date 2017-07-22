@@ -50,7 +50,7 @@ public class DownloadController implements ApplicationContextAware{
 	}
 	
 	private File getFile(String fileId,String fileName){
-		String baseDir="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
+		String baseDir="C:/git/alphaNet/lastProject/src/main/webapp/resources/upload";
 		
 		if(fileId.equals("1"))
 			return new File(baseDir,fileName);

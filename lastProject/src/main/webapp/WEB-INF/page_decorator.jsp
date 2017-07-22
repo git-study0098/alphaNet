@@ -1,9 +1,13 @@
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.userdetails.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -299,7 +303,7 @@ var speed = 800;
 			<div id="header">
 				<div class="center_area">
 				<!-- 경로 설정 -->
-					<h1><a id="lnkMoveToMain" href="main"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
+					<h1><a id="lnkMoveToMain" href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
 					<button type="button" class="mMenu_open" title="메뉴 열기"><img src="<%=request.getContextPath()%>/resources/images/btn_menu.png" alt="메뉴 열기"></button>
 					<ul class="left">
 						<li><button type="button" class="notice" id="topNoticeBtn" title="긴급공지 열기"><span>긴급공지</span></button></li>
@@ -310,7 +314,7 @@ var speed = 800;
 					<ul class="right">
 					
 					<sec:authorize access="isAuthenticated()">
-						<li><a href="logout">로그아웃</a></li>
+						<li><a href="<%=request.getContextPath()%>/logout">로그아웃</a></li>
 					</sec:authorize>
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="login">로그인</a></li>
@@ -319,7 +323,9 @@ var speed = 800;
 						<li><a>English</a></li>
 						<li><a>이용안내</a></li>
 						<li><a>큐넷길라잡이</a></li>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a href="<%=request.getContextPath() %>/admin/login/main2">관리자 페이지</a></li>
+					</sec:authorize>
 					</ul>
 					<form method="get" class="header_form" role="search">
 						<fieldset class="total_search">
@@ -349,7 +355,6 @@ var speed = 800;
 												<li><a href="<%=request.getContextPath() %>/wonseoInfo">원서접수안내</a></li>
 												<li><a href="/member/wonseo/request">원서접수신청</a></li>
 												<li><a href="<%=request.getContextPath() %>/wonseo_ing">원서접수현황</a></li>
-												<li><a href="#">장애유형별편의제공안내</a></li>
 											</ul></li>
 										<li><a onclick="return NetFunnel_goUrl({},this.href);"
 											href="#">합격자/답안발표</a>
@@ -377,13 +382,7 @@ var speed = 800;
 											</ul></li>
 										<li><a href="#">자격검정통계</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a href="#">총괄현황</a></li>
-												<li><a href="#">종목별현황</a></li>
-												<li><a
-													href="javascript:fileDown('jm_info/qualificationstatics.pdf','qualificationstatics.pdf')"
-													title="클릭하시면 국가기술자격통계연보를 다운로드 할 수 있습니다."
-													alt="국가기술자격통계연보를 다운">국가기술자격통계연보</a></li>
-												<li><a href="#">수험자동향</a></li>
+												<li><a href="<%=request.getContextPath()%>/chart">총괄현황</a></li>
 											</ul></li>
 									</ul>
 									<p class="blind">
@@ -397,8 +396,9 @@ var speed = 800;
 							<li class=""><a href="#">사전 시험보기</a>
 								<div class="sub02" style="display: none;">
 									<ul style="min-height: 235px;">
-										<li><a href="#/man001.do?id=&amp;gId=07&amp;gSite=L"
-											target="_blank" title="새 창">가맹거래사</a></li>
+										<li>
+											<a href="" target="_blank" title="새 창">CBT</a>
+										</li>
 									</ul>
 									<p>- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
@@ -445,14 +445,15 @@ var speed = 800;
 									</p>
 								</div>
 							</li>
-							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/myInfo">마이페이지</a>
+							
+							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/wonseoHistory">마이페이지</a>
 								<div class="sub04" style="display: none;">
 									<ul style="min-height: 145px;">
-										<li class=""><a href="#">원서접수관리</a>
+										<li class=""><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수관리</a>
 											<ul style="min-height: 145px; left: 130px; display: none;">
 												<li><a href="#">원서접수내역</a></li>
 												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">원서접수신청</a></li>
+													href="<%=request.getContextPath()%>/member/wonseoReq">원서접수신청</a></li>
 												<li><a href="#">시험결과확인</a></li>
 												<li><a href="#">사진변경신청/결과</a></li>
 											</ul></li>

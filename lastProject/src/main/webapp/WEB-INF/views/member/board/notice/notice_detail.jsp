@@ -112,7 +112,8 @@
 											<tr>
 												<th scope="row">첨부파일</th>
 												<td colspan="5">
-													<a href="#" class="btn3_icon download">${vo.attach_file}</a>
+													<a href="file/1?attach_file=${vo.attach_file}" class="btn3_icon download" >${vo.attach_file}</a>
+													<input type="hidden" name="attach_file" value="${vo.attach_file}">
 												</td>
 											</tr>
 											<tr>
@@ -122,12 +123,8 @@
 													</textarea></td>
 											</tr>
 										</tbody>
-
 									</table>
 								</div>
-
-
-
 
 								<p class="txt_right">
 									<input type="submit" class="btn btncolor1" value="수정"
