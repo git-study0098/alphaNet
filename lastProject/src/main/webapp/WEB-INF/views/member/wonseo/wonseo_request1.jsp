@@ -61,17 +61,24 @@
 								</tr>
 							</thead>
 							<tbody> 
+								<c:choose>
+								<c:when test="${not empty numgInfo}">
 								<c:forEach items="${numgInfo}" var="numgInfo">
 									<input type="hidden" value="${numgInfo.em_info_code}">
 								<tr>
 									<td class="left">${numgInfo.em_nm}</td>
-									
 									<td>${numgInfo.numg_app_receipt_begin} 오전 09:00 ~ ${numgInfo.numg_app_receipt_end} 오후 06:00</td>
-									
 									<!-- 경로 설정-->
 									<td><button type="button" class="btn3_type1" title="접수하기" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq2?em_nm=${numgInfo.em_nm}&em_info_code=${numgInfo.em_info_code}'"><span>접수하기</span></button></td>
 								</tr>
 								</c:forEach>
+								</c:when>
+								<c:otherwise>
+									<td></td>
+									<td>원서접수 진행중인 시험이 존재하지 않습니다.</td>
+									<td></td>
+								</c:otherwise>
+								</c:choose>
 							</tbody>
 						</table>
 					</div>

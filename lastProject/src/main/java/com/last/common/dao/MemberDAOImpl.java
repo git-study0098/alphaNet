@@ -1,7 +1,12 @@
 package com.last.common.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+
+import javax.print.attribute.HashAttributeSet;
+
+import oracle.net.aso.p;
 
 import com.last.common.vo.CalendarVO;
 import com.last.common.vo.MemberVo;
@@ -62,23 +67,24 @@ public class MemberDAOImpl extends MemberDAO{
 
 
 	@Override
-	public int idCheck(String id) {
-		int result = -1;
+	public String idCheck(String id) {
+		
 		System.out.println("들어");
 		System.out.println(id+"다오임플");
-		MemberVo member=null;
+		String member=null;
 		try {
-			member = (MemberVo) client.queryForObject("selectMemberId", id);
+			member = (String) client.queryForObject("selectMemberId", id); //있으면 MEM002 업으면 null
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		if (member != null) {
-			result = 1;
-		}else{
-			result = -1;
-		}
 		
-		return result;
+		}
+		if(member ==null){
+			member ="n";
+		}else{
+			member ="y";
+		}
+	System.out.println(member +"다오임플");
+		return member;
 	}
 
 
@@ -96,6 +102,24 @@ public class MemberDAOImpl extends MemberDAO{
 		
 		MemberVo member = (MemberVo) client.queryForObject("selectMember" ,id);
 		return member;
+	}
+
+
+	@Override
+	public int updateMember(MemberVo vo, String id) throws SQLException {
+		int result=-1;
+		System.out.println("멤버 수정 하하하");
+		
+		vo.setId(id);
+		
+		try{
+		client.update("updateMember" ,vo);
+		result =1;
+		}catch(Exception e){
+			
+		}
+		
+		return result;
 	}
 
 

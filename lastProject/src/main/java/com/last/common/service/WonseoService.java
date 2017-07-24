@@ -3,6 +3,7 @@ package com.last.common.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.last.common.dao.MainDAO;
 import com.last.common.dao.WonseoDAO;
 import com.last.common.vo.MemberVo;
 import com.last.common.vo.PlaceVO;
@@ -16,11 +17,9 @@ public class WonseoService {
 		this.wonseoDao = wonseoDao;
 	}
 	
-public List<WonseoInfoVo> selectnumgList() throws SQLException{
-		
-		List<WonseoInfoVo> numgList = wonseoDao.selectnumgList();
-		
-		return numgList;
+	public List<WonseoInfoVo> selectWonseoList() throws SQLException{
+		List<WonseoInfoVo> wonseoList = wonseoDao.selectWonseoList();
+		return wonseoList;
 	}
 
 	public MemberVo selectMemberData(String id) throws SQLException {
@@ -60,4 +59,9 @@ public List<WonseoInfoVo> selectnumgList() throws SQLException{
 		return result;
 	}
 	
+	public PlaceVO selectMap(String place_nm){
+		PlaceVO vo = new PlaceVO();
+		vo = wonseoDao.selectMap(place_nm);
+		return vo;
+	}
 }

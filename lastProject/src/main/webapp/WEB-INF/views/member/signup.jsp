@@ -102,25 +102,31 @@ function showSub242(obj) {
 	}
 }
 
+//중복확인
 $(function(){
 	$("#idCheck").click(function(){
+		
 		var idvalue = $('#id').val();
 		
 		$.ajax({
-			url:"member/idcheck.jsp",
+			url:"idCheck",
 			type:"post",
 			data: "id=" + idvalue,
 			success:function(res){
-				if(res.Status == "YES"){
-					$('#idChk').html('<b style="font-size:14px; color:blue">사용가능</b>');
-				}else if(res.Status == "NO"){
-					$('#idChk').html('<b style="font-size:14px; color:red">사용불가</b>');
+				console.log(res);
+				 
+				if(idvalue ==""){
+					alert("아이디를 입력해주세요");
+				}else if(res == 'n'){
+					$('#idChk').html('<font id="ok" style="font-size:13px;display:inline; color:blue">사용가능한 아이디입니다.</font>');
+				}else {
+					$('#idChk').html('<font id="no" style="font-size:13px;display:iniline; color:red">이미 사용중인 아이디입니다.</font>');
 				}
+				 
 			},
 			error:function(){
 				alert('Error');
 			},
-			dataType:'json'
 		});
 	});
 });
@@ -150,36 +156,101 @@ $(function(){
 	    }        
 	    reader.readAsDataURL(file);
 	});		
-}) 
+})
 
-
-// function idCheck(){
-// 	var id = $('#id').val();
-// 	if(id == ''){
-// 		alert("id를 입력해주세요");
-// 		return;
-// 	}
+$(function(){
+	$("#mem_pwd").keyup(function(){
+		   $('font[name=check]').text('');
+	});
 	
-// 	$.ajax({
-// 		url:"idCheck",
-// 		type:"post",
-// 		data:
-// 			"id="+id,
-// 		success:function(res){
-// 			alert("asdas");
-// 				alert(res.Status);
-// 			if(res.Status == "OK"){
-// 				$("#idChk").html("<b style:'font-size:18px;color:red'>사용불가.</b>");
-// 			}else{
-// 				$("#idChk").html("<b style:'font-size:18px;color:blue'>사용가능.</b>");
-// 			}
-// 		},
-// 		dataType: 'json',
-// 		error: function(e){
-// 			alert(e);
-// 		}
-// 	});
-// }
+	$("#mem_pwd_confirm").keyup(function(){
+		if($("#mem_pwd").val() != $("#mem_pwd_confirm").val()){
+			$("font[name=check]").text("");
+			$("font[name=check]").text("비밀번호가 일치하지 않습니다.");
+		}else if($("#mem_pwd").val() == $("#mem_pwd_confirm").val()){
+			 $('font[name=check]').text('');
+			 $('font[name=check]').css('color',"blue");		 
+			 $('font[name=check]').html("비밀번호가 일치합니다.");
+		}
+	})
+
+	
+	
+})
+
+
+
+$(function(){
+	
+		var post1=document.getElementById("mem_post_numb1");
+		var add1=document.getElementById("mem_add1");
+		var add2=document.getElementById("mem_add2");
+		var post2=document.getElementById("mem_post_numb2");
+		var add3=document.getElementById("mem_add3");
+		var add4=document.getElementById("mem_add4");
+	 
+ $("#addr_same").change(function(){
+		 if($("#addr_same").is(":checked")){
+			 post2.value = post1.value;
+			 add3.value = add1.value;
+			 add4.value = add2.value;
+		 }else{
+			 post2.value = "";
+			 add3.value = "";
+			 add4.value = "";
+		 }
+	 })
+
+})
+
+
+function check() {
+
+	var id =document.getElementById("id").value;
+	var bir=document.getElementById("birth_yy").value;
+	var bir2=document.getElementById("birth_mm").value;
+	var bir3=document.getElementById("birth_dd").value;
+	var name=document.getElementById("name").value;
+	var pwd=document.getElementById("mem_pwd").value;
+	var pwdConfirm=document.getElementById("mem_pwd_confirm").value;
+	var email=document.getElementById("mem_email").value;
+	var post1=document.getElementById("mem_post_numb1").value;
+	var add1=document.getElementById("mem_add1").value;
+	var add2=document.getElementById("mem_add2").value;
+	var post2=document.getElementById("mem_post_numb2").value;
+	var add3=document.getElementById("mem_add3").value;
+	var add4=document.getElementById("mem_add4").value;
+
+	if(id==""){
+		alert("아이디를 입력해주세요")	
+	}else if(bir ==""|| bir2==""||bir3==""){
+		alert("생년월일을 입력해주세요");
+	}else if(name=""){
+		alert("이름을 입력해주세요");
+	}else if(pwd =""){
+		alert("비밀번호를 입력해주세요");
+	}else if(pwdConfirm ==""){
+		alert("비밀번호 확인을 해주세요");
+	}else if(($("#mem_pwd").val() != $("#mem_pwd_confirm").val())){
+		alert("비밀번호가 일치하지않습니다.");
+	}else if(email ==""){
+		alert("이메일을 입력해주세요");
+	}else if(post1 =="" || add1==""||add2==""){
+		alert("주민번호 등록지를 등록해주세요");
+	}else if(post2 =="" || add3==""||add4==""){
+		alert("실제 거주지를 등록해주세요");
+	}else if($("#no").has()){
+	 	alert("아이디 중복확인을 해주세요");
+	}else{
+	document.regMEM.action ="insertMember";
+	document.regMEM.method ="POST";
+	document.regMEM.submit();
+	}
+	
+}
+	
+	
+
 
 </script>
 
@@ -204,58 +275,9 @@ $(function(){
 						</li>
 					</ul>
 				</div>
-				<form name="regMEM" id="regMEM" method="post" action="insertMember", enctype="multipart/form-data">
-					<fieldset>
-						<input type="hidden" name="memIdChk" value="N"> <input
-							type="hidden" name="juminRes"> <input type="hidden"
-							name="foreignerYnCcd" id="foreignerYnCcd"> <input
-							type="hidden" name="foreignerNationCcd" value=""> <input
-							type="hidden" name="foreignerRegNoYn" value=""> <input
-							type="hidden" name="sexGubun" id="sexGubun"> <input
-							type="hidden" name="pwdHintDes"> <input type="hidden"
-							name="emailRecvYn" id="emailRecvYn"> <input type="hidden"
-							name="smsSvc" id="smsSvc"> <input type="hidden"
-							name="dsdrGb"> <input type="hidden" name="dsdrGbSel01">
-						<input type="hidden" name="dsdrGbSel02"> <input
-							type="hidden" name="regHrdChk"> <input type="hidden"
-							name="resNmCode" value="N"> <input type="hidden"
-							name="UploadFileCheck" id="UploadFileCheck" value="Y"> <input
-							type="hidden" name="memYnCcd" value=""> <input
-							type="hidden" name="perId" value=""> <input type="hidden"
-							name="picRegYnCcd" value=""> <input type="hidden"
-							name="strUploadFileName" value="20170712164415_07214"> <input
-							type="hidden" name="clientIp" value="1.212.157.150"> <input
-							type="hidden" name="jumin2" value=""> <input
-							type="hidden" name="userAgentNm" value=""> <input
-							type="hidden" name="PIC_USE_POSBT_YN" id="PIC_USE_POSBT_YN">
-						<input type="hidden" name="PIC_USE_POSBT_MSG"
-							id="PIC_USE_POSBT_MSG"> <input type="hidden"
-							name="ACCU_RATE" id="ACCU_RATE"> <input type="hidden"
-							name="gSite" value="Q"> <input type="hidden" name="gId"
-							value=""> <input type="hidden" name="certType"
-							value="none">
-						<!-- 인증구분  ipin(i-PIN인증),mobile(휴대폰 인증),public(공인인증서 인증),none(인증없이 가입) -->
-
-						<input type="hidden" name="agnetDupInfo" value=""> 
-						<input type="hidden" name="agentName" value=""> 
-						<input type="hidden" name="chkPerson" value="normal">
+				<form name="regMEM" id="regMEM"enctype="multipart/form-data" >
+				
 						<div class="infoBox">
-
-							<div>
-								<p class="list" style="font-size: 13px">
-									큐넷 사이트는 실명인증된 아이디만 원서접수, 확인서 및 자격증 발급 등의 업무처리가 가능하므로 실명인증된 아이디가<br>존재하는지
-									반드시 확인해보시기 바랍니다.
-								</p>
-								<p class="ml10 mt5">
-									<a
-										href="https://www.q-net.or.kr/man002.do?id=man00201&amp;gSite=Q&amp;gId="
-										class="btn4"><span>아이디 찾기</span></a> <a href="#"
-										onclick="goPrev()" class="btn4 ml5"><span>인증수단으로
-											가입하기</span></a>
-								</p>
-							</div>
-							<span></span>
-
 						</div>
 						<div class="tbl_join tbl_member mb0">
 							<p class="txt_right">
@@ -279,7 +301,7 @@ $(function(){
 										</th>
 										<td colspan="2">
 											<input type="text" style="ime-mode: inactive;" id="id" name="id" class="member_id">
-											<button type="button" id="idCheck" class="btn3_type1 chk_id ml5">
+											<button type="button" id="idCheck" class="btn3_type1 chk_id ml5" >
 												<span>아이디중복 확인</span>
 											</button> 
 											<span id="idChk"></span>
@@ -461,9 +483,9 @@ $(function(){
 										<td colspan="2">
 											<div class="group_form1">
 												<span> <input type="radio" id="foreignerN"
-													name="foreignerYnCcd01"> <label for="foreignerN">내국인</label>
+													name="mem_kor_for" value="내국인"  checked="checked"> <label for="foreignerN">내국인</label>
 												</span> <span> <input type="radio" id="foreignerY"
-													name="foreignerYnCcd01"> <label for="foreignerY">외국인</label>
+													name="mem_kor_for" value="외국인"> <label for="foreignerY">외국인</label>
 												</span>
 											</div>
 										</td>
@@ -474,9 +496,9 @@ $(function(){
 										<td colspan="2">
 											<div class="group_form1">
 												<span> <input type="radio" id="member_sex1"
-													name="sexGubun01"> <label for="member_sex1">남자</label>
+													name="mem_gender" value="남자"  checked="checked"> <label for="member_sex1">남자</label>
 												</span> <span> <input type="radio" id="member_sex2"
-													name="sexGubun01"> <label for="member_sex2">여자</label>
+													name="mem_gender" value="여자"> <label for="member_sex2">여자</label>
 												</span>
 											</div>
 										</td>
@@ -505,23 +527,20 @@ $(function(){
 										<th scope="row"><label for="member_pw_c">비밀번호 확인</label><strong
 											class="fc_r" title="필수">*</strong></th>
 										<td colspan="2"><input type="password" class="join_pw"
-											id="mem_pwd_confirm" name="mem_pwd_confirm" maxlength="16"> <strong
-											class="info_tool"
-											title="비밀번호 조합예시 : korea123@ 입력가능 특수문자 : ! @ # $ % ^ &amp; * (보안지침에 의거하여 비밀번호는 9~16자리이며, 반드시 영문자·숫자·특수문자를 모두 혼합하여 입력하시기 바랍니다. 대소문자 구분되므로 주의!)"
-											tabindex="0">비밀번호 유의사항</strong></td>
+											id="mem_pwd_confirm" name="mem_pwd_confirm" maxlength="16"> 
+									<font name="check" size="2" color="red"></font> 
 									</tr>
-									
 									
 									<tr>
 										<th scope="row">장애여부</th>
 										<td colspan="3">
 											<div class="group_form1">
 												<span> <input type="radio" id="member_dis1"
-													title="장애여부 예" name="dsdrGb00"> <label
+													title="장애여부 예" name="mem_jang" value="Y"> <label
 													for="member_dis1">예</label>
 												</span> <span> <input type="radio" id="member_dis2"
-													title="장애여부 아니요" name="dsdrGb00" checked="checked">
-													<label for="member_dis2">아니요</label>
+													title="장애여부 아니요" name="mem_jang" checked="checked" value="Y">
+													<label for="member_dis2" >아니요</label>
 												</span> <span id="dsdrGb01" class="ml40" style="display: none">
 													<label for="select2">장애구분</label> <select title="장애구분"
 													name="dsdrGb01" class="input ml5 w350" id="select2">
@@ -572,10 +591,10 @@ $(function(){
 										<td colspan="3">
 											<div class="group_form1">
 												<span> <input type="radio" title="이메일 수신여부 예"
-													id="member_mail1" name="emailRecvYn01"> <label
+													id="member_mail1"n value="Y" name="mem_email_agree"> <label
 													for="member_mail1">예</label>
 												</span> <span> <input type="radio" title="이메일 수신여부 아니요"
-													id="member_mail2" name="emailRecvYn01"> <label
+													id="member_mail2" name="mem_email_agree" value="N"> <label
 													for="member_mail2">아니요</label>
 												</span>
 											</div> <strong class="info_tool"
@@ -650,7 +669,7 @@ $(function(){
 									</tr>
 									<tr>
 										<th scope="row">
-										 학교선택<strong class="fc_r" title="필수">*</strong>
+										 학교선택<strong class="fc_r" ></strong>
 										</th>											
 										<td colspan="3">
 											<div class="group_form1">
@@ -745,7 +764,7 @@ $(function(){
 										<th scope="row" rowspan="3">
 											<div class="option">
 												<label for="addr_same">(상동)</label> <input type="checkbox"
-													id="addr_same" name="addrChk">
+													id="addr_same" name="addrChk" value="">
 											</div> 실제 거주지<strong class="fc_r" title="필수">*</strong>
 										</th>
 										<td colspan="3"><label for="member_addr2-1"
@@ -777,12 +796,11 @@ $(function(){
 								</tbody>
 							</table>
 						</div>
-					</fieldset>
 				<div class="btn_center">
-					<button type="submit" id="formSubmit" class="btn2 btncolor2">
-						<span>작성완료</span>
+					<button type="button" id="formSubmit" class="btn2 btncolor2" onclick="check()">
+						<span>가입하기</span>
 					</button>
-					<button type="button" id="formCancel" class="btn2 btncolor4">
+					<button type="button" id="formCancel" class="btn2 btncolor4" onclick="javascript:history.go(-1);">
 						<span>가입취소</span>
 					</button>
 				</div>

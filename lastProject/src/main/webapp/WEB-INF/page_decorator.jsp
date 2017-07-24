@@ -1,9 +1,13 @@
+<%@page import="org.springframework.security.core.Authentication"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+<%@page import="org.springframework.security.core.userdetails.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
+
 <!DOCTYPE html >
 <html>
 <head>
@@ -15,7 +19,13 @@
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js'></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/left_script.js" charset="euc-kr"></script>
+<script>
+function goMinwon(){
+	var pop = window.open("<%=request.getContextPath()%>/client/main", "pop",
+	"width=1080,height=860, scrollbars=yes, resizable=yes");
 
+}
+</script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico" rel="shortcut icon" type="image/x-icon">
@@ -299,18 +309,18 @@ var speed = 800;
 			<div id="header">
 				<div class="center_area">
 				<!-- 경로 설정 -->
-					<h1><a id="lnkMoveToMain" href="main"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
+					<h1><a id="lnkMoveToMain" href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
 					<button type="button" class="mMenu_open" title="메뉴 열기"><img src="<%=request.getContextPath()%>/resources/images/btn_menu.png" alt="메뉴 열기"></button>
 					<ul class="left">
 						<li><button type="button" class="notice" id="topNoticeBtn" title="긴급공지 열기"><span>긴급공지</span></button></li>
 						<li><a href="#" target="_blank" title="본 링크를 클릭하시면 새 창이 열립니다." class="imgLink"><img src="<%=request.getContextPath()%>/resources/images/logo_hrdkorea.gif" alt="한국산업인력공단"></a></li>
 						<li><a><img alt="정부3.0" src="<%=request.getContextPath()%>/resources/images/logo_gov30_1 (1).jpg"></a></li>
-						<li><a>고객의소리</a></li>
+						<li><a href="javascript:goMinwon()">고객의소리</a></li>
 					</ul>
 					<ul class="right">
 					
 					<sec:authorize access="isAuthenticated()">
-						<li><a href="logout">로그아웃</a></li>
+						<li><a href="<%=request.getContextPath()%>/logout">로그아웃</a></li>
 					</sec:authorize>
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="login">로그인</a></li>
@@ -319,7 +329,9 @@ var speed = 800;
 						<li><a>English</a></li>
 						<li><a>이용안내</a></li>
 						<li><a>큐넷길라잡이</a></li>
+					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a href="<%=request.getContextPath() %>/admin/login/main2">관리자 페이지</a></li>
+					</sec:authorize>
 					</ul>
 					<form method="get" class="header_form" role="search">
 						<fieldset class="total_search">
@@ -340,87 +352,44 @@ var speed = 800;
 				<div class="gnb_area">
 					<div class="gnb" style="height: 34px;">
 						<ul>
-							<li class=""><a href="exam">정기시험</a>
+							<li class=""><a href="<%=request.getContextPath() %>/wonseoInfo">정기시험</a>
 								<div class="sub01" >
 									<ul style="min-height: 235px;">
-										<li class=""><a
-											onclick="return NetFunnel_goUrl({},this.href);" href="#">원서접수</a>
+										<li class="">
+											<a href="<%=request.getContextPath() %>/wonseoInfo">원서접수</a>
 											<ul style="min-height: 235px; left: 228px; display: none;">
-												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">원서접수안내</a></li>
-												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="/member/wonseo/request">원서접수신청</a></li>
-												<li><a href="#">원서접수현황</a></li>
-												<li><a href="#">장애유형별편의제공안내</a></li>
+												<li><a href="<%=request.getContextPath() %>/wonseoInfo">원서접수안내</a></li>
+												<li><a href="/member/wonseo/request">원서접수신청</a></li>
+												<li><a href="<%=request.getContextPath() %>/wonseo_ing">원서접수현황</a></li>
 											</ul></li>
 										<li><a onclick="return NetFunnel_goUrl({},this.href);"
 											href="#">합격자/답안발표</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">합격자발표조회</a></li>
-												<li><a href="#">응시서류불합격자발표</a></li>
-												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">가답안/확정답안</a></li>
-												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">가답안의견제시</a></li>
+												<li><a href="<%=request.getContextPath() %>/wonseoPassSearch">합격자 발표조회</a></li>
+												<li><a href="<%=request.getContextPath() %>/wonseoAnswer">가답안/확정답안</a></li>
 											</ul></li>
 										<li><a href="<%=request.getContextPath()%>/calender">시험일정</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a href="#">월간 시험일정</a></li>
-												<li><a href="#">국가기술자격 시험일정</a></li>
-												<li><a href="#">전문자격 시험일정</a></li>
+												<li><a href="<%=request.getContextPath()%>/calender">월간 시험일정</a></li>
+												<li><a href="<%=request.getContextPath()%>/wonseoExamDate">국가기술자격 시험일정</a></li>
 											</ul></li>
 										<li><a href="#">필기시험안내</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a href="#">필기시험접수안내</a></li>
-												<li><a href="#">필기시험수수료</a></li>
-												<li><a href="#">필기관할구역안내</a></li>
-												<li><a href="#">외국학력서류제출</a></li>
+												<li><a href="<%=request.getContextPath() %>/wonseoWriterInfo">필기시험 접수안내</a></li>
+												<li><a href="<%=request.getContextPath() %>/wonseoWriterPrice1">필기시험 수수료</a></li>
 											</ul></li>
 										<li><a href="#">실기시험안내</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a href="#">필기시험면제기간</a></li>
-												<li><a href="#">실기시험접수안내</a></li>
-												<li><a href="#">실기시험선택분야</a></li>
-												<li><a href="#">실기시험수수료</a></li>
-												<li><a href="#">실기시험종목별시험방법</a></li>
-												<li><a href="#">수험자지참준비물</a></li>
-												<li><a href="#">실기시험일정변경기준</a></li>
-												<li><a href="#">실기일정및타지사이동사유</a></li>
-											</ul></li>
-										<li><a href="#">자격정보</a>
-											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a href="#">국가자격</a>
-													<ul style="min-height: 235px; left: 187px;">
-														<li><a href="#">국가기술자격제도</a></li>
-														<li><a href="#">국가자격종목별상세정보</a></li>
-														<li><a href="#">비상대비자원관리종목</a></li>
-														<li><a href="#">자격종목변천일람표</a></li>
-													</ul></li>
-												<li><a href="#">민간자격</a>
-													<ul style="min-height: 235px; left: 187px;">
-														<li><a href="#">민간자격종목별상세정보</a></li>
-														<li><a href="#">민간자격 등록제도</a></li>
-														<li><a href="#">민간자격국가공인제도</a></li>
-														<li><a href="#">사업내자격제도</a></li>
-													</ul></li>
-												<li><a href="#">외국자격</a>
-													<ul style="min-height: 235px; left: 187px;">
-														<li><a href="#">국가별자격제도운영현황</a></li>
-													</ul></li>
+												<li><a href="<%=request.getContextPath()%>/wonseoFuncInfo">실기시험 접수안내</a></li>
+												<li><a href="<%=request.getContextPath()%>/wonseoWriterPrice1">실기시험 수수료</a></li>
+												<li><a href="<%=request.getContextPath()%>/wonseoJonmokTestInfo">실기시험 종목별 시험방법</a></li>
+												<li><a href="<%=request.getContextPath()%>/wonseoFuncChangDate">실기시험 일정 변경기준</a></li>
+												<li><a href="<%=request.getContextPath()%>/wonseoFuncPlace">실기일정 및 타지사 이동사유</a></li>
 											</ul></li>
 										<li><a href="#">자격검정통계</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
-												<li><a href="#">총괄현황</a></li>
-												<li><a href="#">종목별현황</a></li>
-												<li><a
-													href="javascript:fileDown('jm_info/qualificationstatics.pdf','qualificationstatics.pdf')"
-													title="클릭하시면 국가기술자격통계연보를 다운로드 할 수 있습니다."
-													alt="국가기술자격통계연보를 다운">국가기술자격통계연보</a></li>
-												<li><a href="#">수험자동향</a></li>
+												<li><a href="<%=request.getContextPath()%>/chart">총괄현황</a></li>
 											</ul></li>
-										<li><a href="#" target="_blank" title="새 창">국가기술자격 대여
-												근절 캠페인</a></li>
 									</ul>
 									<p class="blind">
 										<em>국가기술자격, 원서접수 및 시험관련 정보</em> <strong>원서접수, 시험일정,
@@ -433,8 +402,9 @@ var speed = 800;
 							<li class=""><a href="#">사전 시험보기</a>
 								<div class="sub02" style="display: none;">
 									<ul style="min-height: 235px;">
-										<li><a href="#/man001.do?id=&amp;gId=07&amp;gSite=L"
-											target="_blank" title="새 창">가맹거래사</a></li>
+										<li>
+											<a href="" target="_blank" title="새 창">CBT</a>
+										</li>
 									</ul>
 									<p>- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
@@ -481,14 +451,15 @@ var speed = 800;
 									</p>
 								</div>
 							</li>
-							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/myInfo">마이페이지</a>
+							
+							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/wonseoHistory">마이페이지</a>
 								<div class="sub04" style="display: none;">
 									<ul style="min-height: 145px;">
-										<li class=""><a href="#">원서접수관리</a>
+										<li class=""><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수관리</a>
 											<ul style="min-height: 145px; left: 130px; display: none;">
 												<li><a href="#">원서접수내역</a></li>
 												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="#">원서접수신청</a></li>
+													href="<%=request.getContextPath()%>/member/wonseoReq">원서접수신청</a></li>
 												<li><a href="#">시험결과확인</a></li>
 												<li><a href="#">사진변경신청/결과</a></li>
 											</ul></li>

@@ -10,7 +10,7 @@ public class MemberVo {
 	private String pwd;
 	private String name;
 	private String mem_enName;
-	
+	private String mem_ph;
 	//회원가입 사용//
 	private String mem_phone;
 	private String mem_email;
@@ -26,7 +26,27 @@ public class MemberVo {
 	private String enabled;
 	private String authority;
 	private String mem_jang;
+	private String mem_email_agree;
 	private String mem_pass_em;
+	
+	public String getMem_pass_em() {
+		return mem_pass_em;
+	}
+	public void setMem_pass_em(String mem_pass_em) {
+		this.mem_pass_em = mem_pass_em;
+	}
+	public String getMem_email_agree() {
+		return mem_email_agree;
+	}
+	public void setMem_email_agree(String mem_email_agree) {
+		this.mem_email_agree = mem_email_agree;
+	}
+	public String getMem_ph() {
+		return mem_ph;
+	}
+	public void setMem_ph(String mem_ph) {
+		this.mem_ph = mem_ph;
+	}
 	
 	//파일 업로드
 	private String mem_photo; //파일 이름
@@ -77,12 +97,6 @@ public class MemberVo {
 	}
 	public void setSch_major_nm(String sch_major_nm) {
 		this.sch_major_nm = sch_major_nm;
-	}
-	public String getMem_pass_em() {
-		return mem_pass_em;
-	}
-	public void setMem_pass_em(String mem_pass_em) {
-		this.mem_pass_em = mem_pass_em;
 	}
 	public String getMem_jang() {
 		return mem_jang;
@@ -202,18 +216,21 @@ public class MemberVo {
 	@Override
 	public String toString() {
 		return "MemberVo [id=" + id + ", pwd=" + pwd + ", name=" + name
-				+ ", mem_enName=" + mem_enName + ", mem_phone=" + mem_phone
-				+ ", mem_email=" + mem_email + ", mem_add1=" + mem_add1
-				+ ", mem_add2=" + mem_add2 + ", mem_add3=" + mem_add3
-				+ ", mem_add4=" + mem_add4 + ", mem_kor_for=" + mem_kor_for
-				+ ", mem_post_numb1=" + mem_post_numb1 + ", mem_post_numb2="
-				+ mem_post_numb2 + ", mem_gender=" + mem_gender
-				+ ", mem_photo=" + mem_photo + ", mem_bir=" + mem_bir
+				+ ", mem_enName=" + mem_enName + ", mem_ph=" + mem_ph
+				+ ", mem_phone=" + mem_phone + ", mem_email=" + mem_email
+				+ ", mem_add1=" + mem_add1 + ", mem_add2=" + mem_add2
+				+ ", mem_add3=" + mem_add3 + ", mem_add4=" + mem_add4
+				+ ", mem_kor_for=" + mem_kor_for + ", mem_post_numb1="
+				+ mem_post_numb1 + ", mem_post_numb2=" + mem_post_numb2
+				+ ", mem_gender=" + mem_gender + ", mem_bir=" + mem_bir
 				+ ", enabled=" + enabled + ", authority=" + authority
-				+ ", mem_jang=" + mem_jang + ", mem_pass_em=" + mem_pass_em
+				+ ", mem_jang=" + mem_jang + ", mem_email_agree="
+				+ mem_email_agree + ", mem_pass_em=" + mem_pass_em
+				+ ", mem_photo=" + mem_photo + ", uploadfile=" + uploadfile
 				+ ", sch_code=" + sch_code + ", sch_coll=" + sch_coll
 				+ ", sch_major_code=" + sch_major_code + ", sch_major_nm="
 				+ sch_major_nm + "]";
 	}
+
 
 }

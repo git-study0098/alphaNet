@@ -80,8 +80,6 @@ public class MainDAO {
 	 */
 	public List<WonseoInfoVo> selectWonseoList() throws SQLException{
 		List<WonseoInfoVo> selectWonseoList = (ArrayList<WonseoInfoVo>)client.queryForList("selectWonseoList");
-		System.out.println("ㅎㅇ");
-		System.out.println(selectWonseoList.size());
 		return selectWonseoList;
 	}
 	

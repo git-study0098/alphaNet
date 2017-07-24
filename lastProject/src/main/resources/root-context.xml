@@ -154,6 +154,14 @@
 	/>	
 	
 
+	<bean id="clientDAO"
+		  class="com.last.client.dao.ClientDao"
+		  p:client-ref="client"/>	
+	
+	<bean id="clientService"
+		  class="com.last.client.service.ClientService"
+		  p:clientDao-ref="clientDAO"/>	
+
 
 <!-- 	<bean id="noticeService" -->
 <!-- 		  class="com.last.board.service.NoticeService" -->

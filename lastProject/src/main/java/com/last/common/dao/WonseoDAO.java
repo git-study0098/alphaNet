@@ -88,6 +88,27 @@ public class WonseoDAO {
 		return result;
 	}
 	
+	//시험장소 지도 보는거
+	public PlaceVO selectMap(String place_nm){
+		PlaceVO  place = new PlaceVO();
+		try {
+			place =(PlaceVO) client.queryForObject("selectAdd" ,place_nm);
+		} catch (SQLException e) {
+			e.printStackTrace();
+	    }
+		return place;
+		
+	}
+	
+	/**
+	 * 원서접수 중인 시험 불러오는 다오 메서드
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<WonseoInfoVo> selectWonseoList() throws SQLException{
+		List<WonseoInfoVo> selectWonseoList = (ArrayList<WonseoInfoVo>)client.queryForList("selectWonseoList");
+		return selectWonseoList;
+	}
 	
 	
 }

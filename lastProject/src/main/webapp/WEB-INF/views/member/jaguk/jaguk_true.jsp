@@ -30,14 +30,10 @@
 			<!-- //location -->
 			<!-- 컨텐츠 시작 -->
 			<div class="content">
-				<!-- 컨텐츠 타이틀 -->
 				<h3 class="tit_content">자격증 진위확인</h3>
-				<!-- //컨텐츠 타이틀 -->
 
 				<form name="infoBoxs">
-				<!-- 컨텐츠 내용 -->
-				<!-- 팝업창  : 디자인된 w:600 / h:700 입니다. -->
-				<div id="qlf006_01_p01_pop" class="popup" title="자격정보 입력 및 진위여부 안내"></div> <!-- // popup -->
+				<div id="qlf006_01_p01_pop" class="popup" title="자격정보 입력 및 진위여부 안내"></div>
 				<div class="tbl_normal nmlType3">
 					<table summary="자격증 진위확인을 위한 아이디, 생년월일, 자격증번호, 발급(등록)연월일, 자격증내지번호 입력 폼">
 						<caption>자격증 진위확인을 위한 입력폼</caption>
@@ -49,29 +45,25 @@
 						<tbody>
 							<tr>
 								<th scope="row"><label for="hgulNm">이름</label></th>
-								<td colspan="2"><input type="text" id="hgulNm" maxlength="15"></td> <!-- 수정(0901) -->
+								<td colspan="2"><input type="text" id="hgulNm" maxlength="15"></td> 
 							</tr>
 							<tr>
 								<th scope="row"><label for="resdNo1">생년월일</label></th>
-								<td colspan="2"><input type="text" id="resdNo1" maxlength="6" class="numInput"> (법정생년월일 6자리)</td> <!-- 수정(0901) -->
+								<td colspan="2"><input type="text" id="resdNo1" maxlength="6" class="numInput"> (법정생년월일 6자리)</td> 
 							</tr>
 							<tr>
 								<th scope="row"><label for="lcsNo">자격증번호</label></th>
-								<td><input type="text" id="lcsNo" maxlength="12"> (예:12345678901A)     </td> <!-- 수정(1705) -->
-								<td class="" style="border-left: 1px; color:#0066ff ;">※ 숫자11자리와 알파벳1자리로 구성 숫자0과 알파벳O 유의    </td> <!-- 수정(1705) -->
+								<td><input type="text" id="lcsNo" maxlength="12"> (예:171Acomp1111111)     </td> 
+								<td class="" style="border-left: 1px; color:#0066ff ;">※ 숫자10자리와 알파벳5자리로 구성    </td>
 							</tr>
 							<tr>
 								<th scope="row"><label for="qualExpDt">발급(등록)연월일</label></th>
 								<td colspan="2"><input type="text" id="qualExpDt" maxlength="8" class="numInput"> (예:20050101) <em class="fc_r mL35">  ※ 최근 발급연월일 (또는 등록년월일) 기재 </em></td> <!-- 수정(0901) -->
 							</tr>
-							<tr>
-								<th scope="row"><label for="lcsMngNo">자격증내지번호</label></th>
-								<td colspan="2"><input type="text" id="lcsMngNo" maxlength="10" class="numInput"> (예:0901234567) <em class="fc_r">※ 2009년 8월 3일 이후 발행자격증만 기재</em></td> <!-- 수정(0901) -->
-							</tr>
 							<tr><!-- 수정(0820) 아래 a태그를 button태그로 수정-->
 								<td colspan="3" class="fc_red">
 									<b>※ 한국기술자격검정원 시행12종목은 티큐넷(t.q-net.or.kr)에서 진위확인이 가능하며, 검정사업본부(02-6710-3136)로 문의 하시기 바랍니다. <br> 정보기기운용기능사 , 정보처리기능사 , 굴삭기운전기능사  , 지게차운전기능사 , 제과기능사, 제빵기능사 , 한식조리기능사, 양식조리기능사, 일식조리기능사,중식조리기능사, 미용사(일반),미용사(피부) </b> <br>
-									<b>※ 과정평가형 자격증에 대한 진위확인은  능력평가총괄팀 (052-714-8692)으로 문의하시기 바랍니다.</b><button type="button" class="btn3_type2 openPopup" id="qlf006_01_p01" onclick="popup1()"><span>자격증번호 구성 및 내지번호 위치 설명보기</span></button>
+									<b>※ 과정평가형 자격증에 대한 진위확인은  능력평가총괄팀 (052-714-8692)으로 문의하시기 바랍니다.</b>
 								</td>
 							</tr>
 						</tbody>

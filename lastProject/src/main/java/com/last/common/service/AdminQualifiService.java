@@ -30,7 +30,6 @@ public class AdminQualifiService {
 
 	      int currentPageNumber = pageNumber;
 	      try {
-	         System.out.println("서비스전"+mem_code);
 	         int qualifiCertiCount = adminQualifiDao.qualifiCertiCount(mem_code);
 
 	         List<QualifiCertiVO> qualifiCertiList = null;
@@ -39,7 +38,6 @@ public class AdminQualifiService {
 	         if (qualifiCertiCount > 0) {
 	            firstRow = (pageNumber - 1) * QUALIFI_COUNT_PER_PAGE + 1;
 	            endRow = firstRow + QUALIFI_COUNT_PER_PAGE - 1;
-	            System.out.println("두번쨰 서비스");
 	            qualifiCertiList = adminQualifiDao.selectQualifiCertiCount(firstRow, endRow, mem_code);
 	         } else {
 	            currentPageNumber = 0;

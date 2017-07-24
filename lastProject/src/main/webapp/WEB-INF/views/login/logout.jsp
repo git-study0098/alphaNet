@@ -6,6 +6,7 @@
 	session.invalidate();
 	response.sendRedirect("main");
 %>
+
 <!-- <script> -->
 <!--  alert("로그아웃 완료"); -->
 <!--  location.href='login'; -->

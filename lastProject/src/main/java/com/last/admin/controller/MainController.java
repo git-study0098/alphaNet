@@ -69,12 +69,15 @@ public class MainController {
 			@RequestParam(value = "notice_code", defaultValue = "notice02") String notice_code)
 			throws SQLException {
 		PagingVO viewData = null;
+		List<WonseoInfoVo> viewData2 = null;
 		try {
 			viewData = mainService.selectNotice1List(pageNumber, notice_code);
+			viewData2 = mainService.selectWonseoList();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 
+		model.addAttribute("viewData2", viewData2);
 		model.addAttribute("viewData", viewData);
 
 		return "2main";
@@ -87,12 +90,15 @@ public class MainController {
 			@RequestParam(value = "notice_code", defaultValue = "notice03") String notice_code)
 			throws SQLException {
 		PagingVO viewData = null;
+		List<WonseoInfoVo> viewData2 = null;
 		try {
 			viewData = mainService.selectNotice1List(pageNumber, notice_code);
+			viewData2 = mainService.selectWonseoList();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 
+		model.addAttribute("viewData2", viewData2);
 		model.addAttribute("viewData", viewData);
 
 		return "3main";
@@ -105,12 +111,15 @@ public class MainController {
 			@RequestParam(value = "notice_code", defaultValue = "notice04") String notice_code)
 			throws SQLException {
 		PagingVO viewData = null;
+		List<WonseoInfoVo> viewData2 = null;
 		try {
 			viewData = mainService.selectNotice1List(pageNumber, notice_code);
+			viewData2 = mainService.selectWonseoList();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 
+		model.addAttribute("viewData2", viewData2);
 		model.addAttribute("viewData", viewData);
 
 		return "4main";
@@ -123,12 +132,15 @@ public class MainController {
 			@RequestParam(value = "notice_code", defaultValue = "notice05") String notice_code)
 			throws SQLException {
 		PagingVO viewData = null;
+		List<WonseoInfoVo> viewData2 = null;
 		try {
 			viewData = mainService.selectNotice1List(pageNumber, notice_code);
+			viewData2 = mainService.selectWonseoList();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
 
+		model.addAttribute("viewData2", viewData2);
 		model.addAttribute("viewData", viewData);
 
 		return "5main";

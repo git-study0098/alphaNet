@@ -12,6 +12,7 @@
 			classpath:dataSource-context.xml
 			classpath:mongoContext.xml
 			classpath:security-context.xml
+			classpath:mail-context.xml
 		</param-value>
 	</context-param>
 	<!-- classpath:security-context.xml -->

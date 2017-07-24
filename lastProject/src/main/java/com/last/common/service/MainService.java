@@ -154,6 +154,7 @@ public class MainService {
 		List<WonseoInfoVo> wonseoList = null;
 		
 		wonseoList = mainDao.selectWonseoList();
+		
 		return wonseoList;
 	}
 	

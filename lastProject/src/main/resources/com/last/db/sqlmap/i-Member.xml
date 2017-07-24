@@ -19,6 +19,7 @@
 			mem_code as id, 
 			mem_nm as name,
 			mem_pwd as pwd,
+			mem_ph,
 			mem_photo,
 			mem_phone,
 			mem_email,
@@ -34,7 +35,6 @@
 			attach_file,
 			privacy_collect_agree,
 			mem_post_numb1,
-			mem_pass_em,
 			mem_enabled,
 			sch_code,
 			career_ind_code,
@@ -61,8 +61,10 @@
 			mem_add3,
 			mem_add4,
 			mem_jang,
+			mem_email_agree,
 			reg_num1,
-			reg_num2
+			reg_num2,
+			mem_pass_em
 		from mem where mem_code=#id#
 	</select>
 
@@ -70,14 +72,31 @@
 		select * from mem where mem_code=#id# and mem_pwd=#pwd#
 	</select>
 	
+	<select id="selectFindIdPwd" parameterClass="member" resultClass="member">
+		select mem_code as id, mem_pwd as pwd
+		from mem
+		where mem_nm=#name#
+		and mem_bir=#mem_bir#
+		and mem_phone=#mem_phone#
+		<isNotEmpty property="id">
+		and mem_code = #id#
+		</isNotEmpty>
+	</select>
 	
-	<select id="selectMemberId" parameterClass="str" resultClass="member"> 
+	
+	<select id="selectMemberId" parameterClass="str" resultClass="str"> 
 		select mem_code as id from mem where mem_code = #id#
 	</select>
 	
 	<update id="insertMember" parameterClass="member">
-		insert into mem (mem_code,mem_photo,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_bir,enabled,authorities) 
-		values (#id#,#mem_photo#,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_bir#,'1','ROLE_MEMBER')
+		insert into mem (mem_code,mem_photo,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_bir,mem_ph,mem_email_agree,mem_pass_em,enabled,authorities) 
+		values (#id#,#mem_photo#,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_bir#,#mem_ph#,#mem_email_agree#,'1','ROLE_MEMBER')
+	</update>
+	
+	<update id="updatePwd" parameterClass="java.util.HashMap">
+		update mem
+		set mem_pwd = #mem_pwd#
+		where mem_code = #mem_code#
 	</update>
 	
 	<select id="selectCalendar" resultClass="calendar"> 
@@ -85,11 +104,19 @@
 			from numg n,em_info t
 			where numg_code = t.em_numg_code
 	</select>
-	
-	
+		
 	<select id="selectSchool" resultClass="member">
 		select * from sch
 	</select>
+	
+	<update id="updateMember" parameterClass="member">
+		update mem set mem_photo=#mem_photo#,mem_pwd=#pwd#,mem_phone =#mem_phone#,mem_email =#mem_email#,mem_add1=#mem_add1#,mem_add2=#mem_add2#,mem_add3=#mem_add3#,mem_add4=#mem_add4#,mem_post_numb1=#mem_post_numb1#,mem_post_numb2=#mem_post_numb2# 
+		where mem_code  = #id#		
+	</update>
+	
+	
+	
+	
 <!-- 	<select id="selectMemberList" parameterClass="str" resultClass="member"> -->
 <!-- 		select * from member where id like '%'||#id#||'%' -->
 <!-- 	</select> -->

@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js'></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/left_script.js" charset="euc-kr"></script>
+
 <style>
 
  .form-box{
@@ -256,24 +263,37 @@ function openPop(){
 	window.open("/qnet/html/popUp/qnet_popSolution.html","PopCookie4","width=670,height=943,scrollbars=no,left=390,top=10");
 }
 
+var nm = '<c:out value="${getName}" />';
+var birth = '<c:out value="${getBir}" />';
+
+$(function(){
+	$("#check").click(function(){
+		if(nm == ($('#hgulNm').val()) && birth == $('#mPswd').val()){
+			alert("확인");
+			opener.goRequest6();
+			window.close();
+		}else{
+			alert("올바른 정보가 아닙니다.");
+		}
+	})
+})
+
 </script>
 	<div class="form-box">
     <div class="head">인증하기</div>        
-    <form action="frmSubmit_L();" id="login-form">
         <div class="form-group">
           <label class="label-control">
-            <span class="label-text">이름</span>
+            <span class="label-text"></span>
           </label>
-          <input type="text" name="name" id="hgulNm" class="form-control" />
+          <input type="text" name="name" id="hgulNm" class="form-control" placeholder="이름"/>
         </div>
         <div class="form-group">
           <label class="label-control">
-            <span class="label-text">생년월일</span>
+            <span class="label-text"></span>
           </label> 
-          <input type="password" name="mem_bir" id="mPswd" class="form-control" />
+          <input type="password" name="mem_bir" id="mPswd" class="form-control"  placeholder="생년월일"/>
         </div>
-        <input type="submit" value="인증하기" class="btn" />
+        <input type="button" value="인증하기" class="btn" id="check"/>
         <input type="button" value="되돌아가기" class="btn"  />
        
-    </form>
   </div>
