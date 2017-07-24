@@ -1,3 +1,4 @@
+<%@page import="com.last.common.vo.PdsVO"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
 <%@page import="com.last.common.vo.PagingVO"%>
 <%@page import="java.util.List"%>
@@ -9,7 +10,9 @@
 
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
-	PagingVO viewData = (PagingVO) request.getAttribute("viewData");
+	PdsVO viewData = (PdsVO) request.getAttribute("viewData");
+	PdsVO viewData2 = (PdsVO)request.getAttribute("viewData2");
+	Integer count = (Integer)request.getAttribute("count");
 %>
 
 <link
@@ -33,6 +36,13 @@
 		var noticeForm = document.noticeDetail;
 		noticeForm.action = "/pdsUpdateForm?notice_code=" + noticeCode;
 		noticeForm.submit();
+	}
+	//검색함수
+	function getNoticeList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var notice_code = document.getElementsByName('notice_code')[0].value;
+		location.href="<%=request.getContextPath()%>/admin/pds/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
 </script>
 
@@ -74,15 +84,15 @@
 		<div id="page-wrapper">
 			<div id="page-inner">
 				<div class="col-md-12">
-					<h2>고객의 소리</h2>
+					<h2>자료실</h2>
 				</div>
 				<hr />
 				<div class="dropdown">
-					<button class="dropbtn">고객의 소리 게시판</button>
+					<button class="dropbtn">이용안내 게시판</button>
 					<div class="dropdown-content">
-						<a href="<%=request.getContextPath()%>/admin/client">FAQ</a> 
-						<a href="<%=request.getContextPath()%>/admin/client2">고객의 소리</a> 
-						<a href="<%=request.getContextPath()%>/admin/client3">개선사항</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">각종서식</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">출제기준</a> 
+						<a href="<%=request.getContextPath()%>/admin/pds">관련법령</a> 
 					</div>
 				</div>
 				<div>
@@ -90,13 +100,19 @@
 						<span> <label for="notiType">검색</label> <select
 							name="notiType" id="notiType" title="검색 카테고리 선택" class="m0">
 								<option value="10" selected="selected">전체</option>
-								<option value="00">제목</option>
-								<option value="20">내용</option>
-						</select>
-						<input type="text" name="schText" style="width: 150px"
-								id="schText" title="검색어 입력"> <a href="#"
-								class="btn3_icon search" onclick="getNoticeList(1)"><span
-									class="blind">검색</span></a>
+								<option value="00">시험정보 및 관련법령</option>
+								<option value="20">자격증발급관련</option>
+								<option value="30">원서접수및서류제출</option>
+								<option value="40">기타</option>
+						</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
+								<option value="all" selected="selected">전체</option>
+								<option value="title">글제목</option>
+								<option value="content">내용</option>
+								<option value="adm">담당부서</option>
+						</select> <input type="text" name="schText" style="width: 150px"
+							id="schText" title="검색어 입력"> <a href="#"
+							class="btn3_icon search" onclick="getNoticeList()"><span
+								class="blind">검색</span></a>
 						</span>
 					</div>
 					<form name="noticeDetail">
@@ -107,33 +123,32 @@
 									style="table-layout: fixed">
 									<colgroup>
 										<col width="7%">
-										<col width="10%">
 										<col width="*">
 										<col width="16%">
 										<col width="11%">
+										<col width="1%">
 									</colgroup>
 									<thead>
 										<tr>
 											<th scope="col">번호</th>
-											<th scope="col">분류</th>
 											<th scope="col">제목</th>
 											<th scope="col">담당부서</th>
-											<th scope="col">등록일</th>
+											<th scope="col">최종수정일자</th>
+											<th scope="col"></th>
 										</tr>
 									</thead>
 									<tbody>
 
 										<!-- 게시판 테이블 내용 -->
 										<c:choose>
-											<c:when test="${viewData.notice1CountPerPage > 0 }">
-												<c:forEach items="${viewData.notice1List }" var="notice"
+											<c:when test="${viewData2.pdsCountPerPage > 0 }">
+												<c:forEach items="${viewData2.pdsList }" var="notice"
 													varStatus="number">
 													<tr>
-														<td>${number.count}</td>
+														<td>${viewData.firstRow+number.count}</td>
 														<!-- 글번호 -->
-														<td>${notice.notice_kind}</td>
 														<td><a
-															href="<%=request.getContextPath() %>/admin/clientUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
+															href="<%=request.getContextPath() %>/admin/pdsUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
 														<td>${notice.admin_code}</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
 														<td><input type="hidden"
@@ -151,7 +166,7 @@
 									</tbody>
 								</table>
 							</div>
-							<a href="<%=request.getContextPath()%>/admin/clientRegist"><input
+							<a href="<%=request.getContextPath()%>/admin/adminpdsRegist"><input
 								type="button" class="btn btncolor2" value="글쓰기"
 								style="color: #ffffff" /></a>
 							<div class="pagination1 mb20">
@@ -165,19 +180,29 @@
 									<span class="blind">이전 페이지</span>
 								</button>
 
-								<span class="page"> <%
- 											for (int i = 1; i < viewData.getPageTotalCount() + 1; i++) {
-											 		if (pageNumber == i) {
-											 %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
-											 	} else {
-											 %>
-									<button type="button" class="btn5"
-										onclick="location.href='notice?page=<%=i%>'" title="<%=i%>페이지">
-										<span><%=i%></span>
-									</button> <%
-											 	}
-											 	}
-											 %>
+								<span class="page"> 
+									<%	
+									if(count/10 < 1){
+										count=1;
+									}else if(count%10==0){
+										count /=10;
+									}else{
+										count = count/10 +1;
+									}
+									for(int i = 1; i<count+1; i++){
+										if(pageNumber==i){
+								%>		
+										<strong class="on" title="<%=i %>페이지"><%=i %></strong>
+									<%
+										
+										}else{
+									%>
+										<button type="button" class="btn5" onclick="location.href='pds?page=<%=i %>'" title="<%=i%>페이지">
+											<span><%=i%></span>
+										</button> 
+										<% }
+									}
+								%>
 
 								</span>
 								<button type="button" class="btn3_icon3 btn_next_page"

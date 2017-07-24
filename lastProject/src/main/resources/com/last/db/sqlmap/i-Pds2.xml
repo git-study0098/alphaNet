@@ -12,9 +12,21 @@
 		SELECT COUNT(*) FROM notice  where substr(notice_code,1,5)=#notice_code#
 	</select>
 	
-<!-- 	<select id="selectCount2" parameterClass="java.util.HashMap" resultClass="int"> -->
-<!-- 		SELECT COUNT(*) FROM notice where substr(notice_code,1,5)=#notice_code# -->
-<!-- 	</select> -->
+	<select id="searchPdsCount" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT COUNT(*) FROM notice where substr(notice_code,1,5)=#notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="adm">
+			and admin_code like '%'||#schText#||'%'
+		</isEqual>
+	</select>
 	
 	<select id="selectPdsList" parameterClass="str" resultClass="pds">
 		select * from notice where substr(notice_code,1,5)=#notice_code#
@@ -35,7 +47,11 @@
 	</select>
 	
 	<update id="updatePds" parameterClass="pds">
-		update notice set notice_content=#notice_content# 
+		update notice 
+		set notice_content=#notice_content#, 
+			attach_file=#attach_file#, 
+			enroll_date=sysdate,
+			title=#title#
 		where notice_code=#notice_code#
 	</update>
 	

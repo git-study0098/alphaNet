@@ -115,10 +115,6 @@ public class AdminPage {
 		return "admin/mem/ad_mem";
 	}
 
-	@RequestMapping("/admin/inmem")
-	public String inmem() {
-		return "admin/mem/ad_inactive_mem";
-	}
 
 	@RequestMapping("/admin/memlist")
 	public String memlist() {

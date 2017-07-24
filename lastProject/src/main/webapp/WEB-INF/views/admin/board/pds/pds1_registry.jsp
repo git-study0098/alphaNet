@@ -9,9 +9,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-
-
-
 <script type="text/javascript">
 	function file_change(file){
 	var str=file.lastIndexOf("\\")+1;   //파일 마지막 "\" 루트의 길이 이후부터 글자를 잘라 파일명만 가져온다.
@@ -93,10 +90,11 @@
 
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5"><a href="#" class="btn3_icon download">
-											<input type="file" name="f"
-											onchange="javascript:file_change(this.value);">
-									</a> <input type="text" name="attach_file" readonly></td>
+									<td colspan="5">
+										<a href="#" class="btn3_icon download">
+											<input type="file" name="f"	onchange="javascript:file_change(this.value);">
+										</a>
+									    <input type="text" name="attach_file" readonly></td>
 								</tr>
 
 								<tr>

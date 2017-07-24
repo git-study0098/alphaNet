@@ -2,6 +2,7 @@ package com.last.common.dao;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
@@ -50,4 +51,42 @@ public class AdminUseInfo1DAO {
 	}
 	
 	/////////////////////
+	/**
+	 * 검색 글 개수
+	 * @param notice_code
+	 * @param schType
+	 * @param schText
+	 * @return
+	 * @throws SQLException
+	 */
+	public int selectCount(String notice_code, String schType, String schText) throws SQLException{
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("notice_code", notice_code);
+		map.put("schType", schType);
+		map.put("schText", schText);
+		int result = (Integer) client.queryForObject("selectUseInfoSearchCount",map);
+		return result;
+	}
+	
+	/**
+	 * 검색 
+	 * @param firstRow
+	 * @param endRow
+	 * @param notice_code
+	 * @param schType
+	 * @param schText
+	 * @return
+	 * @throws SQLException
+	 */
+	public List<Notice1VO> searchNoticeList(int firstRow, int endRow,String notice_code,String schType, String schText) throws SQLException{
+		HashMap<String,String> map = new HashMap<String,String>();
+		map.put("notice_code", notice_code);
+		map.put("schType", schType);
+		map.put("schText", schText);
+		List<Notice1VO> searchNoticeList = (ArrayList<Notice1VO>)client.queryForList("searchUseInfoList",map,firstRow-1 , endRow-firstRow+1);
+		return searchNoticeList;
+	}
+	
+
+
 }

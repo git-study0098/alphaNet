@@ -5,16 +5,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.last.common.dao.AdminClientDAO;
+import com.last.common.dao.AdminClient1DAO;
+import com.last.common.dao.AdminNotice1DAO;
 import com.last.common.vo.Notice1VO;
 import com.last.common.vo.PagingVO;
 
-public class AdminClientService {
+public class AdminClient1Service {
 
-	private AdminClientDAO adminClientDao;
+	private AdminClient1DAO adminClient1Dao;
 
-	public void setAdminClientDao(AdminClientDAO adminClientDao) {
-		this.adminClientDao = adminClientDao;
+	public void setAdminClient1DAO(AdminClient1DAO adminClient1Dao) {
+		this.adminClient1Dao = adminClient1Dao;
 	}
 
 	private static final int NOTICE_COUNT_PER_PAGE = 10;
@@ -28,22 +29,31 @@ public class AdminClientService {
 		int currentPageNumber = pageNumber;
 		try {
 
-			int notice1TotalCount = adminClientDao.selectNotice1Count(notice_code);
+			int notice1TotalCount = adminClient1Dao.selectNotice1Count(notice_code);
 
 			List<Notice1VO> notice1List = null;
 			int firstRow = 0;
 			int endRow = 0;
 			if (notice1TotalCount > 0) {
-				firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
+				firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1; //첫번째 행
 				endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
-				notice1List = adminClientDao.selectNotice1List(firstRow, endRow,
+				notice1List = adminClient1Dao.selectNotice1List(firstRow, endRow,
 						notice_code);
 			} else {
 				currentPageNumber = 0;
 				notice1List = Collections.emptyList();
 			}
-			return new PagingVO(notice1List, notice1TotalCount,
-					currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
+			PagingVO vo = new PagingVO(notice1List, notice1TotalCount, currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
+			vo.setNotice1List(notice1List);
+			vo.setNotice1TotalCount(notice1TotalCount);
+			vo.setCurrentPageNumber(currentPageNumber);
+			vo.setNotice1CountPerPage(NOTICE_COUNT_PER_PAGE);
+			vo.setFirstRow(firstRow);
+			vo.setEndRow(endRow);
+			
+			return vo;
+//			return new PagingVO(notice1List, notice1TotalCount,
+//					currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
 		} catch (Exception e) {
 			throw new ServiceException("게시판 리스트 구하기 실패!", e);
 		}
@@ -57,7 +67,7 @@ public class AdminClientService {
 		List<String> temp = null;
 		List<String> codeList = new ArrayList<String>();
 		try {
-			temp = adminClientDao.selectNoticeCode();
+			temp = adminClient1Dao.selectNoticeCode();
 			for (int i = 0; i < temp.size(); i++) {
 				code = temp.get(i);
 				compare = code.substring(0, 5);
@@ -73,7 +83,8 @@ public class AdminClientService {
 				compare = noticeCode.substring(0, 5);
 
 				if (notice.equals(compare)) {
-					noticeNumber = Integer.parseInt(noticeCode.substring(5, 15)) + 1;
+					noticeNumber = Integer
+							.parseInt(noticeCode.substring(5, 15)) + 1;
 					notice = compare + noticeNumber + "";
 				}
 			}
@@ -85,26 +96,26 @@ public class AdminClientService {
 
 	public Notice1VO selectNoticeCodeList(String notice_code)
 			throws SQLException {
-		Notice1VO vo = adminClientDao.selectNotice1(notice_code);
+		Notice1VO vo = adminClient1Dao.selectNotice1(notice_code);
 		return vo;
 
 	}
 		public int selectCount(String notice_code, String schType, String schText)throws SQLException{
-		int result = adminClientDao.selectCount(notice_code,schType,schText);
+		int result = adminClient1Dao.selectCount(notice_code,schType,schText);
 		return result;
 	}
 
 	public void updateNotice1(Notice1VO notice1VO) throws SQLException {
-		adminClientDao.updateNotice1(notice1VO);
+		adminClient1Dao.updateNotice1(notice1VO);
 	}
 
 	public void deleteNotice1(String noticeCode) throws SQLException {
-		adminClientDao.deleteNotice1(noticeCode);
+		adminClient1Dao.deleteNotice1(noticeCode);
 	}
 
 	public int insertNotice1(Notice1VO notice1VO) throws SQLException {
 
-		int result = adminClientDao.insertNotice1(notice1VO);
+		int result = adminClient1Dao.insertNotice1(notice1VO);
 
 		return result;
 	}
@@ -115,15 +126,16 @@ public class AdminClientService {
 	      int currentPageNumber = pageNumber;
 	      try {
 	         
-	         int notice1TotalCount = adminClientDao.selectNotice1Count(notice_code);
-
+	         int notice1TotalCount = adminClient1Dao.selectCount(notice_code, schType, schText);
+	         System.out.println(schType+"타입 서비스");
+	         System.out.println(schText+"텍스트 서비스");
 	         List<Notice1VO> notice1List = null;
 	         int firstRow = 0;
 	         int endRow = 0;
 	         if (notice1TotalCount > 0) {
 	            firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
 	            endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
-	            notice1List = adminClientDao.searchNoticeList(firstRow, endRow,notice_code,schType, schText);
+	            notice1List = adminClient1Dao.searchNoticeList(firstRow, endRow,notice_code, schType, schText);
 	         } else {
 	            currentPageNumber = 0;
 	            notice1List = Collections.emptyList();
@@ -134,4 +146,5 @@ public class AdminClientService {
 	    	  throw new ServiceException("게시판 리스트 구하기 실패!",e);
 	      } 
 	   }
+	   
 }

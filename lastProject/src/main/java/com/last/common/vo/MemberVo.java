@@ -1,5 +1,7 @@
 package com.last.common.vo;
 
+import java.sql.Date;
+
 import org.springframework.web.multipart.MultipartFile;
 
 public class MemberVo {
@@ -57,8 +59,15 @@ public class MemberVo {
 	private String sch_major_code;//학과코드
 	private String sch_major_nm; //학과이름
 	
+	//휴면계정조회
+	private Date mem_lately_log_date; //최근 로그인한 날짜 
 	
-	
+	public Date getMem_lately_log_date() {
+		return mem_lately_log_date;
+	}
+	public void setMem_lately_log_date(Date mem_lately_log_date) {
+		this.mem_lately_log_date = mem_lately_log_date;
+	}
 	public MultipartFile getUploadfile() {
 		return uploadfile;
 	}
