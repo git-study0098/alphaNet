@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+@font-face {
+  font-family: 'Nanum Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/nanumgothic/v5/NanumGothic-Regular.ttf) format('truetype');
+}
+/* 글씨 설정 부분 ul */
+ul.safe_S {width:265px; height:220px; padding:0 22px;}
+ul.safe_S li {float:left; width:265px; height:76px; margin:17px 0 18px;}
+ul.safe_S li a {display:block; height:62px; line-height:28px; font-size:24px; color:#4e4e4e; padding:12px 0 0 76px; text-align:center; font-family:'Nanum Gothic-bold'; }
+ul.safe_S li span.fontS1 {font-size:15px; display:block; font-family:"Nanum Gothic-bold"; }
+ul.safe_S li span {font-size:14px; display: block; font-family:"Nanum Gothic-bold"; letter-spacing:-1px; }
+ul.safe_S li.icon01 {background:url("../images/Service_icon05.png") left center no-repeat;}
+ul.safe_S li.icon02 {background:url("../images/Service_icon06.png") left center no-repeat;}
+
+@font-face {
+	font-family:"Nanum Gothic-bold"; 
+	font-style:normal;
+	font-weight:normal;
+	src:url('/css/font/NanumGothicBold.eot'); 
+	src:local('占쏙옙'),
+	url('/css/font/NanumGothicBold.eot?#iefix') format('embedded-opentype'),
+	url('/css/font/NanumGothicBold.woff') format('woff');
+}
+
+@font-face{
+font-family:"Nanum Barun Gothic";
+font-style:normal;
+font-weight:normal;
+src:url('/css/font/NanumBarunGothic.eot');
+src:local('占쏙옙'),
+	url('/css/font/NanumBarunGothic.eot?#iefix') format('embedded-opentype'),
+	url('/css/font/NanumBarunGothic.woff') format('woff');
+}
+
+@font-face{
+font-family:"Nanum Barun Gothic Bold";
+font-style:normal;
+font-weight:normal;
+src:url('/css/font/NanumBarunGothicBold.eot');
+src:local('占쏙옙'),
+	url('/css/font/NanumBarunGothicBold.eot?#iefix') format('embedded-opentype'),
+	url('/css/font/NanumBarunGothicBold.woff') format('woff');
+}

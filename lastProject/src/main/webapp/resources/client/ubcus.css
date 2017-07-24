@@ -1,0 +1,9 @@
+img {vertical-align:middle;} 
+
+.datepicker {cursor:pointer;background:aliceblue;} 
+.trhover {background:#eaecf6; color:#f39402;}
+.trclicked {background:#C8DAEB; color:#f39402;}
+.tractive {background:#C8DAEB; color:#140e32;}
+.bookmark {color:#ffa500;}
+
+.searchText{color:black;background-color:#f0e68c;font-weight:bold;font-size:1em;}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Client">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer" />
+	<typeAlias alias="client" type="com.last.common.vo.ClientVO" />
+	<typeAlias alias="notice" type="com.last.common.vo.Notice1VO" />
+
+	<update id="insertClient" parameterClass="client">
+		insert into client
+		(client_code,client_title,client_consulting_kind,client_process_state,client_process_state2,client_nm,client_enRoll_date,client_open_at,client_attach_file,client_consulting_content,client_manager_dep,client_reply_date,client_reply_content,client_final_modi_date,mem_code,client_type_di,client_ph,client_bir
+		,client_add1,client_add2,client_add3,client_post_numb,mem_enabled,stare_code,client_email,mail_agree,reply_state)
+		values(#client_code#,#client_title#,#client_consulting_kind#,#client_process_state#,#client_process_state2#,#client_nm#
+		,sysdate,#client_open_at#,#client_attach_file#,#client_consulting_content#,#client_manager_dep#,
+		sysdate,#client_reply_content#,sysdate,#mem_code#,#client_type_di#,#client_ph#,#client_bir#,
+		#client_add1#,#client_add2#,#client_add3#,#client_post_numb#,#mem_enabled#,#stare_code#,#client_email#,#mail_agree#,'N')
+	</update>
+	
+	<select id="selectClientAll" resultClass="client">
+		select * from client
+	</select>
+
+	<select id="selectClient1_Count" parameterClass="str" resultClass="int">
+		select count(*) from client where
+		substr(client_code,1,8)=#client_code#
+	</select>
+
+	<select id="selectAll_Count" parameterClass="str" resultClass="int">
+		select count(*) from client
+	</select>
+			
+
+	<select id="selectClient1List" parameterClass="str" resultClass="client">
+		select * from client where substr(client_code,1,8)=#client_code#
+	</select>
+
+	<select id="selectClientCode" resultClass="str">
+		select client_code
+		from client
+	</select>
+
+	<select id="selectClient1" parameterClass="str" resultClass="client">
+		select * from client where client_code = #client_code#
+	</select>
+	
+	<select id="selectsearch" parameterClass="map" resultClass="client">
+		select * from client where substr(client_code,1,8)=#client_code# and
+		client_enRoll_date between #start_date# and #end_date# and client_title like %#word#%
+	</select>
+	
+	<select id ="selectNotice" parameterClass="str" resultClass="notice">
+		select * from notice where substr(notice_code,1,5) like #notice_code#
+	</select>
+	
+	<select id ="selectNoticeCount" parameterClass="str"  resultClass="int">
+		select count(*) from notice where substr(notice_code,1,5) = #notice_code#
+	</select>
+	
+</sqlMap>
