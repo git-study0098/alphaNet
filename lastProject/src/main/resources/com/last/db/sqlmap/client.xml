@@ -48,7 +48,7 @@
 	
 	<select id="selectsearch" parameterClass="map" resultClass="client">
 		select * from client where substr(client_code,1,8)=#client_code# and
-		client_enRoll_date between #start_date# and #end_date# and client_title like %#word#%
+		client_enRoll_date between #start_date# and #end_date#+1 and client_title like %#word#%
 	</select>
 	
 	<select id ="selectNotice" parameterClass="str" resultClass="notice">
