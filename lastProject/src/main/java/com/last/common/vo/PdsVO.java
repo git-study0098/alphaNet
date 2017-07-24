@@ -4,14 +4,22 @@ import java.util.List;
 
 public class PdsVO {
 	private int pdsTotalCount;
-	private int currentPageNumber;
 	private List<Notice1VO> pdsList;
-	private int pageTotalCount;
 	private int pdsCountPerPage;
+	private int currentPageNumber;
+	private int pageTotalCount;
 	private int firstRow;
 	private int endRow;
+	private int size;
 
-	
+	public int getSize() {
+		return size;
+	}
+
+	public void setSize(int size) {
+		this.size = size;
+	}
+
 	/**
 	 * 각 게시판VO 마다 생성되야 함
 	 * */
@@ -24,7 +32,6 @@ public class PdsVO {
 		this.pdsCountPerPage = pdsCountPerPage;
 		this.firstRow = startRow;
 		this.endRow = endRow;
-
 		calculatePageTotalCount();
 	}
 
@@ -70,4 +77,42 @@ public class PdsVO {
 	public boolean isEmpty() {
 		return pdsTotalCount == 0;
 	}
+
+	public int getPdsTotalCount() {
+		return pdsTotalCount;
+	}
+
+	public void setPdsTotalCount(int pdsTotalCount) {
+		this.pdsTotalCount = pdsTotalCount;
+	}
+
+	public int getPdsCountPerPage() {
+		return pdsCountPerPage;
+	}
+
+	public void setPdsCountPerPage(int pdsCountPerPage) {
+		this.pdsCountPerPage = pdsCountPerPage;
+	}
+
+	public void setPdsList(List<Notice1VO> pdsList) {
+		this.pdsList = pdsList;
+	}
+
+	public void setCurrentPageNumber(int currentPageNumber) {
+		this.currentPageNumber = currentPageNumber;
+	}
+
+	public void setPageTotalCount(int pageTotalCount) {
+		this.pageTotalCount = pageTotalCount;
+	}
+
+	public void setFirstRow(int firstRow) {
+		this.firstRow = firstRow;
+	}
+
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
+
+	
 }

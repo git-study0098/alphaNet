@@ -40,6 +40,13 @@
 		location.href="<%=request.getContextPath() %>/admin/boardDelete?notice_code=${vo.notice_code}";
 	}
 </script>
+<script type="text/javascript">
+	function file_change(file) {
+		var str = file.lastIndexOf("\\") + 1; //파일 마지막 "\" 루트의 길이 이후부터 글자를 잘라 파일명만 가져온다.
+		file = file.substring(str, file.length);
+		document.getElementsByName('attach_file')[0].value = file;
+	}
+</script>
 
 <article>
 	<div id="page-wrapper">
@@ -51,7 +58,7 @@
 				</div>
 			</div>
 			<hr />
-			<form name="boardUpdate" id="boardUpdate" style="display: inline"
+			<form name="boardUpdate" id="boardUpdate" style="display: inline" method="post"
 				enctype="multipart/form-data" action="boardUpdate">
 				<input type="hidden" name="noticeCode" value="${vo.notice_code}">
 				<div>
@@ -88,9 +95,10 @@
 								</tr>
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5">
-										<a href="#" class="btn3_icon download"><input type="file"></a>
-									</td>
+									<td colspan="5"><a href="#" class="btn3_icon download">
+											<input type="file" name="f"
+											onchange="javascript:file_change(this.value);">
+									</a> <input type="text" name="attach_file" readonly></td>
 								</tr>
 								<tr>
 									<th scope="row">기존 첨부파일</th>

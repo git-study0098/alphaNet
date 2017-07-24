@@ -34,6 +34,7 @@ public class LoginController {
 	
 	@RequestMapping("login")
 	public String login(){
+		System.out.println("로그인 컨트롤러 회원 최근로그인 ");
 		return "1main";
 	}
 	

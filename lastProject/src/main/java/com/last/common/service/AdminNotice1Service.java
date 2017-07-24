@@ -34,7 +34,7 @@ public class AdminNotice1Service {
 			int firstRow = 0;
 			int endRow = 0;
 			if (notice1TotalCount > 0) {
-				firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
+				firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1; //첫번째 행
 				endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
 				notice1List = adminDao.selectNotice1List(firstRow, endRow,
 						notice_code);
@@ -42,8 +42,17 @@ public class AdminNotice1Service {
 				currentPageNumber = 0;
 				notice1List = Collections.emptyList();
 			}
-			return new PagingVO(notice1List, notice1TotalCount,
-					currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
+			PagingVO vo = new PagingVO(notice1List, notice1TotalCount, currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
+			vo.setNotice1List(notice1List);
+			vo.setNotice1TotalCount(notice1TotalCount);
+			vo.setCurrentPageNumber(currentPageNumber);
+			vo.setNotice1CountPerPage(NOTICE_COUNT_PER_PAGE);
+			vo.setFirstRow(firstRow);
+			vo.setEndRow(endRow);
+			
+			return vo;
+//			return new PagingVO(notice1List, notice1TotalCount,
+//					currentPageNumber, NOTICE_COUNT_PER_PAGE, firstRow, endRow);
 		} catch (Exception e) {
 			throw new ServiceException("게시판 리스트 구하기 실패!", e);
 		}
@@ -116,15 +125,16 @@ public class AdminNotice1Service {
 	      int currentPageNumber = pageNumber;
 	      try {
 	         
-	         int notice1TotalCount = adminDao.selectNotice1Count(notice_code);
-
+	         int notice1TotalCount = adminDao.selectCount(notice_code, schType, schText);
+	         System.out.println(schType+"타입 서비스");
+	         System.out.println(schText+"텍스트 서비스");
 	         List<Notice1VO> notice1List = null;
 	         int firstRow = 0;
 	         int endRow = 0;
 	         if (notice1TotalCount > 0) {
 	            firstRow = (pageNumber - 1) * NOTICE_COUNT_PER_PAGE + 1;
 	            endRow = firstRow + NOTICE_COUNT_PER_PAGE - 1;
-	            notice1List = adminDao.selectNotice1List(firstRow, endRow,notice_code);
+	            notice1List = adminDao.searchNoticeList(firstRow, endRow,notice_code, schType, schText);
 	         } else {
 	            currentPageNumber = 0;
 	            notice1List = Collections.emptyList();

@@ -31,7 +31,9 @@
 	</select>
 	
 	<select id="selectNotice1List" parameterClass="str" resultClass="notice1">
-		select * from notice where substr(notice_code,1,8)=#notice_code#
+		select * 
+		from notice 
+		where substr(notice_code,1,8)=#notice_code#
 	</select>
 	
 	<select id="selectNoticeCode" resultClass="str">
@@ -76,4 +78,5 @@
 			and admin_code like '%'||#schText#||'%'
 		</isEqual>
 	</select>
+	
 </sqlMap>

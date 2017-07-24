@@ -1,6 +1,16 @@
+<%@page import="com.last.common.vo.MemPagingVO"%>
+<%@page import="com.last.common.vo.MemberVo"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<%
+	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
+	MemPagingVO viewData = (MemPagingVO) request.getAttribute("viewData");
+%>	
+	
 		<!-- /. NAV SIDE  -->
 
 		<div id="page-wrapper">
