@@ -82,7 +82,6 @@ public class AdminQualifiService {
 	public QualifiMemberVO selectMemberInfoList(String mem_code) throws SQLException{
 		QualifiMemberVO vo = adminQualifiDao.selectMemberInfoList(mem_code);
 		return vo;
-		
 	}
 	
 	/**
@@ -101,4 +100,54 @@ public class AdminQualifiService {
 		return result;
 	}
 	
+	/**
+	 * 회원이 발급 신청한 자격증 내역 조회 메서드
+	 * @param mem_code
+	 * @return List<QualifiCertiVO>
+	 * @throws SQLException
+	 */
+	public List<QualifiCertiVO> selectQualifiCertiRequest(String mem_code) throws SQLException{
+		List<QualifiCertiVO> vo = adminQualifiDao.selectQualifiCertiRequest(mem_code);
+		return vo;
+	}
+	
+	public List<String> selectQualifiCertiIssCode(String qualifi_certi_code) throws SQLException{
+		List<String> vo = adminQualifiDao.selectQualifiCertiIssCode(qualifi_certi_code);
+		return vo;
+	}
+	
+	/**
+	 * 자격증 발급 시 발급 내역 리스트에 추가하는 메서드
+	 * @param qualifi_certi_iss_code
+	 * @return int
+	 * @throws SQLException
+	 */
+	public int insertQualifiCertiRequest(QualifiCertiVO vo) throws SQLException{
+		int result = 0;
+		result = adminQualifiDao.insertQualifiCertiRequest(vo);
+		return result;
+	}
+	
+
+	/**
+	 * Qualifi_Certi_Iss_Code 생성 메서드
+	 * @return
+	 */
+	public String createQualifiCertiIssCode(String qualifi_certi_code, String mem_code) throws SQLException{
+		String qualifi_code = ""; //중복코드 걸러내려만든 변수
+		int qualifi_code_num = 0; //중복코드 걸러내려만든 변수 시퀀스부분
+		String qualifiCertiIssCode = ""; //최종 생성되는 코드 리스트
+		
+		String selectMaxQualifiCertiIssCode = adminQualifiDao.selectMaxQualifiCertiIssCode(mem_code);
+		System.out.println(selectMaxQualifiCertiIssCode+"서비스");
+		
+		qualifi_code = qualifi_certi_code.substring(0,8);
+		qualifi_code_num = Integer.parseInt(selectMaxQualifiCertiIssCode.substring(8,15));	
+		
+		int num = qualifi_code_num+1;
+		
+		qualifiCertiIssCode = qualifi_code + num;
+		
+		return qualifiCertiIssCode;
+	}
 }
