@@ -5,7 +5,15 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-		  
+		
+	<bean id="cbtDao"
+		  class="com.last.cbt.dao.CbtDao"
+		  p:client-ref="client"
+	/>
+	
+	<bean id="cbtService"
+		  class="com.last.cbt.service.CbtService"
+		  p:dao-ref="cbtDao"/>  
 		  
 	<bean id="adminNotice1Dao"
 		  class="com.last.common.dao.AdminNotice1DAO"
