@@ -226,6 +226,8 @@ public class MemberWonseoRequestController {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 		String id = user.getUsername();
 		
+		
+		
 		MemberVo member = null;
 		
 		try {
@@ -234,8 +236,7 @@ public class MemberWonseoRequestController {
 			e.printStackTrace();
 		}
 		
-		System.out.println(member.getMem_enName());
-		System.out.println(member.getName());
+		System.out.println();
 		
 		model.addAttribute("placeNm", placeNm);
 		model.addAttribute("em_pay_pr", em_pay_pr);

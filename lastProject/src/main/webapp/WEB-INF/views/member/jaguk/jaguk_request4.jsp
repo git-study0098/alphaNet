@@ -86,12 +86,6 @@ pageEncoding="UTF-8"%>
  function goRequest6(){
 	 location.href="<%=request.getContextPath()%>/member/request6?mem_code=${mem_code}&choice=${choice}&dlvrHhCautionMatt="+$('#dlvrHhCautionMatt').val();
  }
- 
- 
- 
- 
- 
- 
 </script>
 
 <style>
@@ -382,33 +376,6 @@ pageEncoding="UTF-8"%>
 												title="전화번호 입력" style="width: 97px; margin-top: 5px" value="" maxlength="13"
 												class="numInput2"> <span class="txt_add">(예 :
 												010-1111-1111)</span>
-										</div>
-										<div>
-<!-- 											<span class="txt_addr"><label for=​"wrkArZip_1">우편번호 -->
-<!-- 													입력</label></span> <input type="text" id="wrkArZip_1" name="wrkArZip_1" -->
-<!-- 												maxlength="5" class="form_short numInput" -->
-<!-- 												readonly="readonly" title="우편번호 앞자리" value="" style="margin-top: 5px"> <span -->
-<!-- 												id="selfSpanNo3"> -->
-<!-- 												<button type="button" class="btn3_type1" name="addrPop" -->
-<!-- 													id="03" title="주소검색" style="margin-top: 5px"> -->
-<!-- 													<span>주소검색</span> -->
-<!-- 												</button> -->
-
-<!-- 											</span> <span id="selfSpanOk3" style="display: none"> -->
-<!-- 												<button type="button" class="btn3_type2" -->
-<!-- 													onclick="selfAddrFn3('NO');" title="주소 직접입력 취소"> -->
-<!-- 													<span>주소 직접입력 취소</span> -->
-<!-- 												</button> -->
-<!-- 											</span> -->
-										</div>
-										<div>
-<!-- 											<span class="txt_addr"><label for="wrkArAddr">주소</label></span> -->
-<!-- 											<input type="text" id="wrkArAddr" name="wrkArAddr" -->
-<!-- 												class="member_addr1" readonly="readonly" title="주소입력" -->
-<!-- 												value="" style="margin-top: 5px;"> <input type="text" -->
-<!-- 												id="workAreaAddrTownBldNm" name="workAreaAddrTownBldNm" -->
-<!-- 												style="width: 205px; margin-top: 5px;" class="member_addr2" title="주소 입력" -->
-<!-- 												readonly="readonly" value="" maxlength="200"> -->
 										</div>
 										<div>
 											<span class="txt_addr"><label for="wrkArAddrDtl">나머지
