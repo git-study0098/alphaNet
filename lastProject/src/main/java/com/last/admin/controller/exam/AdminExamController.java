@@ -10,11 +10,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.last.common.service.AdminExamService;
+import com.last.common.service.ServiceException;
 import com.last.common.vo.CalendarVO;
 import com.last.common.vo.EmPlaceVO;
 import com.last.common.vo.ExkindVO;
+import com.last.common.vo.NumgPagingVO;
+import com.last.common.vo.PagingVO;
 import com.last.common.vo.WonseoInfoVo;
 
 @Controller
@@ -89,6 +93,66 @@ public class AdminExamController {
 	@RequestMapping("/admin/schedule")
 	public String scheduleForm(){
 		return "/admin/exam/ad_exam_schedule_detail";
+	}
+	
+	@RequestMapping("/admin/updateSchForm")
+	public String updateSchForm(HttpServletRequest req,Model model){
+		String url = "/admin/exam/ad_exam_schedule_detail1";
+		String numg_code = req.getParameter("numg_code");
+
+		CalendarVO vo = null;
+		
+		try {
+			vo = adminExamService.selectNumg(numg_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("vo",vo);
+		model.addAttribute("numg_code",numg_code);
+		
+		return url;
+	}
+	
+	
+	@RequestMapping("/admin/updateSch")
+	public String updateSch(HttpServletRequest req,Model model){
+		String url = "redirect:examsch";
+		String em_nm = req.getParameter("em_nm");
+		String numg_stare_date = req.getParameter("numg_stare_date").replace("-", "/").substring(2);
+		System.out.println(numg_stare_date);
+		String numg_pass_p_anno_date = req.getParameter("numg_pass_p_anno_date").replace("-", "/").substring(2);
+		String numg_app_receipt_begin = req.getParameter("numg_app_receipt_begin").replace("-", "/").substring(2);
+		String numg_app_receipt_end = req.getParameter("numg_app_receipt_end").replace("-", "/").substring(2);
+		String numg_code = req.getParameter("numg_code");
+		
+		CalendarVO vo = new CalendarVO();
+		vo.setNumg_app_receipt_begin(numg_app_receipt_begin);
+		vo.setNumg_app_receipt_end(numg_app_receipt_end);
+		vo.setNumg_pass_p_anno_date(numg_pass_p_anno_date);
+		vo.setNumg_stare_date(numg_stare_date);
+		vo.setNumg_code(numg_code);
+		
+		int result = 0;
+		int result1 = 0;
+		
+		try {
+			adminExamService.updateNumg(vo);
+			adminExamService.updateEmNm(em_nm, numg_code);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		
+		
+		List<CalendarVO> calList = null;
+		try {
+			calList = adminExamService.selectList();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		req.setAttribute("calList", calList);
+
+		return url;
 	}
 	
 	
@@ -213,5 +277,29 @@ public class AdminExamController {
 	}
 	
 	
+	@RequestMapping("/admin/examFullSch")
+	public String examFullSch(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model){
+		String url = "/admin/exam/ad_examsch_list";
+		NumgPagingVO viewData=null;
+	      try {
+	          viewData= adminExamService.selectNumgList(pageNumber);
+	      } catch (ServiceException e) {
+	         e.printStackTrace();
+	      }
+	      
+	      if(viewData.getNumgList().isEmpty()){
+	         pageNumber--;
+	         if(pageNumber<=0) pageNumber=1;
+	         try {
+	            viewData = adminExamService.selectNumgList(pageNumber);
+	         } catch (ServiceException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	      model.addAttribute("viewData",viewData);
+	      model.addAttribute("pageNumber",pageNumber);
+	      
+	      return url;
+	}
 	
 }

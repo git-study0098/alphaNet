@@ -129,5 +129,42 @@ public class AdminExamDAO {
 		return list;
 	}
 	
+	public List<CalendarVO> selectNumgList(int firstRow, int endRow) throws SQLException{
+		List<CalendarVO> numgList = (ArrayList<CalendarVO>)client.queryForList("numgList",firstRow-1 , endRow-firstRow+1);
+		
+		return numgList;
+	}
+	
+	public int selectNumgCount()throws SQLException{
+		int count = (Integer) client.queryForObject("numgCount");
+		
+		return count;
+	}
+	
+	public CalendarVO selectNumg(String numg_code)throws SQLException{
+		
+		CalendarVO vo = (CalendarVO) client.queryForObject("selectNumg",numg_code);
+		
+		return vo;
+		
+	}
+	
+	public int updateNumg(CalendarVO vo) throws SQLException{
+		
+		int result = client.update("updateNumg",vo);
+		
+		return result;
+	}
+	public int updateEmNm(String em_nm , String numg_code) throws SQLException{
+		
+		HashMap<String, String> map = new HashMap<String, String>();
+		map.put("em_nm", em_nm);
+		map.put("numg_code", numg_code);
+		
+		int result = client.update("updateNumg",map);
+		
+		return result;
+	}
+	
 	
 }
