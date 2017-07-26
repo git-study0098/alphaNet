@@ -5,6 +5,11 @@
 <style>
 	*{box-sizing:content-box;}
 </style>
+
+<script>
+	
+</script>
+
 <article>
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
@@ -104,7 +109,7 @@
 					</div>
 
 					<div class="btn_center">
-						<a href="#" class="btn2 btncolor1" onclick="location.href='3choice_jongmok.jsp'"><span>이전</span></a>
+						<a href="#" class="btn2 btncolor1" onclick="location.href=history.go(-1)"><span>이전</span></a>
 						<a href="#" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/wonseoReq4?exam=${exam}&exam2=${exam2}&em_info_code=${em_info_code}'"><span>다음</span></a>
 					</div>
 				</form>

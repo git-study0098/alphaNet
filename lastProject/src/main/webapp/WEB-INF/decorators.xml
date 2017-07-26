@@ -26,7 +26,7 @@
 		<pattern>/login/findPwdInput*</pattern>
 		<pattern>/member/jagukPayment*</pattern>
 		<pattern>/member/request5*</pattern>
-		<pattern>/map</pattern>
+		<pattern>/**/map*</pattern>
 		<pattern>/client/mail</pattern>
 
 	</excludes>

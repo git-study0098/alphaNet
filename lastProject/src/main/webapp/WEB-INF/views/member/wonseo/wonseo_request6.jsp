@@ -38,7 +38,7 @@
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
 				<h3 class="tit_content">
-					원서접수 완료<span class="sel_subject">(응시종목:정보관리기술사)</span>
+					원서접수 완료<span class="sel_subject">(응시종목:${exam}(${exam2}))</span>
 				</h3>
 				<!-- //컨텐츠 타이틀 -->
 
