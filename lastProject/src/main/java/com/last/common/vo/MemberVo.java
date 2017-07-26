@@ -29,6 +29,16 @@ public class MemberVo {
 	private String mem_email_agree;
 	private String mem_pass_em;
 	
+	//회원가입날짜
+	private Date mem_enrolldate;
+	
+	
+	public Date getMem_enrolldate() {
+		return mem_enrolldate;
+	}
+	public void setMem_enrolldate(Date mem_enrolldate) {
+		this.mem_enrolldate = mem_enrolldate;
+	}
 	public String getMem_pass_em() {
 		return mem_pass_em;
 	}

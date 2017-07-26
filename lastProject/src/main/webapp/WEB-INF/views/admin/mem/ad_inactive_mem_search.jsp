@@ -7,7 +7,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
 <link
 	href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico"
 	rel="shortcut icon" type="image/x-icon">
