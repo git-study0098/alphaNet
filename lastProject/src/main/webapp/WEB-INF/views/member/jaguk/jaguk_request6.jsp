@@ -39,11 +39,8 @@ function paymentCheck(){
 			<!-- 컨텐츠 시작 -->
 			<div class="content">
 				<h3 class="tit_content">자격증 발급 신청 내역</h3>
-				<hr>
 				<div id="isr003_02_pop" class="popup" title="기본인증"></div> <!--  // popup -->
 				<div id="showDeliveryStatus_pop" class="popup" title="배송조회"></div> <!-- // popup -->
-				<h4>자격증 발급 신청 내역 [신청일련번호:D8003849117]</h4>
-				<p class="fc_3 mb20">※ 신청서 작성후 7일 이내에 결제를 하지 않을 경우 자동으로 삭제됩니다.</p>
 				<div class="tbl_normal isr_app mb40">
 					<table summary="자격증 발급 신청 내역으로, 성명(한글), 주민번호, 전화번호(자택/직장/휴대전화), 주소, 관할지사, 수령방법, 인증방법, 신청일자, 발급예정일 정보 제공" class="table table-bordered">
 						<colgroup>
@@ -100,17 +97,16 @@ function paymentCheck(){
 					</table>
 				</div>
 
-				<h4>자격증 내역(1건)</h4>
+				<h4>자격증 내역</h4>
 				<div class="tbl_type1 mb40">
 					<table summary="자격증 내역으로, 자격증 번호, 종목명(취득시 종목명), 필기 합격일자, 최종 합격일자, 비고, 발급 수수료 정보 제공" style="table-layout:fixed" class="table-bordered">
 						<colgroup>
-							<col width="15%">
+							<col width="20%">
 							<col width="18%">
 							<col width="10%">
 							<col width="10%">
-							<col width="16%">
+							<col width="11%">
 							<col width="21%">
-							<col width="10%">
 						</colgroup>
 						<thead>
 							<tr>
@@ -119,7 +115,6 @@ function paymentCheck(){
 								<th scope="col">필기<br>합격일자</th>
 								<th scope="col">최종<br>합격일자</th>
 								<th scope="col">비고</th>
-
 								<th scope="col" class="td">발급<br>수수료</th>
 							</tr>
 

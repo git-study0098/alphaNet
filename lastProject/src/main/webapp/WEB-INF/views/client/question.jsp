@@ -2,114 +2,65 @@
     pageEncoding="UTF-8"%>
     
     
-<link rel="stylesheet" type="text/css" href="resources/common/css/customer.css" />
-<link rel="stylesheet" type="text/css" href="resources/common/css/base2017.css" />
-
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/client/customer.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/client/base2017.css" />
+<%
+	String email =(String)session.getAttribute("email");
+%>
 <div id="container">
 			<div class="Top">
 				<h1 class="logo">
 					<a href="main" class="hrd">
-						<img src="resources/images/logo.jpg" alt="알파넷"  width="130px" height="100px">
+						<img src="<%=request.getContextPath() %>/resources/client/images/logo.jpg" alt="알파넷"  width="130px" height="100px">
 					</a>
 					<a href="main" class="voc">
-						<img src="resources/images/voc_logo.png" alt="알파넷" style="margin-left: 80px;">
+						<img src="<%=request.getContextPath() %>/resources/client/images/voc_logo.png" alt="알파넷" style="margin-left: 80px;">
 					</a>
 				</h1>
 				<div class="Quick_M">
-					<ul class="Quick_Menu">
-						<li class="icon01">
-							<a href="/CST/FAQ/FAQ0101.jsp">FAQ</a>
-						</li>
-						<li class="icon02">
-							<a href="clientSound">고객의소리</a>
-						</li>
-						<li class="icon03">
-							<a href="/CST/IPM/IPM0101.jsp">개선사항</a>
-						</li>
-						<li class="icon04">
-							<a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a>
-						</li>
-					</ul>
+				<ul class="Quick_Menu" style="margin-left: 250px">
+
+				<li class="icon02"><a
+					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>
+				<%
+					}
+				%>
+			</ul>
 				</div>
 			</div>
 			<div class="sectionArea">
-				
+				<div id="snb">
+			<h2>
+				무엇이<br>궁금하십니까?
+			</h2>
+			<ul>
+				<li><a href="question">자주하는 질문</a>
+					<ul class="depth3MenuList" id="treeDiv" style="display: none;"></ul>
+				</li>
+				<li><a href="clientSound">고객의 소리</a></li>
+				<li><a href="question2">개선사항</a></li>
+			</ul>
 
-<script type="text/javascript">
-var rootCodeList;
-
-function getCodeTree() {	
-	reqCodeTreeRoot();
-}   
-
-function reqCodeTreeRoot() {
-	var params = "event_id=DefaultAction.getListAjax";
-	params += "&sql_id=FAQ0101.getAcptCdRoot";
-
-	new ajax.xhr.ExtRequest("/FrontServlet", params, resCodeTreeRoot, "POST");    
-}
-
-function resCodeTreeRoot(jsonObj) {	
-	rootCodeList = jsonObj;
-	createCodeRootTree();
-}
-
-function createCodeRootTree() {
-	var rootColValue = "";
-	var innerHtml = "";
-	
-	for(var i = 0; i < rootCodeList.listCnt; i++) {
-		innerHtml += "<li>";
-		innerHtml += "<a href=\"javascript:searchFaqFavor('" + rootCodeList.ACPT_BCLSS[i] + "');\">";
-		innerHtml += rootCodeList.ACPT_NM[i];
-		innerHtml += "</a>";
-		innerHtml += "</li>";
-	}
-	
-	document.getElementById("treeDiv").innerHTML = innerHtml;
-}
-
-function searchFaqFavor(acptBclss) {
-	if(requestUri != "/CST/FAQ/FAQ0101.jsp") {
-		location.href = "/CST/FAQ/FAQ0101.jsp?bclss=" + acptBclss;
-		
-	} else {
-		document.getElementById("ACPT_BCLSS").value = acptBclss;
-		reqFaqList();	
-	}
-}
-	function setMenuExpand() {
-		if(requestUri == "/CST/FAQ/FAQ0101.jsp" || requestUri == "/CST/FAQ/FAQ0201.jsp") {
-			document.getElementById("treeDiv").style.display = "block";
-			getCodeTree();
-		}
-	}
-</script>
-<div id="snb">
-	<h2>무엇이<br>궁금하십니까?</h2>
-	<ul>
-		<li>
-			<a href="/CST/FAQ/FAQ0101.jsp">자주하는 질문</a>
-			<ul class="depth3MenuList" id="treeDiv" style="display: block;"><li><a href="javascript:searchFaqFavor('001');">평생능력개발</a></li><li><a href="javascript:searchFaqFavor('002');">자격시험</a></li><li><a href="javascript:searchFaqFavor('003');">국가직무능력표준</a></li><li><a href="javascript:searchFaqFavor('004');">외국인고용지원</a></li><li><a href="javascript:searchFaqFavor('005');">해외취업지원</a></li><li><a href="javascript:searchFaqFavor('007');">숙련기술장려</a></li><li><a href="javascript:searchFaqFavor('008');">기능경기</a></li><li><a href="javascript:searchFaqFavor('009');">경영지원</a></li></ul>								
-		</li>
-		<li>
-			<a href="/CST/ASK/ASK0102.jsp">고객의 소리</a>
-		</li>
-		<li>
-			<a href="/CST/IPM/IPM0101.jsp">개선사항</a>
-		</li>
-	</ul>
-	
-	<div class="subtelBox">
-		<p class="tel"><span>전화</span><strong>1644 - 8000</strong></p>
-		<p class="tel_txt">09:00 ~ 18:00<br>토요일, 일요일, 공휴일 제외</p>
-		<p class="tel_txt">문자상담은 40자 이내</p>
-	</div>
-</div>
-<script type="text/javascript">
-	setMenuExpand();
-</script>
-				
+			<div class="subtelBox">
+				<p class="tel">
+					<span>전화</span><strong>1644 - 8000</strong>
+				</p>
+				<p class="tel_txt">
+					09:00 ~ 18:00<br>토요일, 일요일, 공휴일 제외
+				</p>
+				<p class="tel_txt">문자상담은 40자 이내</p>
+			</div>
+		</div>
 				<div class="content">
 					<div class="title">
 						<h3>자주하는 질문</h3>
@@ -125,7 +76,6 @@ function searchFaqFavor(acptBclss) {
 							<input type="text" id="searchWord" name="searchWord" maxlength="" value="">
 						</span>
 						<a href="javascript:search();" class="searchbtn">검색</a>
-						<a href="javascript:goAsk();" class="writebtn">문의하기</a>
 					</div>
 				    <table style="width: 100%; ">
 				    	<tbody><tr>

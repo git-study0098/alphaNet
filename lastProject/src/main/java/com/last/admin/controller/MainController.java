@@ -61,11 +61,38 @@ public class MainController {
 		
 		return url;
 	}
+	@RequestMapping("detailPds")
+	public String detailPds(@RequestParam(value="notice_code") String notice_code,Model model){
+		String url ="member/board/pds/pds_detail";
+		
+		Notice1VO vo = null;
+		try {
+			vo = mainService.detailNotice(notice_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("vo", vo);
+		
+		return url;
+	}
+	@RequestMapping("detailUseInfo")
+	public String detailUseInfo(@RequestParam(value="notice_code") String notice_code,Model model){
+		String url ="member/board/useinfo/useInfo_detail";
+		
+		Notice1VO vo = null;
+		try {
+			vo = mainService.detailNotice(notice_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("vo", vo);
+		
+		return url;
+	}
 
 	@RequestMapping("/mainNotice2")
 	public String listNotice2(
-			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			Model model,
+			@RequestParam(value = "page", defaultValue = "1") int pageNumber,Model model,
 			@RequestParam(value = "notice_code", defaultValue = "notice02") String notice_code)
 			throws SQLException {
 		PagingVO viewData = null;

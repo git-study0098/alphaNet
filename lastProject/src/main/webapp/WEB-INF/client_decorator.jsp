@@ -10,7 +10,8 @@
 <link href="<%=request.getContextPath()%>/resources/client/main2017.css" rel="stylesheet" type="text/css" >				
 <link href="<%=request.getContextPath()%>/resources/client/ubcus.css" rel="stylesheet" type="text/css" />									
 <link href="<%=request.getContextPath()%>/resources/client/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" >				
-<link href="<%=request.getContextPath()%>/resources/client/tip-yellow.css" rel="stylesheet" type="text/css" >				
+<link href="<%=request.getContextPath()%>/resources/client/tip-yellow.css" rel="stylesheet" type="text/css" >
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>				
 <title>알파넷 고객의 소리</title>
 </head>
 <body>

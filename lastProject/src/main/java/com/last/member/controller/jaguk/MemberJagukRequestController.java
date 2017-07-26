@@ -3,11 +3,10 @@ package com.last.member.controller.jaguk;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -52,7 +51,6 @@ public class MemberJagukRequestController {
 		
 		try {
 			viewData = adminService.selectQualifiCertiList(pageNumber, mem_code);
-			System.out.println(viewData);
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -77,7 +75,7 @@ public class MemberJagukRequestController {
 	}
 	
 	@RequestMapping("/member/request3")
-	public String jagukRequest3(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,
+	public String jagukRequest3(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model, HttpSession session,
 			@RequestParam(value="mem_code") String mem_code,HttpServletRequest request,@RequestParam(value="choice") String choice)
 			throws SQLException{
 		QualifiPagingVO viewData = null;
@@ -86,33 +84,19 @@ public class MemberJagukRequestController {
 		ArrayList<String> idList = new ArrayList<String>();
 		for(int i=0; i<choiceArray.length; i++){
 			idList.add(choiceArray[i]);
-			System.out.println(choiceArray[i]);
 		}
-//		Map<String,String> qualifi_certi_code = new HashMap<String,String>();
-		
-//		Enumeration<String> paramNames = request.getParameterNames();
-//		ArrayList<String> paramNameList = new ArrayList<String>();
-//		while (paramNames.hasMoreElements()) {
-//			paramNameList.add((String) paramNames.nextElement());
-//		}
-//		for (int i = 0; i < paramNameList.size(); i++) {
-//			if (paramNameList.get(i).contains("choice")) {
-//				idList.add(request.getParameter(paramNameList.get(i)));
-//				System.out.println(idList);
-//			}
-//		}
-		
 		
 		List<QualifiCertiVO> viewData2 = new ArrayList<QualifiCertiVO>();
+		List<String> qualifi_certi_codeList = new ArrayList<String>();
 		
 		for(int i=0; i<idList.size(); i++){
-			String qualifi_certi_code = idList.get(i);				
-			System.out.println(qualifi_certi_code+"서티코드");
+			String qualifi_certi_code = idList.get(i);	
+			qualifi_certi_codeList.add(qualifi_certi_code);
 			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code));			
 		}
 		
-		System.out.println(choice);
-		model.addAttribute("choice", choice);
+		session.setAttribute("qualifi_certi_codeList", qualifi_certi_codeList);
+		
 		model.addAttribute("mem_code", mem_code);
 		model.addAttribute("viewData", viewData);
 		model.addAttribute("viewData2", viewData2);
@@ -121,46 +105,28 @@ public class MemberJagukRequestController {
 	}
 	
 	@RequestMapping("/member/request4")
-	public String jagukRequest4(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,
-			@RequestParam(value="mem_code") String mem_code,HttpServletRequest request,@RequestParam(value="qualifi_certi_code",defaultValue="") String qualifi_certi_code,String choice)
+	public String jagukRequest4(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model, HttpSession session,
+			@RequestParam(value="mem_code") String mem_code,HttpServletRequest request,@RequestParam(value="qualifi_certi_code",defaultValue="") String qualifi_certi_code)
 			throws SQLException{
 		QualifiMemberVO viewData = null;
 		List<QualifiCertiVO> viewData2 = new ArrayList<QualifiCertiVO>(); //자격증 코드
-		String[] choiceArray = choice.split(",");
-		ArrayList<String> idList = new ArrayList<String>();
-		int price = 0;
-		for(int i=0; i<choiceArray.length; i++){
-			idList.add(choiceArray[i]);
-			System.out.println(choiceArray[i]+"몇번째니"+i);
-			price += adminService.selectCertiPrice(choiceArray[i]);
+		int price=0;
+		
+		List<String> qualifi_certi_codeList = (List<String>) session.getAttribute("qualifi_certi_codeList");
+		
+		for(int i=0; i<qualifi_certi_codeList.size(); i++){
+			price += adminService.selectCertiPrice(qualifi_certi_codeList.get(i));
 		}
-
-		//자격증 코드 가져오는 메서드
-//		Enumeration<String> paramNames = request.getParameterNames();
-//		ArrayList<String> paramNameList = new ArrayList<String>();
-//		while (paramNames.hasMoreElements()) {
-//			paramNameList.add((String) paramNames.nextElement());
-//		}
-		//자격증 코드 가져오는 메서드		
-//		for (int i = 0; i < paramNameList.size(); i++) {
-//			if (paramNameList.get(i).contains("choice")) {
-//				idList.add(request.getParameter(paramNameList.get(i)));
-//				System.out.println(idList);
-//			}
-//		}		
+		
 		
 		//회원 정보 가져오는 부분
 		viewData = adminService.selectMemberInfoList(mem_code); 
-		System.out.println(viewData.getMem_nm());
 		
-		
-		for(int i=0; i<idList.size(); i++){
-			String qualifi_certi_code1 = idList.get(i);
-			System.out.println(qualifi_certi_code+"서티코드");
+		for(int i=0; i<qualifi_certi_codeList.size(); i++){
+			String qualifi_certi_code1 = qualifi_certi_codeList.get(i);
 			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code1));			
 		}
 		
-		model.addAttribute("choice", choice);
 		model.addAttribute("price", price);
 		model.addAttribute("mem_code", mem_code);
 		model.addAttribute("viewData", viewData);
@@ -187,22 +153,17 @@ public class MemberJagukRequestController {
 		for (int i = 0; i < paramNameList.size(); i++) {
 			if (paramNameList.get(i).contains("choice")) {
 				idList.add(request.getParameter(paramNameList.get(i)));
-				System.out.println(idList);
 			}
 		}
 		QualifiMemberVO viewData = null;
-		viewData = adminService.selectMemAuth(mem_code);		//
+		viewData = adminService.selectMemAuth(mem_code);		
 		
 		model.addAttribute("viewData", viewData);
 		model.addAttribute("viewData2", viewData2);
-		System.out.println(viewData.toString());
-		
 		
 		//자식창으로 데이터 가져가자
 		model.addAttribute("getName",mem_nm);
 		model.addAttribute("getBir",reg_num1);
-		
-		
 		
 		return "member/jaguk/jaguk_request5";
 	}
@@ -211,33 +172,22 @@ public class MemberJagukRequestController {
 	
 	@RequestMapping("/member/request6")
 	public String jagukRequest6(HttpServletRequest request,Model model,@RequestParam(value="mem_code") String mem_code,
-			@RequestParam(value="choice") String choice, String dlvrHhCautionMatt){
+			@RequestParam(value="choice") String choice, String dlvrHhCautionMatt, HttpSession session){
 		String url = "member/jaguk/jaguk_request6";
 		
 		int price=0;
-		List<QualifiCertiVO> viewData2 = null;
+		List<QualifiCertiVO> viewData2 = new ArrayList<QualifiCertiVO>();
+		
+		List<String> qualifi_certi_codeList = (ArrayList<String>) session.getAttribute("qualifi_certi_codeList");
 		
 		try {
-			viewData2 = adminService.selectQualifiCertiList(mem_code);		//자격증 정보 리스트
+			for(int i = 0; i<qualifi_certi_codeList.size(); i++){
+				viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_codeList.get(i)));		//자격증 정보 리스트
+			}
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 
-		// 자격증 코드 가져오는 메서드
-		Enumeration<String> paramNames = request.getParameterNames();
-		ArrayList<String> paramNameList = new ArrayList<String>();
-		while (paramNames.hasMoreElements()) {
-			paramNameList.add((String) paramNames.nextElement());
-		}
-		// 자격증 코드 가져오는 메서드
-		ArrayList<String> idList = new ArrayList<String>();
-		for (int i = 0; i < paramNameList.size(); i++) {
-			if (paramNameList.get(i).contains("choice")) {
-				idList.add(request.getParameter(paramNameList.get(i)));
-				System.out.println(idList);
-			}
-		}
 		QualifiMemberVO viewData = null;
 		try {
 			viewData = adminService.selectMemberInfoList(mem_code);		//해당 회원정보 리스트
@@ -252,9 +202,12 @@ public class MemberJagukRequestController {
 		
 		System.out.println(viewData.toString());
 		
+		int count = viewData2.size();
+		
 		viewData.setMem_code(mem_code);
 		model.addAttribute("dlvrHhCautionMatt",dlvrHhCautionMatt);
 		model.addAttribute("price", price);
+		model.addAttribute("count", count);
 		model.addAttribute("viewData", viewData);
 		model.addAttribute("viewData2", viewData2);
 		
@@ -262,15 +215,31 @@ public class MemberJagukRequestController {
 	}
 	
 	@RequestMapping("/member/jagukPayment")
-	public String jagukPayment(@RequestParam(value="mem_code")String mem_code,Model model,
+	public String jagukPayment(@RequestParam(value="mem_code")String mem_code,Model model, HttpSession session,
 			@RequestParam(value="qualifi_certi_iss_pr")String qualifi_certi_iss_pr){
 		
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 		String id = user.getUsername();
+		List<String> qualifi_certi_codeList = (List<String>) session.getAttribute("qualifi_certi_codeList");
+		int result =0;
 		
 		QualifiMemberVO qualifiMember = null;
 		try {
 			qualifiMember = adminService.selectMemberInfoList(mem_code);
+			for(int i=0; i<qualifi_certi_codeList.size(); i++){
+				System.out.println(qualifi_certi_codeList.get(i));
+				QualifiCertiVO vo = new QualifiCertiVO();
+				vo.setMem_code(mem_code);
+				vo.setQualifi_certi_code(qualifi_certi_codeList.get(i));
+				System.out.println(qualifi_certi_codeList.get(i)+"컨트");
+				List<String> qualifi_certi_iss_code = adminService.selectQualifiCertiIssCode(qualifi_certi_codeList.get(i));
+				vo.setQualifi_certi_iss_code(adminService.createQualifiCertiIssCode(qualifi_certi_iss_code.get(i)));
+				vo.setReceive_way("우편수령");
+				vo.setDr_state("배송중");
+				
+				result = adminService.insertQualifiCertiRequest(vo);
+				System.out.println("컨트롤러 성공했는지");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -294,6 +263,16 @@ public class MemberJagukRequestController {
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		mem_code =user.getUsername();
 		
+		List<QualifiCertiVO> viewData = null;
+		
+		try {
+			viewData = adminService.selectQualifiCertiRequest(mem_code);
+			System.out.println(viewData.size());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("viewData", viewData);
 		
 		return url;
 	}

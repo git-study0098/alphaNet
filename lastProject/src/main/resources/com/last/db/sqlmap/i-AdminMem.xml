@@ -51,6 +51,7 @@
 			  where ROWNUM <=#endRow#
 			)
 		where rnum >= #firstRow#
+		and substr(mem_lately_log_date,1,2) != '17' 
 		]]>
 	</select>
 

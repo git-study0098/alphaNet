@@ -3,18 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-<script>
-function showCard() {
-	window.open("jagukPayment?mem_code=${viewData.mem_code}&qualifi_certi_iss_pr=${price}" ,"pop","left=650,top=150,width=850px,height=650px");
- }
-function paymentCheck(){
-	 location.href="<%=request.getContextPath()%>/main";
-}
-// 마이페이지 -> 자격증 발급 내역
-<%-- location.href='<%=request.getContextPath()%>/member/wonseoReq6?placeNm=${placeNm}&em_info_code=${em_info_code}'; --%>	
-</script>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <style>
 	*{box-sizing:content-box;}
@@ -79,24 +68,16 @@ function paymentCheck(){
 							</tr>
 						</thead>
 						<tbody>
-						
-							<c:choose>
-								<c:when test="">
-								
-								</c:when>
-								<c:otherwise>
-								
-								</c:otherwise>
-							</c:choose>
-							
-							<tr>
-								<td>1</td>
-								<td><a href="#"><strong>정보처리기사</strong></a></td>
-								<td>우편수령</td>
-								<td>2017.07.19</td>
-								<td>발급일로부터 5일 후 수령가능<br>(토,일,공휴일 제외)</td>
-								<td>자격증 배송중</td>
-							</tr>
+							<c:forEach items="${viewData}" var="qualifi" varStatus="status">
+								<tr>
+									<td>${status.count}</td>
+									<td><a href=""><strong>${qualifi.qualifi_certi_nm}</strong></a></td>
+									<td>${qualifi.receive_way }</td>
+									<td>${qualifi.receive_day }</td>
+									<td>발급일로부터 5일 후 수령가능<br>(토,일,공휴일 제외)</td>
+									<td>${qualifi.dr_state }</td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>

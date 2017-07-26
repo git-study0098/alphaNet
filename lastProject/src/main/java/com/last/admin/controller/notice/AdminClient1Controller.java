@@ -220,6 +220,7 @@ public class AdminClient1Controller {
 		vo.setTitle(request.getParameter("title"));
 		vo.setAttach_file(fileName[0] + "." + fileName[1]);
 		
+		
 		model.addAttribute(vo);
 
 		try {

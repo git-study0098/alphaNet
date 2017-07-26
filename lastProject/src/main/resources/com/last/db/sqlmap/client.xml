@@ -38,7 +38,7 @@
 	</select>
 
 	<select id="selectClientCode" resultClass="str">
-		select client_code
+		select client_code 
 		from client
 	</select>
 
@@ -48,7 +48,7 @@
 	
 	<select id="selectsearch" parameterClass="map" resultClass="client">
 		select * from client where substr(client_code,1,8)=#client_code# and
-		client_enRoll_date between #start_date# and #end_date# and client_title like %#word#%
+		client_enRoll_date between #start_date# and #end_date#+1 and client_title like %#word#%
 	</select>
 	
 	<select id ="selectNotice" parameterClass="str" resultClass="notice">
@@ -57,6 +57,90 @@
 	
 	<select id ="selectNoticeCount" parameterClass="str"  resultClass="int">
 		select count(*) from notice where substr(notice_code,1,5) = #notice_code#
+	</select>
+	
+	<select id="searchClientList" parameterClass="java.util.HashMap" resultClass="client">
+		select * from client where client_enroll_date between  #startDate# and #endDate#
+		<isEqual property="schType" compareValue="all">
+			and 1=1
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and client_title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and client_consulting_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="kind">
+			and substr(client_code,1,8) like '%'||#schText#||'%'
+		</isEqual>
+	</select>
+	
+	
+	
+	<select id="searchClientCount" parameterClass="java.util.HashMap" resultClass="int">
+		SELECT COUNT(*) FROM client where client_enroll_date between  #startDate# and #endDate#
+		<isEqual property="schType" compareValue="all">
+			and 1=1 
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and client_title like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and client_consulting_content like '%'||#schText#||'%'
+		</isEqual>
+		<isEqual property="schType" compareValue="kind">
+			and substr(client_code,1,8) like '%'||#schText#||'%'
+		</isEqual>
+	</select>
+
+	<select id="selectClientDetail" parameterClass="str" resultClass="client">
+		select * from client where client_code = #client_code#
+	</select>
+	
+	<select id ="selectMyPage" parameterClass="str" resultClass="client">
+		select * from client where client_email =#client_email#
+	</select>
+	<select id ="selectMyPageCount" parameterClass="str" resultClass="int">
+		select count(*) from client where client_email =#client_email#
+	</select>
+
+
+	<select id="searchadNoticeCount" parameterClass="java.util.HashMap" resultClass="int">
+		select count(*) from notice where substr(notice_code,1,5) = #notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1 
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%' and enroll_date between  #startDate# and #endDate# 
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%' and enroll_date between  #startDate# and #endDate# 
+		</isEqual>
+	</select>
+
+
+	<select id="searchadNoticeList" parameterClass="java.util.HashMap" resultClass="notice">
+		select * from notice where substr(notice_code,1,5) = #notice_code#
+		<isEqual property="schType" compareValue="all">
+			and 1=1 
+		</isEqual>
+		<isEqual property="schType" compareValue="title">
+			and title like '%'||#schText#||'%' and enroll_date between  #startDate# and #endDate# 
+		</isEqual>
+		<isEqual property="schType" compareValue="content">
+			and notice_content like '%'||#schText#||'%' and enroll_date between  #startDate# and #endDate# 
+		</isEqual>
+	</select>
+	
+	<select id="adNoticeDetail" parameterClass="str" resultClass="notice">
+		select * from notice where notice_code =#notice_code#
+	</select>
+	
+	
+	<select id="fiveNotice" parameterClass="str" resultClass="notice">
+ 		<![CDATA[
+ 		select * from notice where substr(notice_code,1,5) = #notice_code# and rownum <=5
+		]]>
 	</select>
 	
 </sqlMap>

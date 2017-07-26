@@ -1,6 +1,11 @@
+<%@page import="com.last.common.vo.Paging2VO"%>
+<%@page import="com.last.common.vo.ClientVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/client/customer.css" />
 <link rel="stylesheet" type="text/css"
@@ -11,31 +16,16 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script> 
 
+<%
+
+	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
+	Paging2VO viewData = (Paging2VO) request.getAttribute("viewData");	
+	String email = (String) session.getAttribute("email");
+%>
+
 
 <script>
-	$(function(){
-
-	 $( "#startDate" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "<%=request.getContextPath() %>/resources/client/images/ico_date.gif", 
-	        buttonImageOnly: true,
-	        currentText: '오늘 날짜', 
-	        closeText: '닫기', 
-	        dateFormat: "yy-mm-dd"
-	  });
-	 
-	 
-	 
-	 $("#endDate").datepicker({
-	        showOn: "both", 
-	        buttonImage: "<%=request.getContextPath() %>/resources/client/images/ico_date.gif", 
-	        buttonImageOnly: true,
-	        currentText: '오늘 날짜', 
-	        closeText: '닫기', 
-	        dateFormat: "yy-mm-dd"
-	  });
-	});
- 
+	alert('<%=email%>+마이페이지니지')
 	function search() {
 		document.frm.action ="searchSound";
 		document.frm.submit();
@@ -59,11 +49,24 @@
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu">
-				<li class="icon01"><a href="#">FAQ</a></li>
-				<li class="icon02"><a href="clientSound">고객의소리</a></li>
-				<li class="icon03"><a href="#">개선사항</a></li>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a></li>
+				<ul class="Quick_Menu" style="margin-left: 250px">
+
+				<li class="icon02"><a
+					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04">
+						<a href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a>
+				</li>
+				<% 
+				}
+				%>
 			</ul>
 		</div>
 	</div>
@@ -199,34 +202,91 @@
 							</tbody></table>
 						</div>
 					</div>
-					<div class="contentSearchForm">						
-						<span style="margin-right: 5px;">
-							<input type="text" readonly="" name="startDate" id="startDate" maxlength="" value="" style="width: 70px;">
-							<a class="date" href="javascript:showcld(1, FNAME.startDate);">
-							</a>
-						</span>
-						 ~
-						<span style="margin: 0 10px 0 0;">
-							<input type="text" readonly="" name="endDate" id="endDate" maxlength="" value="" style="width: 70px;">
-							<a class="date" href="javascript:showcld(2, FNAME.endDate);">
-							</a>
-						</span>	
-						<a class="searchbtn" href="javascript:reqMypList();">검색</a>
-					</div>					
-					<table class="list2">
-						<tbody><tr>
-							<td>
-								<div id="LIST_DIV"><table id="LIST_TB" width="100%" class="table01" cellspacing="1" style="table-layout: fixed;"><tbody><tr><th class="colresize" style="" width="30"><span onclick="">번호<span id="LIST_TH_SPAN_ID1"></span></span></th><th class="colresize" style="" width="110"><span onclick=""> 접수번호<span id="LIST_TH_SPAN_ID2"></span></span></th><th class="colresize" style="cursor: col-resize;" width="110"><span onclick=""> 분류<span id="LIST_TH_SPAN_ID3"></span></span></th><th class="colresize" style="" width=""><span onclick=""> 제목<span id="LIST_TH_SPAN_ID4"></span></span></th><th class="colresize" style="" width="60"><span onclick=""> 등록일<span id="LIST_TH_SPAN_ID5"></span></span></th><th class="colresize" style="" width="70"><span onclick=""> 답변일<span id="LIST_TH_SPAN_ID6"></span></span></th><th class="colresize" style="" width="70"><span onclick=""> 처리부서<span id="LIST_TH_SPAN_ID7"></span></span></th><th class="colresize" style="" width="70"><span onclick=""> 처리상태<span id="LIST_TH_SPAN_ID8"></span></span></th></tr><tr><td colspan="8" align="center"><font color="gray">조회된 결과가 없습니다.</font></td></tr></tbody></table></div>
-							</td>
+					
+					<table style="width: 100%;border: 1px solid green;">
+			<colgroup>
+				<col width="7%">
+				<col width="15%">
+				<col width="*">
+				<col width="15%">
+				<col width="15%">
+				<col width="10%">
+			</colgroup>
+			
+				<thead>
+					<tr>
+						<td>번호</td>
+						<td>분류</td>
+						<td>제목</td>
+						<td>고객명</td>
+						<td>등록일</td>
+						<td>처리상태</td>
+					</tr>
+				</thead>
+				<tbody>
+
+				<c:choose>
+					<c:when test="${viewData.clientCountPerPage > 0 }">
+						<c:forEach items="${viewData.clientList }" var="clientAll"
+							varStatus="number">
+							<tr style="height:30px;">
+								<!-- 글번호 -->
+								<td scope="col">${number.count}</td>
+								
+								<c:if test="${clientAll.client_consulting_kind eq '1'}">
+								<td>평생능력개발</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '2'}">
+								<td>자격시험</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '3'}">
+								<td>직업능력표준</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '4'}">
+								<td>외국인고용지원</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '5'}">
+								<td>해외취업지원</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '6'}">
+								<td>국제교류협력</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '7'}">
+								<td>숙련기술장려</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '8'}">
+								<td>기능경기</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '9'}">
+								<td>경영지원</td>
+								</c:if>
+								<c:if test="${clientAll.client_consulting_kind eq '10'}">
+								<td>기타(일반)</td>
+								</c:if>							
+								<c:if test="${clientAll.client_consulting_kind eq '11'}">
+								<td>기타</td>
+								</c:if>
+								<td scope="col"><a href="<%=request.getContextPath() %>/client/clientDetail?client_code=${clientAll.client_code }" >${clientAll.client_title}</a></td>
+								<c:set var="name" value="${clientAll.client_nm}"></c:set>
+								<td scope="col">${name}</td>
+								<td scope="col"><fmt:formatDate value="${clientAll.client_enRoll_date}" pattern="yyyy-MM-dd"/></td>
+								<c:if test="${clientAll.reply_state eq 'Y'}">
+								<td scope="col">접수완료</td>
+								</c:if>		
+								<c:if test="${clientAll.reply_state eq 'N'}">
+								<td scope="col">처리중</td>
+								</c:if>		
+							</tr>
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<td style="text-align: center;">내용이 없습니다.</td>
 						</tr>
-					</tbody></table>
-					<table style="width: 100%; ">
-						<tbody><tr>
-							<td>
-								<div id="LIST_PAGE_DIV">	<table width="100%" align="center" style="background-color:white"><tbody><tr><td>&nbsp;</td></tr></tbody></table></div>
-							</td>
-						</tr>
-					</tbody></table>				
+					</c:otherwise>
+				</c:choose>
+				</tbody>
+			</table>
 				</div>
 	</div>
 </div>

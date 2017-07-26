@@ -5,7 +5,12 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page trimDirectiveWhitespaces="true"%>
-
+<script>
+function goMinwon(){
+	var pop = window.open("<%=request.getContextPath()%>/client/main", "pop",
+	"width=1080,height=860, scrollbars=yes, resizable=yes");
+}
+</script>
 <script>
 	$(document).ready(function(){
 		$('.btn_login').click(function(){
@@ -96,36 +101,30 @@
 					<li class="low active"><a>공지사항</a>
 						<ul style="display: block;">
 							<li><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a></li>
-							<li><a href="<%=request.getContextPath() %>/notice2">자격제도</a></li>
-							<li><a href="<%=request.getContextPath() %>/notice3">시행</a></li>
-							<li><a href="<%=request.getContextPath() %>/notice4">출제</a></li>
-							<li><a href="<%=request.getContextPath() %>/notice5">서비스 개선</a></li>
+							<li><a href="<%=request.getContextPath() %>/memberNotice2">자격제도</a></li>
+							<li><a href="<%=request.getContextPath() %>/memberNotice3">시행</a></li>
+							<li><a href="<%=request.getContextPath() %>/memberNotice4">출제</a></li>
+							<li><a href="<%=request.getContextPath() %>/memberNotice5">서비스 개선</a></li>
 						</ul></li>
 					<li class="low"><a>이용안내</a>
 						<ul style="display: block;">
 							<li><a href="<%=request.getContextPath() %>/useInfo">사이트 이용방법</a></li>
-							<li><a>자주찾는 질문</a></li>
+							<li><a href="#">자주찾는 질문</a></li>
 						</ul></li>
 					<li class="low"><a>자료실</a>
 						<ul style="display: block;">
 							<li><a href="<%=request.getContextPath() %>/pdsList">각종서식</a></li>
-							<li><a>출제기준</a></li>
-							<li><a>기출문제(기술사)</a></li>
-							<li><a>공개문제</a></li>
-							<li><a>관련법령</a></li>
 						</ul></li>
 					<li class="low"><a>환불안내</a>
 						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/notice/tech">기술자격 환불안내</a></li>
-							<li><a>전문자격 환불안내</a></li>
+							<li><a href="<%=request.getContextPath() %>/change">기술자격 환불안내</a></li>
 						</ul></li>
 					<li class="low"><a>고객 맞춤정보</a>
 						<ul style="display: block;">
 							<li><a href="<%=request.getContextPath() %>/notice/getJob">취업/훈련/연수</a></li>
 							<li><a href="<%=request.getContextPath() %>/notice/college">대학생(중고생)장학금</a></li>
 						</ul></li>
-					<li class="low"><a href="<%=request.getContextPath() %>/notice/haggwa">관련학과 지정신청</a></li>
-					<li><a>고객의 소리</a></li>
+					<li><a href="#">고객의 소리</a></li>
 				</ul>
 				<!-- menu리스트 끝 -->
 			</div>

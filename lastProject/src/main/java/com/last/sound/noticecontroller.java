@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.last.client.service.ClientService;
 import com.last.common.vo.ClientVO;
+import com.last.common.vo.Notice1VO;
 import com.last.common.vo.Paging2VO;
 import com.last.common.vo.PagingVO;
 
@@ -145,8 +146,133 @@ public class noticecontroller {
 	}
 	
 	@RequestMapping("/client/myPage")
-	public String myPage(){
+	public String myPage(@RequestParam(value = "page", defaultValue = "1") int pageNumber,HttpServletRequest request,Model model) throws ServiceException, SQLException{
+		String email = request.getParameter("email");
+		Paging2VO viewData=null;
+		viewData = clientService.myPageList(email, pageNumber);
+		
+		if(viewData.getClientList().isEmpty()){
+			pageNumber--;
+			if(pageNumber<=0) pageNumber=1;
+			viewData = clientService.myPageList(email, pageNumber);
+		}
+
+		System.out.println(viewData.getPageTotalCount());
+		
+		model.addAttribute("viewData",viewData);
+		model.addAttribute("pageNumber",pageNumber);
+		
 		return "client/myPage";
 	}
+	
+	
+	
+	@RequestMapping("/client/notice/search")
+	public String listNotice1(
+			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
+			Model model,HttpServletRequest request) throws SQLException, ServiceException {
+		String schType = request.getParameter("schType");
+		String schText = request.getParameter("schText");
+		String start = request.getParameter("startDate");
+		String end = request.getParameter("endDate");
+		System.out.println(start+"컨트롤러 시작날짜");
+		System.out.println(end+"컨트롤러 끝나는날짜");
+		Paging2VO viewData2=null;
+		int count = 0;
+	      try {
+	    	  count = clientService.selectClientCount(schType, schText,start,end);
+	          viewData2= clientService.searchClientList(pageNumber, schType, schText,start,end);
+	      } catch (ServiceException e) {
+	         e.printStackTrace();
+	      }
+	      
+	      if(viewData2.getClientList().isEmpty()){
+	         pageNumber--;
+	         if(pageNumber<=0) pageNumber=1;
+	         try {
+	            viewData2 = clientService.searchClientList(pageNumber, schType, schText,start,end);
+	         } catch (ServiceException e) {
+	            e.printStackTrace();
+	         }
+	      }
+	      
+	      model.addAttribute("viewData2",viewData2);
+	      model.addAttribute("pageNumber",pageNumber);
+	      model.addAttribute("count",count);
+
+		return "client/soundOfClient2";
+	}
+	
+	// 상세보기
+		@RequestMapping("/client/clientDetail")
+		public String noticeDetail(
+				@RequestParam(value = "client_code") String client_code, Model model) {
+			String url = "client/detail";
+			System.out.println(client_code);
+			ClientVO vo = null;
+			try {
+				vo = clientService.selectClientDetail(client_code);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			model.addAttribute("vo", vo);
+			System.out.println(vo.getClient_enRoll_date());
+			return url;
+		}
+	
+	
+		@RequestMapping("/client/adnotice/search")
+		public String noticeClientSearch(
+				@RequestParam(value = "page", defaultValue = "1") int pageNumber,
+				Model model, @RequestParam(value="notice_code", defaultValue="cn001" )String notice_code,HttpServletRequest request) throws SQLException, ServiceException {
+			String schType = request.getParameter("schType");
+			String schText = request.getParameter("schText");
+			String start = request.getParameter("startDate");
+			String end = request.getParameter("endDate");
+			System.out.println(start+"컨트롤러 시작날짜");
+			System.out.println(end+"컨트롤러 끝나는날짜");
+			PagingVO viewData2=null;
+			int count = 0;
+		      try {
+		    	  count = clientService.selectadNoticeCount(schType, schText, start, end,notice_code);
+		          viewData2= clientService.searchadNoticeList(pageNumber, schType, schText, start, end,notice_code);
+		      } catch (ServiceException e) {
+		         e.printStackTrace();
+		      }
+		      
+		      if(viewData2.getNotice1List().isEmpty()){
+		         pageNumber--;
+		         if(pageNumber<=0) pageNumber=1;
+		         try {
+		            viewData2 = clientService.searchadNoticeList(pageNumber, schType, schText, start, end,notice_code);
+		         } catch (ServiceException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		      
+		      model.addAttribute("viewData2",viewData2);
+		      model.addAttribute("pageNumber",pageNumber);
+		      model.addAttribute("count",count);
+
+			return "client/searchNotice";
+		}
+		
+		// 상세보기
+		@RequestMapping("/client/adNoticeDetail")
+		public String adnoticeDetail(
+				@RequestParam(value = "notice_code") String notice_code, Model model) {
+			String url = "client/adNoticeDetail";
+			System.out.println(notice_code);
+			Notice1VO vo = null;
+			try {
+				vo = clientService.selectadNoticeDetail(notice_code);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			model.addAttribute("vo", vo);
+			return url;
+		}
+		
+	
 	
 }

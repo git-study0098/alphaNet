@@ -81,7 +81,6 @@
 							<li>학력정보에 변동이 있는 수험자는 "학력정보 추가"를 클릭하여 반드시 최종학력을 추가 입력하시기 바랍니다. </li>
 							<li>외국학력취득자의 경우 응시자격 서류제출은 수험자 본인이 우리 공단 지역본부 또는 지사에 외국학력(경력)서류 제출연기 신청서를 내시면(응시자격 서류심사기간까지 사전신청) 최종합격자 발표일 7일전까지로 제출기한을 연기할 수 있으니 참고하시기 바랍니다.</li>
 						</ul>
-						<p class="mt10"><a href="/inf/qlf04.hwp" class="btn3_icon download"><span>외국발급 자격 및 학력취득자의 응시자격서류 제출 방법 다운로드</span></a></p>
 					</div>
 					<span></span>
 				</div>
@@ -89,7 +88,6 @@
 				<div class="tbl_normal diagnosis_step3 mb5">
 					<input type="hidden" class="ui-datepicker-trigger"><!-- 삭제/복원 제어용 -->
 
-					<p class="txt_right mt20"><button type="button" class="btn3_type3" name="helpBtn"><span>자기진단 및 제출서류 도움말</span></button></p>
 
 					<p class="tbl_tlt ok">서류 심사 완료</p>
 					<table summary="학력정보입력 폼으로, 학력구분, 학교(기관)명, 학과/전공명, 학적상태, 수료/중퇴일자-재학/졸업일자, 기술훈련과정명, 직무분야 정보 입력">

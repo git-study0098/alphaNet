@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/client/customer.css" />
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/client/base2017.css" />
+
+<%
+String email =(String)session.getAttribute("email");
+%>
 <div id="container">
 			<div class="Top">
 				<h1 class="logo">
@@ -13,20 +17,24 @@
 					</a>
 				</h1>
 				<div class="Quick_M">
-					<ul class="Quick_Menu">
-						<li class="icon01">
-							<a href="#">FAQ</a>
-						</li>
-						<li class="icon02">
-							<a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a>
-						</li>
-						<li class="icon03">
-							<a href="#">개선사항</a>
-						</li>
-						<li class="icon04">
-							<a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a>
-						</li>
-					</ul>
+					<ul class="Quick_Menu" style="margin-left: 250px">
+
+				<li class="icon02"><a
+					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>
+				<%
+					}
+				%>
+			</ul>
 				</div>
 			</div>
 			
@@ -36,13 +44,13 @@
 	<h2 class="oneline">알려드립니다</h2>	
 	<ul>
 		<li>
-			<a href="<%=request.getContextPath() %>/resources/client/notice2">민원처리절차</a>
+			<a href="<%=request.getContextPath() %>/client/notice2">민원처리절차</a>
 		</li>
 		<li>
-			<a href="<%=request.getContextPath() %>/resources/client/notice">공지사항</a>
+			<a href="<%=request.getContextPath() %>/client/notice">공지사항</a>
 		</li>
 		<li>
-			<a href="<%=request.getContextPath() %>/resources/client/notice3">사이트맵</a>
+			<a href="<%=request.getContextPath() %>/client/notice3">사이트맵</a>
 		</li>
 	</ul>
 	<div class="subtelBox">

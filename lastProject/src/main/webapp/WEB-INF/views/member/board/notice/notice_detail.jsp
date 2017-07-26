@@ -63,19 +63,6 @@
 						<form name="boardUpdate" id="boardUpdate" style="display: inline"
 							enctype="multipart/form-data" action="detailNotice">
 							<input type="hidden" name="notice_code" value="${vo.notice_code}">
-							<div class="searchType">
-								<span> <label for="notiType">검색</label> <select
-									name="schType" id="schType" title="검색 구분 선택" class="m0">
-										<option value="all" selected="selected">전체</option>
-										<option value="title">글제목</option>
-										<option value="content">내용</option>
-										<option value="adm">담당부서</option>
-								</select> <input type="text" name="schText" style="width: 150px"
-									id="schText" title="검색어 입력"> <a href="#"
-									class="btn3_icon search" onclick="getNoticeList();"><span
-										class="blind">검색</span></a>
-								</span>
-							</div>
 
 							<div id="viewList">
 								<div class="tbl_type1">
@@ -98,16 +85,11 @@
 											</tr>
 											<tr>
 												<th scope="row">담당부서</th>
-												<td><input name="adminCode" type="text"
-													value="${vo.admin_code}"
-													style="width: 95%; background-color: #ffffff;"></td>
+												<td>${vo.admin_code}</td>
 												<th scope="row">등록일</th>
-												<td><c:set var="now" value="<%=new java.util.Date()%>" />
-													<input name="registDate" value="${vo.regist_date}" /></td>
+												<td>${vo.regist_date}</td>
 												<th scope="row">최종수정일</th>
-												<td><c:set var="now" value="<%=new java.util.Date()%>" />
-													<input name="enrollDate"
-													value="<fmt:formatDate value="${now}" pattern="yy/MM/dd" />" /></td>
+												<td>${vo.regist_date}</td>
 											</tr>
 											<tr>
 												<th scope="row">첨부파일</th>
@@ -117,21 +99,12 @@
 												</td>
 											</tr>
 											<tr>
-												<td colspan="6"><textarea name="noticeContent"
-														id="contents_text" style="width: 100%;" rows="10">
-																	${vo.notice_content}
-													</textarea></td>
+												<td colspan="6">${vo.notice_content}</td>
 											</tr>
 										</tbody>
 									</table>
 								</div>
 
-								<p class="txt_right">
-									<input type="submit" class="btn btncolor1" value="수정"
-										style="color: #ffffff" /> <input type="button"
-										class="btn btncolor2" value="삭제" onclick="boardDelete()"
-										style="color: #ffffff" />
-								</p>
 							</div>
 						</form>
 					</div>

@@ -1,6 +1,7 @@
 package com.last.mail.SimpleMessage;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,9 +22,9 @@ public class MessageController {
 		this.inlineMessage = inlineMessage;
 	}
 
-	@RequestMapping("/mail")
+	@RequestMapping("/client/mail")
 	public String mail(){
-		return "mail";
+		return "client/mail";
 	}
 
 	
@@ -34,27 +35,25 @@ public class MessageController {
 
 
 	
-	@RequestMapping("mailSend")
+	@RequestMapping("/client/mailSend")
 	@ResponseBody
-	public ModelAndView mailSend(HttpServletRequest request,
+	public Object mailSend(HttpServletRequest request,
 			HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
-		String email1 = request.getParameter("email1");
-		String email2 = request.getParameter("email2");
-		String eamil = email1 + "@" + email2;
-		System.out.println(eamil);
+	
+		String email = request.getParameter("email");
+		System.out.println(email);
 		String ranNum = RandomNum();
 		
 		ApplicationContext ctx = new GenericXmlApplicationContext("classpath:mail-context.xml");
 		inlineMessage simple = ctx.getBean("inlineMessageMail",inlineMessage.class);
-		simple.send(eamil,ranNum);
-		mv.setViewName("mail");
-		mv.addObject("email", eamil);
-		mv.addObject("ranNum",ranNum);
+		simple.send(email,ranNum);
+		Map<String,Object> param = new HashMap<String, Object>();
+		param.put("email", email);
+		param.put("ranNum", ranNum);
 		System.out.println(ranNum);
 //		Map<String, String> paramMap = new HashMap<String, String>();
 //		paramMap("email",email)
-		return mv;
+		return param;
 
 	}
 

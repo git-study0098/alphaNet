@@ -9,10 +9,53 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/client/base2017.css" />
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
+<script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
 	PagingVO viewData = (PagingVO) request.getAttribute("viewData");
+	String email =(String)session.getAttribute("email");
 %>
+
+
+
+<script>
+	$(function(){
+
+	 $( "#startDate" ).datepicker({
+	        showOn: "both", 
+	        buttonImage: "<%=request.getContextPath() %>/resources/client/images/ico_date.gif", 
+	        buttonImageOnly: true,
+	        currentText: '오늘 날짜', 
+	        closeText: '닫기', 
+	        dateFormat: "yy-mm-dd"
+	  });
+	 
+	 
+	 $("#endDate").datepicker({
+	        showOn: "both", 
+	        buttonImage: "<%=request.getContextPath() %>/resources/client/images/ico_date.gif", 
+	        buttonImageOnly: true,
+	        currentText: '오늘 날짜', 
+	        closeText: '닫기', 
+	        dateFormat: "yy-mm-dd"
+	  });
+	});
+ 
+	function getadNoticeList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var startDate = document.getElementById('startDate').value;
+		var endDate = document.getElementById('endDate').value;
+		location.href="<%=request.getContextPath()%>/client/adnotice/search?schType="+schType+"&schText="+schText+"&startDate="+startDate+"&endDate="+endDate;
+	}
+ </script>
+
+
+
 
 <div id="container">
 	<div class="Top">
@@ -26,12 +69,19 @@
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu">
-				<li class="icon01"><a href="#">FAQ</a></li>
+			<ul class="Quick_Menu" style="margin-left: 250px;">
 				<li class="icon02"><a
 					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
-				<li class="icon03"><a href="#">개선사항</a></li>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a></li>
+				<%if(email ==null||email.equals("")){
+					%>
+				<li class="icon04"><a href="<%=request.getContextPath() %>/client/auto">마이페이지</a></li>
+			<%
+				}else{
+					%>
+				<li class="icon04"><a href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>					
+					<%
+				}
+			%>
 			</ul>
 		</div>
 	</div>
@@ -68,28 +118,20 @@
 					<span style="margin-right: 5px;"> <label for="startDate"
 						style="float: left; margin-right: 5px; inline-height: 28px;">등록기간</label>
 						<input type="text" name="startDate" id="startDate" date required
-						maxlength="" value="" style="width: 70px;"> <a
-						class="date" href="javascript:showcld(1, FNAME.startDate);"> <img
-							src="<%=request.getContextPath()%>/resources/client/images/ico_date.gif"
-							alt="달력" align="absmiddle" name="img1" id="img1">
-					</a>
-					</span> ~ <span style="margin-right: 5px;"> <input type="text"
-						name="endDate" date required maxlength="" value=""
-						style="width: 70px;"> <a class="date"
-						href="javascript:showcld(2, FNAME.endDate);"> <img
-							src="<%=request.getContextPath()%>/resources/client/images/ico_date.gif"
-							alt="달력" align="absmiddle" name="img2" id="img2">
-					</a>
-					</span> <select name="searchGb" class="w100">
-						<option value="" selected="selected">전체</option>
-						<option value="T">제목</option>
-						<option value="C">내용</option>
+						maxlength="" value="" style="width: 70px;"> 
+					</span> ~ <span style="margin-right: 5px;"> 
+					<input type="text" name="endDate" date required maxlength="" value="" id="endDate" style="width: 70px;"/>
+					</span> <select name="schType" id ="schType" class="w100">
+					
+						<option value="all" selected="selected">전체</option>
+						<option value="title">제목</option>
+						<option value="content">내용</option>
 					</select>
 				</div>
-				<input type="text" name="searchWord" maxlength="" value=""
+				<input type="text" name="schText" id="schText" maxlength="" value=""
 					style="width: 260px; margin-left: 5px;">
 				<button
-					style="text-align: center; background-color: #ffffff; color: black; height: 26px; width: 40px; margin-right: 10px;">검색</button>
+					style="text-align: center; background-color: #ffffff; color: black; height: 26px; width: 40px; margin-right: 10px;" onclick="getadNoticeList()">검색</button>
 			</div>
 			<form name="noticeDetail">
 				<input type="hidden" name="notice_code" value="notice01">
@@ -109,7 +151,7 @@
 									<th scope="col">번호</th>
 									<th scope="col">제목</th>
 									<th scope="col">담당부서</th>
-									<th scope="col">최종수정일자</th>
+									<th scope="col">등록일</th>
 									<th scope="col"></th>
 								</tr>
 							</thead>
@@ -125,8 +167,23 @@
 												<td>${viewData.firstRow+number.count-1}</td>
 												<!-- 글번호 -->
 												<td><a
-													href="<%=request.getContextPath() %>/admin/boardUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
-												<td>${notice.admin_code}</td>
+													href="<%=request.getContextPath() %>/client/adNoticeDetail?notice_code=${notice.notice_code }">${notice.title}</a></td>
+												<c:if test="${notice.admin_code eq 'ADM001'}">
+													<td>정보화지원국사업1팀</td>
+												</c:if>
+												<c:if test="${notice.admin_code eq 'ADM002'}">
+													<td>정보화지원국사업2팀</td>
+												</c:if>
+												<c:if test="${notice.admin_code eq 'ADM003'}">
+													<td>정보화지원국사업3팀</td>
+												</c:if>
+												<c:if test="${notice.admin_code eq 'ADM004'}">
+													<td>정보화지원국사업4팀</td>
+												</c:if>
+												<c:if test="${notice.admin_code eq 'ADM005'}">
+													<td>정보화지원국사업5팀</td>
+												</c:if>
+								
 												<td>${notice.enroll_date}</td>
 												<td><input type="hidden" value="${notice.notice_code}"
 													name="noticeCode" /></td>

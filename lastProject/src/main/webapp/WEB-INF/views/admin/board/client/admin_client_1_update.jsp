@@ -62,11 +62,16 @@
 		file = file.substring(str, file.length);
 		document.getElementsByName('attach_file')[0].value = file;
 	}
+	
+
+	function popup(){
+		var pop = window.open("<%=request.getContextPath()%>/reply", "pop", "width=570, height=420, scrollbars=yes");
+	}
 </script>
 
 <article>
 	<div id="page-wrapper">
-		<div id="page-inner">
+		<div id="page-inner" >
 			<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
 			<div class="row">
 				<div class="col-md-12">
@@ -132,11 +137,17 @@
 
 						</table>
 					</div>
+					<label>답변 내용을 입력하세요</label> <br>
+					<div>
+						<textarea rows="5" style="width:50%">
+						
+						</textarea>
+					</div>
 					<p class="txt_right">
 						<input type="submit" class="btn btncolor1" value="수정"
-							style="color: #ffffff"/> 
+							style="color:black"/> 
 							<input type="button" class="btn btncolor2" value="삭제"
-							onclick="boardDelete()" style="color: #ffffff" />
+							onclick="boardDelete()" style="color:black" />
 					</p>
 				</div>
 			</form>

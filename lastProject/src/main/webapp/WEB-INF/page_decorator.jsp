@@ -359,7 +359,7 @@ var speed = 800;
 											<a href="<%=request.getContextPath() %>/wonseoInfo">원서접수</a>
 											<ul style="min-height: 235px; left: 228px; display: none;">
 												<li><a href="<%=request.getContextPath() %>/wonseoInfo">원서접수안내</a></li>
-												<li><a href="/member/wonseo/request">원서접수신청</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/wonseo/request">원서접수신청</a></li>
 												<li><a href="<%=request.getContextPath() %>/wonseo_ing">원서접수현황</a></li>
 											</ul></li>
 										<li><a onclick="return NetFunnel_goUrl({},this.href);"
@@ -414,34 +414,34 @@ var speed = 800;
 									<ul style="min-height: 145px;">
 										<li class=""><a href="infoRequest">자격증발급안내</a>
 											<ul style="min-height: 145px; left: 180px; display: none;">
-												<li><a href="infoRequest">자격증발급/발급처</a></li>
-												<li><a href="infoNew">신규/인정/재발급</a></li>
-												<li><a href="infoFunc">기능사보기능자격부여</a></li>
-												<li><a href="infoTarget">면허발급대상종목</a></li>
-												<li><a href="infoWarn">국가자격취득자주의사항</a></li>
-												<li><a href="infoEdu">보수교육갱신등록폐지</a></li>
-												<li><a href="infoNon">폐지종목자격발급</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoRequest">자격증발급/발급처</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoNew">신규/인정/재발급</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoFunc">기능사보기능자격부여</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoTarget">면허발급대상종목</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoWarn">국가자격취득자주의사항</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoEdu">보수교육갱신등록폐지</a></li>
+												<li><a href="<%=request.getContextPath()%>/infoNon">폐지종목자격발급</a></li>
 											</ul></li>
 										<li><a href="request1">자격증발급</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="jaguk">자격증발급신청</a></li>
-												<li><a href="#">자격증발급내역</a></li>
+												<li><a href="<%=request.getContextPath()%>/jaguk">자격증발급신청</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/jagukRequestSearch">자격증발급내역</a></li>
 											</ul></li>
 										<li><a href="confirminfo">확인서발급</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="confirminfo">확인서발급안내</a></li>
-												<li><a href="member/jaguk/confirmRequest">확인서발급신청</a></li>
-												<li><a href="member/jaguk/confirmSelect">확인서발급내역</a></li>
+												<li><a href="<%=request.getContextPath()%>/confirminfo">확인서발급안내</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/jaguk/confirmRequest">확인서발급신청</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/jaguk/confirmSelect">확인서발급내역</a></li>
 											</ul></li>
 										<li><a href="member/get">자격취득/미발급조회</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="member/get">자격증취득조회</a></li>
-												<li><a href="nonGet">자격증미발급조회</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/get">자격증취득조회</a></li>
+												<li><a href="<%=request.getContextPath()%>/nonGet">자격증미발급조회</a></li>
 											</ul></li>
 										<li><a href="jagukTrue">확인서/자격증진위확인</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="jagukTrue">확인서진위확인</a></li>
-												<li><a href="confirmTrue">자격증진위확인</a></li>
+												<li><a href="<%=request.getContextPath()%>/jagukTrue">확인서진위확인</a></li>
+												<li><a href="<%=request.getContextPath()%>/confirmTrue">자격증진위확인</a></li>
 											</ul></li>
 									</ul>
 									<p class="blind">
@@ -497,57 +497,32 @@ var speed = 800;
 							<li class=""><a href="<%=request.getContextPath() %>/memberNotice1">고객지원</a>
 								<div class="sub05" style="display: none;">
 									<ul style="min-height: 295px;">
-										<li class="on"><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a>
+										<li class="on"><a href="#">공지사항</a>
 											<ul style="min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a></li>
-												<li><a href="#">자격제도</a></li>
-												<li><a href="#">시행자료</a></li>
-												<li><a href="#">출제자료</a></li>
-												<li><a href="#">서비스개선</a></li>
+												<li><a href="<%=request.getContextPath() %>/memberNotice2">자격제도</a></li>
+												<li><a href="<%=request.getContextPath() %>/memberNotice3">시행자료</a></li>
+												<li><a href="<%=request.getContextPath() %>/memberNotice4">출제자료</a></li>
+												<li><a href="<%=request.getContextPath() %>/memberNotice5">서비스개선</a></li>
 											</ul></li>
-										<li><a href="useInfo">이용안내</a>
+										<li><a href="#">이용안내</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
-												<li><a href="#">사이트 이용방법</a></li>
-												<li><a href="#" target="_blank"
-													title="한국산업인력공단 고객센터 새 창">자주찾는질문</a></li>
-												<li><a href="#">큐넷 체험하기</a></li>
+												<li><a href="<%=request.getContextPath() %>/useInfo">사이트 이용방법</a></li>
+												<li><a href="#" target="_blank"title="한국산업인력공단 고객센터 새 창">자주찾는질문</a></li>
 											</ul></li>
-										<li><a href="pds">자료실</a>
+										<li><a href="#">자료실</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
-												<li><a href="#">각종서식자료</a></li>
-												<li><a href="#">출제기준</a></li>
-												<li><a href="#">기출문제(기술사)</a></li>
-												<li><a href="#">공개문제</a></li>
-												<li><a href="#">관련법령</a></li>
-											</ul></li>
-										<li><a href="#">유실물센터</a>
-											<ul style="display: none; min-height: 295px; left: 154px;">
-												<li><a href="#">이용안내</a></li>
-												<li><a href="#">유실물검색</a></li>
-												<li><a href="#">분실물등록 및 검색</a></li>
+												<li><a href="<%=request.getContextPath() %>/pdsList">각종서식자료</a></li>
 											</ul></li>
 										<li><a href="#">환불안내</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
-												<li><a href="#">기술자격환불안내</a></li>
-												<li><a href="#">전문자격환불안내</a></li>
-											</ul></li>
-										<li><a href="#">복지환원방</a></li>
-										<li><a href="#">정부3.0 정보공개</a>
-											<ul style="display: none; min-height: 295px; left: 154px;">
-												<li><a href="#" target="_blank" title="새 창">공공데이터
-														개방</a></li>
-												<li><a href="#">자격정보 오픈 API 서비스</a></li>
-												<li><a href="#" target="_blank" title="새 창">정부3.0
-														우수기관 선정</a></li>
+												<li><a href="<%=request.getContextPath() %>/change">기술자격환불안내</a></li>
 											</ul></li>
 										<li><a href="#1#">고객맞춤정보</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
-												<li><a href="#">취업/훈련/연수</a></li>
-												<li><a href="#">대학생(중고생)장학금</a></li>
-												<li><a href="#">창업지원/교육서비스</a></li>
-												<li><a href="#">자금운용/보증지원</a></li>
+												<li><a href="<%=request.getContextPath() %>/notice/getJob">취업/훈련/연수</a></li>
+												<li><a href="<%=request.getContextPath() %>/notice/college">대학생(중고생)장학금</a></li>
 											</ul></li>
-										<li><a href="#">관련학과 지정신청</a></li>
 										<li title="새창"><a href="javascript:goMinwon();">고객의소리</a></li>
 									</ul>
 									<p class="blind">

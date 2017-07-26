@@ -14,7 +14,77 @@ public class QualifiCertiVO {
 	private String numg_code;	//회차코드
 	private String exkind_code;	//종목코드
 	private String[] certi_code; // 자격증 종류 배열
+	private Date receive_day; //자격증 신청일
+	private String dr_state;	//배송상태
+	private String receive_way;	//자격증 신청일
+	private String qualifi_certi_nm;
+	private String mem_code;
+	private String qualifi_certi_iss_code;
+	private String stare_code;
+	private String mem_nm;
+	private String reg_num1;
+	private String qualifi_certi_date;
 	
+	public String getStare_code() {
+		return stare_code;
+	}
+	public void setStare_code(String stare_code) {
+		this.stare_code = stare_code;
+	}
+	public String getQualifi_certi_date() {
+		return qualifi_certi_date;
+	}
+	public void setQualifi_certi_date(String qualifi_certi_date) {
+		this.qualifi_certi_date = qualifi_certi_date;
+	}
+	public String getQualifi_certi_iss_code() {
+		return qualifi_certi_iss_code;
+	}
+	public void setQualifi_certi_iss_code(String qualifi_certi_iss_code) {
+		this.qualifi_certi_iss_code = qualifi_certi_iss_code;
+	}
+	public String getMem_code() {
+		return mem_code;
+	}
+	public void setMem_code(String mem_code) {
+		this.mem_code = mem_code;
+	}
+	public String getQualifi_certi_nm() {
+		return qualifi_certi_nm;
+	}
+	public void setQualifi_certi_nm(String qualifi_certi_nm) {
+		this.qualifi_certi_nm = qualifi_certi_nm;
+	}
+	public String getMem_nm() {
+		return mem_nm;
+	}
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
+	public String getReg_num1() {
+		return reg_num1;
+	}
+	public void setReg_num1(String reg_num1) {
+		this.reg_num1 = reg_num1;
+	}
+	public Date getReceive_day() {
+		return receive_day;
+	}
+	public void setReceive_day(Date receive_day) {
+		this.receive_day = receive_day;
+	}
+	public String getDr_state() {
+		return dr_state;
+	}
+	public void setDr_state(String dr_state) {
+		this.dr_state = dr_state;
+	}
+	public String getReceive_way() {
+		return receive_way;
+	}
+	public void setReceive_way(String receive_way) {
+		this.receive_way = receive_way;
+	}
 	public String[] getCerti_code() {
 		return certi_code;
 	}
@@ -75,17 +145,4 @@ public class QualifiCertiVO {
 	public void setQualifi_certi_count(String qualifi_certi_count) {
 		this.qualifi_certi_count = qualifi_certi_count;
 	}
-	@Override
-	public String toString() {
-		return "QualifiVO [exkind_nm=" + exkind_nm + ", actual_pass_date="
-				+ actual_pass_date + ", qualifi_certi_iss_pr="
-				+ qualifi_certi_iss_pr + ", qualifi_certi_code="
-				+ qualifi_certi_code + ", written_pass_date="
-				+ written_pass_date + ", recieve_way2=" + recieve_way2
-				+ ", qualifi_certi_count=" + qualifi_certi_count
-				+ ", numg_code=" + numg_code + ", exkind_code=" + exkind_code
-				+ "]";
-	}
-	
-	
 }

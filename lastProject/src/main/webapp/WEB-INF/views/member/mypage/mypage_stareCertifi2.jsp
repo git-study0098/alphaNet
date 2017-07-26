@@ -128,9 +128,6 @@
 							type="hidden" name="p_chkSameJob" value="N"> <input
 							type="hidden" name="p_chkSameClass" value="N">
 						<p class="txt_right mt20">
-							<button type="button" class="btn3_type3" name="helpBtn">
-								<span>자기진단 및 제출서류 도움말</span>
-							</button>
 						</p>
 						<p class="tbl_tlt">서류 심사 전</p>
 						<table
@@ -199,14 +196,6 @@
 												</p>
 											</div>
 											<div class="right">
-												<button type="button" class="btn3_type2"
-													onclick="deleteRow(1)">
-													<span>삭제</span>
-												</button>
-												<button type="button" class="btn3_type2"
-													onclick="insert_Row()">
-													<span>경력정보 추가</span>
-												</button>
 											</div>
 										</div>
 									</td>
