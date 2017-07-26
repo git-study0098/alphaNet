@@ -11,6 +11,22 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<link
+	href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico"
+	rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/common.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/left_menu.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/content.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header_footer.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/mobile.css">
+
 <script type="text/javascript">
 	function file_change(file) {
 		var str = file.lastIndexOf("\\") + 1; //파일 마지막 "\" 루트의 길이 이후부터 글자를 잘라 파일명만 가져온다.

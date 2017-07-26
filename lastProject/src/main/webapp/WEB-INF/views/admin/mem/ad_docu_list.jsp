@@ -1,6 +1,5 @@
-<%@page import="com.last.common.vo.MemberVo"%>
+<%@page import="com.last.common.vo.DocuPagingVO"%>
 <%@page import="com.last.common.vo.MemPagingVO"%>
-<%@page import="com.last.common.vo.Notice1VO"%>
 <%@page import="com.last.common.vo.PagingVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -11,7 +10,7 @@
 
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
-	MemPagingVO viewData = (MemPagingVO) request.getAttribute("viewData");
+	DocuPagingVO viewData = (DocuPagingVO) request.getAttribute("viewData");
 %>
 
 <link
@@ -31,14 +30,6 @@
 	href="<%=request.getContextPath()%>/resources/css/mobile.css">
 
   
-<script>
-	//검색함수
-	function getNoticeList(){
-		var schType = document.getElementById('schType').value;
-		var schText = document.getElementById('schText').value;
-		location.href="<%=request.getContextPath()%>/admin/allmem/search?schType="+schType+"&schText="+schText;
-	}
-</script>
 
 
 <style>
@@ -76,32 +67,21 @@
 	<div id="page-wrapper">
 		<div id="page-inner">
 			<div class="col-lg-12">
-				<h2>회원리스트</h2>
+				<h2>서류</h2>
 			</div>
 			<hr />
 			<div class="dropdown">
-				<button class="dropbtn">회원관리</button>
+				<button class="dropbtn">회원 관리</button>
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/mem">휴먼 계정 회원 조회</a> <a
 					href="<%=request.getContextPath()%>/admin/allmem">회원 정보 조회</a> <a
-					href="<%=request.getContextPath()%>/admin/mem3">서류 관리</a>
+					href="<%=request.getContextPath()%>/admin/docu">서류 관리</a>
 				</div>
 			</div>
 			<div class="content">
 				<div>
 					<form name="noticeDetail">
-					<div class="searchType">
-						<span> <label for="notiType">검색</label> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
-								<option value="all" selected="selected">전체</option>
-								<option value="memId">회원Id</option>
-								<option value="memName">회원명</option>
-						</select> <input type="text" name="schText" style="width: 150px"
-							id="schText" title="검색어 입력"> <a href="#"
-							class="btn3_icon search" onclick="getNoticeList();"><span
-								class="blind">검색</span></a>
-						</span>
-					</div>
-						<input type="hidden" name="id" value="id">
+						<input type="hidden" name="sub_code" value="sub_code">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"
@@ -125,18 +105,17 @@
 									<tbody>
 										<!-- 게시판 테이블 내용 -->
 										<c:choose>
-											<c:when test="${viewData.notice1CountPerPage > 0 }">
-												<c:forEach items="${viewData.notice1List }" var="mem"
+											<c:when test="${viewData.docuCountPerPage > 0 }">
+												<c:forEach items="${viewData.docuList }" var="doc"
 													varStatus="number">
 													<tr>
 														<td>${viewData.firstRow+number.count-1}</td>
 														<!-- 글번호 -->
-														<td><a
-															href="<%=request.getContextPath() %>/admin/allmemDetail?id=${mem.id}">${mem.id}</a></td>
-														<td>${mem.name}</td>
-														<td><fmt:formatDate value="${mem.mem_enrolldate}" /></td>
+														<td><a href="<%=request.getContextPath() %>/admin/docDetail?id=${doc.sub_code}" >${doc.docu_nm}</a></td>
+														<td>${doc.mem_code}</td>
+														<td>${doc.mem_nm}</td>
 														<td><input type="hidden"
-															value="${mem.id}" name="memId" /></td>
+															value="${doc.approve_at}" name="approve_at" />${doc.approve_at}</td>
 													</tr>
 												</c:forEach>
 											</c:when>
@@ -167,7 +146,7 @@
 									 	} else {
 									 %>
 									<button type="button" class="btn5"
-										onclick="location.href='allmem?page=<%=i%>'" title="<%=i%>페이지">
+										onclick="location.href='docu?page=<%=i%>'" title="<%=i%>페이지">
 										<span><%=i%></span>
 									</button> <%
 									 	}
