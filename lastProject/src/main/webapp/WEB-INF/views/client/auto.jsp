@@ -13,7 +13,7 @@
 <script>
 	function autoMail(){
 		var url  ="<%=request.getContextPath()%>/client/mail";
-		var pop = window.open(url, "pop2", "width=50px ,height=50px");
+		var pop = window.open(url, "pop2", "width=490px ,height=600px");
 	}
 </script>
 
@@ -33,19 +33,10 @@
 
 				<li class="icon02"><a
 					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
-				<%
-					if (email == null || email.equals("")) {
-				%>
+			
 				<li class="icon04"><a
 					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
-				<%
-					} else {
-				%>
-				<li class="icon04"><a
-					href="<%=request.getContextPath()%>/client/myPage">마이페이지</a></li>
-				<%
-					}
-				%>
+				
 			</ul>
 		</div>
 	</div>
@@ -117,8 +108,8 @@
 																				alt=""></td>
 																			<td width="50"></td>
 																			<td><a href="#" onclick="autoMail();"> <img
-																					src="<%=request.getContextPath()%>/resources/client/images/btn_ipin.gif"
-																					alt="공공 아이핀(I-PIN) 인증">
+																					src="<%=request.getContextPath()%>/resources/client/images/emailButton.png"
+																					alt="메일인증">
 																			</a></td>
 																		</tr>
 																	</tbody>

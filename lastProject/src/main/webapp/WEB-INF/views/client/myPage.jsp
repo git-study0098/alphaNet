@@ -25,7 +25,7 @@
 
 
 <script>
-
+	alert('<%=email%>+마이페이지니지')
 	function search() {
 		document.frm.action ="searchSound";
 		document.frm.submit();
@@ -61,10 +61,11 @@
 				<%
 					} else {
 				%>
-				<li class="icon04"><a
-					href="<%=request.getContextPath()%>/client/myPage">마이페이지</a></li>
-				<%
-					}
+				<li class="icon04">
+						<a href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a>
+				</li>
+				<% 
+				}
 				%>
 			</ul>
 		</div>

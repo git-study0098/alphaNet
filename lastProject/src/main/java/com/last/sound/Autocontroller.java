@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,12 @@ public class Autocontroller {
 	}
 	
 	@RequestMapping("/client/client")
-	public String client(){
+	public String client(HttpSession session,HttpServletRequest request){
+		String email = request.getParameter("email");
+		System.out.println(email);
+		if(email !=null){
+		session.setAttribute("email", email);
+		}
 		return "client/client";
 	}
 	

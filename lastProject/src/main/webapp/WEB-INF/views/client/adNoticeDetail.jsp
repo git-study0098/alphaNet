@@ -46,7 +46,7 @@ function goList(){
 					} else {
 				%>
 				<li class="icon04"><a
-					href="<%=request.getContextPath()%>/client/myPage">마이페이지</a></li>
+					href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>
 				<%
 					}
 				%>
