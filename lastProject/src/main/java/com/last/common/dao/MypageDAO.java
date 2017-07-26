@@ -70,6 +70,12 @@ public class MypageDAO {
 		return updateMemberCareer;
 	}
 	
+	/**
+	 * 회원 경력
+	 * @param mem_code
+	 * @return
+	 * @throws SQLException
+	 */
 	public StareCertifiVO selectMemberCareer(String mem_code)throws SQLException{
 		StareCertifiVO stareCertifiVO = (StareCertifiVO) client.queryForObject("selectMemberCareer", mem_code);
 		return stareCertifiVO;

@@ -1,10 +1,38 @@
 package com.last.sound;
 
+import java.sql.SQLException;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.last.client.service.ClientService;
+import com.last.common.vo.Notice1VO;
 
 @Controller
 public class Autocontroller {
+	
+
+	@Autowired
+	private ClientService clientService;
+
+	public void setClientService(ClientService clientService) {
+		this.clientService = clientService;
+	}
+	@RequestMapping("/client/main")
+	public String adminMain(HttpServletRequest request, @RequestParam(value="notice_code", defaultValue="cn001" )String notice_code) throws SQLException {	
+		List<Notice1VO> fiveNotice = clientService.fiveNotice(notice_code);
+		Notice1VO vo = null;
+		request.setAttribute("vo", vo);
+		request.setAttribute("five", fiveNotice);
+		
+		return "client/main";
+	}
 
 	@RequestMapping("/client/auto")
 	public String auto(){
@@ -12,7 +40,12 @@ public class Autocontroller {
 	}
 	
 	@RequestMapping("/client/client")
-	public String client(){
+	public String client(HttpSession session,HttpServletRequest request){
+		String email = request.getParameter("email");
+		System.out.println(email);
+		if(email !=null){
+		session.setAttribute("email", email);
+		}
 		return "client/client";
 	}
 	

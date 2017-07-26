@@ -94,6 +94,13 @@ public class AdminQualifiDAO {
 		return result;
 	}
 	
+	public QualifiCertiVO checkQualifi(QualifiCertiVO vo) throws SQLException{
+		
+		QualifiCertiVO vo1 = (QualifiCertiVO) client.queryForObject("checkQualifi",vo);
+		
+		return vo1; 
+	}
+	
 	public String selectMaxQualifiCertiIssCode(String mem_code) throws SQLException{
 		String selectMaxQualifiCertiIssCode = (String) client.queryForObject("selectMaxQualifiCertiIssCode", mem_code);
 		return selectMaxQualifiCertiIssCode;

@@ -21,6 +21,7 @@
 %>
 
 
+
 <script>
 	$(function(){
 
@@ -68,7 +69,7 @@
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu">
+			<ul class="Quick_Menu" style="margin-left: 250px;">
 				<li class="icon02"><a
 					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
 				<%if(email ==null||email.equals("")){
@@ -77,7 +78,7 @@
 			<%
 				}else{
 					%>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/client">마이페이지</a></li>					
+				<li class="icon04"><a href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>					
 					<%
 				}
 			%>

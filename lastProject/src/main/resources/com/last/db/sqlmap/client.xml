@@ -134,9 +134,13 @@
 	
 	<select id="adNoticeDetail" parameterClass="str" resultClass="notice">
 		select * from notice where notice_code =#notice_code#
-		
-		
 	</select>
 	
+	
+	<select id="fiveNotice" parameterClass="str" resultClass="notice">
+ 		<![CDATA[
+ 		select * from notice where substr(notice_code,1,5) = #notice_code# and rownum <=5
+		]]>
+	</select>
 	
 </sqlMap>

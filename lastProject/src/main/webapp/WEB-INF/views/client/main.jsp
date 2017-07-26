@@ -1,9 +1,15 @@
+<%@page import="java.util.List"%>
+<%@page import="com.last.common.vo.Notice1VO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <%
 	String email = (String) session.getAttribute("email");
+	List<Notice1VO> five =(List<Notice1VO>)request.getAttribute("five");
 %>
 <script>
 alert('<%=email%>')
@@ -70,18 +76,14 @@ alert('<%=email%>')
 			<div class="notice_box">
 				<h3>공지사항</h3>
 				<ul class="newsList">
-
-					<li><a href="#">찾아가는 FAQ 뉴스 (자격시험편)</a> <span class="date">2017-06-26</span>
-					</li>
-
-					<li><a href="#">1644-8000 상담서비스 일시 중단 알림</a> <span
-						class="date">2017-05-15</span></li>
-
-					<li><a href="#">『고객의 소리』홈페이지 디자인 개편 안내</a> <span class="date">2017-04-19</span>
-					</li>
-
-					<li><a href="#">모바일 큐넷 서비스 일시 중단 알림</a> <span class="date">2017-03-13</span>
-					</li>
+					<% if(five.size() >0){
+							for(int i=0; i<five.size();i++){	
+					%>
+						<li><a href="<%=request.getContextPath() %>/client/adNoticeDetail?notice_code=<%=five.get(i).getNotice_code()%>"><%=five.get(i).getTitle()%></a><span class="date"><fmt:formatDate value="<%=five.get(i).getEnroll_date() %>" pattern="yyyy-MM-dd"/></span></li>
+					<%
+							}
+					}
+ 					%>
 
 				</ul>
 				<a href="<%=request.getContextPath()%>/client/notice" id="more"

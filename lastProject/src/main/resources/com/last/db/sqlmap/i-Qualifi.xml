@@ -110,6 +110,15 @@
       and qci.mem_code = #mem_code# 
 	</select>
 	
+	<select id="checkQualifi" parameterClass="qualifiCerti" resultClass="qualifiCerti">
+		select substr(qualifi_certi_code,5,5)as qualifi_certi_code, written_pass_date
+		from mem m , qualifi_certi_iss q
+		where m.mem_nm =#mem_nm#
+		and m.reg_num1 =#reg_num1#
+		and q.QUALIFI_CERTI_CODE =#qualifi_certi_code#
+		and q.QUALIFI_CERTI_DATE =#qualifi_certi_date#
+	</select>
+	
 	<select id="selectQualifiCertiIssCode" parameterClass="str" resultClass="str">
 		select qualifi_certi_iss_code
       		from qualifi_certi_iss qci, qualifi_certi qc

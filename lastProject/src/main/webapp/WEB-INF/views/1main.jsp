@@ -173,7 +173,7 @@ $(function(){
 				</a>
 			</li>
 			<li class="go08">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/change">
 					<span style="opacity:1;">
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_08.png" alt="환불">
 					</span>

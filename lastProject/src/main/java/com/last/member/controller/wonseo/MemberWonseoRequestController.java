@@ -3,6 +3,9 @@ package com.last.member.controller.wonseo;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -72,7 +75,7 @@ public class MemberWonseoRequestController {
 	}
 	
 	@RequestMapping("/member/wonseoReq3")
-	public String wonseonRequest3(@RequestParam(value="em_nm")String em_nm,@RequestParam(value="em_info_code")String em_info_code,Model model){
+	public String wonseonRequest3(@RequestParam(value="em_nm")String em_nm,@RequestParam(value="em_info_code")String em_info_code,Model model,HttpSession session){
 		String url="member/wonseo/wonseo_request3";
 		
 		//시험 이름 넘기는거
@@ -94,16 +97,14 @@ public class MemberWonseoRequestController {
 		}
 		
 		model.addAttribute("memberVo",memberVo);
-		model.addAttribute("exam",exam);
-		model.addAttribute("exam2",exam2);
+		session.setAttribute("exam", exam);
+		session.setAttribute("exam2", exam2);
 		model.addAttribute("em_info_code",em_info_code);
-		
 		
 		return url;
 	}
 	@RequestMapping("/member/wonseoReq4")
-	public String wonseonRequest4(Model model,@RequestParam(value="exam")String exam, @RequestParam(value="exam2")String exam2,
-								  @RequestParam(value="em_info_code")String em_info_code){
+	public String wonseonRequest4(Model model,@RequestParam(value="em_info_code")String em_info_code){
 		String url="member/wonseo/wonseo_request4";
 		
 		// 모든 PLACE를 뽑자
@@ -142,8 +143,6 @@ public class MemberWonseoRequestController {
 		model.addAttribute("jejuList", jejuList);
 		model.addAttribute("gyunggiList", gyunggiList);
 		model.addAttribute("placepList", placepList);
-		model.addAttribute("exam",exam);
-		model.addAttribute("exam2",exam2);
 		model.addAttribute("em_info_code",em_info_code);
 		
 		return url;
@@ -195,8 +194,6 @@ public class MemberWonseoRequestController {
 		model.addAttribute("placepList", placepList);
 		model.addAttribute("examPlace",examPlace);
 		model.addAttribute("em_info_code",em_info_code);
-//		model.addAttribute("exam",exam);
-//		model.addAttribute("exam",exam2);
 		
 		return url;
 	}
@@ -266,13 +263,21 @@ public class MemberWonseoRequestController {
 			e.printStackTrace();
 		}
 		
-		
-		
 		model.addAttribute("placeData",vo);
 		model.addAttribute("member",member);
 		model.addAttribute("placeNm",placeNm);
 		model.addAttribute("stare_code",id+em_info_code);
 		
 		return url;
+	}
+	
+	@RequestMapping("/member/map")
+	public String map(HttpServletRequest request ,PlaceVO place){
+		String place_nm = request.getParameter("place_nm"); //동아마이스터
+		System.out.println("컨트롤러+"+place_nm);
+		place = wonseoService.selectMap(place_nm);
+		System.out.println(place.getPlace_add());
+		request.setAttribute("place_nm", place);
+		return "member/wonseo/map";
 	}
 }

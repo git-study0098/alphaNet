@@ -2,17 +2,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script  src="http://apis.daum.net/maps/maps3.js?apikey=7048506f82f031130f0c67dc292d957e&libraries=services"></script>
-
+<script src="https://apis.daum.net/maps/maps3.js?apikey=7048506f82f031130f0c67dc292d957e&libraries=services"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%
-	PlaceVO vo = (PlaceVO)request.getAttribute("map_add");
+	PlaceVO vo = (PlaceVO)request.getAttribute("place_nm");
 %>
-<script>
-alert('<%=vo.getPlace_add()%>');
-</script>
-
-
-<div id="map" style="width:50%;height:350px;"></div>
+<div style="background-color: #016cbc;text-align: center;">
+	<h1 style="margin:  0 auto;color:#FFFFFF">시험장소약도</h1>
+</div>
+<div id="map" style="width:100%;height:350px;"></div>
+<div>
+	<button type="button" name ="close" onclick="javascript:self.close()">창닫기</button>
+</div>
 
 <script>
 	$(function(){
@@ -44,7 +45,7 @@ alert('<%=vo.getPlace_add()%>');
 		
 		        // 인포윈도우로 장소에 대한 설명을 표시합니다
 		        var infowindow = new daum.maps.InfoWindow({
-		            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;"><%=vo.getPlace_add()%> </div>'
 		        });
 		        infowindow.open(map, marker);
 		

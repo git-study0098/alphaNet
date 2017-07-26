@@ -187,6 +187,7 @@ public class MypageRodlsController {
 	}
 	@RequestMapping("/member/docCheck")
 	public String docCheck(){
+		//select -> update  관리자 update 회원 select (파일)
 		return "member/mypage/mypage_dmdtl3";
 	}
 	@RequestMapping("/member/docSubmit")

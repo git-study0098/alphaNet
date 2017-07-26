@@ -37,8 +37,6 @@
 						<li class="on"><a
 							href="crf022.do?id=crf02201&amp;gSite=Q&amp;gId="
 							title="기술자격 환불안내"><span>기술자격 환불안내</span></a></li>
-						<li><a href="crf022.do?id=crf02202&amp;gSite=Q&amp;gId="><span>전문자격
-									환불안내</span></a></li>
 					</ul>
 				</div>
 				<h4>접수한 원서의 취소는 어떻게 하나요?</h4>

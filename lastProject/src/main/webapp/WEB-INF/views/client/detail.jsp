@@ -16,6 +16,10 @@ function goList(){
 }
 </script>
 
+<%
+	String email =(String)session.getAttribute("email");
+%>
+
 <div id="container">
 	<div class="Top">
 		<h1 class="logo">
@@ -28,12 +32,23 @@ function goList(){
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu">
-			
+				<ul class="Quick_Menu" style="margin-left: 250px">
+
 				<li class="icon02"><a
 					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
 				<li class="icon04"><a
-					href="<%=request.getContextPath()%>/client/myPage">마이페이지</a></li>
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>
+				<%
+					}
+				%>
 			</ul>
 		</div>
 	</div>

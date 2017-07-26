@@ -21,12 +21,21 @@ public class QualifiCertiVO {
 	private String mem_code;
 	private String qualifi_certi_iss_code;
 	private String stare_code;
+	private String mem_nm;
+	private String reg_num1;
+	private String qualifi_certi_date;
 	
 	public String getStare_code() {
 		return stare_code;
 	}
 	public void setStare_code(String stare_code) {
 		this.stare_code = stare_code;
+	}
+	public String getQualifi_certi_date() {
+		return qualifi_certi_date;
+	}
+	public void setQualifi_certi_date(String qualifi_certi_date) {
+		this.qualifi_certi_date = qualifi_certi_date;
 	}
 	public String getQualifi_certi_iss_code() {
 		return qualifi_certi_iss_code;
@@ -45,6 +54,18 @@ public class QualifiCertiVO {
 	}
 	public void setQualifi_certi_nm(String qualifi_certi_nm) {
 		this.qualifi_certi_nm = qualifi_certi_nm;
+	}
+	public String getMem_nm() {
+		return mem_nm;
+	}
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
+	public String getReg_num1() {
+		return reg_num1;
+	}
+	public void setReg_num1(String reg_num1) {
+		this.reg_num1 = reg_num1;
 	}
 	public Date getReceive_day() {
 		return receive_day;

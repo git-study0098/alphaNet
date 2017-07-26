@@ -279,6 +279,11 @@ public class ClientService {
 
 	}
 	
+	public List<Notice1VO> fiveNotice(String notice_code ) throws SQLException{
+		List<Notice1VO> fiveNoticeList = clientDao.fiveNotice(notice_code);
+		return fiveNoticeList;
+	}
+	
 	//메인 공지사항 5개만 띄우기
 	
 }

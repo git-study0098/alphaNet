@@ -101,6 +101,13 @@ public class AdminQualifiService {
 		return result;
 	}
 	
+	public QualifiCertiVO checkQualifi(QualifiCertiVO vo)throws SQLException{
+		
+		QualifiCertiVO vo1 = adminQualifiDao.checkQualifi(vo);
+		
+		return vo1;
+	}
+	
 	/**
 	 * 회원이 발급 신청한 자격증 내역 조회 메서드
 	 * @param mem_code
