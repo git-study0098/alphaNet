@@ -280,4 +280,11 @@ public class MemberWonseoRequestController {
 		request.setAttribute("place_nm", place);
 		return "member/wonseo/map";
 	}
+	
+	@RequestMapping("/member/test")
+	public String test(){
+		
+		return "member/test";
+		
+	}
 }

@@ -233,6 +233,8 @@ function go_map(){
 	console.log("바로들어가냐");
 	document.getElementById('mapForm').submit();
 }
+
+
 </script>
 
 
