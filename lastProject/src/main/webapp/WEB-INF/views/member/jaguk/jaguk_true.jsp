@@ -1,6 +1,48 @@
+<%@page import="com.last.common.vo.QualifiCertiVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script>
+$(function(){
+	
+$('#jagukHwa').on('click',function(){
+	var mem_nm = $('#hgulNm').val();
+	var reg_num1 = $('#resdNo1').val();
+	var qualifi_certi_code =$('#lcsNo').val();
+	var qualifi_certi_date = $('#qualExpDt').val();
+			console.log("들어오냐");
+	$.ajax({
+		url : 'jagukHwa',
+		type : 'post',
+		data : {'mem_nm':mem_nm,'reg_num1':reg_num1,'qualifi_certi_code':qualifi_certi_code,'qualifi_certi_date':qualifi_certi_date},
+		success:function(res){
+			console.log("여기는");
+			console.log(res.qualifi_certi_code);
+			var code = "<table>";
+			code +="<colgroup><col width='16%'><col width='*'><col width='50%'></colgroup>";
+			code +="<tbody>";
+			code += "<tr><th scope='row'><lable for='hgulNm'>진위확인</label></th>";
+			code += "<td colspan='2'><input type='text' id='hgulNm' name='hgulNm' maxlength='15' value='인증되지않은 자격증입니다.'></td></tr>";
+			code += "<tr><th scope='row'><lable for='hgulNm'>자격종목</label></th>";
+			code += "<td colspan='2'><input type='text' id='hwa' name='qualifi_certi_code' maxlength='15' value=''></td></tr>";
+			code += "<tr><th scope='row'><lable for='hgulNm'>합격일자</label></th>";
+			code += "<td colspan='2'><input type='text' id='hwa1' name='written_pass_date' maxlength='15' value=''></td></tr>";
+			code += "</tbody>";
+			code +="</table>";
+			$('.jagukTrue').html(code);
+			$('input[name=qualifi_certi_code]').attr('value',res.qualifi_certi_code);
+			if(res.qualifi_certi_code=="정보처리기사"){
+				$('input[name=hgulNm]').attr('value','인증된 자격증입니다');					
+			}
+			$('#hwa1').attr('value',res.written_pass_date);
+		}
+	})
+	
+	})
+	
+})
+</script>
 <style>
 * {
 	box-sizing: content-box;
@@ -10,6 +52,9 @@
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
 </style>
 <article>
+	
+			<input type="hidden" value="${vo.written_pass_date}">	
+			<input type="hidden" value="${a}">
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
 <div>
@@ -32,7 +77,6 @@
 			<div class="content">
 				<h3 class="tit_content">자격증 진위확인</h3>
 
-				<form name="infoBoxs">
 				<div id="qlf006_01_p01_pop" class="popup" title="자격정보 입력 및 진위여부 안내"></div>
 				<div class="tbl_normal nmlType3">
 					<table summary="자격증 진위확인을 위한 아이디, 생년월일, 자격증번호, 발급(등록)연월일, 자격증내지번호 입력 폼">
@@ -45,20 +89,20 @@
 						<tbody>
 							<tr>
 								<th scope="row"><label for="hgulNm">이름</label></th>
-								<td colspan="2"><input type="text" id="hgulNm" maxlength="15"></td> 
+								<td colspan="2"><input type="text" id="hgulNm" name="mem_nm" maxlength="15"></td> 
 							</tr>
 							<tr>
 								<th scope="row"><label for="resdNo1">생년월일</label></th>
-								<td colspan="2"><input type="text" id="resdNo1" maxlength="6" class="numInput"> (법정생년월일 6자리)</td> 
+								<td colspan="2"><input type="text" name="reg_num1" id="resdNo1" maxlength="6" class="numInput"> (법정생년월일 6자리)</td> 
 							</tr>
 							<tr>
 								<th scope="row"><label for="lcsNo">자격증번호</label></th>
-								<td><input type="text" id="lcsNo" maxlength="12"> (예:171Acomp1111111)     </td> 
+								<td><input type="text" id="lcsNo" maxlength="15"> (예:171Acomp1111111)     </td> 
 								<td class="" style="border-left: 1px; color:#0066ff ;">※ 숫자10자리와 알파벳5자리로 구성    </td>
 							</tr>
 							<tr>
 								<th scope="row"><label for="qualExpDt">발급(등록)연월일</label></th>
-								<td colspan="2"><input type="text" id="qualExpDt" maxlength="8" class="numInput"> (예:20050101) <em class="fc_r mL35">  ※ 최근 발급연월일 (또는 등록년월일) 기재 </em></td> <!-- 수정(0901) -->
+								<td colspan="2"><input type="text" id="qualExpDt" maxlength="8" class="numInput" name="qualifi_certi_date"> (예:20050101) <em class="fc_r mL35">  ※ 최근 발급연월일 (또는 등록년월일) 기재 </em></td> <!-- 수정(0901) -->
 							</tr>
 							<tr><!-- 수정(0820) 아래 a태그를 button태그로 수정-->
 								<td colspan="3" class="fc_red">
@@ -71,11 +115,13 @@
 					
 					<div id="PInfo"></div>
 					<div class="btn_center">
-						<button type="button" class="btn2 btncolor1" onclick="getInfo();"><span>확인</span></button>
-						<button type="button" class="btn2 btncolor2" onclick="reWrite();"><span>입력초기화</span></button>
+						<input type="button" id="jagukHwa" class="btn btn-primary btn-sm" value="확인">
+						<button type="button" class="btn2 btncolor2" ><span>입력초기화</span></button>
 					</div>
 				</div>
-				</form>
+				<div class="jagukTrue tbl_normal nmlType3">
+					
+				</div>
 				<ul class="slide_menu mt40">
 				<!-- 1 -->
 					<li>

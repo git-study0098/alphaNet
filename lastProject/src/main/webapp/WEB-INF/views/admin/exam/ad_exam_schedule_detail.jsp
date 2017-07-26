@@ -68,13 +68,13 @@
 		<hr />
 		<!-- 내용 -->
 		<div class="container" style="text: center;">
-			<form class="form-horizontal">
+			<form class="form-horizontal" action="schduleInsert">
 				<div class="form-inline"
 					style="width: 100%; padding: 0px; margin: 0px;">
 					<div class="form-group"
 						style="width: 50%; padding: 0px; margin: 0px;">
 						<label class="col-md-3 control-label">회차</label> <select
-							style="width: 150px;" name="">
+							style="width: 150px;" name="numg_num">
 							<option value="1">1회차</option>
 							<option value="2">2회차</option>
 							<option value="3">3회차</option>
@@ -110,7 +110,7 @@
 				<div class="form-group">
 					<label class="col-md-2 control-label">시험 종목명</label>
 					<div class="col-md-5">
-						<input class="form-control" type="text" placeholder="ex)정보처리기사  ">
+						<input class="form-control" type="text" placeholder="ex)정보처리기사" name="exkind_nm">
 					</div>
 				</div>
 				<br>
@@ -142,40 +142,8 @@
 							placeholder="17/01/01형식으로 입력하세요" name="numg_app_receipt_end">
 					</div>
 				</div>
-				<div class="form-group">
-					<label class="col-md-2 control-label">응시자수</label>
-					<div class="col-md-5">
-						<input class="form-control" type="text" name="">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-2 control-label">합격자수</label>
-					<div class="col-md-5">
-						<input class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-2 control-label">시험수수료</label>
-					<div class="col-md-5">
-						<input class="form-control" type="text">
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-md-2 control-label">실시기관명</label>
-					<div class="col-md-5">
-						<input class="form-control" type="text" placeholder="시행기관을 입력하세요">
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-sm-2 control-label">문제형</label>
-					<div class="col-sm-8">
-						<textarea class="form-control" rows="6"></textarea>
-					</div>
-				</div>
-
-				<button type="button" class="btn btn-primary"
-					style="width: 100px; margin: 20px;">수정하기</button>
+				<input type="submit" class="btn btn-primary"
+					style="width: 100px; margin: 20px;" value="등록">
 			</form>
 		</div>
 		<!-- 내용끝 -->
