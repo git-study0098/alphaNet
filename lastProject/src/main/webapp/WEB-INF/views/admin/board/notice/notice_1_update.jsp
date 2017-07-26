@@ -10,6 +10,23 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
+<link
+	href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico"
+	rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/common.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/left_menu.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/content.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/header_footer.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/resources/css/mobile.css">
+
 <c:set var="vo" value="${vo}" />
 
 

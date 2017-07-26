@@ -50,7 +50,7 @@
 		set 
 			title=#title#,
 			attach_file=#attach_file#, 
-			notice_content=#notice_content#,
+			notice_content=ltrim(#notice_content#),
 			enroll_date=sysdate
 		where notice_code=#notice_code#
 	</update>

@@ -63,7 +63,13 @@
 		  class="com.last.common.service.AdminMem1Service"
 		  p:adminMem1DAO-ref="adminMemDao"/>
 		  
-
+	<bean id="adminDocuDao"
+		  class="com.last.common.dao.AdminDocuDAO"
+		  p:client-ref="client"/>
+	
+	<bean id="adminDocuService"
+		  class="com.last.common.service.AdminDocuService"
+		  p:adminDocuDAO-ref="adminDocuDao"/>
 
 	
 		 

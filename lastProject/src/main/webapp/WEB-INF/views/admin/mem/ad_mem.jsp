@@ -31,7 +31,7 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/smemde"> <i class="fa fa-bar-chart-o fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/docu"> <i class="fa fa-clipboard fa-5x"></i>
 						<h4>서류제출 승인</h4>
 					</a>
 				</div>

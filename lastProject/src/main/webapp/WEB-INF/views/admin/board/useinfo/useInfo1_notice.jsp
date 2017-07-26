@@ -7,12 +7,6 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
-<%
-	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
-	UseInfoVO viewData = (UseInfoVO) request.getAttribute("viewData");
-%>
-
 <link
 	href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico"
 	rel="shortcut icon" type="image/x-icon">
@@ -28,6 +22,10 @@
 	href="<%=request.getContextPath()%>/resources/css/header_footer.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/mobile.css">
+<%
+	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
+	UseInfoVO viewData = (UseInfoVO) request.getAttribute("viewData");
+%>
 
 <script>
 	function go_noticeDetail(noticeCode) {
@@ -85,14 +83,6 @@
 					<h2>사이트 이용안내</h2>
 				</div>
 				<hr />
-				<div class="dropdown">
-					<button class="dropbtn">이용안내 게시판</button>
-					<div class="dropdown-content">
-						<a href="<%=request.getContextPath()%>/admin/useInfo">사이트 이용방법</a> 
-						<a href="<%=request.getContextPath()%>/admin/useInfo">자주찾는 질문</a> 
-						<a href="<%=request.getContextPath()%>/admin/useInfo">큐넷체험하기</a> 
-					</div>
-				</div>
 				<div>
 					<div class="searchType">
 						<span> <label for="notiType">검색</label> <select
