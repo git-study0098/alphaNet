@@ -30,14 +30,6 @@
 	href="<%=request.getContextPath()%>/resources/css/mobile.css">
 
   
-<script>
-	//검색함수
-	function getNoticeList(){
-		var schType = document.getElementById('schType').value;
-		var schText = document.getElementById('schText').value;
-		location.href="<%=request.getContextPath()%>/admin/docu/search?schType="+schType+"&schText="+schText;
-	}
-</script>
 
 
 <style>
@@ -89,17 +81,6 @@
 			<div class="content">
 				<div>
 					<form name="noticeDetail">
-					<div class="searchType">
-						<span> <label for="notiType">검색</label> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
-								<option value="all" selected="selected">전체</option>
-								<option value="docuNm">서류명</option>
-								<option value="memName">회원명</option>
-						</select> <input type="text" name="schText" style="width: 150px"
-							id="schText" title="검색어 입력"> <a href="#"
-							class="btn3_icon search" onclick="getNoticeList();"><span
-								class="blind">검색</span></a>
-						</span>
-					</div>
 						<input type="hidden" name="sub_code" value="sub_code">
 						<div id="viewList">
 							<div class="tbl_type1">

@@ -69,44 +69,11 @@ public class AdminDocuService {
 		return vo;
 	}
 
-	// 서류 검색된 개수
-	public int selectCount(String schType, String schText) throws SQLException {
-		int result = adminDocuDao.selectSearchDocCount(schType, schText);
-		return result;
-	}
-
+	// 서류 승인
 	public void updateAdminDoc(DocVO docuVO) throws SQLException {
 		adminDocuDao.updateAdminDoc(docuVO);
-		System.out.println("서비스 "+ docuVO.getApprove_at());
 	}
 
-
-	// 서류 검색
-	public DocuPagingVO searchNoticeList(int pageNumber, String schType,
-			String schText) throws ServiceException {
-
-		int currentPageNumber = pageNumber;
-		try {
-			int docuTotalCount = adminDocuDao.selectSearchDocCount(schType, schText);
-			
-			List<DocVO> docuList = null;
-			int firstRow = 0;
-			int endRow = 0;
-			if (docuTotalCount > 0) {
-				firstRow = (pageNumber - 1) * DOCU_COUNT_PER_PAGE + 1;
-				endRow = firstRow + DOCU_COUNT_PER_PAGE - 1;
-				docuList = adminDocuDao.searchAllDocList(firstRow, endRow,
-						schType, schText);
-			} else {
-				currentPageNumber = 0;
-				docuList = Collections.emptyList();
-			}
-			return new DocuPagingVO(docuList, docuTotalCount,
-					currentPageNumber, DOCU_COUNT_PER_PAGE, firstRow, endRow);
-		} catch (Exception e) {
-			throw new ServiceException("게시판 리스트 구하기 실패!", e);
-		}
-	}
 
 
 }
