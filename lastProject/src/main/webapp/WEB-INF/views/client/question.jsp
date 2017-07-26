@@ -2,9 +2,11 @@
     pageEncoding="UTF-8"%>
     
     
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/common/css/customer.css" />
-<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/common/css/base2017.css" />
-
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/client/customer.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/resources/client/base2017.css" />
+<%
+	String email =(String)session.getAttribute("email");
+%>
 <div id="container">
 			<div class="Top">
 				<h1 class="logo">
@@ -16,18 +18,49 @@
 					</a>
 				</h1>
 				<div class="Quick_M">
-					<ul class="Quick_Menu">
-						<li class="icon02">
-							<a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a>
-						</li>
-						<li class="icon04">
-							<a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a>
-						</li>
-					</ul>
+				<ul class="Quick_Menu" style="margin-left: 250px">
+
+				<li class="icon02"><a
+					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/myPage">마이페이지</a></li>
+				<%
+					}
+				%>
+			</ul>
 				</div>
 			</div>
 			<div class="sectionArea">
-				
+				<div id="snb">
+			<h2>
+				무엇이<br>궁금하십니까?
+			</h2>
+			<ul>
+				<li><a href="question">자주하는 질문</a>
+					<ul class="depth3MenuList" id="treeDiv" style="display: none;"></ul>
+				</li>
+				<li><a href="clientSound">고객의 소리</a></li>
+				<li><a href="question2">개선사항</a></li>
+			</ul>
+
+			<div class="subtelBox">
+				<p class="tel">
+					<span>전화</span><strong>1644 - 8000</strong>
+				</p>
+				<p class="tel_txt">
+					09:00 ~ 18:00<br>토요일, 일요일, 공휴일 제외
+				</p>
+				<p class="tel_txt">문자상담은 40자 이내</p>
+			</div>
+		</div>
 				<div class="content">
 					<div class="title">
 						<h3>자주하는 질문</h3>
@@ -43,7 +76,6 @@
 							<input type="text" id="searchWord" name="searchWord" maxlength="" value="">
 						</span>
 						<a href="javascript:search();" class="searchbtn">검색</a>
-						<a href="javascript:goAsk();" class="writebtn">문의하기</a>
 					</div>
 				    <table style="width: 100%; ">
 				    	<tbody><tr>

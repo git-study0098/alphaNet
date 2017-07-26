@@ -99,11 +99,23 @@
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu">
-				<li class="icon01"><a href="#">FAQ</a></li>
-				<li class="icon02"><a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a></li>
-				<li class="icon03"><a href="#">개선사항</a></li>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage?email=<%=email%>">마이페이지</a></li>
+			<ul class="Quick_Menu" style="margin-left: 250px">
+
+				<li class="icon02"><a
+					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/myPage">마이페이지</a></li>
+				<%
+					}
+				%>
 			</ul>
 		</div>
 	</div>
@@ -119,7 +131,6 @@
 					<ul class="depth3MenuList" id="treeDiv" style="display: none;"></ul>
 				</li>
 				<li><a href="clientSound">고객의 소리</a></li>
-				<li><a href="question2">개선사항</a></li>
 			</ul>
 
 			<div class="subtelBox">

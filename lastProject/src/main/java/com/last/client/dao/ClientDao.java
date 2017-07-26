@@ -168,6 +168,12 @@ public class ClientDao {
 			System.out.println("셀렉트 한행 상세보기");
 			return selectadNoticeDeList;
 		}
+		
+		//메인 최신글 5개
+		public List<Notice1VO> fiveNotice(String notice_code ) throws SQLException{
+			 List<Notice1VO> fiveNoticeList = ( List<Notice1VO>) client.queryForList("fiveNotice" ,notice_code);
+			return fiveNoticeList;
+		}
 
 	
 }

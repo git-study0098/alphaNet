@@ -272,5 +272,7 @@ public class noticecontroller {
 			model.addAttribute("vo", vo);
 			return url;
 		}
+		
+	
 	
 }
