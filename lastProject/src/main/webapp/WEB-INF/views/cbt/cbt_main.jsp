@@ -14,7 +14,7 @@
 		seval = seVal;
 	}
 	function viewQnetPassList(){
-		window.open("<%=request.getContextPath()%>/cbtChoice?seVal="+seval,"cbt","width=1200px,height=900px;")
+		window.open("<%=request.getContextPath()%>/cbtChoice?seVal="+seval+"&test=test","cbt","width=1200px,height=900px;")
 	}
 </script>
 <article>

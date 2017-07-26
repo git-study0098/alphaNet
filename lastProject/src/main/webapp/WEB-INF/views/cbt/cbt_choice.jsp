@@ -7,36 +7,58 @@
 <title>CBT</title>
 </head>
 <body>
+<%
+	
+	int[] quizList1 = (int[])session.getAttribute("quizList1");
+%>
 <script>
+	fufu = null;
+	$(function(){
+		function kkk(sub){
+			$('#res'+sub).attr("display","display");
+			$('#sta'+sub).attr("display","none");
+		}
+		fufu = kkk;	
+	})
+	
 	function start_test(subject, check, startQuiz){
-// 		var list1 = '<c:out value="${quizList1}" />';
-// 		var list2 = '<c:out value="${quizList2}" />';
-// 		var list3 = '<c:out value="${quizList3}" />';
-// 		var list4 = '<c:out value="${quizList4}" />';
-// 		var list5 = '<c:out value="${quizList5}" />';
 		var seVal = '<c:out value="${seVal}" />';
-		alert(subject+'<'+check+'>'+startQuiz);
-		if(subject=='1'){
+		if(subject=='1'&&<%=quizList1[0]%>==0){
 			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal;
+		}else if(subject=='1'){
+			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal+'&cc=${cc}';
 		}
 		
-		if(subject==2){
+		if(subject=='2'&&<%=quizList1[1]%>==0){
 			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal;	
+		}else if(subject=='2'){
+			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal+'&cc=${cc}';
 		}
 		
-		if(subject==3){
+		if(subject=='3'&&<%=quizList1[2]%>==0){
 			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal;
+		}else if(subject=='3'){
+			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal+'&cc=${cc}';
 		}
 		
-		if(subject==4){
+		if(subject=='4'&&<%=quizList1[3]%>==0){
 			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal;
+		}else if(subject=='4'){
+			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal+'&cc=${cc}';
 		}
 		
-		if(subject==5){
+		if(subject=='5'&&<%=quizList1[4]%>==0){
 			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal;
+		}else if(subject=='5'){
+			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal+'&cc=${cc}';
 		}
 		
 	}
+	
+<%-- 	if(<%=quizList1[0]==2%>){ --%>
+// 		$('#res1').attr('display','display');
+// 		$('#sta1').attr('display','none');
+// 	}
 </script>
 <table style="width:100%; border:3px double #aaa;" border="0" cellspacing="0" cellpadding="0">
 <tbody><tr>
@@ -68,36 +90,51 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">1과목</td>
 <td align="center">데이터베이스<br></td>
-<td align="center"><span id="stare1">응시전</span><br>20문제<br></td>
-<td colspan="1" align="center"><a href="javascript:start_test(1,'first', 1)" style="color:#CC9900; font-weight:bold">응시하기</a></td>
+<td align="center"><span id="stare1">응시전</span><br>${count}/20문제<br></td>
+<td colspan="1" align="center">
+<a href="javascript:start_test(1,'first', 1)" id="sta1" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
+<a href="javascript:start_test(1,'second', 1)" id="res1" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
+</td>
 </tr>
 
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">2과목</td>
 <td align="center">전자계산기구조<br></td>
-<td align="center"><span id="stare2">응시전</span><br>20문제<br></td>
-<td colspan="1" align="center"><a href="javascript:start_test(2,'first', 21)" style="color:#CC9900; font-weight:bold">응시하기</a></td>
+<td align="center"><span id="stare2">응시전</span><br>${count}/20문제<br></td>
+<td colspan="1" align="center">
+<a href="javascript:start_test(2,'first', 21)" id="sta2" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
+<a href="javascript:start_test(2,'second', 21)" id="res2" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
+</td>
 </tr>
 
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">3과목</td>
 <td align="center">운영체제<br></td>
-<td align="center"><span id="stare3">응시전</span><br>20문제<br></td>
-<td colspan="1" align="center"><a href="javascript:start_test(3,'first', 41)" style="color:#CC9900; font-weight:bold">응시하기</a></td>
+<td align="center"><span id="stare3">응시전</span><br>${count}/20문제<br></td>
+<td colspan="1" align="center">
+<a href="javascript:start_test(3,'first', 41)" id="sta3" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
+<a href="javascript:start_test(3,'second', 41)" id="res3" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
+</td>
 </tr>
 
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">4과목</td>
 <td align="center">소프트웨어공학<br></td>
-<td align="center"><span id="stare4">응시전</span><br>20문제<br></td>
-<td colspan="1" align="center"><a href="javascript:start_test(4,'first', 61)" style="color:#CC9900; font-weight:bold">응시하기</a></td>
+<td align="center"><span id="stare4">응시전</span><br>${count}/20문제<br></td>
+<td colspan="1" align="center">
+<a href="javascript:start_test(4,'first', 61)" id="sta4" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
+<a href="javascript:start_test(4,'second', 61)" id="res4" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
+</td>
 </tr>
 
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">5과목</td>
 <td align="center">데이터통신<br></td>
-<td align="center"><span id="stare5">응시전</span><br>20문제<br></td>
-<td colspan="1" align="center"><a href="javascript:start_test(5,'first', 81)" style="color:#CC9900; font-weight:bold">응시하기</a></td>
+<td align="center"><span id="stare5">응시전</span><br>${count}/20문제<br></td>
+<td colspan="1" align="center">
+<a href="javascript:start_test(5,'first', 81)" id="sta5" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
+<a href="javascript:start_test(5,'second', 81)" id="res5" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
+</td>
 </tr>
 </tbody></table>
 

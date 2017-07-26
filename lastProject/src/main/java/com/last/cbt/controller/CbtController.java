@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,27 +30,41 @@ public class CbtController {
 	}
 	
 	@RequestMapping("/cbtChoice")
-	public String cbtChoice(@RequestParam(value="seVal")String seVal, Model model){
+	public String cbtChoice(@RequestParam(value="seVal")String seVal, Model model, HttpSession session
+			,@RequestParam(value="ansH",defaultValue="0")String ansH
+			,@RequestParam(value="solH",defaultValue="0")String solH
+			,@RequestParam(value="test",defaultValue="-1") String test){
 		
-//		int[] quizList1 = new int[21];
-//		int[] quizList2 = new int[21];
-//		int[] quizList3 = new int[21];
-//		int[] quizList4 = new int[21];
-//		int[] quizList5 = new int[21];
-//		
+		if(test.equals("test")){
+			int[] quizList1 = new int[5];
+			session.setAttribute("quizList1", quizList1);
+		}else{
+			String[] aa = solH.split(",");  // 사람이 고른 답
+			String[] bb = ansH.split(",");  // 정답
+			String cc = "";
+			int count=0;
+			for(int i=0; i<aa.length; i++){
+				if(aa[i].equals(bb[i])){
+					count++;
+					if(cc.equals("")){
+						cc+=(i+1);
+					}else{
+						cc+=","+(i+1);
+					}
+				}
+			}
+			model.addAttribute("cc",cc);
+			model.addAttribute("count",count);
+		}
 		model.addAttribute("seVal",seVal);
-//		model.addAttribute("quizList1",quizList1);
-//		model.addAttribute("quizList2",quizList2);
-//		model.addAttribute("quizList3",quizList3);
-//		model.addAttribute("quizList4",quizList4);
-//		model.addAttribute("quizList5",quizList5);
 		
 		return "cbt/cbt_choice";
 	}
 	
 	@RequestMapping("/cbtDetail")
 	public String cbtDetail(@RequestParam(value="startQuiz")String startQuiz,
-			@RequestParam(value="seVal")String seVal, Model model){
+			@RequestParam(value="seVal")String seVal, Model model, HttpSession session
+			,@RequestParam(value="cc", defaultValue="0")String cc){
 
 		List<CbtVo> examList = null;
 		try {
@@ -58,8 +74,34 @@ public class CbtController {
 		}
 		
 		
+		
 		model.addAttribute("examList", examList);
 		model.addAttribute("startQuiz", startQuiz);
+		model.addAttribute("seVal", seVal);
+		
+		model.addAttribute("oQuiz", cc);
+		
+		if(startQuiz.equals("1")){
+			int[] quizList1 = (int[])session.getAttribute("quizList1");
+			quizList1[0]++;
+			session.setAttribute("quizList1", quizList1);			
+		}else if(startQuiz.equals("21")){
+			int[] quizList1 = (int[])session.getAttribute("quizList1");
+			quizList1[1]++;
+			session.setAttribute("quizList1", quizList1);			
+		}else if(startQuiz.equals("41")){
+			int[] quizList1 = (int[])session.getAttribute("quizList1");
+			quizList1[2]++;
+			session.setAttribute("quizList1", quizList1);			
+		}else if(startQuiz.equals("61")){
+			int[] quizList1 = (int[])session.getAttribute("quizList1");
+			quizList1[3]++;
+			session.setAttribute("quizList1", quizList1);			
+		}else if(startQuiz.equals("81")){
+			int[] quizList1 = (int[])session.getAttribute("quizList1");
+			quizList1[4]++;
+			session.setAttribute("quizList1", quizList1);			
+		}
 		
 		return "cbt/cbt_detail";
 	}
@@ -71,7 +113,7 @@ public class CbtController {
 //		model.addAttribute("examList", examList);
 		List<CbtVo> examList = null;
 		try {
-			System.out.println(count);
+			System.out.println(count+"result");
 			examList = service.selectExamQuiz("a", count);
 		} catch (SQLException e) {
 			e.printStackTrace();

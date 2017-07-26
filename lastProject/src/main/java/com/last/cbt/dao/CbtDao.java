@@ -24,7 +24,9 @@ public class CbtDao {
 		map.put("startQuiz", String.format("%03d", Integer.parseInt(startQuiz)));
 		map.put("endQuiz", String.format("%03d", Integer.parseInt(startQuiz)+4));
 		
+		System.out.println("디테일 쿼리 다오임플전");
 		List<CbtVo> list = (ArrayList<CbtVo>)client.queryForList("selectExamQuiz", map);
+		System.out.println("디테일 쿼리 다오임플후");
 		return list;
 	}
 	
