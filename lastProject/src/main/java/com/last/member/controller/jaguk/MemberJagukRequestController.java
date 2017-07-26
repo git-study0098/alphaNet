@@ -3,9 +3,7 @@ package com.last.member.controller.jaguk;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -25,10 +23,12 @@ import com.last.common.vo.QualifiMemberVO;
 import com.last.common.vo.QualifiPagingVO;
 
 @Controller
+//@RequestMapping("/jaguk")
 public class MemberJagukRequestController {
 
 	@Autowired
 	private AdminQualifiService adminService;
+	
 	
 	public void setAdminService(AdminQualifiService adminService) {
 		this.adminService = adminService;
@@ -85,7 +85,6 @@ public class MemberJagukRequestController {
 		for(int i=0; i<choiceArray.length; i++){
 			idList.add(choiceArray[i]);
 		}
-//		Map<String,String> qualifi_certi_code = new HashMap<String,String>();
 		
 		List<QualifiCertiVO> viewData2 = new ArrayList<QualifiCertiVO>();
 		List<String> qualifi_certi_codeList = new ArrayList<String>();
@@ -98,7 +97,6 @@ public class MemberJagukRequestController {
 		
 		session.setAttribute("qualifi_certi_codeList", qualifi_certi_codeList);
 		
-		model.addAttribute("choice", choice);
 		model.addAttribute("mem_code", mem_code);
 		model.addAttribute("viewData", viewData);
 		model.addAttribute("viewData2", viewData2);
@@ -107,28 +105,28 @@ public class MemberJagukRequestController {
 	}
 	
 	@RequestMapping("/member/request4")
-	public String jagukRequest4(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,
-			@RequestParam(value="mem_code") String mem_code,HttpServletRequest request,@RequestParam(value="qualifi_certi_code",defaultValue="") String qualifi_certi_code,String choice)
+	public String jagukRequest4(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model, HttpSession session,
+			@RequestParam(value="mem_code") String mem_code,HttpServletRequest request,@RequestParam(value="qualifi_certi_code",defaultValue="") String qualifi_certi_code)
 			throws SQLException{
 		QualifiMemberVO viewData = null;
 		List<QualifiCertiVO> viewData2 = new ArrayList<QualifiCertiVO>(); //자격증 코드
-		String[] choiceArray = choice.split(",");
-		ArrayList<String> idList = new ArrayList<String>();
-		int price = 0;
-		for(int i=0; i<choiceArray.length; i++){
-			idList.add(choiceArray[i]);
-			price += adminService.selectCertiPrice(choiceArray[i]);
+		int price=0;
+		
+		List<String> qualifi_certi_codeList = (List<String>) session.getAttribute("qualifi_certi_codeList");
+		
+		for(int i=0; i<qualifi_certi_codeList.size(); i++){
+			price += adminService.selectCertiPrice(qualifi_certi_codeList.get(i));
 		}
+		
 		
 		//회원 정보 가져오는 부분
 		viewData = adminService.selectMemberInfoList(mem_code); 
 		
-		for(int i=0; i<idList.size(); i++){
-			String qualifi_certi_code1 = idList.get(i);
+		for(int i=0; i<qualifi_certi_codeList.size(); i++){
+			String qualifi_certi_code1 = qualifi_certi_codeList.get(i);
 			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code1));			
 		}
 		
-		model.addAttribute("choice", choice);
 		model.addAttribute("price", price);
 		model.addAttribute("mem_code", mem_code);
 		model.addAttribute("viewData", viewData);
@@ -224,7 +222,6 @@ public class MemberJagukRequestController {
 		String id = user.getUsername();
 		List<String> qualifi_certi_codeList = (List<String>) session.getAttribute("qualifi_certi_codeList");
 		int result =0;
-		System.out.println(id+"컨트");
 		
 		QualifiMemberVO qualifiMember = null;
 		try {
@@ -234,8 +231,9 @@ public class MemberJagukRequestController {
 				QualifiCertiVO vo = new QualifiCertiVO();
 				vo.setMem_code(mem_code);
 				vo.setQualifi_certi_code(qualifi_certi_codeList.get(i));
+				System.out.println(qualifi_certi_codeList.get(i)+"컨트");
 				List<String> qualifi_certi_iss_code = adminService.selectQualifiCertiIssCode(qualifi_certi_codeList.get(i));
-				vo.setQualifi_certi_iss_code(adminService.createQualifiCertiIssCode(qualifi_certi_iss_code.get(i), id));
+				vo.setQualifi_certi_iss_code(adminService.createQualifiCertiIssCode(qualifi_certi_iss_code.get(i)));
 				vo.setReceive_way("우편수령");
 				vo.setDr_state("배송중");
 				

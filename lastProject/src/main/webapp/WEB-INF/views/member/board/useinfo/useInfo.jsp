@@ -12,7 +12,6 @@
 
 <script>
 	function go_noticeDetail(noticeCode){
-		alert("음");
 		var noticeForm = document.noticeDetail;
 		noticeForm.action = "/useInfoUpdateForm?notice_code="+noticeCode;
 		noticeForm.submit();
@@ -88,10 +87,10 @@
 								style="table-layout: fixed">
 								<caption>각종서식 목록</caption>
 								<colgroup>
-									<col width="7%">
+									<col width="6%">
 									<col width="*">
-									<col width="16%">
-									<col width="16%">
+									<col width="13%">
+									<col width="13%">
 								</colgroup>
 								<thead>
 									<tr>
@@ -102,36 +101,27 @@
 									</tr>
 								</thead>
 								<tbody>
-<!-- 여기에 c:choose문 같은 반복문 써서 표시하면 될듯 합니다 . -->
 									<!-- 게시판 테이블 내용 -->
 										<c:choose>
 
-										<c:when test="${viewData.notice1CountPerPage > 0 }">
-										<c:forEach items="${viewData.notice1List }" var="notice" varStatus="number">
-										<tr>
-											<td>${number.count}</td> <!-- 글번호 -->
-											<td><a href="<%=request.getContextPath() %>/useInfoUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a></td>
-											<td>${notice.admin_code}</td>
-											<td>${notice.regist_date}</td>
-										</tr>
-											<input type="hidden" value="${notice.notice_code}" name="noticeCode"/>
-										</c:forEach>
-										</c:when>
-										<c:otherwise>
-										<tr>
-											<td style="text-align: center;">내용이 없습니다.</td>
-										</tr>
-										</c:otherwise>
+											<c:when test="${viewData.notice1CountPerPage > 0 }">
+												<c:forEach items="${viewData.notice1List }" var="notice" varStatus="number">
+													<tr>
+														<td>${number.count}</td>
+														<td><a href="<%=request.getContextPath() %>/detailUseInfo?notice_code=${notice.notice_code }">${notice.title}</a></td>
+														<td>${notice.admin_code}</td>
+														<td>${notice.regist_date}</td>
+													</tr>
+													<input type="hidden" value="${notice.notice_code}" name="noticeCode" />
+												</c:forEach>
+											</c:when>
+											<c:otherwise>
+												<tr>
+													<td style="text-align: center;">내용이 없습니다.</td>
+												</tr>
+											</c:otherwise>
 										</c:choose>
-																		
-<!-- 									<tr> -->
-<!-- 										<td>1</td> -->
-<!-- 										<td><a href="#" -->
-<!-- 											onclick="goNext('1005178', '1','Q006','1201')">콘크리트기사 출제기준(2016.1.1~2018.12.31)</a></td> -->
-<!-- 										<td>NCS센터 NC..</td> -->
-<!-- 										<td>2017.05.24</td> -->
-<!-- 									</tr> -->
-								</tbody>
+									</tbody>
 							</table>
 						</div>
 						<div class="pagination1 mb20">
@@ -154,35 +144,12 @@
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="goPage(<%=i%>);"
-											title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='useInfo?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }
 									}
 								%>
-							
-<!-- 							 <strong class="on" title="1페이지">1</strong> -->
-<!-- 								<button type="button" class="btn5" onclick="goPage(2);" -->
-<!-- 									title="2페이지"> -->
-<!-- 									<span>2</span> -->
-<!-- 								</button> -->
-<!-- 								<button type="button" class="btn5" onclick="goPage(3);" -->
-<!-- 									title="3페이지"> -->
-<!-- 									<span>3</span> -->
-<!-- 								</button> -->
-<!-- 								<button type="button" class="btn5" onclick="goPage(4);" -->
-<!-- 									title="4페이지"> -->
-<!-- 									<span>4</span> -->
-<!-- 								</button> -->
-<!-- 								<button type="button" class="btn5" onclick="goPage(5);" -->
-<!-- 									title="5페이지"> -->
-<!-- 									<span>5</span> -->
-<!-- 								</button> -->
-<!-- 								<button type="button" class="btn5" onclick="goPage(6);" -->
-<!-- 									title="6페이지"> -->
-<!-- 									<span>6</span> -->
-<!-- 								</button> -->
 							</span>
 							
 							<button type="button" class="btn3_icon3 btn_next_page"

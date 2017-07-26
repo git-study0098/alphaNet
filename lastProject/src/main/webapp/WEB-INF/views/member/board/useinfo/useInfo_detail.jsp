@@ -48,14 +48,14 @@
 				<ul>
 					<li>홈</li>
 					<li>고객지원</li>
-					<li>공지사항</li>
-					<li><strong>공지사항</strong></li>
+					<li>이용안내</li>
+					<li><strong>사이트 이용방법</strong></li>
 				</ul>
 			</div>
 			<!-- 컨텐츠 시작 -->
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
-				<h3 class="tit_content">공지사항</h3>
+				<h3 class="tit_content">사이트 이용안내</h3>
 
 				<!-- 컨텐츠 내용 -->
 				<div class="content">
@@ -99,7 +99,10 @@
 												</td>
 											</tr>
 											<tr>
-												<td colspan="6">${vo.notice_content}</td>
+												<td colspan="6"><textarea name="noticeContent"
+														id="contents_text" style="width: 100%;" rows="10">
+																	${vo.notice_content}
+													</textarea></td>
 											</tr>
 										</tbody>
 									</table>

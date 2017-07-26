@@ -1,6 +1,7 @@
 package com.last.common.service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -133,20 +134,19 @@ public class AdminQualifiService {
 	 * Qualifi_Certi_Iss_Code 생성 메서드
 	 * @return
 	 */
-	public String createQualifiCertiIssCode(String qualifi_certi_code, String mem_code) throws SQLException{
+	public String createQualifiCertiIssCode(String qualifi_certi_code){
 		String qualifi_code = ""; //중복코드 걸러내려만든 변수
 		int qualifi_code_num = 0; //중복코드 걸러내려만든 변수 시퀀스부분
 		String qualifiCertiIssCode = ""; //최종 생성되는 코드 리스트
 		
-		String selectMaxQualifiCertiIssCode = adminQualifiDao.selectMaxQualifiCertiIssCode(mem_code);
-		System.out.println(selectMaxQualifiCertiIssCode+"서비스");
-		
 		qualifi_code = qualifi_certi_code.substring(0,8);
-		qualifi_code_num = Integer.parseInt(selectMaxQualifiCertiIssCode.substring(8,15));	
+		qualifi_code_num = Integer.parseInt(qualifi_certi_code.substring(8,15));	
 		
 		int num = qualifi_code_num+1;
 		
 		qualifiCertiIssCode = qualifi_code + num;
+		
+		System.out.println(qualifiCertiIssCode +"코드보자");
 		
 		return qualifiCertiIssCode;
 	}

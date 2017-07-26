@@ -61,6 +61,34 @@ public class MainController {
 		
 		return url;
 	}
+	@RequestMapping("detailPds")
+	public String detailPds(@RequestParam(value="notice_code") String notice_code,Model model){
+		String url ="member/board/pds/pds_detail";
+		
+		Notice1VO vo = null;
+		try {
+			vo = mainService.detailNotice(notice_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("vo", vo);
+		
+		return url;
+	}
+	@RequestMapping("detailUseInfo")
+	public String detailUseInfo(@RequestParam(value="notice_code") String notice_code,Model model){
+		String url ="member/board/useinfo/useInfo_detail";
+		
+		Notice1VO vo = null;
+		try {
+			vo = mainService.detailNotice(notice_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		model.addAttribute("vo", vo);
+		
+		return url;
+	}
 
 	@RequestMapping("/mainNotice2")
 	public String listNotice2(

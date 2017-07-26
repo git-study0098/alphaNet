@@ -1,7 +1,12 @@
 package com.last.member.controller.mypage;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -9,10 +14,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.last.common.service.AdminNotice1Service;
 import com.last.common.service.MypageService;
+import com.last.common.vo.Notice1VO;
 import com.last.common.vo.StareVO;
+import com.last.common.vo.SubjectVo;
 
 @Controller
 public class MemberMypageController {
@@ -23,7 +33,6 @@ public class MemberMypageController {
 	public void setMypageService(MypageService mypageService) {
 		this.mypageService = mypageService;
 	}
-	
 
 	@RequestMapping("/member/wonseoHistory")
 	public String wonseoHistory(Model model){
@@ -68,5 +77,57 @@ public class MemberMypageController {
 	@RequestMapping("/member/changeImg2")
 	public String changeImg2(){
 		return "member/mypage/mypage_dnjstj5";
+	}
+	
+	
+	@RequestMapping("/member/documentSubmitForm")
+	public String documentSubmitForm(){
+		return "member/mypage/document_submit";
+	}	
+	
+	@RequestMapping(value="/member/documentSubmit", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
+	public String documentSubmit(HttpServletRequest request, Model model, @RequestParam("f") MultipartFile multipartFile){
+		String url = "member/mypage/mypage_dmdtl4";	
+		
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
+		
+		String upload = "C:/git/alphaNet/lastProject/src/main/webapp/resources/upload";
+		String str = multipartFile.getOriginalFilename();
+
+		StringTokenizer tokens = new StringTokenizer(str, ".");
+		String[] fileName = { "1", "hwp" };
+		int i = 0;
+		while (tokens.hasMoreTokens()) {
+			fileName[i] = tokens.nextToken();
+			i++;
+		}
+
+		if (!multipartFile.isEmpty()) {
+			File file = new File(upload, fileName[0] + "." + fileName[1]);
+			try {
+				multipartFile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		SubjectVo vo = new SubjectVo();
+		vo.setAttach_file(fileName[0] + "." + fileName[1]);
+		vo.setMem_code(mem_code);
+		
+		model.addAttribute(vo);
+		
+		try {
+			mypageService.updateDocument(vo);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return url;		
 	}	
 }

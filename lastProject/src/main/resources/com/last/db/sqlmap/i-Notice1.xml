@@ -77,5 +77,6 @@
 		<isEqual property="schType" compareValue="adm">
 			and admin_code like '%'||#schText#||'%'
 		</isEqual>
+		order by regist_date desc
 	</select>
 </sqlMap>

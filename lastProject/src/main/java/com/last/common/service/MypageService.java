@@ -6,6 +6,7 @@ import java.util.List;
 import com.last.common.dao.MypageDAO;
 import com.last.common.vo.StareCertifiVO;
 import com.last.common.vo.StareVO;
+import com.last.common.vo.SubjectVo;
 
 public class MypageService {
 	
@@ -15,7 +16,6 @@ public class MypageService {
 	public void setMypageDao(MypageDAO mypageDao) {
 		this.mypageDao = mypageDao;
 	}
-
 
 
 	/**
@@ -76,5 +76,10 @@ public class MypageService {
 		StareCertifiVO stareCertifiVO = mypageDao.selectMemberCareer(mem_code);
 		return stareCertifiVO;
 	}
+	
+	public void updateDocument(SubjectVo vo) throws SQLException{
+		mypageDao.updateDocument(vo);
+	}
+	
 	
 }

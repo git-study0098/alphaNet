@@ -43,6 +43,7 @@
 		var notice_code = document.getElementsByName('notice_code')[0].value;
 		location.href="<%=request.getContextPath()%>/admin/client/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
+	
 </script>
 
 
@@ -120,7 +121,7 @@
 										<col width="*">
 										<col width="16%">
 										<col width="11%">
-										<col width="1%">
+										<col width="10%">
 									</colgroup>
 									<thead>
 										<tr>
@@ -128,7 +129,7 @@
 											<th scope="col">제목</th>
 											<th scope="col">담당부서</th>
 											<th scope="col">최종수정일자</th>
-											<th scope="col"></th>
+											<th scope="col">답글 등록 상태</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -142,12 +143,10 @@
 													<tr>
 														<td>${viewData.firstRow+number.count-1}</td>
 														<!-- 글번호 -->
-														<td><a
-															href="<%=request.getContextPath() %>/admin/clientUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
+														<td><a href="<%=request.getContextPath() %>/admin/clientUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
 														<td>${notice.admin_code}</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
-														<td><input type="hidden"
-															value="${notice.notice_code}" name="noticeCode" /></td>
+														<td></td>
 													</tr>
 												</c:forEach>
 											</c:when>

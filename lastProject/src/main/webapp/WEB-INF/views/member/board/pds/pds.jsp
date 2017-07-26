@@ -1,15 +1,15 @@
-<%@page import="com.last.common.vo.Notice1VO"%>
-<%@page import="com.last.common.vo.PdsVO"%>
+<%@page import="com.last.common.vo.PagingVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 자료실 -->
 
 <%
-   Integer pageNumber = (Integer)request.getAttribute("pageNumber");
-   PdsVO viewData =
-   (PdsVO)request.getAttribute("viewData");
+	Integer pageNumber = (Integer)request.getAttribute("pageNumber");
+	PagingVO viewData =
+	(PagingVO)request.getAttribute("viewData");
 %>
 
 <style>
@@ -59,28 +59,6 @@
 
 				<!-- 컨텐츠 내용 -->
 				<div>
-					<div class="tabLayout" id="subTab">
-						<ul class="n5">
-							<li class="on"><a href="#" title="각종서식"><span>각종서식</span></a></li>
-							<li><a href="#"><span>출제기준</span></a></li>
-							<li><a href="#"><span>기출문제(기술사)</span></a></li>
-							<li><a href="#"><span>공개문제</span></a></li>
-							<li><a href="#"><span>관련법령</span></a></li>
-						</ul>
-					</div>
-					<div class="searchType">
-						<span> <label for="schType">검색</label> <select
-							title="검색구분 선택" name="schType" id="schType" class="m0">
-								<option value="A" selected="selected">전체</option>
-								<option value="T">글제목</option>
-								<option value="C">내용</option>
-								<option value="U">글쓴이</option>
-						</select> <input type="text" style="width: 150px" name="schText"
-							id="schText" title="검색어 입력"> <a href="#"
-							class="btn3_icon search" onclick="getNoticeList(1)"><span
-								class="blind">검색</span></a>
-						</span>
-					</div>
 					<div id="viewList">
 						<div class="tbl_type1">
 							<table summary="번호, 제목, 작성자, 날짜 정보 제공"
@@ -102,33 +80,28 @@
 								</thead>
 								<tbody>
 <!-- 여기에 c:choose문 같은 반복문 써서 표시하면 될듯 합니다 . -->
-									<%
-										if (viewData.getpdsCountPerPage() > 0) {
-											List<Notice1VO> pdsList = viewData.getPdsList();
-											for (int i = 0; i < pdsList.size(); i++) {
-									%>
+									<c:choose>
 
-									<tr>
-
-										<td><%=i + 1%></td>
-										<!-- 글번호 -->
-										<td><%=pdsList.get(i).getTitle()%></td>
-										<td><%=pdsList.get(i).getAdmin_code()%></td>
-										<td><%=pdsList.get(i).getEnroll_date()%></td>
-									</tr>
-									<%
-										}
-									%>
-
-									<%
-										} else {
-									%>
-									<tr>
-										<td style="text-align: center;">내용이 없습니다.</td>
-									</tr>
-									<%
-										}
-									%>
+										<c:when test="${viewData.notice1CountPerPage > 0 }">
+											<c:forEach items="${viewData.notice1List }" var="notice"
+												varStatus="number">
+												<tr>
+													<td>${number.count}</td>
+													<td><a
+														href="<%=request.getContextPath() %>/detailPds?notice_code=${notice.notice_code }">${notice.title}</a></td>
+													<td>${notice.admin_code}</td>
+													<td>${notice.regist_date}</td>
+												</tr>
+												<input type="hidden" value="${notice.notice_code}"
+													name="noticeCode" />
+											</c:forEach>
+										</c:when>
+										<c:otherwise>
+											<tr>
+												<td style="text-align: center;">내용이 없습니다.</td>
+											</tr>
+										</c:otherwise>
+									</c:choose>
 								</tbody>
 							</table>
 						</div>
@@ -143,21 +116,20 @@
 							</button>
 							<span class="page"> 
 							<%
-								for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
-									if(pageNumber==i){
-							%>	
-									<strong class="on" title="<%=i %>페이지"><%=i %></strong>
-								<%
-									
-									}else{
+									for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
+										if(pageNumber==i){
+								%>	
+										<strong class="on" title="<%=i %>페이지"><%=i %></strong>
+									<%
+										
+										}else{
+									%>
+										<button type="button" class="btn5" onclick="location.href='pdsList?page=<%=i %>'" title="<%=i%>페이지">
+											<span><%=i%></span>
+										</button> 
+										<% }
+									}
 								%>
-									<button type="button" class="btn5" onclick="goPage(<%=i%>);"
-										title="<%=i%>페이지">
-										<span><%=i%></span>
-									</button> 
-									<% }
-								}
-							%>
 							</span>
 							<button type="button" class="btn3_icon3 btn_next_page"
 								onclick="goPage(2);" title="다음 페이지">

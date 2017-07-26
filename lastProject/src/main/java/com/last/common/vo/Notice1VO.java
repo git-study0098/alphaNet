@@ -14,11 +14,17 @@ public class Notice1VO {
 	private String attach_file;	//첨부파일
 	private Date enroll_date; //최종수정일
 	private Date regist_date; //등록일
-	private MultipartFile uploadfile;
-	
+	private MultipartFile uploadfile;	
+	private String reply_state;
 	private String notice_kind; //고객의 소리 분류
 	
 	
+	public String getReply_state() {
+		return reply_state;
+	}
+	public void setReply_state(String reply_state) {
+		this.reply_state = reply_state;
+	}
 	public String getNotice_kind() {
 		return notice_kind;
 	}

@@ -7,6 +7,7 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.last.common.vo.StareCertifiVO;
 import com.last.common.vo.StareVO;
+import com.last.common.vo.SubjectVo;
 
 public class MypageDAO {
 	
@@ -72,5 +73,9 @@ public class MypageDAO {
 	public StareCertifiVO selectMemberCareer(String mem_code)throws SQLException{
 		StareCertifiVO stareCertifiVO = (StareCertifiVO) client.queryForObject("selectMemberCareer", mem_code);
 		return stareCertifiVO;
+	}
+
+	public void updateDocument(SubjectVo vo) throws SQLException {
+		client.update("updateDocument",vo);
 	}
 }
