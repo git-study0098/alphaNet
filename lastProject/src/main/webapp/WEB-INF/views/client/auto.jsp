@@ -104,8 +104,8 @@
 																		</tr>
 																		<tr>
 																			<td><img
-																				src="<%=request.getContextPath()%>/resources/client/images/txt_ipin.gif"
-																				alt=""></td>
+																				src="<%=request.getContextPath()%>/resources/client/images/eeamil.png"
+																				alt="" width="300" height="70"></td>
 																			<td width="50"></td>
 																			<td><a href="#" onclick="autoMail();"> <img
 																					src="<%=request.getContextPath()%>/resources/client/images/emailButton.png"
@@ -123,8 +123,8 @@
 																		</tr>
 																		<tr>
 																			<td><img
-																				src="<%=request.getContextPath()%>/resources/client/images/txt_cpc.gif"
-																				alt=""></td>
+																				src="<%=request.getContextPath()%>/resources/client/images/phone.png"
+																				alt="" width="300" height="70"></td>
 																			<td width="50"></td>
 																			<td><a href="client"> <img
 																					src="<%=request.getContextPath()%>/resources/client/images/btn_cpc.gif"
