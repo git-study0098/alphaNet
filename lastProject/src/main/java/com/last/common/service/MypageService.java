@@ -61,4 +61,20 @@ public class MypageService {
 		return selectCareerCerti;
 	}
 	
+	/**
+	 * 해당 회원의 경력상태 업데이트
+	 * @param stareCertifiVO
+	 * @return int
+	 * @throws SQLException
+	 */
+	public int updateMemberCareer(StareCertifiVO stareCertifiVO)throws SQLException{
+		int updateMemberCareer = mypageDao.updateMemberCareer(stareCertifiVO);
+		return updateMemberCareer;
+	}
+	
+	public StareCertifiVO selectMemberCareer(String mem_code)throws SQLException{ 
+		StareCertifiVO stareCertifiVO = mypageDao.selectMemberCareer(mem_code);
+		return stareCertifiVO;
+	}
+	
 }

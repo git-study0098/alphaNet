@@ -2,17 +2,84 @@ package com.last.common.vo;
 
 public class StareCertifiVO {
 	
-	private String sch_major_code; //학과분류
-	private String sch_coll; 		//졸업여부
-	private String sch_code_nm;		//학교명
-	private String sch_major_nm;	//학과명
+	private String sch_major_code; 
+	private String sch_coll; 		
+	private String sch_code_nm;		
+	private String sch_major_nm;	
+	private String sch_final;		
+	private String exkind_nm;
+	private String career_ind_code;	
+	private String ca_comp_nm;		
+	private String ca_work_content;	
+	private String ca_work_bd;	
+	private String ca_work_ed;	
+	private String career_during;
+	private String	mem_code;
+	private String	ind_code;
+	private String	compNm;
+	private String	workCts;
+	private String	workStartDt;
+	private String	workEndDt;
+
 	
-	private String career_ind_code;	//업무분야
-	private String career_job_code;	//직무분야
-	private String ca_comp_nm;		//회사명
-	private String ca_work_content;	//업무내용
-	private String ca_work_bd;	//근무시작일
-	private String ca_work_ed;	//근무종료일
+	
+	public String getCareer_during() {
+		return career_during;
+	}
+	public void setCareer_during(String career_during) {
+		this.career_during = career_during;
+	}
+	public String getExkind_nm() {
+		return exkind_nm;
+	}
+	public void setExkind_nm(String exkind_nm) {
+		this.exkind_nm = exkind_nm;
+	}
+	public String getMem_code() {
+		return mem_code;
+	}
+	public void setMem_code(String mem_code) {
+		this.mem_code = mem_code;
+	}
+	public String getInd_code() {
+		return ind_code;
+	}
+	public void setInd_code(String ind_code) {
+		this.ind_code = ind_code;
+	}
+	public String getCompNm() {
+		return compNm;
+	}
+	public void setCompNm(String compNm) {
+		this.compNm = compNm;
+	}
+	public String getWorkCts() {
+		return workCts;
+	}
+	public void setWorkCts(String workCts) {
+		this.workCts = workCts;
+	}
+	public String getWorkStartDt() {
+		return workStartDt;
+	}
+	public void setWorkStartDt(String workStartDt) {
+		this.workStartDt = workStartDt;
+	}
+	public String getWorkEndDt() {
+		return workEndDt;
+	}
+	public void setWorkEndDt(String workEndDt) {
+		this.workEndDt = workEndDt;
+	}
+	
+	
+	
+	public String getSch_final() {
+		return sch_final;
+	}
+	public void setSch_final(String sch_final) {
+		this.sch_final = sch_final;
+	}
 	public String getSch_major_code() {
 		return sch_major_code;
 	}
@@ -43,12 +110,6 @@ public class StareCertifiVO {
 	public void setCareer_ind_code(String career_ind_code) {
 		this.career_ind_code = career_ind_code;
 	}
-	public String getCareer_job_code() {
-		return career_job_code;
-	}
-	public void setCareer_job_code(String career_job_code) {
-		this.career_job_code = career_job_code;
-	}
 	public String getCa_comp_nm() {
 		return ca_comp_nm;
 	}
@@ -78,12 +139,11 @@ public class StareCertifiVO {
 	public String toString() {
 		return "StareCertifiVO [sch_major_code=" + sch_major_code
 				+ ", sch_coll=" + sch_coll + ", sch_code_nm=" + sch_code_nm
-				+ ", sch_major_nm=" + sch_major_nm + ", career_ind_code="
-				+ career_ind_code + ", career_job_code=" + career_job_code
-				+ ", ca_comp_nm=" + ca_comp_nm + ", ca_work_content="
-				+ ca_work_content + ", ca_work_bd=" + ca_work_bd
-				+ ", ca_work_ed=" + ca_work_ed + "]";
+				+ ", sch_major_nm=" + sch_major_nm + ", sch_final=" + sch_final
+				+ ", career_ind_code=" + career_ind_code + ", ca_comp_nm="
+				+ ca_comp_nm + ", ca_work_content=" + ca_work_content
+				+ ", ca_work_bd=" + ca_work_bd + ", ca_work_ed=" + ca_work_ed
+				+ "]";
 	}
-	
 	
 }

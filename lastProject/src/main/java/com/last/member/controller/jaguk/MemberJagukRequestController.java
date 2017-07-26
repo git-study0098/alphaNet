@@ -3,7 +3,9 @@ package com.last.member.controller.jaguk;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -86,6 +88,7 @@ public class MemberJagukRequestController {
 			idList.add(choiceArray[i]);
 			System.out.println(choiceArray[i]);
 		}
+//		Map<String,String> qualifi_certi_code = new HashMap<String,String>();
 		
 //		Enumeration<String> paramNames = request.getParameterNames();
 //		ArrayList<String> paramNameList = new ArrayList<String>();
