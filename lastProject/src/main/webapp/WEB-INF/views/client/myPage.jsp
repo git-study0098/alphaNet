@@ -25,29 +25,7 @@
 
 
 <script>
-	$(function(){
-
-	 $( "#startDate" ).datepicker({
-	        showOn: "both", 
-	        buttonImage: "<%=request.getContextPath() %>/resources/client/images/ico_date.gif", 
-	        buttonImageOnly: true,
-	        currentText: '오늘 날짜', 
-	        closeText: '닫기', 
-	        dateFormat: "yy-mm-dd"
-	  });
-	 
-	 
-	 
-	 $("#endDate").datepicker({
-	        showOn: "both", 
-	        buttonImage: "<%=request.getContextPath() %>/resources/client/images/ico_date.gif", 
-	        buttonImageOnly: true,
-	        currentText: '오늘 날짜', 
-	        closeText: '닫기', 
-	        dateFormat: "yy-mm-dd"
-	  });
-	});
- 
+	alert('<%=email%>+마이페이지니지')
 	function search() {
 		document.frm.action ="searchSound";
 		document.frm.submit();
@@ -71,9 +49,24 @@
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu">
-				<li class="icon02"><a href="clientSound">고객의소리</a></li>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage?email=<%=email%>">마이페이지</a></li>
+				<ul class="Quick_Menu" style="margin-left: 250px">
+
+				<li class="icon02"><a
+					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
+				<%
+					if (email == null || email.equals("")) {
+				%>
+				<li class="icon04"><a
+					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
+				<%
+					} else {
+				%>
+				<li class="icon04">
+						<a href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a>
+				</li>
+				<% 
+				}
+				%>
 			</ul>
 		</div>
 	</div>
@@ -209,20 +202,7 @@
 							</tbody></table>
 						</div>
 					</div>
-					<div class="contentSearchForm">						
-						<span style="margin-right: 5px;">
-							<input type="text" readonly="" name="startDate" id="startDate" maxlength="" value="" style="width: 70px;">
-							<a class="date" href="javascript:showcld(1, FNAME.startDate);">
-							</a>
-						</span>
-						 ~
-						<span style="margin: 0 10px 0 0;">
-							<input type="text" readonly="" name="endDate" id="endDate" maxlength="" value="" style="width: 70px;">
-							<a class="date" href="javascript:showcld(2, FNAME.endDate);">
-							</a>
-						</span>	
-						<a class="searchbtn" href="javascript:reqMypList();">검색</a>
-					</div>					
+					
 					<table style="width: 100%;border: 1px solid green;">
 			<colgroup>
 				<col width="7%">

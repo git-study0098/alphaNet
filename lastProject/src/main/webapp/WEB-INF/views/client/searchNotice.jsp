@@ -80,7 +80,7 @@
 			<%
 				}else{
 					%>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/client">마이페이지</a></li>					
+				<li class="icon04"><a href="<%=request.getContextPath()%>/client/myPage?email=<%=email %>">마이페이지</a></li>					
 					<%
 				}
 			%>
