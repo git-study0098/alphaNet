@@ -19,7 +19,13 @@
 <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js'></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/left_script.js" charset="euc-kr"></script>
+<script>
+function goMinwon(){
+	var pop = window.open("<%=request.getContextPath()%>/client/main", "pop",
+	"width=1080,height=860, scrollbars=yes, resizable=yes");
 
+}
+</script>
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 <link href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico" rel="shortcut icon" type="image/x-icon">
@@ -309,7 +315,7 @@ var speed = 800;
 						<li><button type="button" class="notice" id="topNoticeBtn" title="긴급공지 열기"><span>긴급공지</span></button></li>
 						<li><a href="#" target="_blank" title="본 링크를 클릭하시면 새 창이 열립니다." class="imgLink"><img src="<%=request.getContextPath()%>/resources/images/logo_hrdkorea.gif" alt="한국산업인력공단"></a></li>
 						<li><a><img alt="정부3.0" src="<%=request.getContextPath()%>/resources/images/logo_gov30_1 (1).jpg"></a></li>
-						<li><a>고객의소리</a></li>
+						<li><a href="javascript:goMinwon()">고객의소리</a></li>
 					</ul>
 					<ul class="right">
 					

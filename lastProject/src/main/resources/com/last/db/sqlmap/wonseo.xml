@@ -77,4 +77,9 @@
 		and em_info_code = #em_info_code#
 	</select>
 	
+	
+	<select id="selectAdd"  parameterClass="str" resultClass="place">
+		select place_add from place where place_nm =#place_nm#
+	
+	</select>
 </sqlMap>

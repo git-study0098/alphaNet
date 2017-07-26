@@ -1,0 +1,147 @@
+@charset "utf-8";
+/*
+    Document   : main2017
+    Created on : 2017. 2. 22
+    Author     : sujin
+    Description: Purpose of the stylesheet follows.
+*/
+
+html, body{margin:0;padding:0;}
+body{margin:0;padding:0;border:0;outline:0;font-size:75%;line-height:1.8em;color:#666;vertical-align:baseline;background:transparent;font-family:'Nanum Gothic','Nanum Gothic-bold','Nanum Gothic-extrabold','Nanum Barun Gothic','Nanum Barun Gothic-bold', "援대┝", Gulim, "�뗭�", Dotum, Tahoma, Verdana, AppleGothic, UnDotum, sans-serif; word-break:break-all;}
+fieldset, form, label, legend{margin:0;padding:0;border:none;}
+legend{display:none;}
+div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, em, img, strong, sub, sup, var, b, i,
+dl, dt, dd, ol, ul, li,
+table, caption, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;}
+hr{display:none;}
+dl, dt, dd, ol, ul, li {list-style:none;}
+
+a {margin:0;padding:0;vertical-align:baseline;color:#666;background:transparent;text-decoration:none;}
+a:hover,a:active,a:focus{text-decoration:none;}
+
+a img,
+input.type-image{border:0 none;}
+input.type-text,
+textarea {border:1px solid #ddd;background:#fff;padding:1px;}
+input.type-text:hover,
+input.type-text:focus,
+textarea:hover,
+textarea:focus,
+input, select, textarea {vertical-align:middle;font-family:'Nanum Gothic','Nanum Gothic-bold','Nanum Gothic-extrabold','Nanum Barun Gothic','Nanum Barun Gothic-bold';}
+span.button,
+img.button,
+a.button{cursor:pointer;vertical-align:middle;}
+
+.blind {visibility:hidden;overflow:hidden;position:absolute;left:-1000em;width:0;height:0;font-size:0;line-height:0;}
+
+
+/*layout*/
+#main_wrap {position:relative;width:100%;margin:0;padding:0;}
+#header {position:relative; min-width:1100px; margin:0 auto;padding:0;width:inherit;z-index:90;}
+#container{position:relative; margin:0 auto; padding:0; min-width:1100px; min-height:684px; background:url("../client/images/main_bg.jpg") center top no-repeat; overflow:hidden; z-index:20;}
+#footer{clear:both; min-width:1100px; margin:0 auto;padding:0; border-top:1px solid #dcdcdc;}
+
+/* header  */
+#header a{display:inline-block;}
+#header .gnb_box{width:100%; background:#00adb0; }
+#header .gnb_box .gnb_pix {position:relative; width:1080px; height:45px;margin:0 auto;}
+#header .gnb_box .gnb_pix ul.gnb {position:absolute;top:13px;right:0;margin:0;padding:0; /*width:278px;*/ height:18px;}
+#header .gnb_box .gnb_pix ul.gnb li {float:left; margin:0 12px 0 0; padding:0 0 0 11px; line-height:18px; font-size:14px; font-family:'Nanum Gothic-bold'; color:#fff; background:url("../client/images/gnb_divide.gif") 0 center no-repeat;}
+#header .gnb_box .gnb_pix ul.gnb li.first-child{background:none;}
+#header .gnb_box .gnb_pix ul.gnb li a {color:#fff;}
+#header .gnb_box .gnb_pix ul.gnb li span {display:inline-block; /*width:42px;*/ height:18px; margin:0 0 0 6px; padding:0;}
+#header .gnb_box .gnb_pix ul.gnb li span a {vertical-align:middle; height:18px; margin-left:3px;}
+.gnb{margin-right: 100px; }
+.Top {position:relative; overflow:hidden; width:1080px; height:142px; margin:0 auto; padding:0;}
+#container h1 a.hrd {position:absolute; top:27px; left:0;}
+#container h1 a.voc {position:absolute; top:65px; left:0;}
+
+.STitle {line-height:22px; font-size:18px; font-family:'Nanum Gothic-bold'; color:#2a2a2a; margin-bottom: 12px; }
+.tSearch{position:absolute; top:27px; left:409px; width:335px; height:30px;}
+.tSearch input {border:none; width:239px; height:42px; line-height:42px; padding:0 18px;}
+.tSearch input[type=image]{width:46px;height:46px; padding:0;}
+.tSearch ul {overflow:hidden;margin:0;padding:0;}
+.tSearch ul li.searchback {overflow:hidden; float:left; margin:0; padding:0; width:275px; height:42px; border:2px solid #00adb0;}
+.tSearch ul li.searchbtn {float:right; margin:0; padding:0;}
+
+.Bestkeyword {position:absolute; top:64px; left:795px;}
+.Bestkeyword dt {background:#525252; width:68px; height:20px; color:#fff; padding:0; margin-bottom:8px; text-align:center; }
+.Bestkeyword dd ul li {float:left; margin:0 12px 0 0; padding:0 0 0 11px; line-height:18px; font-size:13px; font-family:'Nanum Gothic-bold'; color:#363636; background:url("../client/images/keyword_divide.gif") 0 center no-repeat;}
+
+.sectionArea {overflow:hidden; width:1080px; height:542px; margin:0 auto; padding:0;}
+.sectionArea h2 {color:#fff; height:50px; line-height:32px; font-size:32px; font-family:'Nanum Gothic-bold'; text-align:center; margin-top:26px;  }
+.section01 {float:left; width:417px; height:500px; margin:0 20px 0 0; padding:0; background:url("../client/images/section01.png") no-repeat;}
+.CallService {height:183px; background:url("../client/images/CallService_bg.png") 20px 28px no-repeat; padding:0 0 0 175px; margin-top: 20px;}
+.CallService h3 {line-height:30px; font-size:20px; font-family:'Nanum Gothic-bold'; }
+.CallService > ul li {font-size:13px; line-height:20px; color:#464646; margin-left: 6px; }
+.CallService > ul li.colorR {font-size:18px; line-height:20px; color:#ec4b42; font-family:'Nanum Gothic-bold'; margin-top:10px;  }
+
+.notice_box {position:relative; margin-top:26px; padding:0 20px; width:376px; height:186px; }
+.notice_box h3 {line-height:20px; font-size:18px; font-family:'Nanum Gothic-bold';}
+.notice_box ul.newsList {overflow:hidden; margin:20px 0 0; padding:0;}
+.notice_box ul.newsList li {overflow:hidden; margin:0; padding:0 0 0 16px; vertical-align:middle; background:url("../client/images/bul_list.gif") 4px center no-repeat; border-bottom:1px dashed #e1e1e1; }
+.notice_box ul.newsList li a {overflow:hidden; float:left; color:#353535; width:274px; text-overflow:ellipsis; white-space:nowrap; font-size:12px; line-height:30px; font-family:'Gulim';}
+.notice_box ul.newsList li a img {margin:0; padding:0 0 0 5px;}
+.notice_box ul.newsList li a:hover {color:#2476b1;text-decoration:underline;}
+.notice_box ul.newsList li span.date {float:right; margin:0; padding:0; color:#767676; font-family:tahoma; font-size:12px; line-height:30px; }
+.notice_box a.more {position:absolute; top:-6px; right:20px; padding:0; width:30px; height:30px; text-indent:-9999px; background:url("../client/images/icon_more.png") right center no-repeat;}
+
+.Number {font-size:34px; line-height:30px; font-family:'Nanum Gothic-bold'; color:#117dc5; margin:10px 0; }
+
+.section02 {float:left; width:314px; height:500px; margin:0 20px 0 0; padding:0; background:url("../client/images/section02.png") no-repeat;  }
+ul.transparent_S {width:254px; padding:22px 30px; }
+ul.transparent_S li {height:76px; margin-bottom:22px; }
+ul.transparent_S li a {display:block; line-height:76px; font-size:34px; color:#4c4c4c; padding-left:76px; text-align:center; letter-spacing:-1px; font-family:'Nanum Gothic-bold'; }
+ul.transparent_S li.icon01 {background:url("../client/images/Service_icon01.png") left center no-repeat;}
+ul.transparent_S li.icon02 {background:url("../client/images/Service_icon02.png") left center no-repeat;}
+ul.transparent_S li.icon03 {background:url("../client/images/Service_icon03.png") left center no-repeat;}
+ul.transparent_S li.icon04 {background:url("../client/images/Service_icon04.png") left center no-repeat;}
+
+.section03 {float:left; width:309px; height:500px; margin:0; padding:0; background:url("../client/images/section03.png") no-repeat;  }
+ul.safe_S {width:265px; height:220px; padding:0 22px;}
+ul.safe_S li {float:left; width:265px; height:76px; margin:17px 0 18px;}
+ul.safe_S li a {display:block; height:62px; line-height:28px; font-size:24px; color:#4e4e4e; padding:12px 0 0 76px; text-align:center; font-family:'Nanum Gothic-bold'; }
+ul.safe_S li span.fontS1 {font-size:15px; display:block; font-family:"Nanum Gothic-bold"; }
+ul.safe_S li span {font-size:14px; display: block; font-family:"Nanum Gothic-bold"; letter-spacing:-1px; }
+ul.safe_S li.icon01 {background:url("../client/images/Service_icon05.png") left center no-repeat;}
+ul.safe_S li.icon02 {background:url("../client/images/Service_icon06.png") left center no-repeat;}
+.slogan {height:203px; background:url("../client/images/HRD_slogan_bg.png") no-repeat;}
+.slogan_Txt {margin:0; padding:34px 0 0 20px;}
+
+/* banner */
+.bannerZone {float:left; position:relative; width:448px; height:60px; margin:0 auto; padding:0; z-index:20;}
+.bannerZone dl.cont {position:absolute; top:17px; right:20px; margin:0; padding-left:23px;}
+.bannerZone dl.cont dt {display:none;}
+.bannerZone dl.cont dd {float:left;width:25px;height:25px;margin:0 0 0 -1px;}
+.bannerZone dl.cont dd a{overflow:hidden;display:inline-block;width:25px;height:25px;background:url("../client/images/img_alrim_btn.png") 0 0 no-repeat;}
+.bannerZone dl.cont dd a span{overflow:hidden;visibility:hidden;margin:0;padding:0;text-indent:-10000px;}
+.bannerZone dl.cont dd a.pre{background-position:0 0;}
+.bannerZone dl.cont dd a.stop{background-position:0 -35px;}
+.bannerZone dl.cont dd a.play{background-position:-45px -35px;}
+.bannerZone dl.cont dd a.next{background-position:0 -70px;}
+
+.bannerZone .banner_box {overflow: hidden;position: absolute; top:16px; left:15px; width:330px; height:30px;}
+.bannerZone .banner_box ul {width:1080px; height:30px; margin:0 12px 0 0; padding:0; overflow:hidden;}
+.bannerZone .banner_box ul li {float:left; height:30px; margin:0; padding:0 30px 0 0;}
+.bannerZone .banner_box ul li a {display:inline-block;}
+
+/* footer */
+.foot_top{width:100%;border-bottom:1px solid #c9c9c9;}
+.foot_top .ft_pix{position:relative; width:1080px; height:60px; margin:0 auto;padding:0;}
+.foot_top .ft_pix ul.link{float:left; overflow:hidden; width:631px; border-right:1px solid #dbdbdb;}
+.foot_top .ft_pix ul.link li {float:left; margin:0 18px 0 0; padding:0 0 0 20px; line-height:60px; background:url("../client/images/img_ft_divide.gif") 0 25px no-repeat;}
+.foot_top .ft_pix ul.link li a {font-size:14px; font-family:'Nanum Gothic-bold';  color:#333;}
+.foot_top .ft_pix ul.link li.colorR a {color:#da4e3a;}
+.foot_top .ft_pix ul.link li.first-child {padding:0; background:none;}
+
+div#footer{margin-top:40px;}
+
+.foot_btm{width:100%;}
+.foot_btm .fb_pix {position:relative;width:1080px ;height:50px; margin:28px auto; padding:0; background:url("../client/images/ft_logo.png") no-repeat; }
+.foot_btm address {padding:0 0 0 275px; font-style:normal; font-size:14px;}
+.foot_btm .fb_pix p {padding:0 0 0 275px;}
+
+
+
+ 

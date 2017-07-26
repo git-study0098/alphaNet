@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,6 +70,47 @@ public class AdminNotice4Controller {
 		return "admin/board/notice/admin_notice4";
 	}
 
+	// 검색
+	@RequestMapping("/admin/notice/search4")
+	public String listNotice1(
+			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
+			Model model,
+			@RequestParam(value = "notice_code", defaultValue = "notice01") String notice_code,
+			HttpServletRequest request) throws SQLException, ServiceException {
+		String schType = request.getParameter("schType");
+		System.out.println(schType + "컨트");
+		String schText = request.getParameter("schText");
+		System.out.println(schText + "컨트");
+		PagingVO viewData2 = null;
+		int count = 0;
+		try {
+			count = adminNotice1Service.selectCount(notice_code, schType,
+					schText);
+			viewData2 = adminNotice1Service.searchNoticeList(pageNumber,
+					notice_code, schType, schText);
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+
+		if (viewData2.getNotice1List().isEmpty()) {
+			pageNumber--;
+			if (pageNumber <= 0)
+				pageNumber = 1;
+			try {
+				viewData2 = adminNotice1Service.searchNoticeList(pageNumber,
+						notice_code, schType, schText);
+			} catch (ServiceException e) {
+				e.printStackTrace();
+			}
+		}
+
+		model.addAttribute("viewData2", viewData2);
+		model.addAttribute("pageNumber", pageNumber);
+		model.addAttribute("count", count);
+
+		return "admin/board/notice/admin_notice4_search";
+	}
+
 	@RequestMapping(value = "/admin/boardInsert4", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
 	public String boardInsert(
 			HttpServletRequest request,
@@ -76,7 +118,7 @@ public class AdminNotice4Controller {
 			@RequestParam("f") MultipartFile multipartFile,
 			@RequestParam(value = "notice_code", defaultValue = "notice04") String notice) {
 
-		String upload = "C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
+		String upload = "C:/git/alphaNet/lastProject/src/main/webapp/resources/upload";
 		String url = "redirect:notice4";
 
 		String str = multipartFile.getOriginalFilename();
@@ -89,11 +131,8 @@ public class AdminNotice4Controller {
 			i++;
 		}
 
-		UUID uuid = UUID.randomUUID();
-
 		if (!multipartFile.isEmpty()) {
-			File file = new File(upload, fileName[0] + uuid.toString() + "."
-					+ fileName[1]);
+			File file = new File(upload, fileName[0] + "." + fileName[1]);
 
 			try {
 				multipartFile.transferTo(file);
@@ -106,10 +145,12 @@ public class AdminNotice4Controller {
 		}
 
 		Notice1VO vo = new Notice1VO();
-		vo.setAdmin_code(request.getParameter("adminCode"));
+		vo.setAdmin_code("ADM001");
+		vo.setManager_dep(request.getParameter(vo.getManager_dep()));
+//		vo.setAdmin_code(request.getParameter("adminCode"));
 		vo.setNotice_code(adminNotice1Service.registNotice(notice));
 		vo.setNotice_content(request.getParameter("noticeContent"));
-		vo.setAttach_file(fileName[0]+uuid.toString()+"."+fileName[1]);
+		vo.setAttach_file(fileName[0] + "." + fileName[1]);
 		vo.setRegist_date(new Date(12));
 		vo.setTitle(request.getParameter("title"));
 
@@ -130,7 +171,9 @@ public class AdminNotice4Controller {
 	public String boardUpdate(
 			@RequestParam(value = "notice_code") String noticeCode, Model model) {
 		String url = "admin/board/notice/notice_4_update";
-
+		
+		
+		
 		Notice1VO vo = null;
 		try {
 			vo = adminNotice1Service.selectNoticeCodeList(noticeCode);
@@ -142,10 +185,33 @@ public class AdminNotice4Controller {
 		return url;
 	}
 
-	@RequestMapping("/admin/boardUpdate4")
-	public String boardUpdate(HttpServletRequest request, Model model) {
+	@RequestMapping(value="/admin/boardUpdate4", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
+	public String boardUpdate(HttpServletRequest request, Model model,
+			@RequestParam("f") MultipartFile multipartFile) {
 		String url = "redirect:notice4";
-		System.out.println("성공");
+
+		String upload = "C:/git/alphaNet/lastProject/src/main/webapp/resources/upload";
+		String str = multipartFile.getOriginalFilename();
+
+		StringTokenizer tokens = new StringTokenizer(str, ".");
+		String[] fileName = { "1", "txt" };
+		int i = 0;
+		while (tokens.hasMoreTokens()) {
+			fileName[i] = tokens.nextToken();
+			i++;
+		}
+
+		if (!multipartFile.isEmpty()) {
+			File file = new File(upload, fileName[0] + "." + fileName[1]);
+			try {
+				multipartFile.transferTo(file);
+			} catch (IllegalStateException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		Notice1VO vo = new Notice1VO();
 		vo.setAdmin_code(request.getParameter("adminCode"));
 		vo.setNotice_code(request.getParameter("noticeCode"));
@@ -153,6 +219,7 @@ public class AdminNotice4Controller {
 		vo.setNotice_content(request.getParameter("noticeContent"));
 		vo.setRegist_date(new Date(1000000));
 		vo.setTitle(request.getParameter("title"));
+		vo.setAttach_file(fileName[0] + "." + fileName[1]);
 
 		model.addAttribute(vo);
 

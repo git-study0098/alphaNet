@@ -1,3 +1,4 @@
+<%@page import="com.last.common.vo.UseInfoVO"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
 <%@page import="com.last.common.vo.PagingVO"%>
 <%@page import="java.util.List"%>
@@ -9,7 +10,7 @@
 
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
-	PagingVO viewData = (PagingVO) request.getAttribute("viewData");
+	UseInfoVO viewData = (UseInfoVO) request.getAttribute("viewData");
 %>
 
 <link
@@ -33,6 +34,13 @@
 		var noticeForm = document.noticeDetail;
 		noticeForm.action = "/useInfoUpdateForm?notice_code=" + noticeCode;
 		noticeForm.submit();
+	}
+	//검색함수
+	function getNoticeList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var notice_code = document.getElementsByName('notice_code')[0].value;
+		location.href="<%=request.getContextPath()%>/admin/useInfo/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
 </script>
 
@@ -95,10 +103,10 @@
 								<option value="30">원서접수및서류제출</option>
 								<option value="40">기타</option>
 						</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
-								<option value="A" selected="selected">전체</option>
-								<option value="T">글제목</option>
-								<option value="C">내용</option>
-								<option value="D">담당부서</option>
+								<option value="all" selected="selected">전체</option>
+								<option value="title">글제목</option>
+								<option value="content">내용</option>
+								<option value="adm">담당부서</option>
 						</select> <input type="text" name="schText" style="width: 150px"
 							id="schText" title="검색어 입력"> <a href="#"
 							class="btn3_icon search" onclick="getNoticeList(1)"><span
@@ -135,7 +143,7 @@
 												<c:forEach items="${viewData.notice1List }" var="notice"
 													varStatus="number">
 													<tr>
-														<td>${number.count}</td>
+														<td>${viewData.firstRow+number.count-1}</td>
 														<!-- 글번호 -->
 														<td><a
 															href="<%=request.getContextPath() %>/admin/useInfoUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
@@ -177,7 +185,7 @@
 											 	} else {
 											 %>
 									<button type="button" class="btn5"
-										onclick="location.href='notice?page=<%=i%>'" title="<%=i%>페이지">
+										onclick="location.href='useInfo?page=<%=i%>'" title="<%=i%>페이지">
 										<span><%=i%></span>
 									</button> <%
 											 	}

@@ -12,6 +12,7 @@
 		select admin_code, manager_dep from admin where admin_code=#admin_code#
 	</select>
 	
+	
 
 
 </sqlMap>

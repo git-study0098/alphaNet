@@ -7,6 +7,9 @@
 	<decorator name="admin" page="WEB-INF/admin_decorator.jsp" >
 		<pattern>/admin/*</pattern>
 	</decorator>
+	<decorator name="client" page="WEB-INF/client_decorator.jsp" >
+		<pattern>/client/*</pattern>
+	</decorator>
 
 	
 	<excludes>
@@ -23,6 +26,7 @@
 		<pattern>/login/findPwdInput*</pattern>
 		<pattern>/member/jagukPayment*</pattern>
 		<pattern>/member/request5*</pattern>
+		<pattern>/map</pattern>
 
 	</excludes>
 <!-- 		<pattern>/admin/**/*</pattern> -->

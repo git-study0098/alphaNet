@@ -1,6 +1,9 @@
 ﻿<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
+<%@page import="java.io.File"%>
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
+
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -37,6 +40,14 @@
 		location.href="<%=request.getContextPath() %>/admin/useInfoDelete?notice_code=${vo.notice_code}";
 	}
 </script>
+<script type="text/javascript">
+	function file_change(file) {
+		var str = file.lastIndexOf("\\") + 1; //파일 마지막 "\" 루트의 길이 이후부터 글자를 잘라 파일명만 가져온다.
+		file = file.substring(str, file.length);
+		document.getElementsByName('attach_file')[0].value = file;
+	}
+</script>
+
 
 <article>
 	<div id="page-wrapper">
@@ -47,7 +58,7 @@
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" action="useInfoUpdate"
+			<form style="display: inline" action="useInfoUpdate" method="post"
 				enctype="multipart/form-data">
 				<input type="hidden" name="noticeCode" value="${vo.notice_code}">
 				<div>
@@ -72,7 +83,8 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-										value="${vo.admin_code}"
+										value="${admin}" readonly="readonly"
+<%-- 										value="${vo.admin_code}" --%>
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td>
@@ -83,12 +95,24 @@
 										name="registDate" value="${vo.regist_date}"
 										readonly="readonly" /> <%-- 										</c:otherwise> --%> <%-- 									</c:choose> --%>
 									</td>
+									<th scope="row">최종수정일</th>
+									<td><c:set var="now" value="<%=new java.util.Date()%>" />
+										<input name="enrollDate"
+										value="<fmt:formatDate value="${now}" pattern="yy/MM/dd" />" /></td>
 
 								</tr>
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5"><a href="#" class="btn3_icon download"><input
-											type="file"></a></td>
+									<td colspan="5"><a href="#" class="btn3_icon download">
+											<input type="file" name="f"
+											onchange="javascript:file_change(this.value);">
+									</a> <input type="text" name="attach_file" readonly></td>
+								</tr>
+								<tr>
+									<th scope="row">기존 첨부파일</th>
+									<td colspan="5">
+										<a href="#"><span style="width: 95%; margin-bottom:10px;">${vo.attach_file}</span></a>
+									</td>
 								</tr>
 								<tr>
 									<td colspan="6"><textarea name="noticeContent"

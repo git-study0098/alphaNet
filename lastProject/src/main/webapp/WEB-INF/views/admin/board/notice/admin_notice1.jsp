@@ -37,10 +37,12 @@
 		noticeForm.submit();
 	}
 	//검색함수
-	function searchList(schText){
-		action = ""
+	function getNoticeList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var notice_code = document.getElementsByName('notice_code')[0].value;
+		location.href="<%=request.getContextPath()%>/admin/notice/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
-
 </script>
 
 
@@ -106,13 +108,13 @@
 								<option value="40">출제</option>
 								<option value="50">서비스개선</option>
 						</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
-								<option value="A" selected="selected">전체</option>
-								<option value="T">글제목</option>
-								<option value="C">내용</option>
-								<option value="D">담당부서</option>
+								<option value="all" selected="selected">전체</option>
+								<option value="title">글제목</option>
+								<option value="content">내용</option>
+								<option value="adm">담당부서</option>
 						</select> <input type="text" name="schText" style="width: 150px"
 							id="schText" title="검색어 입력"> <a href="#"
-							class="btn3_icon search" onclick="searchList"><span
+							class="btn3_icon search" onclick="getNoticeList();"><span
 								class="blind">검색</span></a>
 						</span>
 					</div>
@@ -147,7 +149,7 @@
 												<c:forEach items="${viewData.notice1List }" var="notice"
 													varStatus="number">
 													<tr>
-														<td>${number.count}</td>
+														<td>${viewData.firstRow+number.count-1}</td>
 														<!-- 글번호 -->
 														<td><a
 															href="<%=request.getContextPath() %>/admin/boardUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
@@ -183,18 +185,18 @@
 								</button>
 
 								<span class="page"> <%
- 	for (int i = 1; i < viewData.getPageTotalCount() + 1; i++) {
- 		if (pageNumber == i) {
- %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
- 	} else {
- %>
+									 	for (int i = 1; i < viewData.getPageTotalCount() + 1; i++) {
+									 		if (pageNumber == i) {
+									 %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
+									 	} else {
+									 %>
 									<button type="button" class="btn5"
 										onclick="location.href='notice?page=<%=i%>'" title="<%=i%>페이지">
 										<span><%=i%></span>
 									</button> <%
- 	}
- 	}
- %>
+									 	}
+									 	}
+									 %>
 
 								</span>
 								<button type="button" class="btn3_icon3 btn_next_page"

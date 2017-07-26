@@ -36,7 +36,7 @@
 					
 				</div>
 
-				<span class="logout-spn"> <a href="#" style="color: #fff;">LOGOUT</a>
+				<span class="logout-spn"> <a href="<%=request.getContextPath() %>/logout" style="color: #fff;">LOGOUT</a>
 
 				</span>
 			</div>
@@ -56,12 +56,12 @@
 					<li class="active-link"><a href="<%=request.getContextPath() %>/admin/cbt"> <i
 							class="fa fa-edit fa-2x"></i>CBT관리
 					</a></li>
-					<li><a href="<%=request.getContextPath() %>"><i class="fa fa-users fa-2x"></i>회원관리
+					<li><a href="<%=request.getContextPath() %>/admin/mem"><i class="fa fa-users fa-2x"></i>회원관리
 					</a></li>
 <!-- 					<li><a href="admin/mem/ad_stare_mem.jsp"><i -->
 <!-- 							class="fa fa-bar-chart-o fa-2x"></i> 응시시험회원관리</a></li> -->
 					</ul>
-					<a class="navbar-brand" href="<%=request.getContextPath()%>"/ad_main.jsp> <img
+					<a class="navbar-brand" href="<%=request.getContextPath()%>/admin/login/main2"> <img
 						src="<%=request.getContextPath() %>/resources/admin2/img/logo.png" style="width:200px;height:200px;"/>
 					</a>
 			</div>

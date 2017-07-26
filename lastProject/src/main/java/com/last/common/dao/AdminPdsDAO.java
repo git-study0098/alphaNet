@@ -33,7 +33,7 @@ public class AdminPdsDAO {
 			map.put("notice_code", notice_code);
 			map.put("schType", schType);
 			map.put("schText", schText);
-			int result = (Integer) client.queryForObject("selectPdsCount",map);
+			int result = (Integer) client.queryForObject("searchPdsCount",map);
 			return result;
 		}
 		
@@ -99,7 +99,7 @@ public class AdminPdsDAO {
 		 */
 		public int insertNotice1(Notice1VO notice1VO) throws SQLException{
 			int result = (Integer) client.update("insertPds",notice1VO);
-			System.out.println("여기까지 들어오나 인서트");
+			System.out.println("여기까지 들어오나 자료실 인서트");
 			return result;
 		}
 		

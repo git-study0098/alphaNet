@@ -78,4 +78,34 @@ public class PagingVO {
 	public boolean isEmpty() {
 		return notice1TotalCount == 0;
 	}
+
+	public void setNotice1TotalCount(int notice1TotalCount) {
+		this.notice1TotalCount = notice1TotalCount;
+	}
+
+	public void setNotice1List(List<Notice1VO> notice1List) {
+		this.notice1List = notice1List;
+	}
+
+	public void setNotice1CountPerPage(int notice1CountPerPage) {
+		this.notice1CountPerPage = notice1CountPerPage;
+	}
+
+	public void setCurrentPageNumber(int currentPageNumber) {
+		this.currentPageNumber = currentPageNumber;
+	}
+
+	public void setPageTotalCount(int pageTotalCount) {
+		this.pageTotalCount = pageTotalCount;
+	}
+
+	public void setFirstRow(int firstRow) {
+		this.firstRow = firstRow;
+	}
+
+	public void setEndRow(int endRow) {
+		this.endRow = endRow;
+	}
+	
+	
 }

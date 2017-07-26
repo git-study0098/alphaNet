@@ -199,6 +199,10 @@
 // 	$("#sel_cities option").attr("selected","selected");
 // })
 
+function go_map(){
+	document.mapForm.action="<%=request.getContextPath()%>/map";
+	document.mapForm.submit();
+}
 
 function checkDetail(value2){
 	value3 = value2;
@@ -355,7 +359,8 @@ function go_wonseo(){
 
 					<div id="addInfoArea"></div>
 				</form>
-
+				
+				<form name="mapForm">
 				<div class="place_result" id="viewList">
 					<div class="tbl_type4">
 						<table style="table-layout: fixed;"
@@ -388,11 +393,12 @@ function go_wonseo(){
 								</tr>
 							</thead>
 							<tbody>
-
+				
 								<!-- 반복문시작 -->
 								<c:choose>
 								<c:when test="${!empty examPlace}">
 								<c:forEach items="${examPlace}" var="examPlace" varStatus="current">
+									<input type="hidden" name="place_nm" value="${examPlace.place_nm}">
 								<tr>
 									<td>${examPlace.place_p}</td>
 									<td>${examPlace.numg_stare_date}</td>
@@ -402,11 +408,10 @@ function go_wonseo(){
 										<p class="sch_adr" style="display:;">
 											<span class="name" title="${exam.place_add}">${examPlace.place_nm}</span>
 											<button title="새 창" type="button" class="btn3_type3"
-												onclick="viewExemArea('4516')">
+												onclick="go_map()">
 												<span>약도보기</span>
 											</button>
-										</p>
-
+											</p>
 									</td>
 									<td>${examPlace.numg_app_receipt_end}</td>
 									<td>${examPlace.place_pp}</td>
@@ -428,7 +433,7 @@ function go_wonseo(){
 					</div>
 
 				</div>
-
+				</form>
 				<div id="tblGoNext" class="btn_center">
 
 					<button name="btnBack" id="btnBack" type="button"

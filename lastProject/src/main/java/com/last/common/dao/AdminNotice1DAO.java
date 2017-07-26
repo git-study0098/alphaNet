@@ -25,14 +25,7 @@ public class AdminNotice1DAO {
 			System.out.println("셀렉트 게시판 코드 잘라서 가져오는거");
 			return selectNoticeCode;
 		}
-		public int selectCount(String notice_code, String schType, String schText) throws SQLException{
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("notice_code", notice_code);
-			map.put("schType", schType);
-			map.put("schText", schText);
-			int result = (Integer) client.queryForObject("selectCount",map);
-			return result;
-		}
+		
 		
 		/**
 		 * 해당 게시판 분류코드 별 리스트
@@ -106,9 +99,28 @@ public class AdminNotice1DAO {
 			map.put("notice_code", notice_code);
 			map.put("schType", schType);
 			map.put("schText", schText);
+			System.out.println(schType);
+			System.out.println(schText);
 			List<Notice1VO> searchNoticeList = (ArrayList<Notice1VO>)client.queryForList("searchNoticeList",map,firstRow-1 , endRow-firstRow+1);
 			return searchNoticeList;
 		}
-		
+		/**
+		 * 검색기능
+		 * @param notice_code
+		 * @param schType
+		 * @param schText
+		 * @return
+		 * @throws SQLException
+		 */
+		public int selectCount(String notice_code, String schType, String schText) throws SQLException{
+			HashMap<String, String> map = new HashMap<String, String>();
+			map.put("notice_code", notice_code);
+			map.put("schType", schType);
+			map.put("schText", schText);
+			int result = (Integer) client.queryForObject("selectCount",map);
+			System.out.println("검색 몇개 됨? "+result);
+			return result;
+			
+		}
 		
 }
