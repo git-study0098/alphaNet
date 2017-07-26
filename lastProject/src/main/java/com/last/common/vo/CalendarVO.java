@@ -7,8 +7,15 @@ public class CalendarVO {
 	private String numg_app_receipt_begin; //원서접수일
 	private String numg_app_receipt_end; //원서접수종료일
 	private String numg_pass_p_anno_date; //합격자발표일
+	private String numg_code;
 	private String em_nm; //시험명
 	private String numg_color;
+	public String getNumg_code() {
+		return numg_code;
+	}
+	public void setNumg_code(String numg_code) {
+		this.numg_code = numg_code;
+	}
 	public String getNumg_color() {
 		return numg_color;
 	}

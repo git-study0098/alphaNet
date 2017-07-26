@@ -70,5 +70,12 @@ public class AdminQualifiDAO {
 		return result;
 	}
 	
+	public QualifiCertiVO checkQualifi(QualifiCertiVO vo) throws SQLException{
+		
+		QualifiCertiVO vo1 = (QualifiCertiVO) client.queryForObject("checkQualifi",vo);
+		
+		return vo1; 
+	}
+	
 	
 }

@@ -4,50 +4,78 @@
 <html>
 <head>
 <title>메일인증</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 
-<%
-	String ranNum = (String)request.getAttribute("ranNum");
-%>
 
 </head>
 
+
+<style>
+
+
+body{
+    background: url(http://mymaplist.com/img/parallax/back.png);
+	background-color: #444;
+    background: url(http://mymaplist.com/img/parallax/pinlayer2.png),url(http://mymaplist.com/img/parallax/pinlayer1.png),url(http://mymaplist.com/img/parallax/back.png);    
+}
+
+.vertical-offset-100{
+    padding-top:100px;
+}
+
+</style>
+
+
+
+
 <script language="Javascript">
 
+	email1 ="";
+	var ranNum ="";
 
 function authMail(){
-	document.form.action="mailSend"	;
-	document.form.submit();	
+	var email2 = document.getElementById("email").value;
+	alert(email2);
+ 	if(email2 == ""){
+ 		alert("이메일을 입력해주셔야합니다.")
+ 	}else{
+		$.ajax({
+			url:"<%=request.getContextPath()%>/client/mailSend",
+			type:"post",
+			data: "email=" + email2,
+			success:function(res){
+				console.log(res.email);
+				console.log(res.ranNum);
+				email1 = res.email;
+				ranNum = res.ranNum;
+				alert(email1);
+				alert(ranNum);
+			}
+		});
+
+ 	}
 }
-	
-	
-	//이메일 체크부분 
-	function checkemailaddy() {
-		if (form.email_select.value == '1') {
-			form.email2.readonly = false;
-			form.email2.value = '';
-			form.email2.focus();
-		} else {
-			form.email2.readonly = true;
-			form.email2.value = form.email_select.value;
-		}
-	}
+
 function check(form){
 	
-	alert(<%=ranNum%>);
+	alert(ranNum);
 	if(!form.authNum.value){
 		alert("인증번호를 입력하세요!!!");
 		return false;
 	}
 	
-	if(form.authNum.value != <%=ranNum%>){
+	if(form.authNum.value != ranNum){
 		alert("틀린 인증번호 입니다. 확인하시고 다시 입력해주세요!!!");
 		form.authNum.value="";
 		return false;
 	}
 	
-	if(form.authNum.value == <%=ranNum%>){
+	if(form.authNum.value == ranNum){
 		alert("인증완료되었습니다.");
-		opener.location.href="client"
+		opener.location.href="<%=request.getContextPath()%>/client/client?email="+email1
 		self.close();
 		
 	}
@@ -55,25 +83,33 @@ function check(form){
 
 	//이메일인증
 </script>
+<body>
+ <div class="row vertical-offset-100">
+    	<div class="col-md-4 col-md-offset-4">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title" style="text-align:center">이메일인증</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" name="form" method="post">
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="E-mail" name="email" id="email" type="text">
+			    		</div>
+			    		<input class="btn btn-lg btn-success btn-block" type="button" value="인증하기" onclick="javascript:authMail()"/>
+			    		<br/>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="인증번호를 입력해주세요" name="authNum" id="authNum" type="text"  value="">
+			    		</div>
+			    		<input class="btn btn-lg btn-success btn-block" type="button" value="인증번호 확인" onclick="check(this.form);">
+			    	</fieldset>
+			      	</form>
+			    </div>
+			</div>
+		</div>
+	</div>
+
+</body>
 
 
-<form name="form" method="post">
-	<input name="email1" type="text" class="box" id="email1" size="15">
-	@ <input name="email2" type="text" class="box" id="email2" size="20">
-	<select name="email_select" class="box" id="email_select"
-		onChange="checkemailaddy();">
-		<option value="" selected>선택하세요</option>
-		<option value="naver.com">naver.com</option>
-		<option value="hotmail.com">hotmail.com</option>
-		<option value="hanmail.com">hanmail.com</option>
-		<option value="yahoo.co.kr">yahoo.co.kr</option>
-		<option value="1">직접입력</option>
-	</select> <a href="#" onclick="authMail()">인증하기 </a>
-	<!-- 	 	<button type="button" value="메일인증하기" onclick="sendMail()">인증하기</button>  -->
-	<br /> <br /> <input type="text" name="authNum" id="authNum"
-		size="35" />
-	<!-- <input type="button" value="인증"  onclick="check()"/> -->
-	<button type="button" onclick="check(this.form);">인증</button>
-
-</form>
 </html>

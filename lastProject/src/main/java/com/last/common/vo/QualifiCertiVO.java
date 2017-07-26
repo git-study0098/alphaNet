@@ -14,7 +14,29 @@ public class QualifiCertiVO {
 	private String numg_code;	//회차코드
 	private String exkind_code;	//종목코드
 	private String[] certi_code; // 자격증 종류 배열
+	private String mem_nm;
+	private String reg_num1;
+	private String qualifi_certi_date;
 	
+	
+	public String getQualifi_certi_date() {
+		return qualifi_certi_date;
+	}
+	public void setQualifi_certi_date(String qualifi_certi_date) {
+		this.qualifi_certi_date = qualifi_certi_date;
+	}
+	public String getMem_nm() {
+		return mem_nm;
+	}
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
+	public String getReg_num1() {
+		return reg_num1;
+	}
+	public void setReg_num1(String reg_num1) {
+		this.reg_num1 = reg_num1;
+	}
 	public String[] getCerti_code() {
 		return certi_code;
 	}

@@ -101,4 +101,11 @@ public class AdminQualifiService {
 		return result;
 	}
 	
+	public QualifiCertiVO checkQualifi(QualifiCertiVO vo)throws SQLException{
+		
+		QualifiCertiVO vo1 = adminQualifiDao.checkQualifi(vo);
+		
+		return vo1;
+	}
+	
 }

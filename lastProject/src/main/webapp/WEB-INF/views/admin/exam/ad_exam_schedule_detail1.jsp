@@ -1,6 +1,8 @@
+<%@page import="com.last.common.vo.CalendarVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- /. NAV SIDE  -->
 <style>
 .dropbtn {
@@ -45,18 +47,9 @@
 	background-color: #337197;
 }
 </style>
-<!--  이거 어딘가에는 써야될거 같은데 모르겠어 -->
-<!-- <a href="ad_exam_detail1.jsp"> -->
-<!-- 				<button type="button" class="btn btn-primary" -->
-<!-- 					style="width: 300px; margin: 20px;">시험정보조회</button> -->
-<!-- 			</a> <a href="ad_exam_detail2.jsp"> -->
-<!-- 				<button type="button" class="btn btn-primary" -->
-<!-- 					style="width: 300px; margin: 20px;">필기과목조회</button> -->
-<!-- 			</a> <a href="ad_exam_detail3.jsp"> -->
-<!-- 				<button type="button" class="btn btn-primary" -->
-<!-- 					style="width: 300px; margin: 20px;">실기과목조회</button> -->
-<!-- 			</a> -->
-
+<% CalendarVO cvo = (CalendarVO)request.getAttribute("vo");
+	String[] a = cvo.getEm_nm().split(" ");
+%>
 <div id="page-wrapper">
 	<div id="page-inner">
 		<div class="row">
@@ -68,7 +61,8 @@
 		<hr />
 		<!-- 내용 -->
 		<div class="container" style="text: center;">
-			<form class="form-horizontal" action="schduleInsert">
+			<form class="form-horizontal" action="updateSch">
+			<input type="hidden" name="numg_code" value="${numg_code}">
 				<div class="form-inline"
 					style="width: 100%; padding: 0px; margin: 0px;">
 					<div class="form-group"
@@ -99,18 +93,18 @@
 						<option value="P">실기시험</option>
 					</select>
 				</div>
-
+		<c:set value="${vo}" var="vo"/>
 				<div class="form-group">
 					<label class="col-md-2 control-label"> 시험명</label>
 					<div class="col-md-5">
 						<input class="form-control" type="text"
-							placeholder="ex)2017년 정보처리기사1차필기시험" name="em_nm">
+							placeholder="ex)2017년 정보처리기사1차필기시험" name="em_nm" value="${vo.em_nm}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-2 control-label">시험 종목명</label>
 					<div class="col-md-5">
-						<input class="form-control" type="text" placeholder="ex)정보처리기사" name="exkind_nm">
+						<input class="form-control" type="text" placeholder="ex)정보처리기사" name="exkind_nm" value="<%=a[1]%>">
 					</div>
 				</div>
 				<br>
@@ -118,28 +112,28 @@
 					<label class="col-md-2 control-label">응시일</label>
 					<div class="col-md-5">
 						<input class="form-control" type="date"
-							placeholder="17/01/01형식으로 입력하세요" name="numg_stare_date">
+							placeholder="17/01/01형식으로 입력하세요" name="numg_stare_date" value="${vo.numg_stare_date}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-2 control-label">합격자 발표일</label>
 					<div class="col-md-5">
 						<input class="form-control" type="date"
-							placeholder="17/01/01형식으로 입력하세요" name="numg_pass_p_anno_date">
+							placeholder="17/01/01형식으로 입력하세요" name="numg_pass_p_anno_date" value="${vo.numg_pass_p_anno_date}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-2 control-label">원서접수 시작일</label>
 					<div class="col-md-5">
 						<input class="form-control" type="date"
-							placeholder="17/01/01형식으로 입력하세요" name="numg_app_receipt_begin">
+							placeholder="17/01/01형식으로 입력하세요" name="numg_app_receipt_begin" value="${vo.numg_app_receipt_begin}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label class="col-md-2 control-label">원서접수 종료일</label>
 					<div class="col-md-5">
 						<input class="form-control" type="date"
-							placeholder="17/01/01형식으로 입력하세요" name="numg_app_receipt_end">
+							placeholder="17/01/01형식으로 입력하세요" name="numg_app_receipt_end" value="${vo.numg_app_receipt_end}">
 					</div>
 				</div>
 				<input type="submit" class="btn btn-primary"

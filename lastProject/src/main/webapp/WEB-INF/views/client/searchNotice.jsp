@@ -9,14 +9,17 @@
 <link rel="stylesheet" type="text/css"
 	href="<%=request.getContextPath()%>/resources/client/base2017.css" />
 
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.11.1/jquery-ui.min.js"></script> 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
 	PagingVO viewData = (PagingVO) request.getAttribute("viewData");
+	PagingVO viewData2 = (PagingVO)request.getAttribute("viewData2");
+	Integer count = (Integer)request.getAttribute("count");
+
 	String email =(String)session.getAttribute("email");
 %>
 
@@ -56,7 +59,6 @@
 
 
 
-
 <div id="container">
 	<div class="Top">
 		<h1 class="logo">
@@ -69,7 +71,7 @@
 			</a>
 		</h1>
 		<div class="Quick_M">
-			<ul class="Quick_Menu" style="margin-left: 250px;">
+			<ul class="Quick_Menu">
 				<li class="icon02"><a
 					href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a></li>
 				<%if(email ==null||email.equals("")){
@@ -119,17 +121,17 @@
 						style="float: left; margin-right: 5px; inline-height: 28px;">등록기간</label>
 						<input type="text" name="startDate" id="startDate" date required
 						maxlength="" value="" style="width: 70px;"> 
-					</span> ~ <span style="margin-right: 5px;"> 
-					<input type="text" name="endDate" date required maxlength="" value="" id="endDate" style="width: 70px;"/>
-					</span> <select name="schType" id ="schType" class="w100">
-					
+					</span> ~ <span style="margin-right: 5px;"> <input type="text"
+						name="endDate" date required maxlength="" value=""
+						style="width: 70px;" id="endDate"> 
+					</span> <select name="schType" class="w100" id="schType">
 						<option value="all" selected="selected">전체</option>
 						<option value="title">제목</option>
 						<option value="content">내용</option>
 					</select>
 				</div>
-				<input type="text" name="schText" id="schText" maxlength="" value=""
-					style="width: 260px; margin-left: 5px;">
+				<input type="text" name="schText" maxlength="" value=""
+					style="width: 260px; margin-left: 5px;" id="schText">
 				<button
 					style="text-align: center; background-color: #ffffff; color: black; height: 26px; width: 40px; margin-right: 10px;" onclick="getadNoticeList()">검색</button>
 			</div>
@@ -160,14 +162,14 @@
 								<!-- 게시판 테이블 내용 -->
 								<c:choose>
 
-									<c:when test="${viewData.notice1CountPerPage > 0 }">
-										<c:forEach items="${viewData.notice1List }" var="notice"
+									<c:when test="${viewData2.notice1CountPerPage > 0 }">
+										<c:forEach items="${viewData2.notice1List }" var="notice"
 											varStatus="number">
 											<tr>
-												<td>${viewData.firstRow+number.count-1}</td>
+												<td>${viewData2.firstRow+number.count-1}</td>
 												<!-- 글번호 -->
 												<td><a
-													href="<%=request.getContextPath() %>/client/adNoticeDetail?notice_code=${notice.notice_code }">${notice.title}</a></td>
+													href="<%=request.getContextPath() %>/admin/boardUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
 												<c:if test="${notice.admin_code eq 'ADM001'}">
 													<td>정보화지원국사업1팀</td>
 												</c:if>
@@ -212,7 +214,7 @@
 						</button>
 
 						<span class="page"> <%
- 	for (int i = 1; i < viewData.getPageTotalCount() + 1; i++) {
+ 	for (int i = 1; i < viewData2.getPageTotalCount() + 1; i++) {
  		if (pageNumber == i) {
  %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
  	} else {

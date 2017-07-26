@@ -41,7 +41,7 @@
 		var schType = document.getElementById('schType').value;
 		var schText = document.getElementById('schText').value;
 		var notice_code = document.getElementsByName('notice_code')[0].value;
-		location.href="<%=request.getContextPath()%>/admin/notice/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
+		location.href="<%=request.getContextPath()%>/admin/client/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
 </script>
 

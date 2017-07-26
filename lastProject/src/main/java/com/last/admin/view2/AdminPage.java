@@ -56,10 +56,6 @@ public class AdminPage {
 		return "admin/exam/ad_exam";
 	}
 
-	@RequestMapping("/admin/exam_list")
-	public String examlist() {
-		return "admin/exam/ad_exam_list";
-	}
 
 	@RequestMapping("/admin/examsch")
 	public String examsch(HttpServletRequest request) {
