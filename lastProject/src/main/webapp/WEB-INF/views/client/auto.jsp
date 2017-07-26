@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/client/customer.css" />
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/client/base2017.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/client/customer.css" />
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/client/base2017.css" />
 	
+	<%
+	String email = (String) session.getAttribute("email");
+	%>
 	
 	
 <script>
 	function autoMail(){
-		window.open("mail" ,"pop","width=50px","height=50px");
+		var url  ="<%=request.getContextPath()%>/client/mail";
+	var pop=window.open(url ,"pop2","width=50px ,height=50px");
 	}
 
 </script>
@@ -16,25 +20,20 @@
 			<div class="Top">
 				<h1 class="logo">
 					<a href="main" class="hrd">
-						<img src="resources/images/logo.jpg" alt="알파넷" width="130px" height="100px"/>
+						<img src="<%=request.getContextPath()%>/resources/client/images/logo.jpg" alt="알파넷" width="130px" height="100px"/>
 					</a>
 					<a href="main" class="voc">
-						<img src="resources/images/voc_logo.png" alt="알파넷 고객의 소리" style="margin-left: 80px;" />
+						<img src="<%=request.getContextPath()%>/resources/client/images/voc_logo.png" alt="알파넷 고객의 소리" style="margin-left: 80px;" />
 					</a>
 				</h1>
 				<div class="Quick_M">
 					<ul class="Quick_Menu">
-						<li class="icon01">
-							<a href="#">FAQ</a>
-						</li>
+						
 						<li class="icon02">
 							<a href="<%=request.getContextPath()%>/client/clientSound">고객의소리</a>
 						</li>
-						<li class="icon03">
-							<a href="#">개선사항</a>
-						</li>
 						<li class="icon04">
-							<a href="#">마이페이지</a>
+							<a href="<%=request.getContextPath() %>/client/myPage?email=<%=email%>">마이페이지</a>
 						</li>
 					</ul>
 				</div>
@@ -111,11 +110,11 @@
 																		<td colspan="3" height="5"></td>
 																	</tr>
 																	<tr>
-																		<td><img src="<%=request.getContextPath()%>/client/images/txt_ipin.gif" alt=""></td>
+																		<td><img src="<%=request.getContextPath()%>/resources/client/images/txt_ipin.gif" alt=""></td>
 																		<td width="50"></td>
 																		<td>
 																			<a href ="#" onclick="autoMail();" >
-																				<img src="<%=request.getContextPath()%>/client/images/btn_ipin.gif" alt="공공 아이핀(I-PIN) 인증">
+																				<img src="<%=request.getContextPath()%>/resources/client/images/btn_ipin.gif" alt="공공 아이핀(I-PIN) 인증">
 																			</a>
 																		</td>
 																	</tr>
@@ -128,11 +127,11 @@
 																		<td colspan="3" height="5"></td>
 																	</tr>
 																	<tr>
-																		<td><img src="<%=request.getContextPath()%>/client/images/txt_cpc.gif" alt=""></td>
+																		<td><img src="<%=request.getContextPath()%>/resources/client/images/txt_cpc.gif" alt=""></td>
 																		<td width="50"></td>
 																		<td>
 																			<a href="client">
-																				<img src="<%=request.getContextPath()%>/client/images/btn_cpc.gif" alt="휴대전화 인증">
+																				<img src="<%=request.getContextPath()%>/resources/client/images/btn_cpc.gif" alt="휴대전화 인증">
 																			</a>
 																		</td>
 																	</tr>

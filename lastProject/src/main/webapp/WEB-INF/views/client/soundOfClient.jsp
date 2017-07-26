@@ -51,9 +51,12 @@
 	  });
 	});
  
-	function search() {
-		document.frm.action ="searchSound";
-		document.frm.submit();
+	function getClientList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var startDate = document.getElementById('startDate').value;
+		var endDate = document.getElementById('endDate').value;
+		location.href="<%=request.getContextPath()%>/client/notice/search?schType="+schType+"&schText="+schText+"&startDate="+startDate+"&endDate="+endDate;
 	}
  </script>
 
@@ -70,9 +73,7 @@
 		</h1>
 		<div class="Quick_M">
 			<ul class="Quick_Menu">
-				<li class="icon01"><a href="#">FAQ</a></li>
 				<li class="icon02"><a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a></li>
-				<li class="icon03"><a href="#">개선사항</a></li>
 				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a></li>
 			</ul>
 		</div>
@@ -99,7 +100,7 @@
 		</div>
 
 		<div class="content">
-			<h3 class="nonBg">공지사항</h3>
+			<h3 class="nonBg">고객의소리</h3>
 
 			<!-- 키워드 검색 -->
 			<div class="contentSearchForm">
@@ -112,26 +113,18 @@
 						 ~ 
 						 <span style="margin-right: 5px;"> 
 						<input type="text" id="endDate" name="end_Date" date required maxlength="" value="" style="width: 70px;"></span> 
-					<select name="searchGb2" id="searchGb2" style="margin-left: 20px;">
+					<select name="searchGb2" id="schType" style="margin-left: 20px;">
 					
 					
-						<option value="" title="유형선택">유형선택</option>
-						<option value="1" title="평생능력개발">평생능력개발</option>
-						<option value="2" title="자격시험">자격시험</option>
-						<option value="3" title="직업능력표준">직업능력표준</option>
-						<option value="4" title="외국인고용지원">외국인고용지원</option>
-						<option value="5" title="해외취업지원">해외취업지원</option>
-						<option value="6" title="국제교류협력">국제교류협력</option>
-						<option value="7" title="숙련기술장려">숙련기술장려</option>
-						<option value="8" title="기능경기">기능경기</option>
-						<option value="9" title="경영지원">경영지원</option>
-						<option value="10" title="기타(일반)">기타(일반)</option>
-						<option value="11" title="기타">기타</option>
+						<option value="" title="">선택</option>
+						<option value="title" title="제목">제목</option>
+						<option value="kind" title="분류명">분류명</option>
+						<option value="content" title="내용">내용</option>
+						
 					</select>
 				</div>
-				<input type="text" name="searchWord" maxlength="" value=""
-					style="width: 260px; margin-left: 5px;"> <a
-					class="searchbtn" href="javascript:search();">검색</a>
+				<input type="text" name="searchWord" maxlength="" value="" style="width: 260px; margin-left: 5px;" id="schText"> 
+					<a class="searchbtn" href="javascript:getClientList();">검색</a>
 			</div>
 			<div id="TOT_CNT_DIV"></div>
 			<table class="list2">
@@ -206,7 +199,7 @@
 								<c:if test="${clientAll.client_consulting_kind eq '11'}">
 								<td>기타</td>
 								</c:if>
-								<td scope="col">${clientAll.client_title}</td>
+								<td scope="col"><a href="<%=request.getContextPath() %>/client/clientDetail?client_code=${clientAll.client_code }" >${clientAll.client_title}</a></td>
 								<c:set var="name" value="${clientAll.client_nm}"></c:set>
 								<td scope="col">${fn:substring(name,0,1)}**</td>
 								<td scope="col"><fmt:formatDate value="${clientAll.client_enRoll_date}"/></td>

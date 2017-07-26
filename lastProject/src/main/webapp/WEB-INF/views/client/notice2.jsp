@@ -15,13 +15,11 @@
 				<div class="Quick_M">
 					<ul class="Quick_Menu">
 						<li class="icon01">
-							<a href="#">FAQ</a>
 						</li>
 						<li class="icon02">
 							<a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a>
 						</li>
 						<li class="icon03">
-							<a href="#">개선사항</a>
 						</li>
 						<li class="icon04">
 							<a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a>
@@ -36,13 +34,13 @@
 	<h2 class="oneline">알려드립니다</h2>	
 	<ul>
 		<li>
-			<a href="<%=request.getContextPath() %>/resources/client/notice2">민원처리절차</a>
+			<a href="<%=request.getContextPath() %>/client/notice2">민원처리절차</a>
 		</li>
 		<li>
-			<a href="<%=request.getContextPath() %>/resources/client/notice">공지사항</a>
+			<a href="<%=request.getContextPath() %>/client/notice">공지사항</a>
 		</li>
 		<li>
-			<a href="<%=request.getContextPath() %>/resources/client/notice3">사이트맵</a>
+			<a href="<%=request.getContextPath() %>/client/notice3">사이트맵</a>
 		</li>
 	</ul>
 	<div class="subtelBox">
