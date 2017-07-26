@@ -50,13 +50,6 @@
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/smem"> <i class="fa fa-bar-chart-o fa-5x"></i>
-						<h4>응시시험회원관리</h4>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="div-square">
 					<a href="<%=request.getContextPath() %>/admin/examin1"> <i class="fa fa-qrcode fa-5x"></i>
 						<h4>시험종목추가</h4>
 					</a>

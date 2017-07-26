@@ -31,5 +31,9 @@ public class Autocontroller {
 		return "client/question3";
 	}
 	
+	@RequestMapping("/client/detail")
+	public String detail(){
+		return "client/detail";
+	}
 
 }

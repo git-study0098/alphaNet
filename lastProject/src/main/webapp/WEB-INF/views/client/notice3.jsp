@@ -15,13 +15,11 @@
 				<div class="Quick_M">
 					<ul class="Quick_Menu">
 						<li class="icon01">
-							<a href="#">FAQ</a>
 						</li>
 						<li class="icon02">
 							<a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a>
 						</li>
 						<li class="icon03">
-							<a href="#">개선사항</a>
 						</li>
 						<li class="icon04">
 							<a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a>

@@ -24,22 +24,15 @@
 
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/memlist"> <i class="fa fa-users fa-5x"></i>
+					<a href="<%=request.getContextPath() %>/admin/allmem"> <i class="fa fa-users fa-5x"></i>
 						<h4>회원 정보 조회</h4>
 					</a>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/smem"> <i class="fa fa-clipboard fa-5x"></i>
-						<h4>회원 서류 승인</h4>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="div-square">
 					<a href="<%=request.getContextPath() %>/admin/smemde"> <i class="fa fa-bar-chart-o fa-5x"></i>
-						<h4>시험응시 회원관리</h4>
+						<h4>서류제출 승인</h4>
 					</a>
 				</div>
 			</div>

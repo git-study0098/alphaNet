@@ -62,6 +62,7 @@
 				<div id="bd01_01">
 					<input type="hidden" name = "mem_code" value="${mem_code}"/>
 					<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
+					<input type="hidden" name="choice" value="${qualifi.qualifi_certi_code}">
 <%-- 					<input type="hidden" name = "choice" value="${choice}"/> --%>
 					
 					<div class="tbl_type1">
@@ -86,9 +87,9 @@
 								</tr>
 							</thead>
 								<tbody>
+										
 									<c:forEach items="${viewData2}" var="qualifi" varStatus="numbering">
 										<tr> 
-										<input type="hidden" name="choice" value="${qualifi.qualifi_certi_code}">
 											<td>${qualifi.qualifi_certi_code }</td>
 											<td>${qualifi.exkind_nm }</td>
 											<td>${qualifi.written_pass_date }</td>

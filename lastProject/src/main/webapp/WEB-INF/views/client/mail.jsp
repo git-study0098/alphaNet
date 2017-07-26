@@ -7,6 +7,8 @@
 
 <%
 	String ranNum = (String)request.getAttribute("ranNum");
+	String email = (String)request.getAttribute("email");
+	
 %>
 
 </head>
@@ -15,7 +17,7 @@
 
 
 function authMail(){
-	document.form.action="mailSend"	;
+	document.form.action="<%=request.getContextPath()%>/client/mailSend";
 	document.form.submit();	
 }
 	
@@ -47,7 +49,8 @@ function check(form){
 	
 	if(form.authNum.value == <%=ranNum%>){
 		alert("인증완료되었습니다.");
-		opener.location.href="client"
+		<% session.setAttribute("email", email); %>	
+		opener.location.href="<%=request.getContextPath()%>/client/client"
 		self.close();
 		
 	}

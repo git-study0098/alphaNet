@@ -26,7 +26,6 @@
 </style>
 
 <script>
-
 	$(document).ready(function(){
 		$('.btn_login').click(function(){
 			if($('#mem_id').val() == ""){
@@ -44,7 +43,6 @@
 		if(finId!=null && finId!=""){
 			$('#mem_id').val(finId);
 		}
-		
 	})
 </script>
 

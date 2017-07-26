@@ -7,7 +7,9 @@
 	href="<%=request.getContextPath()%>/resources/client/base2017.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-
+<%
+	String email = (String) session.getAttribute("email");
+%>
 
 
 
@@ -101,7 +103,7 @@
 				<li class="icon01"><a href="#">FAQ</a></li>
 				<li class="icon02"><a href="<%=request.getContextPath() %>/client/clientSound">고객의소리</a></li>
 				<li class="icon03"><a href="#">개선사항</a></li>
-				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage">마이페이지</a></li>
+				<li class="icon04"><a href="<%=request.getContextPath() %>/client/myPage?email=<%=email%>">마이페이지</a></li>
 			</ul>
 		</div>
 	</div>

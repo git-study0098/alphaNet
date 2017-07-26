@@ -21,9 +21,9 @@ public class MessageController {
 		this.inlineMessage = inlineMessage;
 	}
 
-	@RequestMapping("/mail")
+	@RequestMapping("/client/mail")
 	public String mail(){
-		return "mail";
+		return "client/mail";
 	}
 
 	
@@ -34,10 +34,11 @@ public class MessageController {
 
 
 	
-	@RequestMapping("mailSend")
+	@RequestMapping("/client/mailSend")
 	@ResponseBody
 	public ModelAndView mailSend(HttpServletRequest request,
 			HttpServletResponse response) {
+	
 		ModelAndView mv = new ModelAndView();
 		String email1 = request.getParameter("email1");
 		String email2 = request.getParameter("email2");
@@ -48,7 +49,7 @@ public class MessageController {
 		ApplicationContext ctx = new GenericXmlApplicationContext("classpath:mail-context.xml");
 		inlineMessage simple = ctx.getBean("inlineMessageMail",inlineMessage.class);
 		simple.send(eamil,ranNum);
-		mv.setViewName("mail");
+		mv.setViewName("/client/mail");
 		mv.addObject("email", eamil);
 		mv.addObject("ranNum",ranNum);
 		System.out.println(ranNum);

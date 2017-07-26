@@ -1,12 +1,22 @@
+<%@page import="org.springframework.security.core.userdetails.User"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
+<%
+	String mem_code = "";
+	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+	mem_code =user.getUsername();
+%>
+
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script> 
+
+
 
 <style>
 	* {	box-sizing: content-box;}
@@ -33,6 +43,15 @@
 	        dateFormat: "yy-mm-dd"
 	  });
 	});
+	
+
+	function go_selfTest4(){
+		var form1 = document.form1;
+		var ind_code = $("#ind_code").val();
+
+		form1.action = "<%=request.getContextPath() %>/member/carrerUpdate";
+		form1.submit();
+	}
 </script>
 <article>
 	<div id="container">
@@ -80,14 +99,15 @@
 				</div>
 
 				<form name="form1" id="form1" method="post">
+					<input type="hidden" name="mem_code" value="<%=mem_code%>" />
 					<input type="hidden" name="p_jmCd" value="1040"> <input
 						type="hidden" name="p_section" value="item"> <input
 						type="hidden" name="p_grd_cd" value=""> <input
 						type="hidden" name="p_jm_oblig_cd" value=""> <input
 						type="hidden" name="examLangCcd" value=""> <input
 						type="hidden" name="multiFamilyYnCcd" value=""> <input
-						type="hidden" name="direction"> <input type="hidden"
-						name="status" value="Y">
+						type="hidden" name="direction">
+						<input type="hidden" name="status" value="Y">
 
 					<div class="infoBox">
 						<div>
@@ -127,30 +147,12 @@
 							<tbody>
 								<tr>
 									<th scope="row"><label for="industFldCcd_1">산업분야</label></th>
-									<td><span id="codeIndustFldCcd_1"> <select
-											title="산업분야" name="industFldCcd" id="industFldCcd_1"
-											style="width: 135px" onchange="onChangeIndustKind(this,1)">
-												<option value="" selected="selected">산업분야</option>
-												<option value="20">기타</option>
-												<option value="03">공공/보건서비스</option>
-												<option value="04">대인서비스</option>
-												<option value="05">디자인/공예</option>
-												<option value="06">건설</option>
-												<option value="07">운송</option>
-												<option value="08">일반기계</option>
-												<option value="09">재료/금속</option>
-												<option value="10">화학/환경</option>
-												<option value="11">섬유</option>
-												<option value="12">생산/기술</option>
-												<option value="13">전기/전자</option>
-												<option value="14">정보통신</option>
-												<option value="15">농림/수산</option>
-												<option value="16">무직</option>
-												<option value="17">석사수료</option>
-												<option value="18">박사수료</option>
-												<option value="19">석박사통합과정수료</option>
-												<option value="01">학생</option>
-												<option value="02">경영관리</option>
+									<td><span id="codeIndustFldCcd_1"> 
+										<select title="산업분야" name="ind_code" id="ind_code" style="width: 135px">
+											<option value="0" selected="selected">산업분야</option>
+											<option value="1">전기/전자</option>
+											<option value="2">정보통신</option>
+											<option value="3">학생</option>
 										</select>
 									</span><span id="nameIndustFldCcd_1" style="display: none"></span></td>
 									<th scope="row"><label for="compNm_1"><span
@@ -171,17 +173,19 @@
 											cols="30" rows="10" title="근무내용">근무내용을 적어주세요</textarea></td>
 								</tr>
 								<tr>
-									<th scope="row"><label for="workStartDt_1"><span
-											id="titleworkStartDt_1">근무시작</span></label></th>
-									<td><span class="calendar" id="spanworkStartDt_1">
+									<th scope="row">
+										<label for="workStartDt_1">
+											<span id="titleworkStartDt_1">근무시작</span>
+										</label>
+									</th>
+									<td>
+										<span class="calendar" id="spanworkStartDt_1">
 											<input type="text" name="workStartDt" id="startDate" maxlength="8" value=""> 										
-									</span>
-										</td>
-									<th scope="row"><label for="workEndDt_1"><span
-											id="titleworkEndDt_1">근무종료</span></label></th>
-									<td class="calendar">
-										<input type="text" name="workEndDt" id="endDate" maxlength="8" value=""> 									
+											</span>
 									</td>
+									
+									<th scope="row"><label for="workEndDt_1"><span id="titleworkEndDt_1">근무종료</span></label></th>
+									<td class="calendar"> <input type="text" name="workEndDt" id="endDate" maxlength="8" value=""></td>
 									<th scope="row"><span id="titleworkTerm_1">근무기간</span></th>
 									<td><span id="addCont_1"></span></td>
 								</tr>
@@ -213,14 +217,8 @@
 
 					<div id="divCrerInfo"></div>
 					<div class="btn_center">
-						<button type="button" class="btn2 btncolor1"
-							onclick="history.go(-1)">
-							<span>이전</span>
-						</button>
-						<button type="button" class="btn2 btncolor1"
-							onclick="location.href='<%=request.getContextPath()%>/member/selfTest4'">
-							<span>진단결과보기</span>
-						</button>
+						<button type="button" class="btn2 btncolor1" onclick="history.go(-1)"><span>이전</span></button>
+						<button type="button" class="btn2 btncolor1" onclick="javascript:go_selfTest4()"><span>진단결과보기</span></button>
 					</div>
 					<!-- //컨텐츠 내용 -->
 				</form>

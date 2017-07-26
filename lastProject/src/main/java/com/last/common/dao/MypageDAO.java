@@ -57,4 +57,20 @@ public class MypageDAO {
 		List<StareCertifiVO> vo = (ArrayList<StareCertifiVO>) client.queryForList("selectCareerCerti", mem_code);
 		return vo;
 	}
+	
+	/**
+	 * 경력정보 입력시 회원 경력 상태 업데이트
+	 * @param mem_code
+	 * @return int
+	 * @throws SQLException
+	 */
+	public int updateMemberCareer(StareCertifiVO stareCertifiVO)throws SQLException{
+		int updateMemberCareer = client.update("updateMemberCareer", stareCertifiVO);
+		return updateMemberCareer;
+	}
+	
+	public StareCertifiVO selectMemberCareer(String mem_code)throws SQLException{
+		StareCertifiVO stareCertifiVO = (StareCertifiVO) client.queryForObject("selectMemberCareer", mem_code);
+		return stareCertifiVO;
+	}
 }

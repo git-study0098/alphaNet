@@ -17,7 +17,9 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
-	Paging2VO viewData = (Paging2VO) request.getAttribute("viewData");	
+	Paging2VO viewData = (Paging2VO) request.getAttribute("viewData");
+	Paging2VO viewData2 = (Paging2VO)request.getAttribute("viewData2");
+	Integer count = (Integer)request.getAttribute("count");
 %>
 <style>
 
@@ -113,7 +115,7 @@
 						 ~ 
 						 <span style="margin-right: 5px;"> 
 						<input type="text" id="endDate" name="end_Date" date required maxlength="" value="" style="width: 70px;"></span> 
-					<select name="searchGb2" id="schType" style="margin-left: 20px;">
+						<select name="searchGb2" id="schType" style="margin-left: 20px;">
 					
 					
 						<option value="" title="">선택</option>
@@ -123,8 +125,9 @@
 						
 					</select>
 				</div>
-				<input type="text" name="searchWord" maxlength="" value="" style="width: 260px; margin-left: 5px;" id="schText"> 
-					<a class="searchbtn" href="javascript:getClientList();">검색</a>
+				<input type="text" name="searchWord" maxlength="" value=""
+					style="width: 260px; margin-left: 5px;" id="schText"> <a
+					class="searchbtn" href="javascript:getClientList()">검색</a>
 			</div>
 			<div id="TOT_CNT_DIV"></div>
 			<table class="list2">
@@ -159,12 +162,12 @@
 				<tbody>
 
 				<c:choose>
-					<c:when test="${viewData.clientCountPerPage > 0 }">
-						<c:forEach items="${viewData.clientList }" var="clientAll"
+					<c:when test="${viewData2.clientCountPerPage > 0 }">
+						<c:forEach items="${viewData2.clientList }" var="clientAll"
 							varStatus="number">
 							<tr style="height:30px;">
 								<!-- 글번호 -->
-								<td scope="col">${number.count}</td>
+								<td scope="col">${viewData2.firstRow+number.count}</td>
 								
 								<c:if test="${clientAll.client_consulting_kind eq '1'}">
 								<td>평생능력개발</td>
@@ -202,7 +205,7 @@
 								<td scope="col"><a href="<%=request.getContextPath() %>/client/clientDetail?client_code=${clientAll.client_code }" >${clientAll.client_title}</a></td>
 								<c:set var="name" value="${clientAll.client_nm}"></c:set>
 								<td scope="col">${fn:substring(name,0,1)}**</td>
-								<td scope="col"><fmt:formatDate value="${clientAll.client_enRoll_date}"/></td>
+								<td scope="col"><fmt:formatDate  pattern="yyyy-MM-dd" value="${clientAll.client_enRoll_date}"  /></td>
 								<c:if test="${clientAll.reply_state eq 'Y'}">
 								<td scope="col">접수완료</td>
 								</c:if>		
@@ -231,25 +234,32 @@
 					<span class="blind">이전 페이지</span>
 				</button>
 				
-				<span class="page"> 
-				
-				<%
-					for(int i = 1; i<viewData.getPageTotalCount()+1; i++){
-						if(pageNumber==i){
-				%>	
-						<strong class="on" title="<%=i %>페이지"><%=i %></strong>
-					<%
-						
-						}else{
-					%>
-						<button type="button" class="btn5" onclick="location.href='clientSound?page=<%=i %>'" title="<%=i%>페이지">
-							<span><%=i%></span>
-						</button> 
-						<% }
-					}
-				%>
-					
-				</span>
+		
+								<span class="page"> 
+								<%	
+									if(count/10 < 1){
+										count=1;
+									}else if(count%10==0){
+										count /=10;
+									}else{
+										count = count/10 +1;
+									}
+									for(int i = 1; i<count+1; i++){
+										if(pageNumber==i){
+								%>		
+										<strong class="on" title="<%=i %>페이지"><%=i %></strong>
+									<%
+										
+										}else{
+									%>
+										<button type="button" class="btn5" onclick="location.href='memberNotice2?page=<%=i %>'" title="<%=i%>페이지">
+											<span><%=i%></span>
+										</button> 
+										<% }
+									}
+								%>
+
+								</span>
 				<button type="button" class="btn3_icon3 btn_next_page"
 					onclick="goPage(2);" title="다음 페이지">
 					<span class="blind">다음 페이지</span>

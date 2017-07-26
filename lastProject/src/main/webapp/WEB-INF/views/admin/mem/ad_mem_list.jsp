@@ -10,9 +10,16 @@
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
 	MemPagingVO viewData = (MemPagingVO) request.getAttribute("viewData");
 %>	
-	
+<script>
+//검색함수
+	function getNoticeList(){
+		var schType = document.getElementById('schType').value;
+		var schText = document.getElementById('schText').value;
+		var id = document.getElementsByName('id')[0].value;
+		location.href="<%=request.getContextPath()%>/admin/mem/search?id="+ id + "&schType=" + schType + "&schText=" + schText;
+	}
+</script>	
 		<!-- /. NAV SIDE  -->
-
 		<div id="page-wrapper">
 			<div id="page-inner">
 				<div class="row">
