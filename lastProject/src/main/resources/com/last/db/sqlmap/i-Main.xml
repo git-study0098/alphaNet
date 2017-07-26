@@ -26,13 +26,13 @@
 	</select>
 	
 	<select id="selectWonseoList" resultClass="wonseo">
-		select em.em_info_code, em.em_nm, to_char(n.numg_app_receipt_begin,'yyyy-MM-dd')as numg_app_receipt_begin, to_char(n.numg_app_receipt_end,'yyyy-MM-dd')as numg_app_receipt_end
-         from numg n, em_info em
-         where 
-         em.em_numg_code = n.numg_code
-         and em.em_numg_code in  (select numg_code
-         from numg
-         where to_char(sysdate,'yyyy-MM-dd') between to_char(numg_app_receipt_begin,'yyyy-MM-dd') and to_char(numg_app_receipt_end,'yyyy-MM-dd'))
+		SELECT em.em_info_code, em.em_nm, to_char(n.numg_app_receipt_begin,'yyyy-MM-dd')as numg_app_receipt_begin, to_char(n.numg_app_receipt_end,'yyyy-MM-dd')as numg_app_receipt_end
+	         from numg n, em_info em
+	         WHERE 
+	         em.em_numg_code = n.numg_code
+	         and em.em_numg_code in  (select numg_code
+	         from numg
+         WHERE to_char(sysdate,'yyyy-MM-dd') between to_char(numg_app_receipt_begin,'yyyy-MM-dd') and to_char(numg_app_receipt_end,'yyyy-MM-dd'))
 	</select>
 	
 	<select id="detailNotice" parameterClass="str" resultClass="notice1">

@@ -2,16 +2,18 @@
 <%@page import="org.springframework.security.core.userdetails.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%
 	User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-	String id = user.getUsername();
+	String mem_code = user.getUsername();
 %>
 <style>
 * {
 	box-sizing: content-box;
 }
+
+	table td{text-align:center;}
 </style>
 
 <article>
@@ -93,42 +95,47 @@
 					<table summary="학력정보입력 폼으로, 학력구분, 학교(기관)명, 학과/전공명, 학적상태, 수료/중퇴일자-재학/졸업일자, 기술훈련과정명, 직무분야 정보 입력">
 						<caption>학력정보입력 폼</caption>
 						<colgroup>
+							<col width="21.2%">
+							<col width="21.9%">
+							<col width="16.9%">
 							<col width="16.2%">
-							<col width="33.8%">
-							<col width="16.2%">
-							<col width="33.8%">
+							<col width="23.8%">
 						</colgroup>
+						
 						<tbody>
+						
+						<c:choose>
+							<c:when test="${not empty selectSchoolCerti }">
+							<c:forEach items="${selectSchoolCerti}" var="stare">
+								<tr>
+									<th scope="row">학교(기관)명</th>
+									<th scope="row">학과/전공 명</th>
+									<th scope="row">대학/대학교 구분</th>
+									<th scope="row">학력구분</th>
+									<th scope="row">최종학력</th>
+								</tr>
+								
+								<tr>
+									<td>${stare.sch_code_nm}</td>
+									<td>${stare.sch_major_code}</td>
+									<td>${stare.sch_final }</td>
+									<td>${stare.sch_major_nm}</td>
+									<td>${stare.sch_coll}</td>
+								</tr>
+								</c:forEach>
+								</c:when>
+							<c:otherwise>
 							<tr>
-								<th scope="row">학력구분</th>
-								<td colspan="3">4년제대학</td>
+								<td class="noData">나의 접수 내역이 없습니다.</td>
 							</tr>
+							</c:otherwise>
+						</c:choose>
+							
 							<tr>
-								<th scope="row">학교(기관)명</th>
-								<td>우송대학교</td>
-								<th scope="row">학과/전공 명</th>
-								<td>컴퓨터정보학(과,부,전공)</td>
-							</tr>
-							<tr>
-								<th scope="row">학적상태</th>
-								<td>졸업</td>
-								<th scope="row">수료/중퇴일자<br>재학/졸업일자</th>
-								<td class="calendar">2016-08-26</td>
-							</tr>
-							<tr>
-								<th scope="row">기술훈련과정명</th>
-								<td></td>
-								<th scope="row">직무분야</th>
-								<td></td>
-							</tr>
-							<tr>
-								<td colspan="4" class="guideLaw">
+								<td colspan="5" class="guideLaw">
 									<div class="float_box">
 										<div class="left">
 											<p>* 응시자격 서류심사 기준일은 <strong>“필기시험일”</strong>입니다.(국가기술자격법 시행규칙 제14조제3항)</p>
-										</div>
-										<div class="right">
-											<button type="button" class="btn3_type2" name="insertSchInfo"><span>학력정보 추가</span></button>
 										</div>
 									</div>
 								</td>
@@ -141,9 +148,8 @@
 						<div class="btn_center">
 		
 							<button type="button" class="btn2 btncolor1" onclick="history.go(-1)"><span>이전</span></button>
-		
-							<button type="button" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/selfTest3?mem_code=<%=id%>'"><span>경력정보입력</span></button>
-							<button type="button" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath() %>/member/seltTest4?mem_code=<%=id%>'"><span>진단결과보기</span></button>
+							<button type="button" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/selfTest3?mem_code=<%=mem_code%>'"><span>경력정보입력</span></button>
+							<button type="button" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath() %>/member/selfTest4?mem_code=<%=mem_code%>'"><span>진단결과보기</span></button>
 						</div>
 					</form>
 				</div>

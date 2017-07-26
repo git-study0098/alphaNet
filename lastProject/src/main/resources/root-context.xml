@@ -62,7 +62,9 @@
 	<bean id="adminMem1Service"
 		  class="com.last.common.service.AdminMem1Service"
 		  p:adminMem1DAO-ref="adminMemDao"/>
-	
+		  
+
+
 	
 		 
 	

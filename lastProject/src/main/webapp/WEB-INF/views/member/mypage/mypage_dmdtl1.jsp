@@ -101,11 +101,10 @@
 						<ul>
 							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="location.href='<%=request.getContextPath()%>/member/selfTest2?mem_code=<%=id%>'"><span>정보처리기능사</span></a></li>
 
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('2040')"><span>정보처리산업기사</span></a></li>
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="location.href='<%=request.getContextPath()%>/member/selfTest2?mem_code=<%=id%>'"><span>정보처리산업기사</span></a></li>
 
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('3120')"><span>정보처리기사</span></a></li>
+							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="location.href='<%=request.getContextPath()%>/member/selfTest2?mem_code=<%=id%>'"><span>정보처리기사</span></a></li>
 
-							<li><strong class="tech">국가기술자격</strong><a href="#" onclick="goNext('1050')"><span>정보처리기술사</span></a></li>
 						</ul>
 					</div>
 					<!-- paging -->
