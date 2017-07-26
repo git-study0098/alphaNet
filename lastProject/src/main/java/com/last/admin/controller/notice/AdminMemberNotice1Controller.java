@@ -25,11 +25,6 @@ public class AdminMemberNotice1Controller {
 		this.adminMem1Service = adminMem1Service;
 	}
 	
-//	@RequestMapping("/admin/adminRegist")
-//	public String listRegist() {
-//		return "admin/board/notice/notice_1_registry";
-//	}
-
 	// 휴면회원 조회
 	@RequestMapping("/admin/inmem")
 	public String listNotice(
@@ -38,12 +33,8 @@ public class AdminMemberNotice1Controller {
 //			@RequestParam(value = "notice_code", defaultValue = "imem0001") String notice_code)
 			throws SQLException, ServiceException {
 		MemPagingVO viewData = null;
-//		MemberVo inmemVO = null;
 		try {
-			System.out.println("여긴오겟지");
 			viewData = adminMem1Service.selectNotice1List(pageNumber);
-			System.out.println(viewData.getNotice1List().get(0).getId());
-//			inmemVO = adminMem1Service.selectMemberList();
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
@@ -90,7 +81,6 @@ public class AdminMemberNotice1Controller {
 	            e.printStackTrace();
 	         }
 	      }
-	      
 	      model.addAttribute("viewData2",viewData2);
 	      model.addAttribute("pageNumber",pageNumber);
 	      model.addAttribute("count",count);
@@ -160,7 +150,7 @@ public class AdminMemberNotice1Controller {
 
 		MemberVo vo = null;
 		try {
-			vo = adminMem1Service.selectNoticeCodeList(id);
+			vo = adminMem1Service.selectAllMemberList(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

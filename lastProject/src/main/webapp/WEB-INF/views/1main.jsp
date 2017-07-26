@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%
+<%	
    Integer pageNumber = (Integer)request.getAttribute("pageNumber");
    PagingVO viewData =  (PagingVO)request.getAttribute("viewData");
 %>

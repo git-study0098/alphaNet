@@ -44,20 +44,6 @@
 
 			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
 				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/notice3"> <i class="fa fa-clipboard fa-5x"></i>
-						<h4>환불안내</h4>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="div-square">
-					<a href="<%=request.getContextPath() %>/admin/notice4"> <i class="fa fa-envelope-o fa-5x"></i>
-						<h4>관련학과 지정신청</h4>
-					</a>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-				<div class="div-square">
 					<a href="<%=request.getContextPath()%>/admin/client"> <i class="fa fa-comments-o fa-5x"></i>
 						<h4>고객의 소리</h4>
 					</a>

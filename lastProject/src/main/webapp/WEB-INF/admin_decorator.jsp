@@ -3,6 +3,7 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator"%>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,6 +19,11 @@
 <!-- GOOGLE FONTS-->
 <link href='http://fonts.googleapis.com/ccss?family=Open+Sans'
 	rel='stylesheet' type='text/css' />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js'></script>
+
 </head>
 
 
@@ -53,7 +59,7 @@
 
 					<li><a href="<%=request.getContextPath() %>/admin/exam"><i
 							class="fa fa-table fa-2x"></i> 시험관리 </a></li>
-					<li class="active-link"><a href="<%=request.getContextPath() %>/admin/cbt"> <i
+					<li><a href="<%=request.getContextPath() %>/admin/cbt"> <i
 							class="fa fa-edit fa-2x"></i>CBT관리
 					</a></li>
 					<li><a href="<%=request.getContextPath() %>/admin/mem"><i class="fa fa-users fa-2x"></i>회원관리
@@ -62,7 +68,7 @@
 <!-- 							class="fa fa-bar-chart-o fa-2x"></i> 응시시험회원관리</a></li> -->
 					</ul>
 					<a class="navbar-brand" href="<%=request.getContextPath()%>/admin/login/main2"> <img
-						src="<%=request.getContextPath() %>/resources/admin2/img/logo.png" style="width:200px;height:200px;"/>
+						src="<%=request.getContextPath() %>/resources/admin2/img/logo.png" style="width:200px;height:200px;margin:40px;"/>
 					</a>
 			</div>
 		</nav>
