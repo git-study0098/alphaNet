@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Exam">
+
+	<typeAlias alias="str" type="java.lang.String" />
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="cbt" type="com.last.common.vo.CbtVo"/>
+	
+	<insert id="insertCbtQuestion" parameterClass="cbt">
+	insert into cbt(CBT_EM_QUIZ_CODE,
+		CBT_EM_QUIZ_NUMB,
+		CBT_EM_MEM_ANSWER,
+		CBT_EM_ANSWER,
+		MEM_CODE,
+		CBT_QUIZ1,
+		CBT_QUIZ2,
+		CBT_QUIZ3,
+		CBT_QUIZ4,
+		CBT_EM_QUIZ) 
+		values(#CBT_EM_QUIZ_CODE#,
+		#CBT_EM_QUIZ_NUMB#,
+		#CBT_EM_MEM_ANSWER#,
+		#CBT_EM_ANSWER#,
+		#MEM_CODE#,
+		#CBT_QUIZ1#,
+		#CBT_QUIZ2#,
+		#CBT_QUIZ3#,
+		#CBT_QUIZ4#,
+		#CBT_EM_QUIZ#)
+	</insert>
+	
+	
+	
+</sqlMap>
