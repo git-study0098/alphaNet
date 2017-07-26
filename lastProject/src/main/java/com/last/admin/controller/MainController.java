@@ -64,8 +64,7 @@ public class MainController {
 
 	@RequestMapping("/mainNotice2")
 	public String listNotice2(
-			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			Model model,
+			@RequestParam(value = "page", defaultValue = "1") int pageNumber,Model model,
 			@RequestParam(value = "notice_code", defaultValue = "notice02") String notice_code)
 			throws SQLException {
 		PagingVO viewData = null;

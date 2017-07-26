@@ -68,8 +68,8 @@ public class AdminQualifiService {
 	 * @return QualifiCertiVO
 	 * @throws SQLException
 	 */
-	public QualifiCertiVO selectQualifiPriceList(String qualifi_certi_code) throws SQLException{
-		QualifiCertiVO vo = adminQualifiDao.selectQualifiPriceList(qualifi_certi_code);
+	public List<QualifiCertiVO> selectQualifiPriceList(String qualifi_certi_code) throws SQLException{
+		List<QualifiCertiVO> vo = adminQualifiDao.selectQualifiPriceList(qualifi_certi_code);
 		return vo;
 	}
 	

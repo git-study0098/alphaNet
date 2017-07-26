@@ -161,36 +161,76 @@ public class MemberNoticeController {
 		return "member/board/notice/notice5";
 	}
 	
-//	@RequestMapping("/memberNotice2")
-//	public String listNotice1(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="notice01" )String notice_code,
-//							 HttpServletRequest request )throws SQLException, ServiceException{
-//		String schType = request.getParameter("schType");
-//		String schText = request.getParameter("schText");
-//		PagingVO viewData2=null;
-//		int count = 0;
-//	      try {
-//	    	  count = adminNotice1Service.selectCount(notice_code,schType,schText);
-//	          viewData2= adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
-//	      } catch (ServiceException e) {
-//	         e.printStackTrace();
-//	      }
-//	      
-//	      if(viewData2.getNotice1List().isEmpty()){
-//	         pageNumber--;
-//	         if(pageNumber<=0) pageNumber=1;
-//	         try {
-//	            viewData2 = adminNotice1Service.searchNoticeList(pageNumber, notice_code, schType,schText);
-//	         } catch (ServiceException e) {
-//	            e.printStackTrace();
-//	         }
-//	      }
-//	      
-//	      model.addAttribute("viewData2",viewData2);
-//	      model.addAttribute("pageNumber",pageNumber);
-//	      model.addAttribute("count",count);
-//	      
-//	      return "member/board/notice/notice_search";
-//	}
+//	@RequestMapping("/useInfo")
+	   public String useInfo(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="useinfo0" )String notice_code,
+		          HttpServletRequest request )throws SQLException, ServiceException{
+		      String schType = request.getParameter("schType");
+		      String schText = request.getParameter("schText");
+		      PagingVO viewData=null;
+		      try {
+		         viewData = adminNotice1Service.searchNoticeList(pageNumber,
+		               notice_code, schType, schText);
+		      } catch (ServiceException e) {
+		         e.printStackTrace();
+		      }
+		      
+		      if(viewData.getNotice1List().isEmpty()){
+		         pageNumber--;
+		         if(pageNumber<=0) pageNumber=1;
+		         try {
+		            viewData = adminNotice1Service.searchNoticeList(pageNumber,
+		                  notice_code, schType, schText);
+		         } catch (ServiceException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		      model.addAttribute("viewData",viewData);
+		      model.addAttribute("pageNumber",pageNumber);
+		      
+		      return "member/board/notice/notice";
+		   }
+		   
+		   @RequestMapping("/pdsList")
+		   public String pdsList(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,@RequestParam(value="notice_code", defaultValue="pds01100" )String notice_code,
+		          HttpServletRequest request )throws SQLException, ServiceException{
+		      String schType = request.getParameter("schType");
+		      String schText = request.getParameter("schText");
+		      PagingVO viewData=null;
+		      try {
+		         viewData = adminNotice1Service.searchNoticeList(pageNumber,
+		               notice_code, schType, schText);
+		      } catch (ServiceException e) {
+		         e.printStackTrace();
+		      }
+		      
+		      if(viewData.getNotice1List().isEmpty()){
+		         pageNumber--;
+		         if(pageNumber<=0) pageNumber=1;
+		         try {
+		            viewData = adminNotice1Service.searchNoticeList(pageNumber,
+		                  notice_code, schType, schText);
+		         } catch (ServiceException e) {
+		            e.printStackTrace();
+		         }
+		      }
+		      model.addAttribute("viewData",viewData);
+		      model.addAttribute("pageNumber",pageNumber);
+		      
+		      return "member/board/notice/notice";
+		   }
+		   @RequestMapping("/change")
+		   public String change(){
+		      return "member/board/change/change1";
+		   }
+		   @RequestMapping("/notice/getJob")
+		   public String customize1(){
+		      return "member/board/customize/customize1";
+		   }
+		   @RequestMapping("/notice/college")
+		   public String customize2(){
+		      return "member/board/customize/customize2";
+		   }
+		  
 	
 	
 	

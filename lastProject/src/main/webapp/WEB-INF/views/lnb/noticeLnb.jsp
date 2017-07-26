@@ -116,7 +116,7 @@
 						</ul></li>
 					<li class="low"><a>환불안내</a>
 						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/notice/tech">기술자격 환불안내</a></li>
+							<li><a href="<%=request.getContextPath() %>/change">기술자격 환불안내</a></li>
 							<li><a>전문자격 환불안내</a></li>
 						</ul></li>
 					<li class="low"><a>고객 맞춤정보</a>

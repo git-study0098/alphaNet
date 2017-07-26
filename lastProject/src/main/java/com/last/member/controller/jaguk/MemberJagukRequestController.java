@@ -3,11 +3,10 @@ package com.last.member.controller.jaguk;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -77,7 +76,7 @@ public class MemberJagukRequestController {
 	}
 	
 	@RequestMapping("/member/request3")
-	public String jagukRequest3(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model,
+	public String jagukRequest3(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model, HttpSession session,
 			@RequestParam(value="mem_code") String mem_code,HttpServletRequest request,@RequestParam(value="choice") String choice)
 			throws SQLException{
 		QualifiPagingVO viewData = null;
@@ -108,7 +107,8 @@ public class MemberJagukRequestController {
 		for(int i=0; i<idList.size(); i++){
 			String qualifi_certi_code = idList.get(i);				
 			System.out.println(qualifi_certi_code+"서티코드");
-			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code));			
+//			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code));
+//			viewData2.addAll(adminService.selectQualifiPriceList(qualifi_certi_code));
 		}
 		
 		System.out.println(choice);
@@ -157,7 +157,7 @@ public class MemberJagukRequestController {
 		for(int i=0; i<idList.size(); i++){
 			String qualifi_certi_code1 = idList.get(i);
 			System.out.println(qualifi_certi_code+"서티코드");
-			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code1));			
+//			viewData2.add(adminService.selectQualifiPriceList(qualifi_certi_code1));			
 		}
 		
 		model.addAttribute("choice", choice);

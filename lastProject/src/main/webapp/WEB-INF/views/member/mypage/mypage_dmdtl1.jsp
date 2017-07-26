@@ -61,9 +61,8 @@
 				<div class="step">
 					<ul class="list02">
 						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_qualification_on_01.gif" alt=""><span>자격선택</span><span class="blind">선택</span></li>
-						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_qualification_off_02.gif" alt=""><span>학력정보입력</span></li>
+						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_qualification_off_02.gif" alt=""><span>학력정보확인</span></li>
 						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_qualification_off_03.gif" alt=""><span>경력정보입력</span></li>
-						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_qualification_off_06.gif" alt=""><span>기능대회수상경력</span></li>
 						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_qualification_off_05.gif" alt=""><span>진단결과</span></li>
 					</ul>
 				</div>
@@ -71,7 +70,7 @@
 				<div class="infoBox">
 					<div>
 						<p class="list">
-							자격검색으로 응시자격을 자가진단 가능합니다. <br>
+							시험에 대한 응시자격은 자가진단 가능합니다. <br>
 							 본 응시자격 자가진단은 시험 접수 전 본인의 응시자격 여부를 스스로 진단해 보는 것으로서, 실제 제출서류의 사실관계 등에 따라 결과가 달라질 수 있으므로 이 점 유의하시기 바랍니다. <span class="fc_r">(응시가능/불가능 진단결과에 관계없이 시험 접수는 가능)</span>
 						</p>
 					</div>
@@ -81,7 +80,6 @@
 				<div class="tabLayout" id="subTab">
 					<ul class="n5">
 						<li class="on"><a href="#" title="기술자격"><span>기술자격</span></a></li>
-						<li><a href="#"><span>전문자격</span></a></li>
 					</ul>
 				</div>
 				<form action="<%=request.getContextPath() %>/member/selfTest" name="form1" method="post">
@@ -89,11 +87,8 @@
 				<div class="tabView" style="display: block;">
 					<div class="txt_left mb10">
 						<span>
-							<label for="jmNm"><strong class="fc_3">자격검색 </strong></label>
-							<input type="text" style="width:150px" id="jmNm" name="jmNm" value="">
 							<input name="p_jmCd" type="hidden">
 							<input name="p_section" type="hidden" value="item">
-							<button type="button" class="btn3_icon search" onclick="getNoticeList('1')"><span class="blind">검색</span></button>
 						</span>
 					</div>
 					<div id="viewList">

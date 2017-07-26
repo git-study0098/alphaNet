@@ -151,18 +151,18 @@
 					</button>
 
 					<span class="page"> <%
- 	for (int i = 1; i < viewData.getPageTotalCount() + 1; i++) {
- 		if (pageNumber == i) {
- %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
- 	} else {
- %>
+						 	for (int i = 1; i < viewData.getPageTotalCount() ; i++) {
+						 		if (pageNumber == i) {
+						 %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
+						 	} else {
+						 %>
 						<button type="button" class="btn5"
 							onclick="location.href='inmem?page=<%=i%>'" title="<%=i%>페이지">
 							<span><%=i%></span>
 						</button> <%
- 	}
- 	}
- %>
+						 	}
+						 	}
+						 %>
 					</span>
 					<button type="button" class="btn3_icon3 btn_next_page"
 						onclick="goPage(2);" title="다음 페이지">

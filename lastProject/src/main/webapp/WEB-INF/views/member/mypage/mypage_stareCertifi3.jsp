@@ -127,14 +127,13 @@
 									관련학과 대학 졸업자(2년제,경력 2년이상인 경우)
 								</td>
 							</tr>
-
 						</tbody>
 					</table>
 				</div><!-- // tbl_type4 -->
 				<div class="btn_center">
-					<button type="button" class="btn2 btncolor1" onclick="goSubmit('back')"><span>이전</span></button>
+					<button type="button" class="btn2 btncolor1" onclick="history.go(-1)"><span>이전</span></button>
 
-					<button type="button" class="btn2 btncolor1" onclick="goSubmit('first')"><span>다른 종목 진단</span></button>
+					<button type="button" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath() %>/member/wonseoReq'"><span>원서접수</span></button>
 
 				</div>
 				<!-- //컨텐츠 내용 -->

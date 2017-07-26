@@ -50,8 +50,8 @@ public class AdminQualifiDAO {
 		return result;
 	}
 	
-	public QualifiCertiVO selectQualifiPriceList(String qualifi_certi_code) throws SQLException{
-		QualifiCertiVO selectQualifiPriceList = (QualifiCertiVO)client.queryForObject("selectQualifiPriceList", qualifi_certi_code);
+	public List<QualifiCertiVO> selectQualifiPriceList(String qualifi_certi_code) throws SQLException{
+		List<QualifiCertiVO> selectQualifiPriceList = (ArrayList<QualifiCertiVO>)client.queryForList("selectQualifiPriceList", qualifi_certi_code);
 		return selectQualifiPriceList;
 	}
 	
