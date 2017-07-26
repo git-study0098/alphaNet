@@ -30,7 +30,7 @@
  		select count(*) from sub
   	</select>
   	
-  	<select id="selectDocuDetail" resultClass="doc">
+  	<select id="selectDocuDetail" parameterClass="str" resultClass="doc">
   		select d.docu_code,
 		       a.admin_code, 
 		       d.docu_nm,
@@ -49,7 +49,7 @@
 		and s.sub_code = #sub_code#
   	</select>
   	
-  	<update id="docUpdate" parameterClass="doc">
+  	<update id="docUpdate" parameterClass="doc" >
   		update sub
 		set approve_at = #approve_at#
 		where sub_code = #sub_code#

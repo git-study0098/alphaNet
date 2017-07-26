@@ -23,33 +23,9 @@ public class DocVO {
 	private String attach_file;	//첨부파일
 	private Date enroll_date; //최종수정일
 	private Date regist_date; //등록일
-	private MultipartFile uploadfile; 
+	private MultipartFile uploadfile;
 	
 	
-	public String getSub_code() {
-		return sub_code;
-	}
-	public void setSub_code(String sub_code) {
-		this.sub_code = sub_code;
-	}
-	public String getApprove_at() {
-		return approve_at;
-	}
-	public void setApprove_at(String approve_at) {
-		this.approve_at = approve_at;
-	}
-	public String getMem_nm() {
-		return mem_nm;
-	}
-	public void setMem_nm(String mem_nm) {
-		this.mem_nm = mem_nm;
-	}
-	public String getDocu_nm() {
-		return docu_nm;
-	}
-	public void setDocu_nm(String docu_nm) {
-		this.docu_nm = docu_nm;
-	}
 	public String getMem_code() {
 		return mem_code;
 	}
@@ -105,6 +81,30 @@ public class DocVO {
 	public void setDocu_code(String docu_code) {
 		this.docu_code = docu_code;
 	}
+	public String getDocu_nm() {
+		return docu_nm;
+	}
+	public void setDocu_nm(String docu_nm) {
+		this.docu_nm = docu_nm;
+	}
+	public String getMem_nm() {
+		return mem_nm;
+	}
+	public void setMem_nm(String mem_nm) {
+		this.mem_nm = mem_nm;
+	}
+	public String getApprove_at() {
+		return approve_at;
+	}
+	public void setApprove_at(String approve_at) {
+		this.approve_at = approve_at;
+	}
+	public String getSub_code() {
+		return sub_code;
+	}
+	public void setSub_code(String sub_code) {
+		this.sub_code = sub_code;
+	}
 	public String getAttach_file() {
 		return attach_file;
 	}
@@ -128,24 +128,7 @@ public class DocVO {
 	}
 	public void setUploadfile(MultipartFile uploadfile) {
 		this.uploadfile = uploadfile;
-	}
-	
-	@Override
-	public String toString() {
-		return "DocVo [mem_code=" + mem_code + ", admin_code=" + admin_code
-				+ ", manager_dep=" + manager_dep + ", stare_code=" + stare_code
-				+ ", sub_docu_approve_at=" + sub_docu_approve_at
-				+ ", sub_obstacle_condi_approve_at="
-				+ sub_obstacle_condi_approve_at
-				+ ", sub_career_condi_approve_at="
-				+ sub_career_condi_approve_at + ", sub_disease_proof_at="
-				+ sub_disease_proof_at + ", docu_code=" + docu_code
-				+ ", attach_file=" + attach_file + ", enroll_date="
-				+ enroll_date + ", regist_date=" + regist_date
-				+ ", uploadfile=" + uploadfile + "]";
-	}
-	
-	
+	} 
 	
 	
 	

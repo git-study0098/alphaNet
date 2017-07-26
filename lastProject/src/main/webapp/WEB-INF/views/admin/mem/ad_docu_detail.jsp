@@ -68,7 +68,6 @@
 			<hr />
 			<form name="docUpdate" id="docUpdate" style="display: inline" method="post"
 				enctype="multipart/form-data" action="docUpdate">
-<%-- 				?id="${vo.sub_code}&approve> --%>
 				<input type="hidden" name="sub_code" value="${vo.sub_code}">
 				<div>
 					<div class="tbl_type2 leftPd">
@@ -116,7 +115,6 @@
 									</a> <input type="text" name="attach_file" readonly></td>
 								</tr>
 							</tbody>
-
 						</table>
 					</div>
 					<p class="txt_right">

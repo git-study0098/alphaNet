@@ -22,10 +22,7 @@ public class AdminDocuDAO {
 		 * @throws SQLException
 		 */
 		public List<DocVO> selectDocuList(int firstRow, int endRow) throws SQLException{
-			HashMap<String, Integer> map = new HashMap<String, Integer>();
-			map.put("endRow", endRow);
-			map.put("firstRow", firstRow);
-			List<DocVO> selectDocuList = (ArrayList<DocVO>)client.queryForList("selectDocuList",map);
+			List<DocVO> selectDocuList = (ArrayList<DocVO>)client.queryForList("selectDocuList");
 			return selectDocuList;
 		}
 		
@@ -52,43 +49,14 @@ public class AdminDocuDAO {
 		}
 		
 		/**
-		 * 게시글 업데이트
+		 * 서류 업데이트
 		 * @param notice1VO
 		 * @return result
 		 * @throws SQLException
 		 */
 		public int updateAdminDoc(DocVO docuVO) throws SQLException{
-			int result = (Integer) client.update("docUpdate",docuVO);
-			System.out.println("다오"+docuVO.getSub_code());
-			System.out.println("다오"+docuVO.getApprove_at());
+			int result = client.update("docUpdate",docuVO);
 			return result;
 		}
-		
-		//전체 서류 검색 리스트 가져오기
-		public List<DocVO> searchAllDocList(int firstRow, int endRow,String schType, String schText) throws SQLException{
-			HashMap<String,String> map = new HashMap<String,String>();
-			map.put("schType", schType);
-			map.put("schText", schText);
-			List<DocVO> searchNoticeList = (ArrayList<DocVO>)client.queryForList("searchDocSearchList",map,firstRow-1 , endRow-firstRow+1);
-			return searchNoticeList;
-		}
-		
-		/**
-		 * 서류 검색 개수 가져오기
-		 * @param notice_code
-		 * @param schType
-		 * @param schText
-		 * @return
-		 * @throws SQLException
-		 */
-		public int selectSearchDocCount(String schType, String schText) throws SQLException{
-			HashMap<String, String> map = new HashMap<String, String>();
-			map.put("schType", schType);
-			map.put("schText", schText);
-			int result = (Integer) client.queryForObject("selectDocCount",map);
-			return result;
-			
-		}
-		
 		
 }

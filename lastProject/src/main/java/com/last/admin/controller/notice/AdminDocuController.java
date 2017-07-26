@@ -56,39 +56,6 @@ public class AdminDocuController {
 		return "admin/mem/ad_docu_list";
 	}
 
-	// 검색
-	@RequestMapping("/admin/doc/search")
-	public String listNotice1(
-			@RequestParam(value = "page", defaultValue = "1") int pageNumber,
-			Model model,
-			HttpServletRequest request) throws SQLException, ServiceException {
-		String schType = request.getParameter("schType");
-		String schText = request.getParameter("schText");
-		DocuPagingVO viewData2=null;
-		int count = 0;
-	      try {
-	    	  count = adminDocuService.selectCount(schType,schText); //검색된 회원수 
-	          viewData2= adminDocuService.searchNoticeList(pageNumber,schType,schText);
-	      } catch (ServiceException e) {
-	         e.printStackTrace();
-	      }
-	      
-	      if(viewData2.getdocuList().isEmpty()){
-	         pageNumber--;
-	         if(pageNumber<=0) pageNumber=1;
-	         try {
-	            viewData2 = adminDocuService.searchNoticeList(pageNumber,schType,schText);
-	         } catch (ServiceException e) {
-	            e.printStackTrace();
-	         }
-	      }
-	      model.addAttribute("viewData2",viewData2);
-	      model.addAttribute("pageNumber",pageNumber);
-	      model.addAttribute("count",count);
-
-		return "admin/mem/ad_docu_list_search";
-	}
-
 	// 상세보기
 	@RequestMapping("/admin/docDetail")
 	public String boardUpdate(
@@ -98,7 +65,6 @@ public class AdminDocuController {
 		DocVO vo = null;
 		try {
 			vo = adminDocuService.selectDocuDetail(id);
-			System.out.println("컨트롤러 회원명"+vo.getMem_nm());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -138,12 +104,9 @@ public class AdminDocuController {
 		
 		DocVO vo = new DocVO();
 		vo.setSub_code(sub_code);
-		System.out.println("컨트롤러 승인후 "+vo.getApprove_at());
-		System.out.println("컨트롤러 승인후 코드 "+vo.getSub_code());
 		
 		String approve = request.getParameter("approve_at");
-		
-		
+		//승인 
 		if(approve.equals("N")){
 			vo.setApprove_at("Y");
 		}else{
@@ -156,7 +119,6 @@ public class AdminDocuController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("승인"+vo.getApprove_at());
 		return url;
 	}
 
