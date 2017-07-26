@@ -9,17 +9,34 @@
 	<typeAlias alias="stareCerti" type="com.last.common.vo.StareCertifiVO"/>
 	
 	<select id="selectSchoolCerti" parameterClass="str" resultClass="stareCerti">
-		select sch_major_code,
-			sch_coll,
-			sch_code_nm,
-			sch_major_nm 
-			from mem
-			where mem_code = #mem_code#
+		SELECT distinct ex.exkind_nm,
+			m.sch_major_code,
+			m.sch_coll,
+			s.sch_final,
+			m.sch_code_nm,
+			m.sch_major_nm
+     		
+			FROM mem m, sch s,exkind ex,stare s, em_info f
+			WHERE m.sch_code = s.sch_code
+		        and m.mem_code = s.mem_code
+		        and s.em_info_code = f.em_info_code
+		        and f.EM_EXKIND = ex.EXKIND_CODE
+		        and m.mem_code = #mem_code#
 	</select>
+	
+	
+	<update id="updateMemberCareer" parameterClass="stareCerti">
+		 update mem
+			set career_ind_code = #ind_code#, 
+				ca_comp_nm = #compNm#,
+				ca_work_content = #workCts#, 
+				ca_work_bd= #workStartDt#, 
+				ca_work_ed = #workEndDt#
+			where mem_code = #mem_code#
+	</update>
 	
 	<select id="selectCareerCerti" parameterClass="str" resultClass="stareCerti">
 		select career_ind_code,
-			career_job_code,
 			ca_comp_nm,
 			ca_work_content,
 			ca_work_bd,
@@ -28,8 +45,17 @@
 			where mem_code = #mem_code#
 	</select>
 	
-	<insert id="insertMemberCareer" parameterClass="stareCerti">
-		
-	</insert>
+	<select id="selectMemberCareer" parameterClass="str" resultClass="stareCerti">
+		SELECT 
+			career_ind_code,
+			ca_comp_nm,
+			ca_work_content,
+			nvl(to_char(ca_work_bd, 'yyyymmdd'),0) as ca_work_bd,
+			nvl(to_char(ca_work_ed, 'yyyymmdd'),0) as ca_work_ed,
+			ca_work_ed -ca_work_bd as career_during,
+			(select sch_final from sch where sch_code = A.sch_code) as sch_final
+		FROM mem A
+		WHERE mem_code = #mem_code#
+	</select>
 		
 </sqlMap>

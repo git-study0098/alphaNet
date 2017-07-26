@@ -16,8 +16,6 @@
 			<form name="form1" id="form1">
 			<input type="hidden" name="direction">
 			<input type="hidden" name="p_jmCd" value="1040">
-
-			
 			<input type="hidden" name="examLangCcd" value="">
 			<input type="hidden" name="multiFamilyYnCcd" value="">
 
@@ -48,7 +46,6 @@
 						<li><img src="<%=request.getContextPath() %>/resources/images/step/step_qualification_off_01.gif" alt=""><span>자격선택</span></li>
 						<li><img src="<%=request.getContextPath() %>/resources/images/step/step_qualification_off_02.gif" alt=""><span>학력정보입력</span></li>
 						<li><img src="<%=request.getContextPath() %>/resources/images/step/step_qualification_off_03.gif" alt=""><span>경력정보입력</span></li>
-						<li><img src="<%=request.getContextPath() %>/resources/images/step/step_qualification_off_06.gif" alt=""><span>기능대회수상경력</span></li>
 						<li><img src="<%=request.getContextPath() %>/resources/images/step/step_qualification_on_05.gif" alt=""><span>진단결과</span><span class="blind">선택</span></li>
 					</ul>
 
@@ -63,19 +60,28 @@
 							<col width="*">
 						</colgroup>
 						<tbody>
-							<tr>
-								<th scope="row">진단자격 명</th>
-								<td>
-									건설기계설비기사
-								</td>
-							</tr>
+<!-- 							<tr> -->
+<!-- 								<th scope="row">진단자격 명</th> -->
+<!-- 								<td> -->
+<!-- 									응시시험종목 -->
+<!-- 									건설기계설비기사 -->
+<!-- 								</td> -->
+<!-- 							</tr> -->
+							<c:forEach items="${exkind_nm}" var="stare">
+								<tr>
+									<th scope="row">진단자격명</th>
+									<td>${stare.exkind_nm}</td>
+								</tr>
+								</c:forEach>
 							<tr>
 								<th scope="row">진단결과</th>
 								<td>
-
-									<strong class="fc_b">응시가능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">可</em>)</strong>
-
-
+									<c:if test="${flag || flag2}">
+										<strong class="fc_b">응시가능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">可</em>)</strong>
+									</c:if>
+									<c:if test="${!flag && !flag2}">
+										<span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span>
+									</c:if>
 								</td>
 							</tr>
 						</tbody>
@@ -87,222 +93,38 @@
 						<colgroup>
 							<col width="16%">
 							<col width="*">
-							<col width="16%">
 						</colgroup>
 						<thead>
 							<tr>
 								<th scope="col">진단결과</th>
 								<th scope="col">항목</th>
-								<th scope="col">제출서류</th>
 							</tr>
 						</thead>
 						<tbody>
-
 							<tr>
-
-								<td><span class="fc_b">가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">可</em>)</span></td>
-
-								<td class="left">
-
-									관련학과 대학졸업자
-
-								</td>
 								<td>
-
-									<button type="button" class="btn3_type2" title="관련학과 대학졸업자 제출서류 상세보기" onclick="goDetail('1040','T304')"><span>상세보기</span></button>
-
+									<c:if test="${flag}">
+										<strong class="fc_b">응시가능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">可</em>)</strong>
+									</c:if>
+									<c:if test="${!flag}">
+										<span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span>
+									</c:if>
+								</td>
+								<td class="left">
+									관련학과 대학교 졸업자(4년제)
 								</td>
 							</tr>
-
 							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									4년제 대학 관련학과 1/2이상 마친 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자
-
-								</td>
 								<td>
-
-									<button type="button" class="btn3_type2" title="4년제 대학 관련학과 1/2이상 마친 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T312')"><span>상세보기</span></button>
-
+									<c:if test="${flag2}">
+										<strong class="fc_b">응시가능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">可</em>)</strong>
+									</c:if>
+									<c:if test="${!flag2}">
+										<span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span>
+									</c:if>
 								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
 								<td class="left">
-
-									5년제 대학 관련학과 1/2이상 마친 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="5년제 대학 관련학과 1/2이상 마친 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T317')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									6년제 대학 관련학과 1/2이상 마친 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="6년제 대학 관련학과 1/2이상 마친 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T313')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									관련학과 2년제 전문대학 졸업후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="관련학과 2년제 전문대학 졸업후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T310')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									관련학과 3년제 전문대학 졸업후 동일 및 유사직무분야에서 1년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="관련학과 3년제 전문대학 졸업후 동일 및 유사직무분야에서 1년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T308')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									관련학과 대학졸업예정자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="관련학과 대학졸업예정자 제출서류 상세보기" onclick="goDetail('1040','T305')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									기능사 자격 취득 후 동일 및 유사직무분야에서 3년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="기능사 자격 취득 후 동일 및 유사직무분야에서 3년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T302')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									동일 및 유사직무분야에서 4년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="동일 및 유사직무분야에서 4년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T321')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									동일 및 유사직무분야의 다른 종목 기사 이상의 자격을 취득한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="동일 및 유사직무분야의 다른 종목 기사 이상의 자격을 취득한 자 제출서류 상세보기" onclick="goDetail('1040','T303')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									산업기사 등급 이상 자격 취득 후 동일 및 유사직무분야에서 1년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="산업기사 등급 이상 자격 취득 후 동일 및 유사직무분야에서 1년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T301')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									전공심화과정의 학사학위 취득 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="전공심화과정의 학사학위 취득 후 동일 및 유사직무분야에서 2년이상 실무에 종사한 자 제출서류 상세보기" onclick="goDetail('1040','T325')"><span>상세보기</span></button>
-
-								</td>
-							</tr>
-
-							<tr>
-
-								<td><span class="fc_red">불 가 능(<em class="ff_zh" lang="zh-CN" xml:lang="zh-CN">不</em>)</span></td>
-
-								<td class="left">
-
-									학점인정등에관한법률 제7조 규정에 의하여 관련학과 106학점 이상을 인정받은 자
-
-								</td>
-								<td>
-
-									<button type="button" class="btn3_type2" title="학점인정등에관한법률 제7조 규정에 의하여 관련학과 106학점 이상을 인정받은 자 제출서류 상세보기" onclick="goDetail('1040','T306')"><span>상세보기</span></button>
-
+									관련학과 대학 졸업자(2년제,경력 2년이상인 경우)
 								</td>
 							</tr>
 
