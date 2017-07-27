@@ -112,7 +112,7 @@ function goList(){
 						<th scope="row">기존 첨부파일</th>
 						<td colspan="5"><a href="#"><input name="title" type="text"
 							value="${vo.client_attach_file}"
-							style="width: 95%; background-color: #ffffff;margin-right: 50px;margin-bottom: 10px; margin-top: 10px;"></td>
+							style="width: 95%; background-color: #ffffff;margin-right: 50px;margin-bottom: 10px; margin-top: 10px;" readonly="readonly"></a></td>
 					</tr>
 					<tr>
 						<td colspan="6"><textarea name="noticeContent" id="contents_text" style="width: 100%;" rows="10">${vo.client_consulting_content}

@@ -13,6 +13,17 @@
 <link href="<%=request.getContextPath()%>/resources/client/tip-yellow.css" rel="stylesheet" type="text/css" >
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>				
 <title>알파넷 고객의 소리</title>
+<script>
+	function bye(){
+		
+		 location.href="<%=request.getContextPath()%>/client/logout";
+	}
+
+</script>
+
+
+
+
 </head>
 <body>
 <div id="header">
@@ -20,7 +31,6 @@
 		<div class="gnb_pix">
 			<ul class="gnb">
 				<li class="first-child"><a href="#">사이트맵</a></li>
-
 				<li>화면크기
 					<span>
 						<a href="javascript:funcZoom('in');">
@@ -31,6 +41,12 @@
 						</a> 
 					</span>
 				</li>
+				<% if (session.getAttribute("email") != null){
+				%>
+				<a href="javascript:bye()"><li>로그아웃</li></a>
+				<%
+				}
+				%>
 			</ul>
 		</div>
 	</div>

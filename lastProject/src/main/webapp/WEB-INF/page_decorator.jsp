@@ -22,7 +22,7 @@
 <script>
 function goMinwon(){
 	var pop = window.open("<%=request.getContextPath()%>/client/main", "pop",
-	"width=1080,height=860, scrollbars=yes, resizable=yes");
+	"width=1172,height=909, scrollbars=yes, resizable=yes");
 
 }
 </script>

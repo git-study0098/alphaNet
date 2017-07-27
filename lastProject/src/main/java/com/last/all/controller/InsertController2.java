@@ -54,7 +54,7 @@ public class InsertController2 {
 	
 	
 	
-	@RequestMapping(value="insert2",headers=("content-type=multipart/*"),method = RequestMethod.POST)
+	@RequestMapping(value="client/insert2",headers=("content-type=multipart/*"),method = RequestMethod.POST)
 	public String insert(HttpServletRequest request,ClientVO vo,@RequestParam("f")MultipartFile multipartFile,@RequestParam(value="client_code", defaultValue="client02" )String client_code, HttpSession session) throws Exception {
 		System.out.println("컨트롤러 들어왕");
 		String message ="";
@@ -111,7 +111,7 @@ public class InsertController2 {
 			message="고객의소리를 남기는데 실패하였습니다.\n다시시도해주세요.";
 		}
 		session.setAttribute("message", message);
-		return "redirect:main";
+		return "redirect:/client/main";
 	}
 	
 	

@@ -64,9 +64,10 @@ public class Autocontroller {
 		return "client/question3";
 	}
 	
-	@RequestMapping("/client/detail")
-	public String detail(){
-		return "client/detail";
+	@RequestMapping("/client/logout")
+	public String logout(){
+		return "client/logout";
 	}
-
+	
+	
 }

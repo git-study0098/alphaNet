@@ -11,15 +11,13 @@
 	String email = (String) session.getAttribute("email");
 	List<Notice1VO> five =(List<Notice1VO>)request.getAttribute("five");
 %>
-<script>
-alert('<%=email%>')
-</script>
+
 
 
 <script>
 
 	function autoCheck(){
-		alert('<%=email%>')
+
 		<%
 		if(email ==null||email.equals("")){
 		%>
@@ -28,8 +26,6 @@ alert('<%=email%>')
 			<%
 		}else{
 			%>
-			
-			alert("인증완료 델헷");
 			location.href="<%=request.getContextPath()%>/client/client";
 		<%
 		}

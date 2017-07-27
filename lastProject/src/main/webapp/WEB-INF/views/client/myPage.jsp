@@ -56,6 +56,7 @@
 				<%
 					if (email == null || email.equals("")) {
 				%>
+				<script>alert("해당페이지를 이용하시려면 본인인증이 필요합니다.");</script>
 				<li class="icon04"><a
 					href="<%=request.getContextPath()%>/client/auto">마이페이지</a></li>
 				<%
@@ -269,7 +270,7 @@
 								<td scope="col"><a href="<%=request.getContextPath() %>/client/clientDetail?client_code=${clientAll.client_code }" >${clientAll.client_title}</a></td>
 								<c:set var="name" value="${clientAll.client_nm}"></c:set>
 								<td scope="col">${name}</td>
-								<td scope="col"><fmt:formatDate value="${clientAll.client_enRoll_date}" pattern="yyyy-MM-dd"/></td>
+								<td scope="col"><fmt:formatDate value="${clientAll.client_enRoll_date}" pattern="yy-MM-dd"/></td>
 								<c:if test="${clientAll.reply_state eq 'Y'}">
 								<td scope="col">접수완료</td>
 								</c:if>		

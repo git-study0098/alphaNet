@@ -24,8 +24,6 @@ public class DocVO {
 	private Date enroll_date; //최종수정일
 	private Date regist_date; //등록일
 	private MultipartFile uploadfile;
-	
-	
 	public String getMem_code() {
 		return mem_code;
 	}
@@ -128,9 +126,9 @@ public class DocVO {
 	}
 	public void setUploadfile(MultipartFile uploadfile) {
 		this.uploadfile = uploadfile;
-	} 
+	}
 	
 	
-	
+
 
 }
