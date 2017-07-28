@@ -29,6 +29,7 @@
 		<pattern>/**/map*</pattern>
 		<pattern>/client/mail</pattern>
 		<pattern>/reply</pattern>
+		<pattern>/mail</pattern>
 	</excludes>
 <!-- 		<pattern>/admin/**/*</pattern> -->
 

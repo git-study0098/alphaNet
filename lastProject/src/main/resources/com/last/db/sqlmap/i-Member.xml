@@ -89,10 +89,10 @@
 	</select>
 	
 	<update id="insertMember" parameterClass="member">
-		insert into mem (mem_code,mem_photo,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_bir,mem_ph,mem_email_agree,mem_pass_em,enabled,authorities) 
+		insert into mem (mem_code,mem_photo,mem_pwd,mem_nm,mem_phone,mem_email,mem_add1,mem_add2,mem_add3,mem_add4,mem_kor_for,mem_post_numb1,mem_post_numb2,mem_gender,mem_bir,mem_ph,mem_email_agree,enabled,authorities) 
 		values (#id#,#mem_photo#,#pwd#, #name# ,#mem_phone#,#mem_email#,#mem_add1#,#mem_add2#,#mem_add3#,#mem_add4#,#mem_kor_for#,#mem_post_numb1#,#mem_post_numb2#,#mem_gender#,#mem_bir#,#mem_ph#,#mem_email_agree#,'1','ROLE_MEMBER')
 	</update>
-	
+
 	<update id="updatePwd" parameterClass="java.util.HashMap">
 		update mem
 		set mem_pwd = #mem_pwd#

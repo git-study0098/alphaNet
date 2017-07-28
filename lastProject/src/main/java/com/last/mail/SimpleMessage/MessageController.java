@@ -65,4 +65,34 @@ public class MessageController {
 		}
 		return buffer.toString();
 	}
+	
+	
+	@RequestMapping("/mail")
+	public String memberMail(){
+		return "member/memberMail";
+	}
+	
+
+	@RequestMapping("/mailSend")
+	@ResponseBody
+	public Object memberMailSend(HttpServletRequest request,
+			HttpServletResponse response) {
+	
+		String email = request.getParameter("email");
+		System.out.println(email);
+		String ranNum = RandomNum();
+		
+		ApplicationContext ctx = new GenericXmlApplicationContext("classpath:mail-context.xml");
+		inlineMessage simple = ctx.getBean("inlineMessageMail",inlineMessage.class);
+		simple.send(email,ranNum);
+		Map<String,Object> param = new HashMap<String, Object>();
+		param.put("email", email);
+		param.put("ranNum", ranNum);
+		System.out.println(ranNum);
+//		Map<String, String> paramMap = new HashMap<String, String>();
+//		paramMap("email",email)
+		return param;
+
+	}
+	
 }

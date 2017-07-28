@@ -44,6 +44,35 @@ public class SignupController {
 		return "member/juso/jusoPopup2";
 	}
 	
+	@RequestMapping("/signup1")
+	public String signUp1(MemberVo vo, HttpServletRequest request){
+
+		
+		return "member/signup1";
+	}
+	
+	@RequestMapping("/signup2")
+	public String signUp2(MemberVo vo, HttpServletRequest request){
+		
+		
+		return "member/signup2";
+	}
+	
+	@RequestMapping("/signup3")
+	public String signUp3(MemberVo vo, HttpServletRequest request){
+		
+		
+		return "member/signup3";
+	}
+	
+	@RequestMapping("/signup4")
+	public String signUp4(MemberVo vo, HttpServletRequest request){
+		
+		
+		return "member/signup4";
+	}
+	
+	
 	@RequestMapping("/signup")
 	public String signUp(MemberVo vo, HttpServletRequest request){
 
@@ -110,7 +139,7 @@ public class SignupController {
 		
 		memberDaoImpl.insert(vo);
 		
-		return "redirect:main";
+		return "member/signup4";
 	}
 	
 	@RequestMapping(value="idCheck", method=RequestMethod.POST)

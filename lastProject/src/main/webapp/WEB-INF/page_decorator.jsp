@@ -325,7 +325,7 @@ var speed = 800;
 					<sec:authorize access="!isAuthenticated()">
 						<li><a href="login">로그인</a></li>
 					</sec:authorize>
-						<li><a href="signup">회원가입</a></li>
+						<li><a href="signup1">회원가입</a></li>
 						<li><a>English</a></li>
 						<li><a>이용안내</a></li>
 						<li><a>큐넷길라잡이</a></li>
