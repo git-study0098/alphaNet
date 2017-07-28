@@ -109,7 +109,7 @@
 						</ul></li>
 					<li class="low"><a>발급조회현황</a>
 						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/member/jagukHistory">자격증발급내역</a></li>
+							<li><a href="<%=request.getContextPath() %>/member/jagukRequestSearch">자격증발급내역</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/jagukList">자격증취득조회</a></li>
 						</ul></li>
 					<li class="low"><a>개인정보관리</a>

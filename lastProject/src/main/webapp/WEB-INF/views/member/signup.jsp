@@ -166,6 +166,7 @@ $(function(){
 	$("#mem_pwd_confirm").keyup(function(){
 		if($("#mem_pwd").val() != $("#mem_pwd_confirm").val()){
 			$("font[name=check]").text("");
+			$("font[name=check]").css('color','red');
 			$("font[name=check]").text("비밀번호가 일치하지 않습니다.");
 		}else if($("#mem_pwd").val() == $("#mem_pwd_confirm").val()){
 			 $('font[name=check]').text('');
@@ -312,7 +313,7 @@ $('#btn-upload').click(function (e) {
 										</td>
 										<td rowspan="9" class="photo">
 											<div >
-												<img id="viewImg" src="resources/images/사진미등록.png" width="300px" height="400px"  onclick="cropImage();">											
+												<img id="viewImg" src="resources/images/사진.png" width="300px" height="400px"  onclick="cropImage();">											
 											</div>
 										
 											<input type="file" name="f" id ="file"  onchange="changeValue(this);" style="display:none;"/>
