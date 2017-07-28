@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.last.common.dao.MainDAO;
 import com.last.common.dao.WonseoDAO;
+import com.last.common.vo.ExkindVO;
 import com.last.common.vo.MemberVo;
 import com.last.common.vo.PlaceVO;
 import com.last.common.vo.WonseoInfoVo;
@@ -51,12 +52,25 @@ public class WonseoService {
 		return wonseoDao.selectStareDate(em_info_code);
 	}
 	
-	public int insertStare(String mem_code,String stare_date, String em_info_code) throws SQLException{
+	public int insertStare(String mem_code,String stare_date, String em_info_code, String em_nm) throws SQLException{
 		int result =0;
 		
-		result = wonseoDao.insertStare(mem_code, stare_date, em_info_code);
+		String[] em_nm1 = em_nm.split("차");
+		if(em_nm1[1].equals("필기")){
+			em_nm = "W";
+		}else if(em_nm1[1].equals("실기")){
+			em_nm = "P";
+		}
+		
+		
+		result = wonseoDao.insertStare(mem_code, stare_date, em_info_code,em_nm);
 		
 		return result;
+	}
+	
+	public String selectEmNm(String em_info_code) throws SQLException{
+		String em_nm = wonseoDao.selectEmNm(em_info_code);
+		return em_nm;
 	}
 	
 	public PlaceVO selectMap(String place_nm){
@@ -64,4 +78,10 @@ public class WonseoService {
 		vo = wonseoDao.selectMap(place_nm);
 		return vo;
 	}
+	
+	public List<ExkindVO> selectExkindNm(String exkind_code)throws SQLException{
+		
+		List<ExkindVO> list = wonseoDao.selectExkindNm(exkind_code);
+		return list;
+ 	}
 }

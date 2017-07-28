@@ -12,11 +12,15 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.last.common.service.WonseoService;
+import com.last.common.vo.ExkindVO;
 import com.last.common.vo.MemberVo;
 import com.last.common.vo.PlaceVO;
+import com.last.common.vo.QualifiCertiVO;
 import com.last.common.vo.WonseoInfoVo;
 
 
@@ -233,7 +237,6 @@ public class MemberWonseoRequestController {
 			e.printStackTrace();
 		}
 		
-		System.out.println();
 		
 		model.addAttribute("placeNm", placeNm);
 		model.addAttribute("em_pay_pr", em_pay_pr);
@@ -252,16 +255,20 @@ public class MemberWonseoRequestController {
 		String stareDate = "";
 		WonseoInfoVo vo = null;
 		int result = 0;
+		String em_nm = "";
 		try {
 			vo = wonseoService.selectPlaceData(em_info_code);
 			member = wonseoService.selectMemberData(id);
 			stareDate = wonseoService.selectStareDate(em_info_code);
+			em_nm = wonseoService.selectEmNm(em_info_code);
 			vo.setNumg_stare_date(stareDate);
-			
-			result = wonseoService.insertStare(id, stareDate, em_info_code);
+			//실기필기인지 시퀀스 까지
+			result = wonseoService.insertStare(id, stareDate, em_info_code,em_nm);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		
+		
 		
 		model.addAttribute("placeData",vo);
 		model.addAttribute("member",member);
@@ -274,9 +281,7 @@ public class MemberWonseoRequestController {
 	@RequestMapping("/member/map")
 	public String map(HttpServletRequest request ,PlaceVO place){
 		String place_nm = request.getParameter("place_nm"); //동아마이스터
-		System.out.println("컨트롤러+"+place_nm);
 		place = wonseoService.selectMap(place_nm);
-		System.out.println(place.getPlace_add());
 		request.setAttribute("place_nm", place);
 		return "member/wonseo/map";
 	}
@@ -287,4 +292,29 @@ public class MemberWonseoRequestController {
 		return "member/test";
 		
 	}
+	
+	@RequestMapping(value="passExam",method=RequestMethod.POST)
+	@ResponseBody
+	public List<ExkindVO> passExam(HttpServletRequest req,Model model){
+		String exkind_code = req.getParameter("exkind_code");
+		
+		List<ExkindVO> list=null;
+		try {
+			list = wonseoService.selectExkindNm(exkind_code);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+ 		
+		
+		return list;
+	}
+	
+	
+	@RequestMapping("/member/hap")
+	public String hap(){
+		
+		return "/member/hap";
+	}
+	
 }

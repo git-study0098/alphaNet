@@ -30,6 +30,7 @@ function goMinwon(){
 
 <link href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/common.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/ui.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/left_menu.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/content.css">

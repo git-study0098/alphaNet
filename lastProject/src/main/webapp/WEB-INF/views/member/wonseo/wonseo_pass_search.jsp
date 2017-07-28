@@ -1,14 +1,58 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<script>
+$(function(){
+	$('#passExam').on('click',function(){
+		var exkind_code = $('#comp').val();
+				console.log("들어오냐");
+		$.ajax({
+			url : 'passExam',
+			type : 'post',
+			data : {'exkind_code':exkind_code},
+			success:function(res){
+				console.log("여기는");
+				console.log(res);
+				
+				var code ="<div class='tbl_type1' style='height:190px; overflow-y:scroll' tabindex='0'><table><colgroup><col width='10%'><col width='70%'><col width='20%'></colgroup>";                                                                                                                                  							
+					code +="<thead><tr><th scope='col'>번호</th><th scope='col'>종목명</th><th scope='col'>종목코드</th></tr></thead><tbody>";                                                                                                                  								
+				     $.each(res,function(i,data){
+				    	 console.log(data.exkind_code);
+				    	 code+="<tr>";
+				    	 code+="<td>"+(i+1)+"</td>";
+				    	 code+="<td><a href='#' onclick='go_happ('comp1');'>"+data.exkind_nm+"</a></td>";
+				    	 code+="<td>"+data.exkind_code+"</td></tr>";
+				     })    
+				     code+="</tbody></table></div>";
+				     console.log(code);
+				   
+				     $('.aaaa').html(code);
+				}
+			})
+		})
+	})
+</script>
+<script>
+function go_happ(b) {
+	var p = b;
+	var popUrl = "<%=request.getContextPath()%>/member/hap?exkind_code="+b;
+	var win;
+	win = window.open(popUrl, "", 'scrollbars=no,width=600,height=300,status=no,resizable=no');
+	win.opener.self;
+}
+</script>
 <style>
 * { box-sizing: content-box;}
 
 .pagination1{text-align:center;}
 	.pagination1 .page {margin:0 15px}
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
+	#hidden{visibility: hidden;}
 </style>
+
 <article>
+	
+					
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
 		<div>
@@ -155,118 +199,6 @@
 						</div>
 					</div>
 					<!-- 국가전문자격 발표일정  -->
-					<div class="tbl_layout nonBg" id="ancSchNew2"
-						style="display: none;">
-						<table class="td_layout">
-							<colgroup>
-								<col width="*">
-								<col width="62%">
-							</colgroup>
-							<tbody>
-								<tr>
-									<td>시험명</td>
-									<td>일정</td>
-								</tr>
-							</tbody>
-						</table>
-						<div class="tbl_type1" style="height: 349px; overflow-y: auto"
-							tabindex="0">
-							<table summary="합격(예정자)명단 조회로 번호, 종목명, 종목코드 정보제공">
-								<caption>국가전문자격 합격자발표일정</caption>
-								<colgroup>
-									<col width="*">
-									<col width="60%">
-								</colgroup>
-								<thead class="blind">
-									<tr>
-										<th scope="col">시험명</th>
-										<th scope="col">일정</th>
-									</tr>
-								</thead>
-								<tbody>
-
-									<tr>
-										<td class="left">2017년 제 54회 세무사 1차 합격자</td>
-										<td>5월 24일 (수) 오전 09:00<span class="mBlock">~ 7월
-												23일 (일) 오후 11:59</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 1회 문화재수리기능자(24종목) 실기 합격자</td>
-										<td>5월 24일 (수) 오전 09:00<span class="mBlock">~ 7월
-												22일 (토) 오후 11:59</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 15회 가맹거래사 1차 합격자</td>
-										<td>5월 31일 (수) 오전 09:00<span class="mBlock">~ 7월
-												31일 (월) 오후 06:00</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 1회 감정사 필기 합격자</td>
-										<td>6월 7일 (수) 오전 09:00<span class="mBlock">~ 8월 6일
-												(일) 오후 06:00</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 1회 검수사 필기 합격자</td>
-										<td>6월 7일 (수) 오전 09:00<span class="mBlock">~ 8월 6일
-												(일) 오후 06:00</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 1회 검수사 필기 합격예정자</td>
-										<td>6월 7일 (수) 오전 09:00<span class="mBlock">~ 8월 6일
-												(일) 오후 06:00</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 35회 문화재수리기술자 면접 합격자</td>
-										<td>6월 7일 (수) 오전 09:00<span class="mBlock">~ 8월 6일
-												(일) 오후 11:59</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 17회 소방시설관리사 1차 합격자</td>
-										<td>6월 7일 (수) 오전 09:00<span class="mBlock">~ 8월 5일
-												(토) 오후 06:00</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 1회 검량사 필기 합격자</td>
-										<td>6월 7일 (수) 오전 09:00<span class="mBlock">~ 8월 6일
-												(일) 오후 06:00</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 26회 공인노무사 1차 합격자</td>
-										<td>6월 21일 (수) 오전 09:00<span class="mBlock">~ 8월
-												21일 (월) 오후 11:59</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 5회 행정사 1차 합격자</td>
-										<td>6월 28일 (수) 오전 09:00<span class="mBlock">~ 8월
-												27일 (일) 오후 11:59</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 14회 농산물품질관리사 1차 합격자</td>
-										<td>6월 28일 (수) 오전 09:00<span class="mBlock">~ 8월
-												27일 (일) 오후 11:59</span></td>
-									</tr>
-
-									<tr>
-										<td class="left">2017년 제 3회 손해평가사 1차 합격자</td>
-										<td>7월 19일 (수) 오전 09:00<span class="mBlock">~ 9월
-												16일 (토) 오후 11:59</span></td>
-									</tr>
-
-								</tbody>
-							</table>
-						</div>
-					</div>
 
 					<!-- 정기시험 발표리스트  -->
 					<div id="ancLstNew" style="">
@@ -276,50 +208,22 @@
 								<label for="selExam"><strong>정기시험</strong></label>
 								<div>
 									<select name="selExam" id="selExam" class="w350"
-										title="응시한 정기시험 선택" onchange="setQSelVal(this.value)">
+										title="응시한 정기시험 선택">
 										<option value="">응시하신 시험을 선택해주세요.</option>
 
-										<option value="PL2017456006_1_Y" implsyscd="1"
-											schditemccd="30">2017년 정기 기능장 62회 필기</option>
-
-										<option value="PL2017454008_2_Y" implsyscd="1"
-											schditemccd="30">2017년 정기 기사 2회 실기 (합격자발표일
-											2017.07.14)</option>
-
-										<option value="PL2017456007_2_Y" implsyscd="1"
-											schditemccd="35">2017년 정기 기능사 산업별 맞춤형 고교등 필기면제검정
-											(합격자발표일 2017.07.07)</option>
-
-										<option value="PL2017456007_2_Y" implsyscd="1"
-											schditemccd="30">2017년 정기 기능사 산업별 맞춤형 고교등 필기면제검정
-											(합격자발표일 2017.06.23)</option>
-
-										<option value="PL2017454004_2_Y" implsyscd="1"
-											schditemccd="35">2017년 정기 기능사 2회 실기 (합격자발표일
-											2017.06.23)</option>
-
-										<option value="PL2017456003_1_Y" implsyscd="1"
-											schditemccd="30">2017년 정기 기술사 112회 필기</option>
-
-										<option value="PL2017454004_2_Y" implsyscd="1"
-											schditemccd="30">2017년 정기 기능사 2회 실기 (합격자발표일
-											2017.06.09)</option>
-
-										<option value="PL2017456005_2_Y" implsyscd="1"
-											schditemccd="35">2017년 정기 기능장 61회 실기 (합격자발표일
-											2017.05.26)</option>
-
-										<option value="PL2017454007_2_Y" implsyscd="1"
-											schditemccd="35">2017년 정기 기사 1회 실기 (합격자발표일
-											2017.05.26)</option>
-
+										<option value="comp" implsyscd="1"
+											schditemccd="35" id="comp">2017년 정보통신 정기시험 1회 실기</option>
+										<option value="" implsyscd="1"
+											schditemccd="35">2017년 전자 정기시험 1회 실기</option>
+										<option value="" implsyscd="1"
+											schditemccd="35">2017년 토목 정기시험 1회 실기</option>
+										<option value="" implsyscd="1"
+											schditemccd="35">2017년 건설 정기시험 1회 실기</option>
 									</select>
 								</div>
 								<span class="mBtn">
-									<button type="button" class="btn3_type1"
-										onclick="viewQnetPassList('1')">
-										<span>전체합격자 보기</span>
-									</button>
+									<input type="submit" class="btn btn-primary btn-xs"
+									  id="passExam" value="전체합격자 보기">
 									<button type="button" class="btn3_type3 webCont"
 										onclick="NetFunnel_goUrl ({},'myp003.do?id=myp00301&amp;gSite=Q&amp;gId=');">
 										<span>개인별 득점조회</span>
@@ -328,97 +232,14 @@
 							</div>
 
 						</div>
-						<div id="qHomePList"></div>
-
-
-					</div>
-
-					<!-- 추가 2014.11.12.gbs 상시종목 합격자 발표는 검정원에서 확인하라는 정보메시지 -->
-					<div id="ancTQnet" style="display: none">
-						<h4>한국기술자격검정원(상시)</h4>
-						<ul class="list_lines01">
-							<li>
-								<p class="tit">
-									<span>국가기술자격 상시시험 12종목 합격자 발표는 ‘한국기술자격 검정원’에서 확인할 수
-										있습니다.</span>
-
-									<button type="button" class="btn btncolor6"
-										title="상시시험 합격자 확인하기. 새 창"
-										onclick="popup3('http://t.q-net.or.kr/anc001.do?id=anc001011&amp;depth=0301&amp;gId=99&amp;gSite=L')">
-										<span>상시시험 합격자 확인하기</span>
-									</button>
-								</p>
-								<ul class="inner_menu">
-									<li>한식, 일식, 양식, 중식조리</li>
-									<li>지게차 / 굴삭기운전</li>
-									<li>정보처리 / 정보기기운용</li>
-									<li>미용사(일반) / 미용사(피부)</li>
-									<li>제과 / 제빵기능사</li>
-								</ul>
-							</li>
-						</ul>
-					</div>
-
-					<!-- 국가전문자격시험  발표 -->
-					<div id="ancLstNew2" style="display: none">
-
-						<div class="metier_wrap mb20">
-							<div class="inwrap">
-								<label for="selExam2"><strong>전문자격 시험</strong></label>
-								<div>
-									<select id="selExam2" class="w300 mSize"
-										onchange="setQSelVal(this.value)" title="응시한 정기시험 선택">
-										<option value="">응시하신 시험을 선택해주세요.</option>
-
-										<option value="PL2017465008_1_Y">2017년 제3회 손해평가사 1차</option>
-
-										<option value="PL2017459004_1_Y">2017년 제5회 행정사 1차</option>
-
-										<option value="PL2017459003_1_Y">2017년 제14회 농산물품질관리사
-											1차</option>
-
-										<option value="PL2017457026_1_Y">2017년 제26회 공인노무사 1차
-										</option>
-
-										<option value="PL2017455003_2_Y">2017년 제35회 문화재수리기술자
-											면접</option>
-
-										<option value="PL2017457031_1_Y">2017년 제17회 소방시설관리사
-											1차</option>
-
-										<option value="PL2017457005_1_Y">2017년 제1회 검수사 필기</option>
-
-										<option value="PL2017457007_1_Y">2017년 제1회 감정사 필기</option>
-
-										<option value="PL2017457006_1_Y">2017년 제1회 검량사 필기</option>
-
-										<option value="PL2017457019_1_Y">2017년 제15회 가맹거래사 1차
-										</option>
-
-										<option value="PL2017457012_1_Y">2017년 제54회 세무사 1차</option>
-
-										<option value="PL2017457011_1_Y">2017년 제1회
-											문화재수리기능자(24종목)</option>
-
-									</select>
+						<div id="qHomePList">
+								<div class="aaaa">
 								</div>
-								<span class="mBtn2">
-									<button type="button" class="btn3_type1"
-										onclick="viewQnetPassList('S')">
-										<span>전체합격자 보기</span>
-									</button>
-									<button type="button" class="btn3_type3 webCont"
-										onclick="NetFunnel_goUrl ({},'myp003.do?id=myp00301&amp;gSite=Q&amp;gId=');">
-										<span>개인별 득점조회</span>
-									</button>
-								</span>
-							</div>
 						</div>
+					</div>
 						<div id="qSPassList"></div>
-
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 </article>

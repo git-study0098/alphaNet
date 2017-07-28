@@ -5,7 +5,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script>
 $(function(){
-	
 $('#jagukHwa').on('click',function(){
 	var mem_nm = $('#hgulNm').val();
 	var reg_num1 = $('#resdNo1').val();

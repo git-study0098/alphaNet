@@ -35,8 +35,8 @@
 								style="padding: 5px; margin: 5px;"> <select
 								style="width: 150px;" name="comp">
 									<option value="3">기사</option>
-									<option value="산업기사">산업기사</option>
-									<option value="기술사">기술사</option>
+									<option value="2">산업기사</option>
+									<option value="1">기술사</option>
 									<option value="전문자격시험">전문자격시험</option>
 							</select>
 							</span>

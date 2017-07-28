@@ -27,6 +27,7 @@
 		<pattern>/member/jagukPayment*</pattern>
 		<pattern>/member/request5*</pattern>
 		<pattern>/**/map*</pattern>
+		<pattern>/**/hap*</pattern>
 		<pattern>/client/mail</pattern>
 		<pattern>/reply</pattern>
 	</excludes>
