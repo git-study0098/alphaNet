@@ -30,7 +30,6 @@ function goMinwon(){
 
 <link href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico" rel="shortcut icon" type="image/x-icon">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/common.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/ui.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/left_menu.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/content.css">
@@ -456,37 +455,28 @@ var speed = 800;
 							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/wonseoHistory">마이페이지</a>
 								<div class="sub04" style="display: none;">
 									<ul style="min-height: 145px;">
-										<li class=""><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수관리</a>
+										<li class=""><a href="#">원서접수관리</a>
 											<ul style="min-height: 145px; left: 130px; display: none;">
-												<li><a href="#">원서접수내역</a></li>
-												<li><a onclick="return NetFunnel_goUrl({},this.href);"
-													href="<%=request.getContextPath()%>/member/wonseoReq">원서접수신청</a></li>
-												<li><a href="#">시험결과확인</a></li>
-												<li><a href="#">사진변경신청/결과</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수내역</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/wonseoReq">원서접수신청</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/changeImg">시험결과확인</a></li>
 											</ul></li>
 										<li><a href="#">응시자격</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
-												<li><a href="#">응시자격자가진단</a></li>
-												<li><a href="#">응시가능종목확인</a></li>
-												<li><a href="#">응시자격제출서류확인</a></li>
-												<li><a href="#">응시자격서류 온라인 제출</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/selfTest">응시자격자가진단</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/docCheck">응시자격제출서류확인</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/docSubmit">응시자격서류 온라인 제출</a></li>
 											</ul></li>
 										<li><a href="#">발급조회현황</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
-												<li><a href="#">확인서발급내역</a></li>
-												<li><a href="#">자격증발급내역</a></li>
-												<li><a href="#">자격증취득조회</a></li>
-											</ul></li>
-										<li><a href="#">면제정보보기</a>
-											<ul style="display: none; min-height: 145px; left: 130px;">
-												<li><a href="#">시험면제</a></li>
-												<li><a href="#">과목면제</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/jagukRequestSearch">자격증발급내역</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/jagukList">자격증취득조회</a></li>
 											</ul></li>
 										<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보관리</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
 												<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보수정</a></li>
-												<li><a href="#">학력/경력수정</a></li>
-												<li><a href="#">회원탈퇴</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/schJobInfo">학력/경력수정</a></li>
+												<li><a href="<%=request.getContextPath() %>/member/out">회원탈퇴</a></li>
 											</ul></li>
 									</ul>
 									<p class="blind">
@@ -519,7 +509,7 @@ var speed = 800;
 											<ul style="display: none; min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/change">기술자격환불안내</a></li>
 											</ul></li>
-										<li><a href="#1#">고객맞춤정보</a>
+										<li><a href="#">고객맞춤정보</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/notice/getJob">취업/훈련/연수</a></li>
 												<li><a href="<%=request.getContextPath() %>/notice/college">대학생(중고생)장학금</a></li>
@@ -554,191 +544,39 @@ var speed = 800;
 			<ul>
 				<li><a href="#"><span>정기시험</span></a>
 					<ul style="display: none;">
-						<li><a onclick="return NetFunnel_goUrl({},this.href);"
-							href="http://www.q-net.or.kr/rcv001.do?id=rcv00103&amp;gSite=Q&amp;gId=">원서접수</a></li>
-						<li><a onclick="return NetFunnel_goUrl({},this.href);"
-							href="http://www.q-net.or.kr/anc001.do?id=anc001011&amp;gSite=Q&amp;gId=">합격자/답안발표</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/crf021.do?id=crf02101&amp;gSite=Q&amp;gId=">시험일정</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/rcv001.do?id=rcv00104&amp;gSite=Q&amp;gId=">필기시험안내</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/rcv013.do?id=rcv01303&amp;gSite=Q&amp;gId=">실기시험안내</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/crf005.do?id=crf00501&amp;gSite=Q&amp;gId=">자격정보</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/crf011.do?id=crf01101&amp;gSite=Q&amp;gId=">자격검정통계</a></li>
-						<li><a href="https://www.youtube.com/watch?v=rfZMtTrs-zI"
-							target="_blank" title="새 창">국가기술자격대여근절캠페인</a></li>
+						<li><a href="<%=request.getContextPath() %>/wonseoInfo">원서접수</a></li>
+						<li><a href="<%=request.getContextPath() %>/wonseoPassSearch">합격자/답안발표</a></li>
+						<li><a href="<%=request.getContextPath()%>/calender">시험일정</a></li>
+						<li><a href="<%=request.getContextPath() %>/wonseoWriterInfo">필기시험안내</a></li>
+						<li><a href="<%=request.getContextPath()%>/wonseoFuncInfo">실기시험안내</a></li>
+						<li><a href="<%=request.getContextPath()%>/chart">자격검정통계</a></li>
 					</ul></li>
 				<li><a href="#"><span>전문자격시험</span></a>
 					<ul style="display: none;">
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=07&amp;gSite=L"
-							target="_blank" title="새 창">가맹거래사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=64&amp;gSite=L"
-							target="_blank" title="새 창">감정사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=60&amp;gSite=L"
-							target="_blank" title="새 창">감정평가사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=63&amp;gSite=L"
-							target="_blank" title="새 창">검량사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=62&amp;gSite=L"
-							target="_blank" title="새 창">검수사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=46&amp;gSite=L"
-							target="_blank" title="새 창">경매사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=09&amp;gSite=L"
-							target="_blank" title="새 창">경비지도사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=49&amp;gSite=L"
-							target="_blank" title="새 창">경영지도사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=05&amp;gSite=L"
-							target="_blank" title="새 창">공인노무사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=08&amp;gSite=L"
-							target="_blank" title="새 창">공인중개사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=37&amp;gSite=L"
-							target="_blank" title="새 창">관광통역안내사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=24&amp;gSite=L"
-							target="_blank" title="새 창">관세사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=40&amp;gSite=L"
-							target="_blank" title="새 창">국내여행안내사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=50&amp;gSite=L"
-							target="_blank" title="새 창">기술지도사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=45&amp;gSite=L"
-							target="_blank" title="새 창">농산물품질관리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=43&amp;gSite=L"
-							target="_blank" title="새 창">문화재수리기능자</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=42&amp;gSite=L"
-							target="_blank" title="새 창">문화재수리기술자</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=61&amp;gSite=L"
-							target="_blank" title="새 창">물류관리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=35&amp;gSite=L"
-							target="_blank" title="새 창">박물관 및 미술관 준학예사</a></li>
-						<!-- 2016.11.28 jws : 김종호 대리 요청 방사선 3종목 메뉴제거
-					<li><a href="http://www.q-net.or.kr/man001.do?id=&gId=30&gSite=L" target="_blank" title="새 창">방사선취급감독면허</a></li>
-					<li><a href="http://www.q-net.or.kr/man001.do?id=&gId=29&gSite=L" target="_blank" title="새 창">방사성동위원소취급(일반)</a></li>
-					<li><a href="http://www.q-net.or.kr/man001.do?id=&gId=28&gSite=L" target="_blank" title="새 창">방사성동위원소취급(특수)</a></li>
-					-->
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=51&amp;gSite=L"
-							target="_blank" title="새 창">변리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=52&amp;gSite=L"
-							target="_blank" title="새 창">사회복지사1급</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=57&amp;gSite=L"
-							target="_blank" title="새 창">산업보건지도사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=56&amp;gSite=L"
-							target="_blank" title="새 창">산업안전지도사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=22&amp;gSite=L"
-							target="_blank" title="새 창">세무사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=34&amp;gSite=L"
-							target="_blank" title="새 창">소방시설관리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=33&amp;gSite=L"
-							target="_blank" title="새 창">소방안전교육사</a></li>
-						<!-- 2015.06.03 jws : 배은지과장 요청 손해평가사 추가 -->
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=73&amp;gSite=L"
-							target="_blank" title="새 창">손해평가사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=72&amp;gSite=L"
-							target="_blank" title="새 창">수산물품질관리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=54&amp;gSite=L"
-							target="_blank" title="새 창">정수시설운영관리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=59&amp;gSite=L"
-							target="_blank" title="새 창">주택관리사보</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=67&amp;gSite=L"
-							target="_blank" title="새 창">청소년상담사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=66&amp;gSite=L"
-							target="_blank" title="새 창">청소년지도사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=36&amp;gSite=L"
-							target="_blank" title="새 창">한국어교육능력검정시험</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=31&amp;gSite=L"
-							target="_blank" title="새 창">행정사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=39&amp;gSite=L"
-							target="_blank" title="새 창">호텔경영사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=38&amp;gSite=L"
-							target="_blank" title="새 창">호텔관리사</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/man001.do?id=&amp;gId=41&amp;gSite=L"
-							target="_blank" title="새 창">호텔서비스사</a></li>
+						<li><a href="" target="_blank" title="새 창">모의테스트</a></li>
 					</ul></li>
 				<li><a href="#"><span>자격증/확인서</span></a>
 					<ul style="display: none;">
-						<li><a
-							href="http://www.q-net.or.kr/qlf001.do?id=qlf00101&amp;gSite=Q&amp;gId=">자격증발급안내</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/isr001.do?id=isr00101&amp;gSite=Q&amp;gId=">자격증발급</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/iss001.do?id=iss00101&amp;gSite=Q&amp;gId=">확인서발급</a></li>
-						<li><a
-							href="https://www.q-net.or.kr/qlf002.do?id=qlf00201&amp;gSite=Q&amp;gId=">자격취득/미발급조회</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/iss004.do?id=iss00401&amp;gSite=Q&amp;gId=">확인서/자격증진위확인</a></li>
+						<li><a href="<%=request.getContextPath()%>/infoRequest">자격증발급안내</a></li>
+						<li><a href="<%=request.getContextPath()%>/jaguk">자격증발급</a></li>
+						<li><a href="<%=request.getContextPath()%>/confirminfo">확인서발급</a></li>
+						<li><a href="<%=request.getContextPath()%>/member/get">자격취득/미발급조회</a></li>
+						<li><a href="<%=request.getContextPath()%>/confirmTrue">확인서/자격증진위확인</a></li>
 					</ul></li>
 				<li><a href="#"><span>마이페이지</span></a>
 					<ul style="display: none;">
-						<li><a
-							href="https://www.q-net.or.kr/myp002.do?id=myp00201&amp;gSite=Q&amp;gId=">원서접수관리</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/myp011.do?id=myp01101&amp;gSite=Q&amp;gId=">응시자격</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/myp005.do?id=myp00501&amp;gSite=Q&amp;gId=">발급조회현황</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/myp007.do?id=myp00702&amp;gSite=Q&amp;gId=&amp;myPageYn=Y">면제정보보기</a></li>
-						<li><a
-							href="https://www.q-net.or.kr/myp001.do?id=myp00101&amp;gSite=Q&amp;gId=">개인정보관리</a></li>
+						<li><a href="<%=request.getContextPath()%>/member/wonseoHistory">원서접수관리</a></li>
+						<li><a href="<%=request.getContextPath()%>/member/selfTest">응시자격</a></li>
+						<li><a href="<%=request.getContextPath()%>/member/jagukRequestSearch">발급조회현황</a></li>
+						<li><a href="<%=request.getContextPath()%>/member/myInfo">개인정보관리</a></li>
 					</ul></li>
 				<li><a href="#"><span>고객지원</span></a>
 					<ul style="display: none;">
-						<li><a
-							href="http://www.q-net.or.kr/man004.do?id=man00401&amp;notiType=10&amp;gSite=Q&amp;gId=">공지사항</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/cst002.do?id=cst00201&amp;gSite=Q&amp;gId=">이용안내</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/cst006.do?id=cst00601&amp;code=1201&amp;gSite=Q&amp;gId=">자료실</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/cst010.do?id=cst01001&amp;gSite=Q&amp;gId=">유실물센터</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/crf022.do?id=crf02201&amp;gSite=Q&amp;gId=">환불안내</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/cst011.do?id=cst01101&amp;gSite=Q&amp;gId=">복지환원방</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/cst012.do?id=cst01201&amp;gSite=Q&amp;gId=">정부3.0
-								정보공개</a></li>
-						<li><a
-							href="http://www.q-net.or.kr/cst013.do?id=cst01301&amp;gSite=Q&amp;gId=">관련학과
-								지정신청</a></li>
-						<!--  2015.05.12 add jws : 이종용대리 요청으로 인한 고객의 소리 메뉴 추가-->
-						<li><a href="javascript:goMinwon();">고객의소리</a></li>
+						<li><a href="<%=request.getContextPath()%>/memberNotice1">공지사항</a></li>
+						<li><a href="<%=request.getContextPath()%>/useInfo">이용안내</a></li>
+						<li><a href="<%=request.getContextPath()%>/pdsList">자료실</a></li>
+						<li><a href="<%=request.getContextPath()%>/change">환불안내</a></li>
+						<li><a href="<%=request.getContextPath()%>/notice/getJob">고객 맞춤정보</a></li>
 					</ul></li>
 			</ul>
 		</div>
@@ -756,8 +594,8 @@ var speed = 800;
 				<div class="footer_top">
 					<div class="footer_menu">
 						<ul>
-							<li><a href="http://www.q-net.or.kr/man001.do?id=infoprotection&amp;gSite=Q&amp;gId="> <span style="color: red; font-weight: bold;">개인정보처리방침</span> </a></li>
-							<li><a href="http://www.q-net.or.kr/man001.do?id=agreement&amp;gSite=Q&amp;gId=">이용약관</a></li>
+							<li><a href="#"> <span style="color: red; font-weight: bold;">개인정보처리방침</span> </a></li>
+							<li><a href="#">이용약관</a></li>
 							<li><a href="javascript:;" onclick="popup2('http://www.hrdkorea.or.kr/5/6','aa1','1110','768','1','1','yes');" title="새 창">찾아오시는길</a></li>
 						</ul>
 					</div>

@@ -100,25 +100,17 @@
 							<li><a href="<%=request.getContextPath() %>/member/wonseoHistory?mem_code=<%=id%>">원서접수내역</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/wonseoReq">원서접수신청</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/resultCheck">시험결과보기</a></li>
-							<li><a href="<%=request.getContextPath() %>/member/changeImg">사진변경신청/결과</a></li>
 						</ul></li>
 					<li class="low"><a>응시자격</a>
 						<ul style="display: block;">
 							<li><a href="<%=request.getContextPath() %>/member/selfTest?mem_code=<%=id%>">응시자격자가진단</a></li>
-							<li><a href="<%=request.getContextPath() %>/member/subCheck">응시가능종목확인</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/docCheck">응시자격제출셔류확인</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/docSubmit">응시자격서류 온라인 제출</a></li>
 						</ul></li>
 					<li class="low"><a>발급조회현황</a>
 						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/member/confirmHistory">확인서발급내역</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/jagukHistory">자격증발급내역</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/jagukList">자격증취득조회</a></li>
-						</ul></li>
-					<li class="low"><a>면제정보보기</a>
-						<ul style="display: block;">
-							<li><a href="<%=request.getContextPath() %>/member/testPass">시험면제</a></li>
-							<li><a href="<%=request.getContextPath() %>/member/subPass">과목면제</a></li>
 						</ul></li>
 					<li class="low"><a>개인정보관리</a>
 						<ul style="display: block;">
