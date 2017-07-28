@@ -136,7 +136,6 @@
 										</tr>
 									</thead>
 									<tbody>
-
 										<!-- 게시판 테이블 내용 -->
 										<c:choose>
 
@@ -144,7 +143,7 @@
 												<c:forEach items="${viewData2.notice1List }" var="notice"
 													varStatus="number">
 													<tr>
-														<td>${viewData.firstRow+number.count}</td>
+														<td>${viewData2.firstRow+number.count}</td>
 														<!-- 글번호 -->
 														<td><a
 															href="<%=request.getContextPath() %>/admin/boardUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
@@ -196,13 +195,12 @@
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="location.href='memberNotice2?page=<%=i %>'" title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='notice?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }
 									}
 								%>
-
 								</span>
 								<button type="button" class="btn3_icon3 btn_next_page"
 									onclick="goPage(2);" title="다음 페이지">

@@ -101,13 +101,6 @@ public class AdminQualifiService {
 		return result;
 	}
 	
-	public QualifiCertiVO checkQualifi(QualifiCertiVO vo)throws SQLException{
-		
-		QualifiCertiVO vo1 = adminQualifiDao.checkQualifi(vo);
-		
-		return vo1;
-	}
-	
 	/**
 	 * 회원이 발급 신청한 자격증 내역 조회 메서드
 	 * @param mem_code
@@ -140,14 +133,16 @@ public class AdminQualifiService {
 	/**
 	 * Qualifi_Certi_Iss_Code 생성 메서드
 	 * @return
+	 * @throws SQLException 
 	 */
-	public String createQualifiCertiIssCode(String qualifi_certi_code){
+	public String createQualifiCertiIssCode(String qualifi_certi_code, String mem_code) throws SQLException{
 		String qualifi_code = ""; //중복코드 걸러내려만든 변수
 		int qualifi_code_num = 0; //중복코드 걸러내려만든 변수 시퀀스부분
 		String qualifiCertiIssCode = ""; //최종 생성되는 코드 리스트
 		
+		
 		qualifi_code = qualifi_certi_code.substring(0,8);
-		qualifi_code_num = Integer.parseInt(qualifi_certi_code.substring(8,15));	
+		qualifi_code_num = adminQualifiDao.selectMaxQualifiCertiIssCode();
 		
 		int num = qualifi_code_num+1;
 		
@@ -157,4 +152,10 @@ public class AdminQualifiService {
 		
 		return qualifiCertiIssCode;
 	}
+
+	public QualifiCertiVO checkQualifi(QualifiCertiVO vo)throws SQLException{
+		QualifiCertiVO vo1 = adminQualifiDao.checkQualifi(vo);
+		return vo1;
+	}
+
 }

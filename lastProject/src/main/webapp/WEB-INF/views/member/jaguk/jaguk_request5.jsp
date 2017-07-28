@@ -269,7 +269,7 @@ var birth = '<c:out value="${getBir}" />';
 $(function(){
 	$("#check").click(function(){
 		if(nm == ($('#hgulNm').val()) && birth == $('#mPswd').val()){
-			alert("확인");
+			alert("인증 되었습니다.");
 			opener.goRequest6();
 			window.close();
 		}else{

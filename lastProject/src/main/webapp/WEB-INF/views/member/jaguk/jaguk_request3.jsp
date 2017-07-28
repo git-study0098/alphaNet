@@ -58,7 +58,7 @@
 					선택한 자격내역(<strong>1건</strong>)은 아래와 같습니다.
 				</p>
 
-			<form name="frm" action="/alphanet/member/request4?">
+			<form name="frm" action="/alphanet/member/request4">
 				<div id="bd01_01">
 					<input type="hidden" name = "mem_code" value="${mem_code}"/>
 					<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/>
@@ -91,7 +91,7 @@
 									<c:forEach items="${viewData2}" var="qualifi" varStatus="numbering">
 										<tr> 
 											<td>${qualifi.qualifi_certi_code }</td>
-											<td>${qualifi.exkind_nm }</td>
+											<td>${qualifi.qualifi_certi_nm }</td>
 											<td>${qualifi.written_pass_date }</td>
 											<td>${qualifi.actual_pass_date }</td>
 											<td>${qualifi.qualifi_certi_count }</td>
@@ -118,10 +118,6 @@
 						</ul>
 					</li>
 				</ul>
-<!-- 				<div class="btn_center btnPos"> -->
-<%-- 					<input type="submit" class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/member/request4'" value="배송신청"> --%>
-<!-- 				</div> -->
-				
 				<div class="btn_center mb40">
 					<button type="button" class="btn2 btncolor1" onclick="history.go(-1)"><span>이전</span></button>
 						<a class="btn2 btncolor1">

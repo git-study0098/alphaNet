@@ -124,7 +124,7 @@ function paymentCheck(){
 										<tr> 
 										<input type="hidden" name="choice" value="${qualifi.qualifi_certi_code}">
 											<td>${qualifi.qualifi_certi_code }</td>
-											<td>${qualifi.exkind_nm }</td>
+											<td>${qualifi.qualifi_certi_nm }</td>
 											<td>${qualifi.written_pass_date }</td>
 											<td>${qualifi.actual_pass_date }</td>
 											<td>${qualifi.qualifi_certi_count }</td>

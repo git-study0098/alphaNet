@@ -66,6 +66,28 @@ $(function(){
 }) 
 
 
+$(function(){
+	
+		var post1=document.getElementById("mem_post_numb1");
+		var add1=document.getElementById("mem_add1");
+		var add2=document.getElementById("mem_add2");
+		var post2=document.getElementById("mem_post_numb2");
+		var add3=document.getElementById("mem_add3");
+		var add4=document.getElementById("mem_add4");
+	 
+ $("#addr_same").change(function(){
+		 if($("#addr_same").is(":checked")){
+			 post2.value = post1.value;
+			 add3.value = add1.value;
+			 add4.value = add2.value;
+		 }else{
+			 post2.value = "";
+			 add3.value = "";
+			 add4.value = "";
+		 }
+	 })
+
+})
 
 
 
@@ -232,7 +254,7 @@ $(function(){
 									<label for="member_pw">비밀번호</label> <!-- <strong class="fc_r" title="필수">*</strong> -->
 								</th>
 								<td colspan="3">
-									<input type="password" class="form_mid" id="pwd" name="pwd" maxlength="16">
+									<input type="text" class="form_mid" id="pwd" name="pwd"  value="${member.pwd}"   maxlength="16">
 									<span class="txt_add">(변경하는 경우만 입력)</span>
 								</td>
 							</tr>
@@ -241,7 +263,7 @@ $(function(){
 									<label for="member_pw_c">비밀번호 확인</label> <!-- <strong class="fc_r" title="필수">*</strong> -->
 								</th>
 								<td colspan="3">
-									<input type="password" class="form_mid mr5" id="member_pw_c" name="newPwdChk" maxlength="16">
+									<input type="text" class="form_mid mr5" id="member_pw_c" name="newPwdChk"   value="${member.pwd}"   maxlength="16" >
 									<strong class="info_tool ml5" title="비밀번호 조합예시 : korea123@ 입력가능 특수문자 : ! @ # $ % ^ &amp; * (보안지침에 의거하여 비밀번호는 9~16자리이며, 반드시 영문자·숫자·특수문자를 모두 혼합하여 입력하시기 바랍니다. 대소문자 구분되므로 주의!)" tabindex="0">비밀번호 유의사항</strong>
 								</td>
 							</tr>

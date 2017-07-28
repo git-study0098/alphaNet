@@ -1,14 +1,15 @@
 ﻿<%@page import="java.util.Date"%>
 <%@page import="java.text.SimpleDateFormat"%>
+<%@page import="com.last.common.vo.Notice1VO"%>
 <%@page import="java.io.File"%>
 <%@page import="org.springframework.web.multipart.MultipartRequest"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 
 <link
 	href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico"
@@ -25,6 +26,9 @@
 	href="<%=request.getContextPath()%>/resources/css/header_footer.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/mobile.css">
+
+
+
 <style>
 	* {	box-sizing: content-box;}
 	.searchType {padding-top:10px; margin-bottom:10px; text-align:right; font-size:13px; font-family:naumB}
@@ -48,22 +52,22 @@
 </style>
 <c:set var="vo" value="${vo}" />
 
+
 <article>
 	<div id="page-wrapper">
-		<div id="page-inner">
+		<div id="page-inner" >
 			<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
 			<div class="row">
 				<div class="col-md-12">
-					<h2>서류 승인</h2>
+					<h2>고객의 소리</h2>
 				</div>
 			</div>
 			<hr />
-			<form name="docUpdate" id="docUpdate" style="display: inline" method="post"
-				enctype="multipart/form-data" action="docUpdate">
-				<input type="hidden" name="sub_code" value="${vo.sub_code}">
+			<form name="voiceUpdate" id="voiceUpdate" style="display: inline;" action="clientUpdate2">
+				<input type="hidden" name="clientCode" value="${vo.client_code}">
 				<div>
 					<div class="tbl_type2 leftPd">
-						<table>
+						<table summary="공지사항 게시글 보기를 물건구분, 물품명, 지사, 등록일자, 시험장 정보제공">
 							<colgroup>
 								<col width="12%">
 								<col width="*">
@@ -74,45 +78,57 @@
 							</colgroup>
 							<!-- 									관리자용  세션아이디로 비교하세요 -->
 							<tbody>
-								<tr>
-									<th scope="row">서류명</th>
+								<tr style="margin-bottom: 10px;">
+									<th scope="row">제목</th>
 									<td colspan="5"><input name="title" type="text"
-										value="${vo.docu_nm}"
-										style="width: 95%; background-color: #ffffff;"></td>
+										value="${vo.client_title}"
+										style="width: 95%; background-color: #ffffff; margin-right: 50px; margin-bottom: 10px;"
+										readonly="readonly"></td>
 								</tr>
-								<tr>
-									<th scope="row">담당부서</th>
-									<td><input name="adminCode" type="text"
-										value="${admin}" readonly="readonly"
+								<tr style="padding-bottom: 10px;">
+									<th scope="row">등록자</th>
+									<c:set var="name" value="${vo.client_nm}"></c:set>
+									<td><input name="client_nm" type="text"
+										value="${fn:substring(name,0,1)}**" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
-									<th scope="row">회원명</th>
-									<td><c:set var="now" value="${vo.mem_nm}" />
-										<input name="registDate" value="${vo.mem_nm}" readonly="readonly"/></td>
-									<th scope="row">승인날</th>
+									<th scope="row">등록일</th>
+									<td><c:set var="enroll" value="${vo.client_enRoll_date}" />
+										<input name="registDate"
+										value="<fmt:formatDate value="${vo.client_enRoll_date}"  pattern="yy/MM/dd"/>"
+										readonly="readonly" /></td>
+									<th scope="row">최종수정일</th>
 									<td><c:set var="now" value="<%=new java.util.Date()%>" />
 										<input name="enrollDate"
-										value="<fmt:formatDate value="${now}" pattern="yy/MM/dd" />" readonly="readonly" /></td>
-								</tr>
-								<tr>
-									<th scope="row">승인여부</th>
-									<td><c:set var="now" value="${vo.approve_at}" />
-										<input name="approve_at" value="${vo.approve_at}" readonly="readonly"/></td>
+										value="<fmt:formatDate value="${now}"  pattern="yy/MM/dd" />" /></td>
 								</tr>
 								<tr>
 									<th scope="row">첨부파일</th>
-									<td colspan="5">
-									<a href="<%=request.getContextPath()%>/file/1?attach_file=${vo.attach_file}" class="btn3_icon download" >${vo.attach_file}</a>
-										<input type="hidden" name="attach_file" value="${vo.attach_file}">
-									</td>
+									<td colspan="5"><a href="<%=request.getContextPath()%>/file/1?attach_file=${vo.client_attach_file}" class="btn3_icon download" >${vo.client_attach_file}</a>
+									<input type="hidden" name="attach_file" value="${vo.client_attach_file}">
+								</tr>
+								<tr>
+									<td colspan="6"><textarea name="client_consulting_content"
+											id="contents_text" style="width: 100%;" rows="10">${vo.client_consulting_content}
+						</textarea></td>
+								</tr>
+								<tr>
+									<th style="width:1000px;"><label>답변 내용을 입력하세요</label></th>
+								</tr>
+								<tr>
+									<td colspan="6"><textarea name="client_reply_content"
+											id="contents_text" style="width: 100%;" rows="10">
+													${vo.client_reply_content}</textarea></td>
 								</tr>
 							</tbody>
+
 						</table>
 					</div>
+					
 					<p class="txt_right">
-							<input type="submit" class="btn btncolor2" value="승인"
-							 style="color: #ffffff" />
-							<input type="submit" class="btn btncolor2" value="승인취소"
-							 style="color: #ffffff" />
+						<input type="submit" class="btn btncolor1" value="답변달기"
+							style="color: #ffffff" /> <input type="button"
+							class="btn btncolor2" value="수정" onclick="boardDelete()"
+							style="color: #ffffff" />
 					</p>
 				</div>
 			</form>

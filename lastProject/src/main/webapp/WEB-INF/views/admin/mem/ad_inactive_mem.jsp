@@ -26,15 +26,6 @@
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
 	MemPagingVO viewData = (MemPagingVO) request.getAttribute("viewData");
 %>
-<script>
-//검색함수
-	function getNoticeList(){
-		var schType = document.getElementById('schType').value;
-		var schText = document.getElementById('schText').value;
-		var id = document.getElementsByName('id')[0].value;
-		location.href="<%=request.getContextPath()%>/admin/mem/search?id="+id+"&schType=" + schType + "&schText=" + schText;
-	}
-</script>
 <style>
 	* {	box-sizing: content-box;}
 	.searchType {padding-top:10px; margin-bottom:10px; text-align:right; font-size:13px; font-family:naumB}
@@ -77,22 +68,12 @@
 		<div class="dropdown">
 			<button class="dropbtn">회원관리</button>
 			<div class="dropdown-content">
-				<a href="<%=request.getContextPath()%>/admin/mem">휴먼 계정 회원 조회</a> <a
+				<a href="<%=request.getContextPath()%>/admin/inmem">휴먼 계정 회원 조회</a> <a
 					href="<%=request.getContextPath()%>/admin/allmem">회원 정보 조회</a> <a
-					href="<%=request.getContextPath()%>/admin/mem3">시험 응시 회원 관리</a>
+					href="<%=request.getContextPath()%>/admin/docu">서류 승인</a>
 			</div>
 		</div>
-		<div class="searchType">
-			<span> <label for="notiType">검색</label> <select name="schType"
-				id="schType" title="검색 구분 선택" class="m0">
-					<option value="all" selected="selected">전체</option>
-					<option value="memId">회원Id</option>
-					<option value="memName">회원명</option>
-			</select> <input type="text" name="schText" style="width: 150px" id="schText"
-				title="검색어 입력"> <a href="#" class="btn3_icon search"
-				onclick="getNoticeList();"><span class="blind">검색</span></a>
-			</span>
-		</div>
+		<div style="height:40px;"></div>
 		<input type="hidden" name="id" value="imem0001">
 		<div id="viewList">
 			<div class="tbl_type1">

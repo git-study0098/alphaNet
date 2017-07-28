@@ -85,7 +85,7 @@
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/mem">휴먼 계정 회원 조회</a> <a
 					href="<%=request.getContextPath()%>/admin/allmem">회원 정보 조회</a> <a
-					href="<%=request.getContextPath()%>/admin/mem3">시험 응시 회원 관리</a>
+						href="<%=request.getContextPath()%>/admin/docu">서류 승인</a>
 				</div>
 			</div>
 			<div class="content">

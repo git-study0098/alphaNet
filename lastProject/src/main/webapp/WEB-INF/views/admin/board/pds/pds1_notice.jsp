@@ -86,14 +86,8 @@
 				<hr />
 				<div>
 					<div class="searchType">
-						<span> <label for="notiType">검색</label> <select
-							name="notiType" id="notiType" title="검색 카테고리 선택" class="m0">
-								<option value="10" selected="selected">전체</option>
-								<option value="00">시험정보 및 관련법령</option>
-								<option value="20">자격증발급관련</option>
-								<option value="30">원서접수및서류제출</option>
-								<option value="40">기타</option>
-						</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
+						<span> <label for="notiType">검색</label> 
+						<select name="schType" id="schType" title="검색 구분 선택" class="m0">
 								<option value="all" selected="selected">전체</option>
 								<option value="title">글제목</option>
 								<option value="content">내용</option>

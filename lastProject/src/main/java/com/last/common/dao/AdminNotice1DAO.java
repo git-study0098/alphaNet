@@ -118,7 +118,6 @@ public class AdminNotice1DAO {
 			map.put("schType", schType);
 			map.put("schText", schText);
 			int result = (Integer) client.queryForObject("selectCount",map);
-			System.out.println("검색 몇개 됨? "+result);
 			return result;
 			
 		}

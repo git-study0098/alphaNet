@@ -71,6 +71,14 @@
 		  class="com.last.common.service.AdminDocuService"
 		  p:adminDocuDAO-ref="adminDocuDao"/>
 
+	<bean id="adminVoiceDao"
+        class="com.last.common.dao.AdminClientVoiceDAO"
+        p:client-ref="client"/>
+   
+   <bean id="voiceService"
+        class="com.last.common.service.AdminClientVoiceService"
+        p:adminClientVoiceDAO-ref="adminVoiceDao"/>
+	
 	
 		 
 	

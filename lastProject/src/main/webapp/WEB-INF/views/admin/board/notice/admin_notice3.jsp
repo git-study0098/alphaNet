@@ -86,7 +86,7 @@
 			</div>
 			<hr />
 			<div class="dropdown">
-				<button class="dropbtn">공지사항 게시판</button>
+				<button class="dropbtn">시행 게시판</button>
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/notice">공지사항</a>
 					<a href="<%=request.getContextPath()%>/admin/notice2">자격제도</a>
@@ -98,15 +98,8 @@
 			<div class="content">
 				<div>
 					<div class="searchType">
-						<span> <label for="notiType">검색</label> <select
-							name="notiType" id="notiType" title="검색 카테고리 선택" class="m0">
-								<option value="10" selected="selected">전체</option>
-								<option value="00">긴급</option>
-								<option value="20">자격제도</option>
-								<option value="30">시행</option>
-								<option value="40">출제</option>
-								<option value="50">서비스개선</option>
-						</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
+						<span> <label for="notiType">검색</label>
+						<select name="schType" id="schType" title="검색 구분 선택" class="m0">
 								<option value="all" selected="selected">전체</option>
 								<option value="title">글제목</option>
 								<option value="content">내용</option>
@@ -118,7 +111,7 @@
 						</span>
 					</div>
 					<form name="noticeDetail">
-						<input type="hidden" name="notice_code" value="notice01">
+						<input type="hidden" name="notice_code" value="notice03">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"

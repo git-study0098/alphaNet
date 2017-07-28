@@ -61,8 +61,6 @@ public class AdminAllMemberController {
 		String schType = request.getParameter("schType");
 		String schText = request.getParameter("schText");
 		
-		System.out.println("검색 컨트롤러"+schType);
-		System.out.println("검색 컨트롤러"+schText);
 		MemPagingVO viewData2=null;
 		int count = 0;
 	      try {
@@ -102,8 +100,7 @@ public class AdminAllMemberController {
 			e.printStackTrace();
 		}
 		model.addAttribute("vo", vo);
-		System.out.println("회원정보상세"+vo.getName());
-		 System.out.println("성별"+vo.getMem_gender());
+		 System.out.println("회원사진"+vo.getMem_photo());
 
 
 		return url;

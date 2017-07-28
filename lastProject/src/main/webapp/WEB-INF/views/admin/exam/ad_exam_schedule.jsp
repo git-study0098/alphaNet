@@ -136,17 +136,16 @@
 		</div>
 		<hr />
 		<!-- 내용 -->
-		<div class="dropdown">
-					<button class="dropbtn">이용안내 게시판</button>
-					
-		</div>
-		<div id="calendar" style="width: 100%;height: 80%"></div>
-			<button class="dropbtn">시험 일정 관리</button>
-			<div class="dropdown-content">
-				<a href="<%=request.getContextPath()%>/admin/examFullSch">전체일정</a> 
-				<a href="<%=request.getContextPath()%>/admin/schedule">일정등록</a>
-			</div>
-		</div>
+		<button type="button" class="btn">
+			<a href="<%=request.getContextPath()%>/admin/examFullSch">전체일정</a>
+		</button>
+		<button type="button" class="btn">
+			<a href="<%=request.getContextPath()%>/admin/schedule">일정등록</a>
+		</button>
+		<div style="height: 50px;"></div>
+
+		<div id="calendar" style="width: 100%; height: 80%"></div>
+	</div>
 	<!-- 내용끝 -->
 </div>
 <!-- /. PAGE INNER  -->

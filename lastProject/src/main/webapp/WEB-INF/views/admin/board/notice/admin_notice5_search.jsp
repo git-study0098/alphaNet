@@ -35,7 +35,7 @@
 	//삭제 함수 
 	function go_noticeDetail(noticeCode) {
 		var noticeForm = document.noticeDetail;
-		noticeForm.action = "/boardUpdateForm4?notice_code=" + noticeCode;
+		noticeForm.action = "/boardUpdateForm5?notice_code=" + noticeCode;
 		noticeForm.submit();
 	}
 	//검색함수
@@ -43,7 +43,7 @@
 		var schType = document.getElementById('schType').value;
 		var schText = document.getElementById('schText').value;
 		var notice_code = document.getElementsByName('notice_code')[0].value;
-		location.href="<%=request.getContextPath()%>/admin/notice/search4?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
+		location.href="<%=request.getContextPath()%>/admin/notice/search5?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
 	}
 </script>
 
@@ -89,7 +89,7 @@
 			</div>
 			<hr />
 			<div class="dropdown">
-				<button class="dropbtn">공지사항 게시판</button>
+				<button class="dropbtn">서비스개선 게시판</button>
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/notice">공지사항</a>
 					<a href="<%=request.getContextPath()%>/admin/notice2">자격제도</a>
@@ -114,7 +114,7 @@
 						</span>
 					</div>
 					<form name="noticeDetail">
-						<input type="hidden" name="notice_code" value="notice01">
+						<input type="hidden" name="notice_code" value="notice05">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"
@@ -147,7 +147,7 @@
 														<td>${viewData.firstRow+number.count}</td>
 														<!-- 글번호 -->
 														<td><a
-															href="<%=request.getContextPath() %>/admin/boardUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
+															href="<%=request.getContextPath() %>/admin/boardUpdateForm5?notice_code=${notice.notice_code }">${notice.title}</a></td>
 														<td>${notice.admin_code}</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
 														<td><input type="hidden"
@@ -165,7 +165,7 @@
 									</tbody>
 								</table>
 							</div>
-							<a href="<%=request.getContextPath()%>/admin/adminRegist"><input
+							<a href="<%=request.getContextPath()%>/admin/adminRegist5"><input
 								type="button" class="btn btncolor2" value="글쓰기"
 								style="color: #ffffff" /></a>
 							<div class="pagination1 mb20">
@@ -196,7 +196,7 @@
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="location.href='memberNotice2?page=<%=i %>'" title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='notice5?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }

@@ -806,7 +806,7 @@ $('#btn-upload').click(function (e) {
 					<button type="button" id="formSubmit" class="btn2 btncolor2" onclick="check()">
 						<span>가입하기</span>
 					</button>
-					<button type="button" id="formCancel" class="btn2 btncolor4" onclick="javascript:history.go(-1);">
+					<button type="button" id="formCancel" class="btn2 btncolor4" onclick="javascript:location.href='<%=request.getContextPath()%>/main'">
 						<span>가입취소</span>
 					</button>
 				</div>

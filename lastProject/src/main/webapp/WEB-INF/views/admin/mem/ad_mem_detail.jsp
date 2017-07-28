@@ -54,7 +54,7 @@
 <c:set var="vo" value="${vo}" />
 <script>
 	function allMemberList(){ //목록으로 돌아가기
-		location.href="<%=request.getContextPath()%>/admin/allmem";
+		location.href="<%=request.getContextPath()%>/admin/inmem";
 	}
 </script>
 <input type="hidden" id="mem_kor_for" value="${vo.mem_kor_for}"/>

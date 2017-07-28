@@ -38,8 +38,7 @@ body{
 
 function authMail(){
 	var email2 = document.getElementById("email").value;
-	alert(email2);
- 	if(email2 == ""){
+	if(email2 == ""){
  		alert("이메일을 입력해주셔야합니다.")
  	}else{
 		$.ajax({
@@ -51,8 +50,6 @@ function authMail(){
 				console.log(res.ranNum);
 				email1 = res.email;
 				ranNum = res.ranNum;
-				alert(email1);
-				alert(ranNum);
 			}
 		});
 
@@ -61,7 +58,6 @@ function authMail(){
 
 function check(form){
 	
-	alert(ranNum);
 	if(!form.authNum.value){
 		alert("인증번호를 입력하세요!!!");
 		return false;

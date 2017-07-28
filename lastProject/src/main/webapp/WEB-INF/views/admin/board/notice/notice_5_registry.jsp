@@ -57,6 +57,17 @@
 	.pagination1 .page {margin:0 15px}
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
 </style>
+
+<script>
+function makeImg(img_path){
+	var str = "<img src=" + img_path + ">" //이미지 태그삽입
+	frames.myEditor.focus();
+	frames.myEditor.document.selection.createRange().pasteHTML(str);
+}
+</script>
+
+
+
 <article>
 	<div id="page-wrapper">
 		<div id="page-inner">
@@ -67,7 +78,7 @@
 				</div>
 			</div>
 			<hr />
-			<form style="display: inline" method="post" action="boardInsert5"
+			<form style="display:inline;" method="post" action="boardInsert5"
 				enctype="multipart/form-data">
 				<div>
 					<div class="tbl_type2 leftPd">
@@ -89,7 +100,7 @@
 										style="width: 95%; background-color: #ffffff;"></td>
 								</tr>
 								<tr>
-									<th scope="row">담당부서</th>
+								<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
 										value="${admin}" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
@@ -112,10 +123,9 @@
 											onchange="javascript:file_change(this.value);">
 									</a> <input type="text" name="attach_file" readonly></td>
 								</tr>
-
 								<tr>
-									<td colspan="6"><textarea name="noticeContent"
-											id="contents_text" style="width: 100%;" rows="10"></textarea>
+									<td colspan="6"><textarea name="noticeContent" class="summernote"
+											id="contents_text" style="width: 100%;" rows="10" value="content"></textarea>
 									</td>
 								</tr>
 							</tbody>

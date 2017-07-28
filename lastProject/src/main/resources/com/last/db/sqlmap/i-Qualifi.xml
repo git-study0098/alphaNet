@@ -25,8 +25,8 @@
 		        (select qci.qualifi_certi_iss_code 
 		        	from qualifi_certi_iss qci 
 		        	where rownum = 1) as qci_code,       
-			  qci.written_pass_date,
-			  ex.exkind_nm,
+			  (select s.ACTUAL_PASS_DATE  from stare s where substr(s.stare_code,11) = 'W') as written_pass_date,
+			  qc.qualifi_certi_nm,
 			  s.actual_pass_date,
 			  qc.qualifi_certi_count,
 			  qc.qualifi_certi_iss_pr
@@ -35,16 +35,17 @@
 			and qci.mem_code = m.mem_code
 			and s.mem_code = m.mem_code
 			and e.em_info_code = s.em_info_code
-			and e.em_exkind = ex.exkind_code
+			and e.em_exkind = ex.exkind_code      
 			and substr(s.stare_code,11) = 'P'
-			and qci.qualifi_certi_code = #qualifi_certi_code#
+			and qci.qualifi_certi_code = #qualifi_ceti_code#   
 	</select>
+	
 	<select id="selectQualifiCertiList" parameterClass="str" resultClass="qualifiCerti">
 		 select  distinct(qci.qualifi_certi_code),
 		        (select qci.qualifi_certi_iss_code 
 		        	from qualifi_certi_iss qci 
 		        	where rownum = 1) as qci_code,       
-			  qci.written_pass_date,
+			  (select s.ACTUAL_PASS_DATE  from stare s where substr(s.stare_code,11) = 'W') as written_pass_date,
 			  ex.exkind_nm,
 			  s.actual_pass_date,
 			  qc.qualifi_certi_count,
@@ -110,15 +111,6 @@
       and qci.mem_code = #mem_code# 
 	</select>
 	
-	<select id="checkQualifi" parameterClass="qualifiCerti" resultClass="qualifiCerti">
-		select substr(qualifi_certi_code,5,5)as qualifi_certi_code, written_pass_date
-		from mem m , qualifi_certi_iss q
-		where m.mem_nm =#mem_nm#
-		and m.reg_num1 =#reg_num1#
-		and q.QUALIFI_CERTI_CODE =#qualifi_certi_code#
-		and q.QUALIFI_CERTI_DATE =#qualifi_certi_date#
-	</select>
-	
 	<select id="selectQualifiCertiIssCode" parameterClass="str" resultClass="str">
 		select qualifi_certi_iss_code
       		from qualifi_certi_iss qci, qualifi_certi qc
@@ -134,11 +126,8 @@
 			and substr(s.stare_code,11) = 'P'
 	</select>
 	
-	<select id="selectMaxQualifiCertiIssCode" parameterClass="str" resultClass="str">
-		select max(qualifi_certi_iss_code) 
-		      from qualifi_certi_iss qci, mem m
-		      where qci.mem_code = m.mem_code
-		      and qci.mem_code = #mem_code#
+	<select id="selectMaxQualifiCertiIssCode" resultClass="int">
+		select max(substr(qualifi_certi_iss_code, 9)) from qualifi_certi_iss
 	</select>
 	
 	<update id="insertQualifiCertiRequest" parameterClass="qualifiCerti">
@@ -149,12 +138,20 @@
 	<update id="updateLastPassDate" parameterClass="qualifiCerti">
 		update qualifi_certi_iss qci 
 			set qci.written_pass_date = 
-			(select s.written_pass_date 
-			from stare s, qualifi_certi_iss qci
-			where s.stare_code = qci.stare_code
-			and qci.mem_code = #mem_code#
+			(select s.written_pass_date
+			from stare s
+			where s.mem_code = #mem_code#
 			and substr(s.stare_code,11) = 'P'
 			)
 			where qci.qualifi_certi_iss_code = #qualifi_certi_iss_code#
 	</update>
+	
+	<select id="checkQualifi" parameterClass="qualifiCerti" resultClass="qualifiCerti">
+		select substr(qualifi_certi_code,5,5)as qualifi_certi_code, written_pass_date
+		from mem m , qualifi_certi_iss q
+		where m.mem_nm =#mem_nm#
+		and m.reg_num1 =#reg_num1#
+		and q.QUALIFI_CERTI_CODE =#qualifi_certi_code#
+		and q.QUALIFI_CERTI_DATE =#qualifi_certi_date#
+	</select>
 </sqlMap>

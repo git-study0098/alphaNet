@@ -39,6 +39,7 @@ public class MemberJagukRequestController {
 		return "member/jaguk/jaguk_request1";
 	}
 	
+	
 	@RequestMapping("/member/request2")
 	public String jagukRequest2(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model)
 			throws SQLException{
@@ -116,7 +117,6 @@ public class MemberJagukRequestController {
 		for(int i=0; i<qualifi_certi_codeList.size(); i++){
 			price += adminService.selectCertiPrice(qualifi_certi_codeList.get(i));
 		}
-		
 		
 		//회원 정보 가져오는 부분
 		viewData = adminService.selectMemberInfoList(mem_code); 
@@ -199,7 +199,6 @@ public class MemberJagukRequestController {
 			price += viewData2.get(i).getQualifi_certi_iss_pr();
 		}
 		
-		System.out.println(viewData.toString());
 		
 		int count = viewData2.size();
 		
@@ -226,18 +225,15 @@ public class MemberJagukRequestController {
 		try {
 			qualifiMember = adminService.selectMemberInfoList(mem_code);
 			for(int i=0; i<qualifi_certi_codeList.size(); i++){
-				System.out.println(qualifi_certi_codeList.get(i));
 				QualifiCertiVO vo = new QualifiCertiVO();
 				vo.setMem_code(mem_code);
 				vo.setQualifi_certi_code(qualifi_certi_codeList.get(i));
-				System.out.println(qualifi_certi_codeList.get(i)+"컨트");
 				List<String> qualifi_certi_iss_code = adminService.selectQualifiCertiIssCode(qualifi_certi_codeList.get(i));
-				vo.setQualifi_certi_iss_code(adminService.createQualifiCertiIssCode(qualifi_certi_iss_code.get(i)));
+				vo.setQualifi_certi_iss_code(adminService.createQualifiCertiIssCode(qualifi_certi_iss_code.get(i), mem_code));
 				vo.setReceive_way("우편수령");
 				vo.setDr_state("배송중");
 				
 				result = adminService.insertQualifiCertiRequest(vo);
-				System.out.println("컨트롤러 성공했는지");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -266,7 +262,6 @@ public class MemberJagukRequestController {
 		
 		try {
 			viewData = adminService.selectQualifiCertiRequest(mem_code);
-			System.out.println(viewData.size());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

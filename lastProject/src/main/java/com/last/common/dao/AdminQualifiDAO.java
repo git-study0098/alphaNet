@@ -15,6 +15,12 @@ public class AdminQualifiDAO {
 		this.client = client;
 	}
 	
+	public QualifiCertiVO checkQualifi(QualifiCertiVO vo) throws SQLException{
+		
+		QualifiCertiVO vo1 = (QualifiCertiVO) client.queryForObject("checkQualifi",vo);
+		
+		return vo1; 
+	}
 	/**
 	 * 해당 회원의 자격증 개수에 대한 페이징 처리
 	 * @param firstRow
@@ -94,15 +100,8 @@ public class AdminQualifiDAO {
 		return result;
 	}
 	
-	public QualifiCertiVO checkQualifi(QualifiCertiVO vo) throws SQLException{
-		
-		QualifiCertiVO vo1 = (QualifiCertiVO) client.queryForObject("checkQualifi",vo);
-		
-		return vo1; 
-	}
-	
-	public String selectMaxQualifiCertiIssCode(String mem_code) throws SQLException{
-		String selectMaxQualifiCertiIssCode = (String) client.queryForObject("selectMaxQualifiCertiIssCode", mem_code);
+	public int selectMaxQualifiCertiIssCode() throws SQLException{
+		int selectMaxQualifiCertiIssCode = (int) client.queryForObject("selectMaxQualifiCertiIssCode");
 		return selectMaxQualifiCertiIssCode;
 	}
 	
@@ -134,6 +133,7 @@ public class AdminQualifiDAO {
 		vo.setQualifi_certi_nm(qualifi.getQualifi_certi_nm());
 		vo.setStare_code(qualifi.getStare_code());
 		int result = client.update("insertQualifiCertiRequest", vo);
+		client.update("updateLastPassDate", vo);
 		return result;
 	}
 	

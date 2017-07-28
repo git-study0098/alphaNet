@@ -421,7 +421,7 @@ pageEncoding="UTF-8"%>
 									<c:forEach items="${viewData2}" var="qualifi">
 										<tr> 
 											<td>${qualifi.qualifi_certi_code }</td>
-											<td>${qualifi.exkind_nm }</td>
+											<td>${qualifi.qualifi_certi_nm }</td>
 											<td>${qualifi.written_pass_date }</td>
 											<td>${qualifi.actual_pass_date }</td>
 											<td>${qualifi.qualifi_certi_count }</td>
@@ -449,7 +449,7 @@ pageEncoding="UTF-8"%>
 						name="issuPrargDt" value=""> <input type="hidden"
 						name="issuApplDttm" value=""> <input type="hidden"
 						name="issuApplDt" value=""> <input type="hidden"
-						name="resdNo" value="9204121284511"> <input type="hidden"
+						name="resdNo" value="920412"> <input type="hidden"
 						name="hgulNm" value="황병준"> <input type="hidden"
 						name="recptMethCcd" value=""> <input type="hidden"
 						name="wrkArInptYn"> <input type="hidden"
@@ -555,7 +555,7 @@ pageEncoding="UTF-8"%>
 							var jobPh =document.getElementById("compTel").value; //근무전화번호
 // 							var jobadd =document.getElementById("wrkArZip_1").value; //근무처우편번호
 							
-							alert(jobY);
+// 							alert(jobY);
 							
 							
 							if(ph==""){
@@ -576,10 +576,10 @@ pageEncoding="UTF-8"%>
 									alert("근무처의 정보를 입력해주세요")
 								}
 							}else if(jobY == 'N'){
-							window.open('<%=request.getContextPath()%>/member/request5?mem_code=${mem_code}&mem_nm=${viewData.mem_nm }&reg_num1=${viewData.reg_num1}','본인확인 인증','width=500px,height=250px,left=750px,top=350px'); 
+							window.open('<%=request.getContextPath()%>/member/request5?mem_code=${mem_code}&mem_nm=${viewData.mem_nm }&reg_num1=${viewData.reg_num1}','본인확인 인증','width=550px,height=450px,left=750px,top=350px'); 
 								
 							}
-						}window.open('<%=request.getContextPath()%>/member/request5?mem_code=${mem_code}&mem_nm=${viewData.mem_nm }&reg_num1=${viewData.reg_num1}','본인확인 인증','width=500px,height=250px,left=750px,top=350px');								
+						}								
 						
 						
 					</script>

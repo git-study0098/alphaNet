@@ -89,7 +89,7 @@
 			</div>
 			<hr />
 			<div class="dropdown">
-				<button class="dropbtn">공지사항 게시판</button>
+				<button class="dropbtn">시행 게시판</button>
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/notice">공지사항</a>
 					<a href="<%=request.getContextPath()%>/admin/notice2">자격제도</a>
@@ -101,15 +101,8 @@
 			<div class="content">
 				<div>
 					<div class="searchType">
-						<span> <label for="notiType">검색</label> <select
-							name="notiType" id="notiType" title="검색 카테고리 선택" class="m0">
-								<option value="10" selected="selected">전체</option>
-								<option value="00">긴급</option>
-								<option value="20">자격제도</option>
-								<option value="30">시행</option>
-								<option value="40">출제</option>
-								<option value="50">서비스개선</option>
-						</select> <select name="schType" id="schType" title="검색 구분 선택" class="m0">
+						<span> <label for="notiType">검색</label> 
+						<select name="schType" id="schType" title="검색 구분 선택" class="m0">
 								<option value="all" selected="selected">전체</option>
 								<option value="title">글제목</option>
 								<option value="content">내용</option>
@@ -121,7 +114,7 @@
 						</span>
 					</div>
 					<form name="noticeDetail">
-						<input type="hidden" name="notice_code" value="notice01">
+						<input type="hidden" name="notice_code" value="notice03">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"
@@ -151,10 +144,10 @@
 												<c:forEach items="${viewData2.notice1List }" var="notice"
 													varStatus="number">
 													<tr>
-														<td>${viewData.firstRow+number.count}</td>
+														<td>${viewData2.firstRow+number.count}</td>
 														<!-- 글번호 -->
 														<td><a
-															href="<%=request.getContextPath() %>/admin/boardUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
+															href="<%=request.getContextPath() %>/admin/boardUpdateForm3?notice_code=${notice.notice_code }">${notice.title}</a></td>
 														<td>${notice.admin_code}</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
 														<td><input type="hidden"
@@ -172,7 +165,7 @@
 									</tbody>
 								</table>
 							</div>
-							<a href="<%=request.getContextPath()%>/admin/adminRegist"><input
+							<a href="<%=request.getContextPath()%>/admin/adminRegist3"><input
 								type="button" class="btn btncolor2" value="글쓰기"
 								style="color: #ffffff" /></a>
 							<div class="pagination1 mb20">
@@ -203,7 +196,7 @@
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="location.href='memberNotice2?page=<%=i %>'" title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='notice3?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }

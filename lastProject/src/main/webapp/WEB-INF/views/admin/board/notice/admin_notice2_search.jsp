@@ -89,7 +89,7 @@
 			</div>
 			<hr />
 			<div class="dropdown">
-				<button class="dropbtn">공지사항 게시판</button>
+				<button class="dropbtn">자격제도 게시판</button>
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/notice">공지사항</a>
 					<a href="<%=request.getContextPath()%>/admin/notice2">자격제도</a>
@@ -196,7 +196,7 @@
 										
 										}else{
 									%>
-										<button type="button" class="btn5" onclick="location.href='memberNotice2?page=<%=i %>'" title="<%=i%>페이지">
+										<button type="button" class="btn5" onclick="location.href='notice2?page=<%=i %>'" title="<%=i%>페이지">
 											<span><%=i%></span>
 										</button> 
 										<% }

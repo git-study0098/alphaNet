@@ -19,14 +19,22 @@
 </style>
 
 <script>
+var result=0;
 	function check(){
-		var result = 0;
+		result = 0;
 		$(":checkbox:checked").each(function(){
 			var price =  $(this).attr("price");
 			price = Number(price);
 			result += price;
 		});
 		$("#totIssuFee").val(result);
+	}
+	function next(){
+		if(result!=0){	
+			document.frm.action="/alphanet/member/request3"
+		}else{
+			alert('자격증을 1개이상 선택하세요');		
+		}
 	}
 </script>
 
@@ -64,7 +72,7 @@
 					</ul>
 				</div>
 
-				<form name="frm" action="/alphanet/member/request3">
+				<form name="frm">
 					<div id="bd01_01">
 						<input type="hidden" name="mem_code" value="${mem_code}" />
 <%-- 						<input type="hidden" name = "qualifi_certi_code" value="${qualifi_certi_code}"/> --%>
@@ -147,7 +155,7 @@
 					</div>
 					<div class="btn_center mb40">
 						<a class="btn2 btncolor1"> <span><input type="submit"
-								value="발급신청" class="btn2 btncolor1"
+								value="발급신청" class="btn2 btncolor1" id="click" OnClick="return next()"
 								style="border: 0 solid; color: white"></span>
 						</a>
 					</div>

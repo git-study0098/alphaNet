@@ -1,4 +1,4 @@
-<%@page import="com.last.common.vo.PdsVO"%>
+<%@page import="com.last.common.vo.VoicePagingVO"%>
 <%@page import="com.last.common.vo.Notice1VO"%>
 <%@page import="com.last.common.vo.PagingVO"%>
 <%@page import="java.util.List"%>
@@ -10,9 +10,7 @@
 
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
-	PdsVO viewData = (PdsVO) request.getAttribute("viewData");
-	PdsVO viewData2 = (PdsVO)request.getAttribute("viewData2");
-	Integer count = (Integer)request.getAttribute("count");
+	VoicePagingVO viewData = (VoicePagingVO) request.getAttribute("viewData");
 %>
 
 <link
@@ -31,24 +29,21 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/resources/css/mobile.css">
 
+  
 <script>
-	function go_noticeDetail(noticeCode) {
-		var noticeForm = document.noticeDetail;
-		noticeForm.action = "/pdsUpdateForm?notice_code=" + noticeCode;
-		noticeForm.submit();
-	}
 	//검색함수
 	function getNoticeList(){
 		var schType = document.getElementById('schType').value;
 		var schText = document.getElementById('schText').value;
 		var notice_code = document.getElementsByName('notice_code')[0].value;
-		location.href="<%=request.getContextPath()%>/admin/pds/search?notice_code="+notice_code+"&schType="+schType+"&schText="+schText;
+		location.href="<%=request.getContextPath()%>/admin/client/search?client_code="+client_code+"&schType="+schType+"&schText="+schText;
 	}
+	
 </script>
+
 
 <style>
 	* {	box-sizing: content-box;}
-	
 	.searchType {padding-top:10px; margin-bottom:10px; text-align:right; font-size:13px; font-family:naumB}
 	.searchType span {color:#666666}
 	.searchType span label {position:relative; top:-1px; margin-left:10px; color:#000; vertical-align:middle; letter-spacing:-1px; font-weight:bold}
@@ -68,6 +63,7 @@
 	.pagination1 .page {margin:0 15px}
 	.pagination1 .on {height:26px; line-height:23px; padding:0 9px; display:inline-block; color:#fff; border:1px solid #fff; background:#5c5c5c; vertical-align:middle}
 </style>
+
 <style>
 .dropbtn {background-color: #337197;color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;}
 .dropdown {position: relative;display: inline-block;}
@@ -77,76 +73,76 @@
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn { background-color: #337197;}
 </style>
-
 <article>
-	<div id="container">
-		<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
-		<div id="page-wrapper">
-			<div id="page-inner">
-				<div class="col-md-12">
-					<h2>자료실</h2>
+	<!-- 	<div id="container"> -->
+	<!-- 내용 부분 들어 가는 곳 입니다. 로케이션 수정하시고 하면 됩니다. -->
+	<div id="page-wrapper">
+		<div id="page-inner">
+			<div class="col-lg-12">
+				<h2>고객의 소리</h2>
+			</div>
+			<hr />
+			<div class="dropdown">
+				<button class="dropbtn">고객의 소리</button>
+				<div class="dropdown-content">
+					<a href="<%=request.getContextPath()%>/admin/client">FAQ</a> 
+					<a href="<%=request.getContextPath()%>/admin/client2">고객의 소리</a> 
 				</div>
-				<hr />
-				<div class="dropdown">
-					<button class="dropbtn">이용안내 게시판</button>
-					<div class="dropdown-content">
-						<a href="<%=request.getContextPath()%>/admin/pds">각종서식</a> 
-						<a href="<%=request.getContextPath()%>/admin/pds">출제기준</a> 
-						<a href="<%=request.getContextPath()%>/admin/pds">관련법령</a> 
-					</div>
-				</div>
+			</div>
+			<div class="content">
 				<div>
 					<div class="searchType">
-						<span> <label for="notiType">검색</label> 
-						<select name="schType" id="schType" title="검색 구분 선택" class="m0">
+						<span> <label for="notiType">검색</label>
+						 <select name="schType" id="schType" title="검색 구분 선택" class="m0">
 								<option value="all" selected="selected">전체</option>
 								<option value="title">글제목</option>
 								<option value="content">내용</option>
 								<option value="adm">담당부서</option>
 						</select> <input type="text" name="schText" style="width: 150px"
 							id="schText" title="검색어 입력"> <a href="#"
-							class="btn3_icon search" onclick="getNoticeList()"><span
+							class="btn3_icon search" onclick="getNoticeList();"><span
 								class="blind">검색</span></a>
 						</span>
 					</div>
 					<form name="noticeDetail">
-						<input type="hidden" name="notice_code" value="pds01">
+						<input type="hidden" name="client_code">
 						<div id="viewList">
 							<div class="tbl_type1">
 								<table summary="번호,제목,담당부서,최종수정일자 항목으로 정보 제공"
 									style="table-layout: fixed">
 									<colgroup>
 										<col width="7%">
+										<col width="12%">
 										<col width="*">
-										<col width="16%">
-										<col width="11%">
-										<col width="1%">
+										<col width="12%">
+										<col width="12%">
+										<col width="12%">
 									</colgroup>
 									<thead>
 										<tr>
 											<th scope="col">번호</th>
+											<th scope="col">분류</th>
 											<th scope="col">제목</th>
-											<th scope="col">담당부서</th>
-											<th scope="col">최종수정일자</th>
-											<th scope="col"></th>
+											<th scope="col">고객명</th>
+											<th scope="col">등록일</th>
+											<th scope="col">처리상태</th>
 										</tr>
 									</thead>
 									<tbody>
-
 										<!-- 게시판 테이블 내용 -->
 										<c:choose>
-											<c:when test="${viewData2.pdsCountPerPage > 0 }">
-												<c:forEach items="${viewData2.pdsList }" var="notice"
+
+											<c:when test="${viewData.voiceCountPerPage > 0 }">
+												<c:forEach items="${viewData.voiceList }" var="client"
 													varStatus="number">
 													<tr>
 														<td>${viewData.firstRow+number.count}</td>
 														<!-- 글번호 -->
-														<td><a
-															href="<%=request.getContextPath() %>/admin/pdsUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
-														<td>${notice.admin_code}</td>
-														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
-														<td><input type="hidden"
-															value="${notice.notice_code}" name="noticeCode" /></td>
+														<td>${client.client_consulting_kind}</td>
+														<td><a href="<%=request.getContextPath() %>/admin/clientUpdateForm2?client_code=${client.client_code }">${client.client_title}</a></td>
+														<td>${client.client_nm}</td>
+														<td><fmt:formatDate value="${client.client_enRoll_date}" /></td>
+														<td>${client.reply_state}</td>
 													</tr>
 												</c:forEach>
 											</c:when>
@@ -160,8 +156,8 @@
 									</tbody>
 								</table>
 							</div>
-							<a href="<%=request.getContextPath()%>/admin/adminpdsRegist"><input
-								type="button" class="btn btncolor2" value="글쓰기"
+							<a href="<%=request.getContextPath()%>/admin/clientRegist2"><input
+								type="button" class="btn btncolor2" value="답변달기"
 								style="color: #ffffff" /></a>
 							<div class="pagination1 mb20">
 								<button type="button" class="btn3_icon3 btn_prev_first"
@@ -174,29 +170,19 @@
 									<span class="blind">이전 페이지</span>
 								</button>
 
-								<span class="page"> 
-									<%	
-									if(count/10 < 1){
-										count=1;
-									}else if(count%10==0){
-										count /=10;
-									}else{
-										count = count/10 +1;
-									}
-									for(int i = 1; i<count+1; i++){
-										if(pageNumber==i){
-								%>		
-										<strong class="on" title="<%=i %>페이지"><%=i %></strong>
-									<%
-										
-										}else{
-									%>
-										<button type="button" class="btn5" onclick="location.href='pds?page=<%=i %>'" title="<%=i%>페이지">
-											<span><%=i%></span>
-										</button> 
-										<% }
-									}
-								%>
+								<span class="page"> <%
+									 	for (int i = 1; i < viewData.getPageTotalCount() + 1; i++) {
+									 		if (pageNumber == i) {
+									 %> <strong class="on" title="<%=i%>페이지"><%=i%></strong> <%
+									 	} else {
+									 %>
+									<button type="button" class="btn5"
+										onclick="location.href='client2?page=<%=i%>'" title="<%=i%>페이지">
+										<span><%=i%></span>
+									</button> <%
+									 	}
+									 	}
+									 %>
 
 								</span>
 								<button type="button" class="btn3_icon3 btn_next_page"

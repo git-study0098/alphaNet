@@ -92,7 +92,6 @@
 				<div class="dropdown-content">
 					<a href="<%=request.getContextPath()%>/admin/client">FAQ</a> 
 					<a href="<%=request.getContextPath()%>/admin/client2">고객의 소리</a> 
-					<a href="<%=request.getContextPath()%>/admin/client3">개선사항</a> 
 				</div>
 			</div>
 			<div class="content">
@@ -121,7 +120,6 @@
 										<col width="*">
 										<col width="16%">
 										<col width="11%">
-										<col width="10%">
 									</colgroup>
 									<thead>
 										<tr>
@@ -129,7 +127,6 @@
 											<th scope="col">제목</th>
 											<th scope="col">담당부서</th>
 											<th scope="col">최종수정일자</th>
-											<th scope="col">답글 등록 상태</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -146,7 +143,6 @@
 														<td><a href="<%=request.getContextPath() %>/admin/clientUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
 														<td>${notice.admin_code}</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
-														<td></td>
 													</tr>
 												</c:forEach>
 											</c:when>

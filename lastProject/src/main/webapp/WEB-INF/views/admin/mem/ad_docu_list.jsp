@@ -7,6 +7,8 @@
 <%@ page trimDirectiveWhitespaces="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="java.io.File"%>
+<%@page import="org.springframework.web.multipart.MultipartRequest"%>
 
 <%
 	Integer pageNumber = (Integer) request.getAttribute("pageNumber");
@@ -73,11 +75,12 @@
 			<div class="dropdown">
 				<button class="dropbtn">회원 관리</button>
 				<div class="dropdown-content">
-					<a href="<%=request.getContextPath()%>/admin/mem">휴먼 계정 회원 조회</a> <a
+					<a href="<%=request.getContextPath()%>/admin/inmem">휴먼 계정 회원 조회</a> <a
 					href="<%=request.getContextPath()%>/admin/allmem">회원 정보 조회</a> <a
 					href="<%=request.getContextPath()%>/admin/docu">서류 관리</a>
 				</div>
 			</div>
+			<div style="height:40px;"></div>
 			<div class="content">
 				<div>
 					<form name="noticeDetail">

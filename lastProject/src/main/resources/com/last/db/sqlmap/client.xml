@@ -49,10 +49,12 @@
 	<select id="selectsearch" parameterClass="map" resultClass="client">
 		select * from client where substr(client_code,1,8)=#client_code# and
 		client_enRoll_date between #start_date# and #end_date#+1 and client_title like %#word#%
+		order by  ENROLL_DATE  desc
 	</select>
 	
 	<select id ="selectNotice" parameterClass="str" resultClass="notice">
 		select * from notice where substr(notice_code,1,5) like #notice_code#
+		order by  ENROLL_DATE  desc
 	</select>
 	
 	<select id ="selectNoticeCount" parameterClass="str"  resultClass="int">
@@ -73,6 +75,7 @@
 		<isEqual property="schType" compareValue="kind">
 			and substr(client_code,1,8) like '%'||#schText#||'%'
 		</isEqual>
+			order by  ENROLL_DATE  desc
 	</select>
 	
 	
@@ -142,5 +145,14 @@
  		select * from notice where substr(notice_code,1,5) = #notice_code# and rownum <=5
 		]]>
 	</select>
+	
+	<update id="updateVoice" parameterClass="client">
+		update client
+		set client_reply_content = #client_reply_content#,
+		reply_state = #reply_state#,
+		client_reply_date = sysdate
+		where client_code = #client_code#
+		
+	</update>
 	
 </sqlMap>

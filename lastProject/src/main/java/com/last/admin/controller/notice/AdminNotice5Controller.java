@@ -125,6 +125,7 @@ public class AdminNotice5Controller {
 		System.out.println(str);
 		
 		StringTokenizer tokens = new StringTokenizer(str, ".");
+		
 		String[] fileName = { "1", "txt" };
 		int i = 0;
 		while (tokens.hasMoreTokens()) {
@@ -134,6 +135,7 @@ public class AdminNotice5Controller {
 
 		if (!multipartFile.isEmpty()) {
 			File file = new File(upload, fileName[0] + "." + fileName[1]);
+
 			try {
 				multipartFile.transferTo(file);
 			} catch (IllegalStateException e) {

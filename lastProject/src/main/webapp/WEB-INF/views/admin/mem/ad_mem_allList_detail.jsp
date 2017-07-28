@@ -62,14 +62,6 @@
 <input type="hidden" id="mem_jang" value="${vo.mem_jang}"/>
 <input type="hidden" id="mem_email_agree" value="${vo.mem_email_agree}"/>
 <script>
-/*
-	$(function(){
-		var mem_bir = ${vo.mem_bir};
-		var mem_biryy = mem_bir.substring(1,2);
-		var mem_birmm = mem_bir.substring(3,4);
-		var mem_birdd = mem_bir.substring(5,6);
-	})
-*/	
 	//외국인 내국인
 	$(function(){
 		var mem_kor_for = $('#mem_kor_for').val();
