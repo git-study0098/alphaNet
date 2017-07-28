@@ -23,6 +23,9 @@
 </style>
 <script>
 	$(document).ready(function(){
+		examClick()
+	})
+	$(document).ready(function(){
 		if($('#solH2').val()!=0 && $('#ansH2').val()!=0){
 			
 			oQuiz = $('#oQuiz').val();
@@ -242,7 +245,8 @@
 			}
 		}
 	}
-	window.onload = examClick();
+// 	window.onload = examClick();
+
 </script>
 <table><tr>
 <td>
