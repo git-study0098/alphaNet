@@ -154,7 +154,8 @@ public class MemberWonseoRequestController {
 	
 	@RequestMapping(value="/member/wonseoReq4_1")
 	public String wonseonRequest4_1(Model model,@RequestParam(value="si")String si, @RequestParam(value="gu")String gu,
-								    @RequestParam(value="em_info_code")String em_info_code){
+								    @RequestParam(value="em_info_code")String em_info_code, @RequestParam(value="exam")String exam
+								    ,@RequestParam(value="exam2")String exam2){
 		String url="member/wonseo/wonseo_request4";
 //		,@RequestParam(value="exam")String exam, @RequestParam(value="exam2")String exam2
 		// 모든 PLACE를 뽑자
@@ -198,6 +199,8 @@ public class MemberWonseoRequestController {
 		model.addAttribute("placepList", placepList);
 		model.addAttribute("examPlace",examPlace);
 		model.addAttribute("em_info_code",em_info_code);
+		model.addAttribute("exam",exam);
+		model.addAttribute("exam",exam2);
 		
 		return url;
 	}

@@ -399,14 +399,17 @@ var speed = 800;
 									</p>
 								</div>
 							</li>
-							<li class=""><a href="#">사전 시험보기</a>
+							<li class=""><a href="<%=request.getContextPath()%>/cbt">사전 시험보기</a>
 								<div class="sub02" style="display: none;">
 									<ul style="min-height: 235px;">
-										<li>
-											<a href="" target="_blank" title="새 창">CBT</a>
+										<li class=""><a href="<%=request.getContextPath()%>/cbt" title="새 창">CBT</a>
+											<ul style="min-height: 235px; left: 228px; display: none;">
+												<li style="height:6px;"></li>
+												<li><a href="<%=request.getContextPath()%>/cbt">CBT</a></li>
+											</ul>
 										</li>
 									</ul>
-									<p>- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
+									<p class="blind">- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
 							</li>								
 							<li class=""><a href="<%=request.getContextPath() %>/request1">자격증/확인서</a>

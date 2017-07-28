@@ -207,7 +207,7 @@ function checkDetail(value2){
 
 function go_wonseo(){
 	em_info_code = document.getElementById('em_info_code').value;
-	location.href="<%=request.getContextPath()%>/member/wonseoReq4_1?si="+vall+"&gu="+value3+"&em_info_code="+em_info_code;
+	location.href="<%=request.getContextPath()%>/member/wonseoReq4_1?si="+vall+"&gu="+value3+"&em_info_code="+em_info_code+"&exam=${exam}&exam2=${exam2}";
 }
 
 	var place= "";

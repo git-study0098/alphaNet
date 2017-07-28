@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL MAP 2.0//EN" 
+ "http://www.ibatis.com/dtd/sql-map-2.dtd">
+ 
+<sqlMap namespace="Client1">
+
+   <typeAlias alias="str" type="java.lang.String" />
+   <typeAlias alias="int" type="java.lang.Integer"/>
+   <typeAlias alias="cbt" type="com.last.common.vo.CbtVo"/>
+   
+   <select id="selectExamQuiz" parameterClass="java.util.HashMap" resultClass="cbt">
+      select *
+      from cbt
+      where cbt_em_quiz_code like #seVal#||'%'
+      and substr(cbt_em_quiz_code,2,4) between #startQuiz# and #endQuiz#
+      order by 1
+   </select>
+      
+   <select id="selectExamData" resultClass="cbt">
+      select distinct substr(cbt_em_quiz_code,1,1) as cbt_em_quiz_code
+      ,cbt_name
+      from cbt 
+   </select>   
+   
+   <insert id="insertCbtQuestion" parameterClass="cbt">
+   insert into cbt(CBT_EM_QUIZ_CODE,
+      CBT_EM_QUIZ_NUMB,
+      CBT_EM_MEM_ANSWER,
+      CBT_EM_ANSWER,
+      MEM_CODE,
+      CBT_EM_QUIZ,
+      CBT_QUIZ1,
+      CBT_QUIZ2,
+      CBT_QUIZ3,
+      CBT_QUIZ4,
+      CBT_QUESTION_IMG,
+      CBT_NAME) 
+      values(#cbt_em_quiz_code#,
+      #cbt_em_quiz_numb#,
+      #cbt_em_mem_answer#,
+      #cbt_em_answer#,
+      #mem_code#,
+      #cbt_em_quiz#,
+      #cbt_quiz1#,
+      #cbt_quiz2#,
+      #cbt_quiz3#,
+      #cbt_quiz4#,
+      #cbt_question_img#,
+      #cbt_name#)
+   </insert>
+   
+</sqlMap>
