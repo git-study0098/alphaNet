@@ -17,6 +17,10 @@ public class CbtService {
 	public List<CbtVo> selectExamQuiz(String seVal, String startQuiz) throws SQLException{
 		return dao.selectExamQuiz(seVal, startQuiz);
 	}
+
+	public List<CbtVo> selectExamData() throws SQLException {
+		return dao.selectExamData();		
+	}
 	
 	
 }

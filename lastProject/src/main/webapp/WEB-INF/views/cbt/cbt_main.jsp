@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 * { box-sizing: content-box;}
 
@@ -34,10 +34,10 @@
 								<div>
 									<select name="selExam" id="selExam" class="w350"
 										title="응시한 정기시험 선택" onchange="setQSelVal(this.value)">
-										<option value="">응시하실 시험을 선택해주세요.</option>
-
-										<option value="a" >2017년 정보처리기사 2회 필기</option>
-
+										<option value="value">응시하실 시험을 선택해주세요.</option>
+											<c:forEach items="${viewData}" var="cbt">
+												<option value="${cbt.cbt_em_quiz_code}" >${cbt.cbt_quiz2 }</option>
+											</c:forEach>
 
 									</select>
 								</div>

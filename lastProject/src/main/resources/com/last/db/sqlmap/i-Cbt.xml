@@ -12,7 +12,14 @@
 		select *
 		from cbt
 		where cbt_em_quiz_code like #seVal#||'%'
-		and substr(cbt_em_quiz_code,2,4) between #startQuiz# and #endQuiz# 
+		and substr(cbt_em_quiz_code,2,4) between #startQuiz# and #endQuiz#
+		order by 1
+	</select>
+		
+	<select id="selectExamData" resultClass="cbt">
+		select distinct substr(cbt_em_quiz_code,1,1) as cbt_em_quiz_code
+		,substr(cbt_quiz2,1,1) as cbt_quiz2
+		from cbt 
 	</select>	
 	
 </sqlMap>

@@ -26,7 +26,8 @@
 		if(subject=='1'&&<%=quizList1[0]%>==0){
 			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal;
 		}else if(subject=='1'){
-			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+'&seVal='+seVal+'&cc=${cc}';
+			location.href='<%=request.getContextPath()%>/cbtDetail?startQuiz='+startQuiz+
+					'&seVal='+seVal+'&cc=${cc}&solH=${solH}&ansH=${ansH}';
 		}
 		
 		if(subject=='2'&&<%=quizList1[1]%>==0){
@@ -90,7 +91,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">1과목</td>
 <td align="center">데이터베이스<br></td>
-<td align="center"><span id="stare1">응시전</span><br>${count}/20문제<br></td>
+<td align="center"><span id="stare1">응시전</span><br>${count1}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(1,'first', 1)" id="sta1" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(1,'second', 1)" id="res1" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -100,7 +101,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">2과목</td>
 <td align="center">전자계산기구조<br></td>
-<td align="center"><span id="stare2">응시전</span><br>${count}/20문제<br></td>
+<td align="center"><span id="stare2">응시전</span><br>${count2}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(2,'first', 21)" id="sta2" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(2,'second', 21)" id="res2" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -110,7 +111,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">3과목</td>
 <td align="center">운영체제<br></td>
-<td align="center"><span id="stare3">응시전</span><br>${count}/20문제<br></td>
+<td align="center"><span id="stare3">응시전</span><br>${count3}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(3,'first', 41)" id="sta3" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(3,'second', 41)" id="res3" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -120,7 +121,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">4과목</td>
 <td align="center">소프트웨어공학<br></td>
-<td align="center"><span id="stare4">응시전</span><br>${count}/20문제<br></td>
+<td align="center"><span id="stare4">응시전</span><br>${count4}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(4,'first', 61)" id="sta4" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(4,'second', 61)" id="res4" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -130,7 +131,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">5과목</td>
 <td align="center">데이터통신<br></td>
-<td align="center"><span id="stare5">응시전</span><br>${count}/20문제<br></td>
+<td align="center"><span id="stare5">응시전</span><br>${count5}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(5,'first', 81)" id="sta5" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(5,'second', 81)" id="res5" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>

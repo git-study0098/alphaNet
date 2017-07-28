@@ -11,7 +11,7 @@ public class CbtVo {
 	private String cbt_quiz2;
 	private String cbt_quiz3;
 	private String cbt_quiz4;
-	private String cbt_attach_file;
+	private String cbt_question_img;
 	private String cbt_em_quiz;
 	
 	private int currentPageNumber;
@@ -98,11 +98,11 @@ public class CbtVo {
 	public void setCbt_quiz4(String cbt_quiz4) {
 		this.cbt_quiz4 = cbt_quiz4;
 	}
-	public String getCbt_attach_file() {
-		return cbt_attach_file;
+	public String getCbt_question_img() {
+		return cbt_question_img;
 	}
-	public void setCbt_attach_file(String cbt_attach_file) {
-		this.cbt_attach_file = cbt_attach_file;
+	public void setCbt_question_img(String cbt_question_img) {
+		this.cbt_question_img = cbt_question_img;
 	}
 	public String getCbt_em_quiz() {
 		return cbt_em_quiz;

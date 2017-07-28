@@ -25,7 +25,18 @@ public class CbtController {
 	CbtService service;
 	
 	@RequestMapping("/cbt")
-	public String cbtMain(){
+	public String cbtMain(Model model){
+		
+		List<CbtVo> list = null;
+		
+		try {
+			list = service.selectExamData();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("viewData", list);
+		
 		return "cbt/cbt_main";
 	}
 	
@@ -33,7 +44,8 @@ public class CbtController {
 	public String cbtChoice(@RequestParam(value="seVal")String seVal, Model model, HttpSession session
 			,@RequestParam(value="ansH",defaultValue="0")String ansH
 			,@RequestParam(value="solH",defaultValue="0")String solH
-			,@RequestParam(value="test",defaultValue="-1") String test){
+			,@RequestParam(value="test",defaultValue="-1") String test
+			,@RequestParam(value="startQuiz",defaultValue="-1") String startQuiz){
 		
 		if(test.equals("test")){
 			int[] quizList1 = new int[5];
@@ -54,18 +66,35 @@ public class CbtController {
 				}
 			}
 			model.addAttribute("cc",cc);
-			model.addAttribute("count",count);
+			
+			if(startQuiz.equals("1")){
+				session.setAttribute("count1",count+"/");
+			}else if(startQuiz.equals("21")){
+				session.setAttribute("count2",count+"/");
+			}else if(startQuiz.equals("41")){
+				session.setAttribute("count3",count+"/");
+			}else if(startQuiz.equals("61")){
+				session.setAttribute("count4",count+"/");
+			}else if(startQuiz.equals("81")){
+				session.setAttribute("count5",count+"/");
+			}else{
+			}
 		}
-		model.addAttribute("seVal",seVal);
+		session.setAttribute("seVal",seVal);
+		model.addAttribute("solH",solH);
+		model.addAttribute("ansH",ansH);
 		
 		return "cbt/cbt_choice";
 	}
 	
 	@RequestMapping("/cbtDetail")
 	public String cbtDetail(@RequestParam(value="startQuiz")String startQuiz,
-			@RequestParam(value="seVal")String seVal, Model model, HttpSession session
-			,@RequestParam(value="cc", defaultValue="0")String cc){
+			Model model, HttpSession session
+			,@RequestParam(value="cc", defaultValue="0")String cc
+			,@RequestParam(value="ansH",defaultValue="0")String ansH
+			,@RequestParam(value="solH",defaultValue="0")String solH){
 
+		String seVal = (String) session.getAttribute("seVal");
 		List<CbtVo> examList = null;
 		try {
 			examList = service.selectExamQuiz(seVal, startQuiz);
@@ -73,13 +102,12 @@ public class CbtController {
 			e.printStackTrace();
 		}
 		
-		
-		
 		model.addAttribute("examList", examList);
 		model.addAttribute("startQuiz", startQuiz);
-		model.addAttribute("seVal", seVal);
 		
 		model.addAttribute("oQuiz", cc);
+		model.addAttribute("ansH2", ansH);  // 정답
+		model.addAttribute("solH2", solH);  // 고른답
 		
 		if(startQuiz.equals("1")){
 			int[] quizList1 = (int[])session.getAttribute("quizList1");
@@ -102,31 +130,26 @@ public class CbtController {
 			quizList1[4]++;
 			session.setAttribute("quizList1", quizList1);			
 		}
-		
 		return "cbt/cbt_detail";
 	}
 	
 	@RequestMapping(value="result", method=RequestMethod.POST)
 	@ResponseBody
-	public Object cbtResult(Model model,@RequestParam(value="count", defaultValue="1")String count){
-		
-//		model.addAttribute("examList", examList);
+	public Object cbtResult(Model model,@RequestParam(value="count", defaultValue="1")String count
+			,HttpSession session){
+		String seVal = (String) session.getAttribute("seVal");
 		List<CbtVo> examList = null;
 		try {
-			System.out.println(count+"result");
-			examList = service.selectExamQuiz("a", count);
+			examList = service.selectExamQuiz(seVal, count);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println(examList.get(0).getCbt_em_quiz());
 		
 		model.addAttribute("examList", examList);
 		
 		Map<String, Object> abc = new HashMap<String, Object>();
 		
-		
 		abc.put("examList", examList);
-		
 		return abc;
 	}
 	
