@@ -39,7 +39,6 @@ public class MemberJagukRequestController {
 		return "member/jaguk/jaguk_request1";
 	}
 	
-	
 	@RequestMapping("/member/request2")
 	public String jagukRequest2(@RequestParam(value="page",defaultValue="1") int pageNumber,Model model)
 			throws SQLException{

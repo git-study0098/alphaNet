@@ -316,5 +316,10 @@ public class MemberWonseoRequestController {
 		
 		return "/member/hap";
 	}
+	@RequestMapping("/member/hap2")
+	public String hap2(){
+		
+		return "/member/hap2";
+	}
 	
 }

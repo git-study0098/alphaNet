@@ -169,7 +169,14 @@
 	<bean id="clientService"
 		  class="com.last.client.service.ClientService"
 		  p:clientDao-ref="clientDAO"/>	
-
+	
+	<bean id="excelDAO"
+        class="com.last.excel.controller.ExcelDAO"
+        p:client-ref="client"/>
+        
+   <bean id="excelService"
+        class="com.last.excel.controller.ExcelService"
+        p:excelDao-ref="excelDAO"/>
 
 <!-- 	<bean id="noticeService" -->
 <!-- 		  class="com.last.board.service.NoticeService" -->

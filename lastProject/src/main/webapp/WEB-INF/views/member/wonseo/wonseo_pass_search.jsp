@@ -16,15 +16,15 @@ $(function(){
 				
 				var code ="<div class='tbl_type1' style='height:190px; overflow-y:scroll' tabindex='0'><table><colgroup><col width='10%'><col width='70%'><col width='20%'></colgroup>";                                                                                                                                  							
 					code +="<thead><tr><th scope='col'>번호</th><th scope='col'>종목명</th><th scope='col'>종목코드</th></tr></thead><tbody>";                                                                                                                  								
-				     $.each(res,function(i,data){
-				    	 console.log(data.exkind_code);
-				    	 code+="<tr>";
-				    	 code+="<td>"+(i+1)+"</td>";
-				    	 code+="<td><a href='#' onclick='go_happ('comp1');'>"+data.exkind_nm+"</a></td>";
-				    	 code+="<td>"+data.exkind_code+"</td></tr>";
-				     })    
-				     code+="</tbody></table></div>";
-				     console.log(code);
+		    	    code+="<tr>";
+		    	    code+="<td>"+(1)+"</td>";
+		    	    code+="<td><a href='#' onclick='go_happ();'>정보처리기사</a></td>";
+		    	    code+="<td>comp3</td></tr>";
+		    	    code+="<tr>";
+		    	    code+="<td>"+(2)+"</td>";
+		    	    code+="<td><a href='#' onclick='go_hap();'>정보처리산업기사</a></td>";
+		    	    code+="<td>comp2</td></tr>";
+				    code+="</tbody></table></div>";
 				   
 				     $('.aaaa').html(code);
 				}
@@ -33,9 +33,14 @@ $(function(){
 	})
 </script>
 <script>
-function go_happ(b) {
-	var p = b;
-	var popUrl = "<%=request.getContextPath()%>/member/hap?exkind_code="+b;
+function go_happ() {
+	var popUrl = "<%=request.getContextPath()%>/member/hap?";
+	var win;
+	win = window.open(popUrl, "", 'scrollbars=no,width=600,height=300,status=no,resizable=no');
+	win.opener.self;
+}
+function go_hap() {
+	var popUrl = "<%=request.getContextPath()%>/member/hap2?";
 	var win;
 	win = window.open(popUrl, "", 'scrollbars=no,width=600,height=300,status=no,resizable=no');
 	win.opener.self;

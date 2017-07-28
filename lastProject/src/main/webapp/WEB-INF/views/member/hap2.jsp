@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/mobile.css">
 </head>
 				<div>																																				
-				<p class="fc_b" style="background:lightgray"><strong>정보처리기사(comp3)</strong></p>																															
+				<p class="fc_b" style="background:lightgray"><strong>정보처리산업기사(comp2)</strong></p>																															
 					<div class="tbl_nonTh tdBg noPd" tabindex="0">																																		
 						<table summary="2017년 정기 기사 2회 실기 시험 최종합격자 명단 조회로 번호, 종목명, 종목코드 정보제공">																				
 							<colgroup>																																									
@@ -36,21 +36,19 @@
 									<th scope="col">수험번호</th>																																					
 								<th scope="col">수험번호</th>																																				
 									<th scope="col">수험번호</th>																																					
-								<th scope="col">수험번호</th>																																				
 								</tr>																																									
 							</thead>																																									
 							<tbody>																																									
 								<tr>																																								
-						<td><span class="bg_e9">MEM006171AP</span></td>																												
-						<td><span>MEM003171BP</span></td>																															
-						<td><span class="bg_e9">MEM004171AP</span></td>																												
-						<td><span>MEM002171AP</span></td>																															
-						<td><span class="bg_e9">MEM005171AP</span></td>																												
-						<td><span>MEM003171AP</span></td>																															
+						<td><span class="bg_e9">MEM009171AP</span></td>																												
+						<td><span>MEM016172BP</span></td>																															
+						<td><span class="bg_e9">MEM019171AP</span></td>																												
+						<td><span>MEM035171AP</span></td>																															
+						<td><span class="bg_e9">MEM052171AP</span></td>																												
 								</tr>																																								
 							</tbody>																																								
 						</table>																																									
 					</div>																																												
-					<p class="list_failName" style="text-align: center"><strong>『 합격자 :  <span class="fc_b">6명</span> 』</strong></p>																				
+					<p class="list_failName" style="text-align: center"><strong>『 합격자 :  <span class="fc_b">5명</span> 』</strong></p>																				
 				</div><!-- // pop_content -->																																							
 </html>
