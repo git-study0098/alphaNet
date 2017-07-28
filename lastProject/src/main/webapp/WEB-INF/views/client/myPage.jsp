@@ -25,7 +25,6 @@
 
 
 <script>
-	alert('<%=email%>+마이페이지니지')
 	function search() {
 		document.frm.action ="searchSound";
 		document.frm.submit();
@@ -203,7 +202,7 @@
 						</div>
 					</div>
 					
-					<table style="width: 100%;border: 1px solid green;">
+					<table style="width: 100%;">
 			<colgroup>
 				<col width="7%">
 				<col width="15%">

@@ -3,7 +3,50 @@
 <%@ page trimDirectiveWhitespaces="true"%>    
 <style>
 	*{box-sizing:content-box;}
+	button{
+		margin-left: 10px;
+	}
+
 </style>
+
+
+<script>
+
+	$(function(){
+		    $("#button1").unbind("click").bind("click",function(){
+		        var audio =new Audio('<%=request.getContextPath()%>/resources/member/민지원서접수안내.mp3');
+		        audio.play();
+		    });
+	
+	})
+
+	function gogo2(){
+		var audio =new Audio('<%=request.getContextPath()%>/resources/member/민지접수확인.mp3');
+		audio.play();
+	}
+	function gogo3(){
+		var audio =new Audio('<%=request.getContextPath()%>/resources/member/민지접수상태.mp3');
+		audio.play();
+	}
+	function gogo4(){
+		var audio =new Audio('<%=request.getContextPath()%>/resources/member/미진결제마감시한.mp3');
+		audio.play();
+	}
+	function gogo5(){
+		var audio =new Audio('<%=request.getContextPath()%>/resources/member/미진가상계좌 수수료.mp3');
+		audio.play();
+	}
+	function gogo6(){
+		var audio =new Audio('<%=request.getContextPath()%>/resources/member/미진채번가능기한.mp3');
+		audio.play();
+	}
+	function gogo7(){
+		var audio =new Audio('<%=request.getContextPath()%>/resources/member/미진인터넷접수 취소.mp3');
+		audio.play();
+	}
+
+
+</script>
 <article>
 	<div id="container">
 		<!-- 좌측 메뉴바 -->
@@ -24,7 +67,7 @@
 			<!-- //location -->
 			<div class="content">
 				<!-- 컨텐츠 타이틀 -->
-				<h3 class="tit_content">원서접수 안내</h3>
+				<h3 class="tit_content" id="title">원서접수 안내<button type="button" id ="button1"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h3>
 				<!-- //컨텐츠 타이틀 -->
 				<!-- 탭 -->
 				<div class="tabLayout green">
@@ -35,12 +78,12 @@
 				</div>
 
 				<!-- 컨텐츠 내용 -->
-				<h4>접수확인 및 수험표 출력기간</h4>
+				<h4>접수확인 및 수험표 출력기간<button type="button" onclick="gogo2()"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h4>
 				<div class="cont_parbx">
 					<p class="list">접수당일부터 시험시행일까지 출력가능(이외 기간은 조회불가) 합니다. 또한 출력장애 등을 대비하여 사전에 출력 보관하시기 바랍니다.</p>
 				</div>
 
-				<h4>접수상태(접수완료, 수험표출력, 미결제)를 클릭하면 각 접수상태에 따라 다음 단계화면으로 이동합니다.</h4>
+				<h4>접수상태(접수완료, 수험표출력, 미결제)를 클릭하면 각 접수상태에 따라 다음 단계화면으로 이동합니다.<button type="button" onclick="gogo7()"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h4>
 				<div class="cont_parbx">
 					<ul class="list">
 						<li>접수완료, 수험표출력 : 수험표 출력화면으로 이동 </li>
@@ -49,7 +92,7 @@
 					</ul>
 				</div>
 
-				<h4>접수 수수료 결제마감 시한(국가기술자격만 해당) : <strong class="fc_r">원서접수 마감일 18:00시까지</strong> 단, 원서작성 완료후 접수수수료 미결제상태인 다음의 경우는 결제가능.</h4>
+				<h4>접수 수수료 결제마감 시한(국가기술자격만 해당) : <strong class="fc_r">원서접수 마감일 18:00시까지</strong> 단, 원서작성 완료후 접수수수료 미결제상태인 다음의 경우는 결제가능. <button type="button" onclick="gogo3()"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h4>
 				<div class="cont_parbx">
 					<ul class="list">
 						<li>정기검정
@@ -62,14 +105,14 @@
 					</ul>
 				</div>
 
-				<h4>가상계좌 수수료 입금 기한</h4>
+				<h4>가상계좌 수수료 입금 기한<button type="button" onclick="gogo4()"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h4>
 				<div class="cont_parbx">
 					<p class="list">
 						정기/상시검정 : 인터넷접수기간중 가상계좌번호 부여받은일 다음날 오후 2시까지 인터넷 수험원서 <strong class="fc_r">접수 수수료</strong>를 기한내에 <strong class="fc_r">입금을 하지 않으면 수험원서 제출이 자동 취소</strong>됩니다. 가상계좌 입금시 수험자의 주거래은행 신용도 및 창구이용입금, 자동화기기 이용입금 시 각각의 은행별로 정해진 입금수수료가 부과될 수 있습니다.
 					</p>
 				</div>
 
-				<h4>가상계좌번호 채번 가능 기한</h4>
+				<h4>가상계좌번호 채번 가능 기한<button type="button" onclick="gogo5()"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h4>
 				<div class="cont_parbx">
 					<ul class="list">
 						<li>정기검정 : 원서접수 마감당일 18:00시까지</li>
@@ -77,7 +120,7 @@
 					</ul>
 				</div>
 
-				<h4>인터넷 접수 취소/환불 기간</h4>
+				<h4>인터넷 접수 취소/환불 기간<button type="button" onclick="gogo6()"><img src="<%=request.getContextPath()%>/resources/client/images/speaker.png" width="30" height="30"></button></h4>
 				<div class="cont_parbx mb20">
 					<h5>국가기술자격검정</h5>
 					<ul class="list">

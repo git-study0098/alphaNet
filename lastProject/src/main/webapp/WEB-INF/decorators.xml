@@ -28,6 +28,7 @@
 		<pattern>/member/request5*</pattern>
 		<pattern>/map</pattern>
 		<pattern>/client/mail</pattern>
+		<pattern>/mail</pattern>
 
 	</excludes>
 <!-- 		<pattern>/admin/**/*</pattern> -->

@@ -179,7 +179,6 @@ $(function(){
 })
 
 
-
 $(function(){
 	
 		var post1=document.getElementById("mem_post_numb1");
@@ -239,8 +238,6 @@ function check() {
 		alert("주민번호 등록지를 등록해주세요");
 	}else if(post2 =="" || add3==""||add4==""){
 		alert("실제 거주지를 등록해주세요");
-	}else if($("#no").has()){
-	 	alert("아이디 중복확인을 해주세요");
 	}else{
 	document.regMEM.action ="insertMember";
 	document.regMEM.method ="POST";
@@ -248,9 +245,16 @@ function check() {
 	}
 	
 }
-	
-	
 
+$(function(){
+	
+$('#btn-upload').click(function (e) {
+	$('#file').click();
+	});
+})	
+
+
+	
 
 </script>
 
@@ -263,7 +267,7 @@ function check() {
 
 				<!-- 컨텐츠 내용 -->
 				<div class="step">
-					<ul class="list03">
+					<ul class="list03"  style="margin-left: 100px;">
 						<li><img src="resources/images/약관동의(전).gif" alt=""><span>약관동의</span></li>
 						<li><img src="resources/images/본인인증(전).gif" alt=""><span>본인인증</span></li>
 						<li>
@@ -307,11 +311,13 @@ function check() {
 											<span id="idChk"></span>
 										</td>
 										<td rowspan="9" class="photo">
-											<div>
-												<img id="viewImg" src="resources/images/사진미등록.png" onclick="cropImage();">											
+											<div >
+												<img id="viewImg" src="resources/images/사진미등록.png" width="300px" height="400px"  onclick="cropImage();">											
 											</div>
 										
-											<input type="file" name="f" />
+											<input type="file" name="f" id ="file"  onchange="changeValue(this);" style="display:none;"/>
+											<button type="button" class="btn3_type1 chk_id ml5" id="btn-upload" style="margin-top: 5px;"><span style="color: #fff">사진등록</span></button>
+											
 										</td>
 									</tr>
 									<tr>
