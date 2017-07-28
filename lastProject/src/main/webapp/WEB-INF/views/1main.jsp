@@ -203,58 +203,40 @@ $(function(){
 					<div id="loadTest">					
 						<jsp:include page="ingWonseo.jsp" />
 					</div>
+					<!-- 캐러셀 -->
 					<div class="auto_banner">
-						<!-- // class="play" 자동 플레이 상태  -->
-						<span class="move">
-							<button title="배너 멈춤" class="auto">
-								<img src="<%=request.getContextPath()%>/resources/images/main/banner_stop.gif" alt="배너 멈춤"
-									title="배너 멈춤">
-							</button>
-							<button title="이전 배너" class="prev">
-								<img src="<%=request.getContextPath()%>/resources/images/main/banner_prev.gif" alt="이전 배너"
-									title="이전 배너">
-							</button>
-							<button title="다음 배너" class="next">
-								<img src="<%=request.getContextPath()%>/resources/images/main/banner_next.gif" alt="다음 배너"
-									title="다음 배너">
-							</button>
-						</span>
-						<div class="rollBox">
-							<ul style="width: 5910px;">
+					<!-- // class="play" 자동 플레이 상태  -->
+					<span class="move">
+						<button title="배너 멈춤" class="auto">
+							<img src="<%=request.getContextPath() %>/resources/images/main/banner_stop.gif" alt="배너 멈춤" title="배너 멈춤">
+						</button>
+						<button title="이전 배너" class="prev">
+							<img src="<%=request.getContextPath() %>/resources/images/main/banner_prev.gif" alt="이전 배너" title="이전 배너">
+						</button>
+						<button title="다음 배너" class="next">
+							<img src="<%=request.getContextPath() %>/resources/images/main/banner_next.gif" alt="다음 배너" title="다음 배너">
+						</button>
+					</span>
+					<div class="rollBox">
+						<ul style="width: 4334px;">
+							<div id="myCarousel" class="carousel slide" data-ride="carousel">
+								<div class="carousel-inner">
+									<div class="item active">
+										<img src="<%=request.getContextPath() %>/resources/images/main/banner01.gif" alt="Los Angeles">
+									</div>
 
-								<li style="opacity: 0; display: none;"><a
-									href="#"
-									target="_blank" title="새 창"><img
-										src="<%=request.getContextPath()%>/resources/images/main/banner04.gif"
-										alt="자격증불법대여신고:한국산업인력공단이 천만 기술인의 꿈을 지켜드립니다. 노력해서 얻은 자격증을 사고파는 사람이 있습니다. 자격증대여가 불법임을 알고 있음에도 대수롭지 않게 생각하는사람이 있습니다. 자격증대여는 불법일 뿐만 아니라 자신의 꿈을 헐값에 파는 행위입니다."></a></li>
-								<li style="opacity: 0; display: none;"><a
-									href="#" title="새 창"><img
-										src="<%=request.getContextPath()%>/resources/images/main/banner01.gif"
-										alt="개인의 행복이 커질수록 함께 강해지는 새로운 대한민국 정부3.0이 함께 열어가겠습니다. 행복한 대한민국을 여는 정부3.0"></a></li>
-								<li style="opacity: 0; display: none;"><a
-									href="#" target="_blank" title="새 창"><img
-										src="<%=request.getContextPath()%>/resources/images/main/banner03.gif"
-										alt="한국직업방송 : 일자리 중심 고용핵심 인프라. 고용정보, 유망기업소개, 직업진로지도, 직업능력개발 강좌의 모든것!!"></a></li>
-								<li style="opacity: 0; display: none;"><a
-									href="#" target="_blank" title="새 창"><img
-										src="<%=request.getContextPath()%>/resources/images/main/banner03.gif"
-										alt="한국직업방송 : 일자리 중심 고용핵심 인프라. 고용정보, 유망기업소개, 직업진로지도, 직업능력개발 강좌의 모든것!!"></a></li>
+									<div class="item">
+										<img src="<%=request.getContextPath() %>/resources/images/main/banner02.gif" alt="Chicago">
+									</div>
 
-								<li class="base01" style="opacity: 0; display: none;"><a
-									href="#"
-									target="_blank" title="새 창"> <em>2014년8월7일부터</em> <strong><span>법령근거없이</span>
-											주민등록번호 주어서도 <br>받아서도 안됩니다.</strong>   
-									 <span>[개인정보보호 종합지원 www.privacy.go.kr]</span>
-								</a></li>
-								<li class="base02" style="opacity: 0; display: none;"><a
-									href="#">
-										<strong>수험자 복지환원서비스 <span>"수험표의 재발견"</span><br>
-											<span>수험표만</span> 제시하면 <span>모든 할인</span>
-									</strong> <em>OK!!</em>
-								</a></li>
-							</ul>
-						</div>
+									<div class="item">
+										<img src="<%=request.getContextPath() %>/resources/images/main/banner03.gif" alt="New York">
+									</div>
+								</div>
+							</div>
+						</ul>
 					</div>
+				</div>
 				</div>
 				<div class="right">
 					<dl class="bbs_list">
@@ -338,7 +320,6 @@ $(function(){
 							<a href="http://www.hrdkorea.or.kr/5/4/2/1" target="_blank"	title="한국산업인력공단 지역본부 및 지사 바로가기. 새 창"><strong>지부/지사</strong>연락처</a>
 						</li>
 					</ul>
-
 				</div>
 			</div>
 		</div>	

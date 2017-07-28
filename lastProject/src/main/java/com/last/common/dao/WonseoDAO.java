@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
+import com.last.common.vo.ExkindVO;
 import com.last.common.vo.MemberVo;
 import com.last.common.vo.PlaceVO;
 import com.last.common.vo.WonseoInfoVo;
@@ -73,20 +74,20 @@ public class WonseoDAO {
 	}
 	
 	//원서접수 응시정보 등록
-	public int insertStare(String mem_code,String stare_date, String em_info_code) throws SQLException{
-		int result = 0;
-		
-		HashMap<String, String> map = new HashMap<String, String>();
-		
-		map.put("mem_code", mem_code);
-		map.put("stare_date", stare_date);
-		map.put("em_info_code", em_info_code);
-		map.put("stare_code", mem_code+em_info_code);
-		
-		result = client.update("insertStare",map);
-		
-		return result;
-	}
+		public int insertStare(String mem_code,String stare_date, String em_info_code, String em_nm) throws SQLException{
+			int result = 0;
+			
+			HashMap<String, String> map = new HashMap<String, String>();
+			
+			map.put("mem_code", mem_code);
+			map.put("stare_date", stare_date);
+			map.put("em_info_code", em_info_code);
+			map.put("stare_code", mem_code+em_info_code+em_nm);
+			
+			result = client.update("insertStare",map);
+			
+			return result;
+		}
 	
 	//시험장소 지도 보는거
 	public PlaceVO selectMap(String place_nm){
@@ -110,5 +111,13 @@ public class WonseoDAO {
 		return selectWonseoList;
 	}
 	
+	public List<ExkindVO> selectExkindNm(String exkind_code) throws SQLException{
+		List<ExkindVO> list = (ArrayList<ExkindVO>)client.queryForList("selectExkindNm",exkind_code);
+		return list;
+	}
 	
+	public String selectEmNm(String em_info_code) throws SQLException{
+		String em_nm = (String)client.queryForObject("selectEmNm",em_info_code);
+		return em_nm;
+	}
 }

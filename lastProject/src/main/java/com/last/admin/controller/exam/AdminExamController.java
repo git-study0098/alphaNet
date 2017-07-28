@@ -37,8 +37,6 @@ public class AdminExamController {
 		
 		String com = req.getParameter("comp");
 		String com1 = req.getParameter("comp1");
-		System.out.println(com);
-		System.out.println(com1);
 		String exkind_nm = req.getParameter("exkind_nm");
 		int exkind_wr_pay_pr = Integer.parseInt(req.getParameter("exkind_wr_pay_pr"));
 		int exkind_pr_pay_pr = Integer.parseInt(req.getParameter("exkind_pr_pay_pr"));

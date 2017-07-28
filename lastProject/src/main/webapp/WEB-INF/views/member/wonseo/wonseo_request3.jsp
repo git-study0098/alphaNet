@@ -7,7 +7,11 @@
 </style>
 
 <script>
-	
+function go_jang(){
+	var popUrl = "<%=request.getContextPath()%>/member/test";
+	var popOption = "width=370,height=360,resizable=no,scrollbars=no,status=no;";
+	window.open(popUrl,"",popOption);
+}	
 </script>
 
 <article>
@@ -94,7 +98,7 @@
 									<c:choose>
 									<c:when test="${memberVo.mem_jang eq 'y'}">
 										<td class="entry">
-											<div class="obstacle_chk"><a href="<%=request.getContextPath()%>/member/wonseoReq">장애유형별 편의 안내 링크</a></div>
+											<div class="obstacle_chk"><a onclick="go_jang();">장애유형별 편의 안내 링크</a></div>
 										</td>
 									</c:when>
 									<c:otherwise>

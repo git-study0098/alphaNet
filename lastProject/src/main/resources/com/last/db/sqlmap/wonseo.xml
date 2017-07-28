@@ -8,11 +8,8 @@
 	<typeAlias alias="int" type="java.lang.Integer"/>
 	<typeAlias alias="wonseo" type="com.last.common.vo.WonseoInfoVo"/>
 	<typeAlias alias="place" type="com.last.common.vo.PlaceVO"/>
-	
-	<insert id="insertStare" parameterClass="java.util.HashMap">
-	insert into stare(stare_code,docu_code,stare_date,mem_code,em_info_code,app_receipt_date)
-	values(#stare_code#,'DOCU010',#stare_date#,#mem_code#,#em_info_code#,to_char(sysdate,'yy/mm/dd'))
-	</insert>
+	<typeAlias alias="exkind" type="com.last.common.vo.ExkindVO"/>
+	<typeAlias alias="stare" type="com.last.common.vo.StareVO"/>
 	
 	<select id="selectStareDate" parameterClass="str" resultClass="str">
 		select to_char(numg_stare_date,'yyyy-mm-dd')as numg_stare_date
@@ -80,6 +77,28 @@
 	
 	<select id="selectAdd"  parameterClass="str" resultClass="place">
 		select place_add from place where place_nm =#place_nm#
-	
 	</select>
+	
+	<select id="selectExkindNm" parameterClass="str" resultClass="exkind">
+		select exkind_code,exkind_nm from exkind where exkind_code like '%'||#exkind_code#||'%'
+	</select>
+	
+	
+	<select id="selectEmNm" parameterClass="str" resultClass="str">
+		select em_nm from em_info where em_info_code = #em_info_code#
+	</select>
+
+	<insert id="insertStare" parameterClass="java.util.HashMap">
+	insert into stare(stare_code,docu_code,stare_date,mem_code,em_info_code,app_receipt_date)
+	values(#stare_code#,'DOCU010',#stare_date#,#mem_code#,#em_info_code#,to_char(sysdate,'yy/mm/dd'))
+	</insert>
+	
+	<select id="selectStareHap" resultClass="stare">
+		select stare_code
+		from stare 
+		where stare_em_pass_at like '%'||합격||'%'
+		and substr(stare_code,11)!='W'
+	</select>
+	
+	
 </sqlMap>
