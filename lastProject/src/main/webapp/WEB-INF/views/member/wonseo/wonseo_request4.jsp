@@ -228,7 +228,6 @@ function go_wonseo(){
 <script>
 function go_map(){	
 	var place_nm = document.getElementById("place_nm").value;
-	alert(place_nm);
 	var pop = window.open("<%=request.getContextPath()%>/member/map?place_nm="+place_nm,"pop3","width=570,height=420"); 
 	console.log("바로들어가냐");
 	document.getElementById('mapForm').submit();
@@ -268,7 +267,7 @@ function go_map(){
 				<!-- 컨텐츠 타이틀 -->
 				
 				<h3 class="tit_content">
-					원서접수 신청<span class="sel_subject">(응시종목:${exam }(${exam2}))</span>
+					원서접수 신청<span class="sel_subject">(응시종목:${exam}(${exam2}))</span>
 				</h3>
 				<!-- //컨텐츠 타이틀 -->
 
@@ -427,7 +426,6 @@ function go_map(){
 									<td>${examPlace.place_pp}</td>
 									<td>${examPlace.place_ppp}</td>
 									<td>
-
 
 										<input type="radio" class="radio1" name="radio1" value="${examPlace.place_nm}"
 											onclick="chkIsSameSectExam('','1','1','0080','00','1','1','1','13','N','대전광역시','4516','동아마이스터고등학교(교내주차불가)','2017-08-12','08:30','1','1');"/>

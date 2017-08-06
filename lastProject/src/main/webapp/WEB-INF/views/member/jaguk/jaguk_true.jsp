@@ -22,7 +22,7 @@ $('#jagukHwa').on('click',function(){
 			code +="<colgroup><col width='16%'><col width='*'><col width='50%'></colgroup>";
 			code +="<tbody>";
 			code += "<tr><th scope='row'><lable for='hgulNm'>진위확인</label></th>";
-			code += "<td colspan='2'><input type='text' id='hgulNm' name='hgulNm' maxlength='15' value='인증되지않은 자격증입니다.'></td></tr>";
+			code += "<td colspan='2'><input type='text' id='hgulNm' name='hgulNm' maxlength='15' value='인증되지않은 자격증입니다.' readonly></td></tr>";
 			code += "<tr><th scope='row'><lable for='hgulNm'>자격종목</label></th>";
 			code += "<td colspan='2'><input type='text' id='hwa' name='qualifi_certi_code' maxlength='15' value=''></td></tr>";
 			code += "<tr><th scope='row'><lable for='hgulNm'>합격일자</label></th>";
@@ -32,7 +32,7 @@ $('#jagukHwa').on('click',function(){
 			$('.jagukTrue').html(code);
 			$('input[name=qualifi_certi_code]').attr('value',res.qualifi_certi_code);
 			if(res.qualifi_certi_code=="정보처리기사"){
-				$('input[name=hgulNm]').attr('value','인증된 자격증입니다');					
+				$('input[name=hgulNm]').attr({'value':'인증된 자격증입니다','readonly':'readonly'});					
 			}
 			$('#hwa1').attr('value',res.written_pass_date);
 		}

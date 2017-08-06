@@ -67,8 +67,8 @@
 <!-- 					<li><a href="admin/mem/ad_stare_mem.jsp"><i -->
 <!-- 							class="fa fa-bar-chart-o fa-2x"></i> 응시시험회원관리</a></li> -->
 					</ul>
-					<a class="navbar-brand" href="<%=request.getContextPath()%>/admin/login/main2"> <img
-						src="<%=request.getContextPath() %>/resources/admin2/img/logo.png" style="width:200px;height:200px;margin:40px;"/>
+					<a class="navbar-brand" href="<%=request.getContextPath()%>/main"> <img
+						src="<%=request.getContextPath() %>/resources/images/logo.png" style="width:200px;height:200px;margin:40px;"/>
 					</a>
 			</div>
 		</nav>

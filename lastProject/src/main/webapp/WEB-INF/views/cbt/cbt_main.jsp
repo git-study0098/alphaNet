@@ -14,7 +14,10 @@
 		seval = seVal;
 	}
 	function viewQnetPassList(){
-		window.open("<%=request.getContextPath()%>/cbtChoice?seVal="+seval+"&test=test","cbt","width=1200px,height=900px;")
+		if($('#selExam').val()=="value"){
+			alert("응시할 시험을 선택해주세요.")
+		}
+		window.open("<%=request.getContextPath()%>/cbtChoice?seVal="+seval+"&test=test","cbt","width=1200px,height=468px,top=150px,left=250px;")
 	}
 </script>
 <article>
@@ -36,7 +39,7 @@
 										title="응시한 정기시험 선택" onchange="setQSelVal(this.value)">
 										<option value="value">응시하실 시험을 선택해주세요.</option>
 											<c:forEach items="${viewData}" var="cbt">
-												<option value="${cbt.cbt_em_quiz_code}" >${cbt.cbt_name }</option>
+												<option value="${cbt.cbt_em_quiz_code}" >${cbt.cbt_name}</option>
 											</c:forEach>
 
 									</select>

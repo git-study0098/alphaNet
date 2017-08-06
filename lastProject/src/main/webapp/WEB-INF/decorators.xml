@@ -31,6 +31,8 @@
 		<pattern>/client/mail</pattern>
 		<pattern>/reply</pattern>
 		<pattern>/mail</pattern>
+		<pattern>/cbtChoice*</pattern>
+		<pattern>/cbtDetail*</pattern>
 	</excludes>
 <!-- 		<pattern>/admin/**/*</pattern> -->
 

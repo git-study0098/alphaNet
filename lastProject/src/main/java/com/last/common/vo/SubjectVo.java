@@ -11,6 +11,8 @@ public class SubjectVo {
 	private String attach_file;
 	private String enroll_date;
 	private String approve_at;
+	
+	
 	public String getSub_code() {
 		return sub_code;
 	}
@@ -64,6 +66,15 @@ public class SubjectVo {
 	}
 	public void setApprove_at(String approve_at) {
 		this.approve_at = approve_at;
+	}
+	@Override
+	public String toString() {
+		return "SubjectVo [sub_code=" + sub_code + ", sub_docu_approve_at="
+				+ sub_docu_approve_at + ", mem_code=" + mem_code
+				+ ", admin_code=" + admin_code + ", stare_code=" + stare_code
+				+ ", docu_code=" + docu_code + ", attach_file=" + attach_file
+				+ ", enroll_date=" + enroll_date + ", approve_at=" + approve_at
+				+ "]";
 	}
 	
 }

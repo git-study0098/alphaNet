@@ -59,9 +59,11 @@
 		WHERE mem_code = #mem_code#
 	</select>
 		
-		
-	<update id="updateDocument" parameterClass="subject">
-		update sub set attach_file = #attach_file#
-			where mem_code = #mem_code#
-	</update>	
+	<update id="insertDocument" parameterClass="subject">
+		update sub set attach_file=#attach_file# where mem_code = #mem_code#
+	</update>
+	
+	<select id="countDocument" resultClass="int">
+		select count(*) from sub		
+	</select>
 </sqlMap>

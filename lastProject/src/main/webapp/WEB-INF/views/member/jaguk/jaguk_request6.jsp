@@ -192,8 +192,8 @@ function paymentCheck(){
 
 				<div class="btn_center m0">
 					<button type="button" id="payBtn" class="btn2 btncolor2 btn-sm btn-primary" onclick="showCard()"><span>결제</span></button>
- 					<button type="button" id="modifyBtn" class="btn2 btncolor3 btn-sm btn-warning" onclick="frmSubmit();"><span>수정</span></button>
-					<button type="button" id="cancelBtn" class="btn2 btncolor4 btn-sm btn-danger" onclick="location.href='1main.jsp'"><span>메인으로</span></button>
+ 					<button type="button" id="modifyBtn" class="btn2 btncolor3 btn-sm btn-warning" onclick="location.href=history.go(-1)"><span>수정</span></button>
+					<button type="button" id="cancelBtn" class="btn2 btncolor4 btn-sm btn-danger" onclick="location.href='<%=request.getContextPath()%>/main'"><span>메인으로</span></button>
 
 				</div>
 				<br>

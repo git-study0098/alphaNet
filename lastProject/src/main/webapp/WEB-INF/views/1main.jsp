@@ -44,7 +44,7 @@ $(function(){
 	<div class="center_area" id="content">
 		<ul class="link_top mOver">
 			<li class="n01">
-				<a href="2wonseo.jsp">
+				<a href="<%=request.getContextPath()%>/wonseoInfo">
 					<em>
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_top_new_01.gif" alt="원서접수">
 					</em>
@@ -56,7 +56,7 @@ $(function(){
 				</a>
 			</li>
 			<li class="n02">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/wonseoPassSearch">
 					<em>
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_top_new_02.gif" alt="합격자/답안발표">
 					</em>
@@ -68,19 +68,19 @@ $(function(){
 				</a>
 			</li>
 			<li class="n03">
-				<a href="7자격증발급신청.jsp">
+				<a href="<%=request.getContextPath()%>/request1">
 					<em>
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_top_new_03.gif" alt="자격정보">
 					</em>
-					<strong>자격정보</strong>
+					<strong>자격증발급</strong>
 					<span>
-						<span><em>국가</em>자격,<em>민간</em>자격,</span>
+						<span><em>자격증</em>발급은,<em>여기서</em>하세요,</span>
 						<span><em>외국</em>자격,<em>자격검정</em>통계</span>
 					</span>
 				</a>
 			</li>
 			<li class="n04">
-				<a href="#">
+				<a href="http://t.q-net.or.kr/man001.do?id=&gSite=L&gId=99">
 					<em>
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_top_new_04.gif" alt="상시시험">
 					</em>
@@ -96,7 +96,7 @@ $(function(){
 		
 		<ul class="link_go">
 			<li class="go01">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/calender">
 					<span style="opacity:1;">
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_01.png" alt="시험일정안내">
 					</span>
@@ -107,7 +107,7 @@ $(function(){
 				</a>
 			</li>
 			<li class="go02">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/member/selfTest">
 					<span style="opacity:1;">
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_02.png" alt="응시자격자가진단">
 					</span>
@@ -118,7 +118,7 @@ $(function(){
 				</a>
 			</li>
 			<li class="go03">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/wonseo_ing">
 					<span style="opacity:1;">
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_03.png" alt="원서접수현황">
 					</span>
@@ -129,18 +129,18 @@ $(function(){
 				</a>
 			</li>
 			<li class="go04">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/cbt">
 					<span style="opacity:1;">
-						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_04.png" alt="확인서신청">
+						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_04.png" alt="CBT">
 					</span>
 					<em style="opacity: 0;">
-						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_04_on.png" alt="확인서신청">
+						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_04_on.png" alt="CBT">
 					</em>
-					<strong style="color: rgb(195, 220, 244); background-color: rgb(0, 85, 126);">확인서신청</strong>
+					<strong style="color: rgb(195, 220, 244); background-color: rgb(0, 85, 126);">CBT</strong>
 				</a>
 			</li>
 			<li class="go05">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/request1">
 					<span style="opacity:1;">
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_05.png" alt="자격증신청">
 					</span>
@@ -151,18 +151,18 @@ $(function(){
 				</a>
 			</li>
 			<li class="go06">
-				<a href="#">
+				<a href="javascript:goMinwon();">
 					<span style="opacity:1;">
-						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_06.png" alt="수험자준비물">
+						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_06.png" alt="고객의소리">
 					</span>
 					<em style="opacity: 0;">
-						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_06_on.png" alt="수험자준비물">
+						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_06_on.png" alt="고객의소리">
 					</em>
-					<strong style="color: rgb(195, 220, 244); background-color: rgb(0, 85, 126);">수험자준비물</strong>
+					<strong style="color: rgb(195, 220, 244); background-color: rgb(0, 85, 126);">고객의소리</strong>
 				</a>
 			</li>
 			<li class="go07">
-				<a href="#">
+				<a href="<%=request.getContextPath()%>/pdsList">
 					<span style="opacity:1;">
 						<img src="<%=request.getContextPath()%>/resources/images/main/link_go_07.png" alt="자료실">
 					</span>

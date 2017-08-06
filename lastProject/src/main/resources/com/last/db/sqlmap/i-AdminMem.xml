@@ -59,7 +59,7 @@
 	<select id="searchInMemberList" parameterClass="java.util.HashMap"
 		resultClass="mem">
 		<![CDATA[
-		select * from mem WHERE MEM_LATELY_LOG_DATE  < SYSDATE - 10
+		select * from mem WHERE MEM_LATELY_LOG_DATE  < SYSDATE-10
 		<isEqual property="schType" compareValue="all">
 			and 1=1
 		</isEqual>

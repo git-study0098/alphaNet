@@ -13,6 +13,7 @@ public class MemberVo {
 	private String mem_ph;
 	//회원가입 사용//
 	private String mem_phone;
+	private String mem_phone2;
 	private String mem_email;
 	private String mem_add1;
 	private String mem_add2;
@@ -29,6 +30,13 @@ public class MemberVo {
 	private String mem_email_agree;
 	private String mem_pass_em;
 	
+	public String getMem_phone2() {
+		return mem_phone2;
+	}
+	public void setMem_phone2(String mem_phone2) {
+		this.mem_phone2 = mem_phone2;
+	}
+
 	//회원가입날짜
 	private Date mem_enrolldate;
 	

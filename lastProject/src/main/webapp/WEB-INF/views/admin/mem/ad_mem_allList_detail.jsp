@@ -154,11 +154,11 @@
 								<td colspan="3">
 									<div class="group_form1">
 										<span>	
-											<input type="radio" id="foreignerN" name="foreignerYnCcd01" checked>
+											<input type="radio" id="foreignerN" name="foreignerYnCcd01" checked disabled="disabled">
 											<label for="foreignerN">내국인</label>
 										</span>
 										<span>
-											<input type="radio" id="foreignerY" name="foreignerYnCcd01" >
+											<input type="radio" id="foreignerY" name="foreignerYnCcd01" disabled="disabled">
 											<label for="foreignerY">외국인</label>
 										</span>
 									</div>
@@ -171,11 +171,11 @@
 								<td colspan="3">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_sex1" name="sexGubun01">
+											<input type="radio" id="member_sex1" name="sexGubun01" disabled="disabled">
 											<label for="member_sex1">남자</label>
 										</span>
 										<span>
-											<input type="radio" id="member_sex2" name="sexGubun01" checked>
+											<input type="radio" id="member_sex2" name="sexGubun01" checked disabled="disabled">
 											<label for="member_sex2">여자</label>
 										</span>
 									</div>
@@ -202,11 +202,11 @@
 								<td colspan="4">
 									<div class="group_form1">
 										<span>
-											<input type="radio" title="장애여부" id="member_dis1" name="dsdrGb00">
+											<input type="radio" title="장애여부" id="member_dis1" name="dsdrGb00" disabled="disabled">
 											<label for="member_dis1">예</label>
 										</span>
 										<span>
-											<input type="radio" title="장애여부" id="member_dis2" name="dsdrGb00" checked>
+											<input type="radio" title="장애여부" id="member_dis2" name="dsdrGb00" checked disabled="disabled">
 											<label for="member_dis2">아니요</label>
 										</span>
 										<span id="dsdrGb01" class="ml40" style="display:none">
@@ -258,11 +258,11 @@
 								<td colspan="2">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_mail1" name="emailRecvYn01" checked>
+											<input type="radio" id="member_mail1" name="emailRecvYn01" checked disabled="disabled">
 											<label for="member_mail1">예</label>
 										</span>
 										<span>
-											<input type="radio" id="member_mail2" name="emailRecvYn01">
+											<input type="radio" id="member_mail2" name="emailRecvYn01" disabled="disabled">
 											<label for="member_mail2">아니요</label>
 										</span>
 									</div>
@@ -333,11 +333,11 @@
 								<td colspan="4">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_ser1" name="smsSvc001">
+											<input type="radio" id="member_ser1" name="smsSvc001" disabled="disabled">
 											<label for="member_ser1">예</label>
 										</span>
 										<span>
-											<input type="radio" id="member_ser2" name="smsSvc001" checked>
+											<input type="radio" id="member_ser2" name="smsSvc001" checked disabled="disabled">
 											<label for="member_ser2">아니요</label>
 										</span>
 									</div>

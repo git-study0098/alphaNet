@@ -22,5 +22,16 @@ public class CbtService {
 		return dao.selectExamData();		
 	}
 	
+	//cbt 시험 리스트 가져오는것(관리자)
+	public List<CbtVo> selectAllCBTList() throws SQLException {
+		return dao.selectExamList();
+		
+	}
+	
+	//cbt문제 삭제(관리자)
+	public int deleteCBT(String id) throws SQLException {
+		return dao.deleteCBT(id);
+	}
+
 	
 }

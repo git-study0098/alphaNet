@@ -2,6 +2,21 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE>
 <html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js'></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/left_script.js" charset="euc-kr"></script>
+
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+<link href="<%=request.getContextPath()%>/resources/images/main/HRDKorea_favicon_16x16.ico" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/common.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/left_menu.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/content.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/header_footer.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/mobile.css">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>CBT</title>
@@ -91,7 +106,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">1과목</td>
 <td align="center">데이터베이스<br></td>
-<td align="center"><span id="stare1">응시전</span><br>${count1}20문제<br></td>
+<td align="center"><span id="stare1"></span><br>${count1}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(1,'first', 1)" id="sta1" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(1,'second', 1)" id="res1" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -101,7 +116,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">2과목</td>
 <td align="center">전자계산기구조<br></td>
-<td align="center"><span id="stare2">응시전</span><br>${count2}20문제<br></td>
+<td align="center"><span id="stare2"></span><br>${count2}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(2,'first', 21)" id="sta2" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(2,'second', 21)" id="res2" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -111,7 +126,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">3과목</td>
 <td align="center">운영체제<br></td>
-<td align="center"><span id="stare3">응시전</span><br>${count3}20문제<br></td>
+<td align="center"><span id="stare3"></span><br>${count3}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(3,'first', 41)" id="sta3" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(3,'second', 41)" id="res3" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -121,7 +136,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">4과목</td>
 <td align="center">소프트웨어공학<br></td>
-<td align="center"><span id="stare4">응시전</span><br>${count4}20문제<br></td>
+<td align="center"><span id="stare4"></span><br>${count4}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(4,'first', 61)" id="sta4" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(4,'second', 61)" id="res4" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>
@@ -131,7 +146,7 @@
 <tr style="padding:3px 2px 1px 2px" height="33">
 <td align="center">5과목</td>
 <td align="center">데이터통신<br></td>
-<td align="center"><span id="stare5">응시전</span><br>${count5}20문제<br></td>
+<td align="center"><span id="stare5"></span><br>${count5}20문제<br></td>
 <td colspan="1" align="center">
 <a href="javascript:start_test(5,'first', 81)" id="sta5" style="color:#CC9900; font-weight:bold; display:display">응시하기</a>
 <a href="javascript:start_test(5,'second', 81)" id="res5" style="color:#CC9900; font-weight:bold; display:none">결과보기</a>

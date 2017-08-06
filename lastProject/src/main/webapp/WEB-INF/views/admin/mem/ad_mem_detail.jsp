@@ -62,14 +62,6 @@
 <input type="hidden" id="mem_jang" value="${vo.mem_jang}"/>
 <input type="hidden" id="mem_email_agree" value="${vo.mem_email_agree}"/>
 <script>
-/*
-	$(function(){
-		var mem_bir = ${vo.mem_bir};
-		var mem_biryy = mem_bir.substring(1,2);
-		var mem_birmm = mem_bir.substring(3,4);
-		var mem_birdd = mem_bir.substring(5,6);
-	})
-*/	
 	//외국인 내국인
 	$(function(){
 		var mem_kor_for = $('#mem_kor_for').val();
@@ -162,11 +154,11 @@
 								<td colspan="3">
 									<div class="group_form1">
 										<span>	
-											<input type="radio" id="foreignerN" name="foreignerYnCcd01" checked>
+											<input type="radio" id="foreignerN" name="foreignerYnCcd01" disabled="disabled" checked>
 											<label for="foreignerN">내국인</label>
 										</span>
 										<span>
-											<input type="radio" id="foreignerY" name="foreignerYnCcd01" >
+											<input type="radio" id="foreignerY" name="foreignerYnCcd01" disabled="disabled">
 											<label for="foreignerY">외국인</label>
 										</span>
 									</div>
@@ -179,11 +171,11 @@
 								<td colspan="3">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_sex1" name="sexGubun01">
+											<input type="radio" id="member_sex1" name="sexGubun01" disabled="disabled">
 											<label for="member_sex1">남자</label>
 										</span>
 										<span>
-											<input type="radio" id="member_sex2" name="sexGubun01" checked>
+											<input type="radio" id="member_sex2" name="sexGubun01" checked disabled="disabled">
 											<label for="member_sex2">여자</label>
 										</span>
 									</div>
@@ -210,11 +202,11 @@
 								<td colspan="4">
 									<div class="group_form1">
 										<span>
-											<input type="radio" title="장애여부" id="member_dis1" name="dsdrGb00">
+											<input type="radio" title="장애여부" id="member_dis1" name="dsdrGb00" disabled="disabled">
 											<label for="member_dis1">예</label>
 										</span>
 										<span>
-											<input type="radio" title="장애여부" id="member_dis2" name="dsdrGb00" checked>
+											<input type="radio" title="장애여부" id="member_dis2" name="dsdrGb00" checked disabled="disabled">
 											<label for="member_dis2">아니요</label>
 										</span>
 										<span id="dsdrGb01" class="ml40" style="display:none">
@@ -266,11 +258,11 @@
 								<td colspan="2">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_mail1" name="emailRecvYn01" checked>
+											<input type="radio" id="member_mail1" name="emailRecvYn01" checked disabled="disabled">
 											<label for="member_mail1">예</label>
 										</span>
 										<span>
-											<input type="radio" id="member_mail2" name="emailRecvYn01">
+											<input type="radio" id="member_mail2" name="emailRecvYn01" disabled="disabled">
 											<label for="member_mail2">아니요</label>
 										</span>
 									</div>
@@ -282,32 +274,10 @@
 									전화번호
 								</th>
 								<td colspan="4">
-									<label for="member_phone" class="txt_phone">연락가능한 전화번호</label>
-									<select id="phone1" name="phone1" class="form_short" title="전화번호 첫번째 자리" >
-										<option value="0">선택</option>
-										<option value="02">02</option>
-										<option value="031">031</option>
-										<option value="032">032</option>
-										<option value="033">033</option>
-										<option value="041">041</option>
-										<option value="042">042</option>
-										<option value="043">043</option>
-										<option value="044">044</option>
-										<option value="051">051</option>
-										<option value="052">052</option>
-										<option value="053">053</option>
-										<option value="054">054</option>
-										<option value="055">055</option>
-										<option value="061">061</option>
-										<option value="062">062</option>
-										<option value="063">063</option>
-										<option value="064">064</option>
-										<option value="070">070</option>
-										<option value="0502">0502</option>
-									</select>
-									<span>-</span>
-
 								<c:set var="phone" value="${vo.mem_phone} "></c:set>
+									<label for="member_phone" class="txt_phone">연락가능한 전화번호</label>
+									<input type="text" name="phone1" class="form_short numInput" value=" ${fn:substring(phone,0,3)}" title="전화번호 첫번째 자리" maxlength="4" readonly="readonly">
+									<span>-</span>
 									<input type="text" name="phone2" class="form_short numInput" value=" ${fn:substring(phone,4,8)}" title="전화번호 가운데 자리" maxlength="4" readonly="readonly">
 									<span>-</span>
 									<input type="text" name="phone3" class="form_short numInput" title="전화번호 마지막 자리" value="${fn:substring(phone,9,13)}"  vamaxlength="4" readonly="readonly">
@@ -318,20 +288,14 @@
 									이동전화
 								</th>
 								<td colspan="4">
+								<c:set var="member_mobile" value="${vo.mem_ph}"/>
 									<label for="member_mobile" class="txt_phone">이동전화 번호</label>
-									<select id="member_mobile" name="phone1_1" class="form_short" title="핸드폰번호 첫번째 자리">
-										<option value="0">선택</option>
-										<option value="010">010</option>
-										<option value="011">011</option>
-										<option value="016">016</option>
-										<option value="017">017</option>
-										<option value="018">018</option>
-										<option value="019">019</option>
-									</select>
+									<input type="text" name="phone1_1" class="form_short numInput" title="핸드폰번호 첫번째 자리" value="${fn:substring(member_mobile,0,3)}" readonly="readonly">
 									<span>-</span>
-									<input type="text" name="phone1_2" class="form_short numInput" title="핸드폰번호 가운데 자리" maxlength="4" onkeyup="nextFocus('regMEM', 'mPhone02', 'mPhone03');">
+									<input type="text" name="phone1_2" class="form_short numInput" title="핸드폰번호 가운데 자리" maxlength="4" onkeyup="nextFocus('regMEM', 'mPhone02', 'mPhone03');"
+									value="${fn:substring(member_mobile,4,8)}" readonly="readonly">
 									<span>-</span>
-									<input type="text" name="phone1_3" class="form_short numInput" title="핸드폰번호 마지막 자리" maxlength="4">
+									<input type="text" name="phone1_3" class="form_short numInput" title="핸드폰번호 마지막 자리" maxlength="4" value="${fn:substring(member_mobile,9,13)}" readonly="readonly">
 								</td>
 							</tr>
 							<tr>
@@ -341,11 +305,11 @@
 								<td colspan="4">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_ser1" name="smsSvc001">
+											<input type="radio" id="member_ser1" name="smsSvc001" disabled="disabled">
 											<label for="member_ser1">예</label>
 										</span>
 										<span>
-											<input type="radio" id="member_ser2" name="smsSvc001" checked>
+											<input type="radio" id="member_ser2" name="smsSvc001" checked disabled="disabled">
 											<label for="member_ser2">아니요</label>
 										</span>
 									</div>
@@ -359,8 +323,6 @@
 								<td colspan="4">
 									<label for="zip01" class="txt_addr">우편번호 입력</label> 
 									<input type="text" id="mem_post_numb1" name="mem_post_numb1" class="form_short numInput" readonly="readonly" title="우편번호" maxlength="5" value="${vo.mem_post_numb1}">
-									
-									<button type="button" class="btn3_type1" name="addrPop" id="01" onclick="go_pop();"><span>주소검색</span></button>
 									
 									<strong class="info_tool" title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다. " tabindex="0">주소입력방법 안내</strong>
 								</td>
@@ -376,7 +338,7 @@
 							<tr>
 								<td colspan="4">
 									<label for="addr02" class="txt_addr">나머지 주소 입력</label>
-									<input type="text" id="mem_add2" name="mem_add2" class="member_addr3" value="${vo.mem_add2 }">
+									<input type="text" id="mem_add2" name="mem_add2" class="member_addr3" value="${vo.mem_add2 }" readonly="readonly">
 									<input type="hidden" name="gibunResdAddr" id="gibunResdAddr" value="대전광역시 서구 복수동">
 								</td>
 							</tr>
@@ -392,8 +354,6 @@
 									<label for="dZip01" class="txt_addr">우편번호 입력</label>
 									<input type="text" id="mem_post_numb2" name="mem_post_numb2" class="form_short numInput" readonly="readonly" title="우편번호" maxlength="5" value="${vo.mem_post_numb2}">
 									
-									<button type="button" class="btn3_type1" name="addrPop" id="02" onclick="go_pop2()"><span>주소검색</span></button>
-									
 									<strong class="info_tool" title="※ 주소입력방법 [주소검색]을 눌러 검색방법에 따라 주소를 검색하신 후 도로명주소를 선택하신 다음에 나머지 상세 주소를 입력합니다. (@, (, ), *, &amp; 등과 같은 특수문자는 입력하실 수 없습니다.) * 주민등록지와 실제거주지가 같은 경우 &quot;상동&quot;을 체크하면 실제거주지 주소가 자동 입력됩니다." tabindex="0">주소입력방법 안내</strong>
 								</td>
 							</tr>
@@ -407,8 +367,8 @@
 							<tr>
 								<td colspan="4">
 									<label for="dAddr02" class="txt_addr">나머지 주소 입력</label>
-									<input type="text" id="mem_add4" name="mem_add4" class="member_addr3" value="${vo.mem_add4}">
-									<input type="hidden" name="gibunAbdAddr" id="gibunAbdAddr" value="대전광역시 서구 복수동 ">
+									<input type="text" id="mem_add4" name="mem_add4" class="member_addr3" value="${vo.mem_add4}" readonly="readonly">
+									<input type="hidden" name="gibunAbdAddr" id="gibunAbdAddr" value="대전광역시 서구 복수동 " readonly="readonly">
 								</td>
 							</tr>
 						</tbody>

@@ -26,6 +26,7 @@
    
 </style>
 
+
 <script>
 function jusoCallBack(mem_post_numb1,mem_add1,mem_add2) {
 	document.getElementById("mem_post_numb1").value = mem_post_numb1;
@@ -203,7 +204,6 @@ $(function(){
 
 })
 
-
 function check() {
 
 	var id =document.getElementById("id").value;
@@ -240,9 +240,10 @@ function check() {
 	}else if(post2 =="" || add3==""||add4==""){
 		alert("실제 거주지를 등록해주세요");
 	}else{
-	document.regMEM.action ="insertMember";
-	document.regMEM.method ="POST";
-	document.regMEM.submit();
+		document.regMEM.action ="insertMember";
+		document.regMEM.method ="POST";
+		document.regMEM.submit();
+		
 	}
 	
 }

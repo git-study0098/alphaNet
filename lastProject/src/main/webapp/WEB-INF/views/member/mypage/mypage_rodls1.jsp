@@ -89,10 +89,51 @@ $(function(){
 
 })
 
-
-
-
 </script>
+
+<c:set var="member" value="${member}"/>
+
+<input type="hidden" id="mem_kor_for" value="${member.mem_kor_for}"/>
+<input type="hidden" id="mem_gender" value="${member.mem_gender}"/>
+<input type="hidden" id="mem_jang" value="${member.mem_jang}"/>
+<input type="hidden" id="mem_email_agree" value="${member.mem_email_agree}"/>
+<script>
+	//외국인 내국인
+	$(function(){
+		var mem_kor_for = $('#mem_kor_for').val();
+		if(mem_kor_for==="F"){
+			$("#foreignerN").prop('checked',false);	
+			$("#foreignerY").prop('checked',true);
+		}
+	});
+	//성별
+	$(function(){
+		var mem_gender = $('#mem_gender').val();
+		if(mem_gender=="남자"){
+			$("#member_sex2").prop('checked',false);
+			$("#member_sex1").prop('checked',true);
+		}
+	});
+	//장애여부
+	$(function(){
+		var mem_jang = $('#mem_jang').val();
+		if(mem_jang=="Y"){
+			$("#member_dis1").prop('checked',false);
+			$("#member_dis2").prop('checked',true);
+		}
+	});
+	//이메일 수신여부
+	$(function(){
+		var mem_email_agree = $('#mem_email_agree').val();
+		if(mem_email_agree=="N"){
+			$("#member_mail1").prop('checked',false);
+			$("#member_mail2").prop('checked',true);
+		}
+	});
+</script>
+
+
+
 
 
 
@@ -208,7 +249,7 @@ $(function(){
 								<td colspan="3">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="foreignerN" name="foreignerYnCcd01" disabled="">
+											<input type="radio" id="foreignerN" name="foreignerYnCcd01" disabled="" checked="checked">
 											<label for="foreignerN">내국인</label>
 										</span>
 										<span>
@@ -225,11 +266,11 @@ $(function(){
 								<td colspan="3">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_sex1" name="sexGubun01" disabled="">
+											<input type="radio" id="member_sex1" name="sexGubun01" disabled="" >
 											<label for="member_sex1">남자</label>
 										</span>
 										<span>
-											<input type="radio" id="member_sex2" name="sexGubun01" disabled="">
+											<input type="radio" id="member_sex2" name="sexGubun01" disabled="" checked="checked">
 											<label for="member_sex2">여자</label>
 										</span>
 									</div>
@@ -254,7 +295,7 @@ $(function(){
 									<label for="member_pw">비밀번호</label> <!-- <strong class="fc_r" title="필수">*</strong> -->
 								</th>
 								<td colspan="3">
-									<input type="text" class="form_mid" id="pwd" name="pwd"  value="${member.pwd}"   maxlength="16">
+									<input type="password" class="form_mid" id="pwd" name="pwd"  value="${member.pwd}"   maxlength="16">
 									<span class="txt_add">(변경하는 경우만 입력)</span>
 								</td>
 							</tr>
@@ -263,7 +304,7 @@ $(function(){
 									<label for="member_pw_c">비밀번호 확인</label> <!-- <strong class="fc_r" title="필수">*</strong> -->
 								</th>
 								<td colspan="3">
-									<input type="text" class="form_mid mr5" id="member_pw_c" name="newPwdChk"   value="${member.pwd}"   maxlength="16" >
+									<input type="password" class="form_mid mr5" id="member_pw_c" name="newPwdChk"   value="${member.pwd}"   maxlength="16" >
 									<strong class="info_tool ml5" title="비밀번호 조합예시 : korea123@ 입력가능 특수문자 : ! @ # $ % ^ &amp; * (보안지침에 의거하여 비밀번호는 9~16자리이며, 반드시 영문자·숫자·특수문자를 모두 혼합하여 입력하시기 바랍니다. 대소문자 구분되므로 주의!)" tabindex="0">비밀번호 유의사항</strong>
 								</td>
 							</tr>
@@ -279,7 +320,7 @@ $(function(){
 											<label for="member_dis1">예</label>
 										</span>
 										<span>
-											<input type="radio" title="장애여부" id="member_dis2" name="dsdrGb00">
+											<input type="radio" title="장애여부" id="member_dis2" name="dsdrGb00" checked="checked">
 											<label for="member_dis2">아니요</label>
 										</span>
 										<span id="dsdrGb01" class="ml40" style="display:none">
@@ -331,7 +372,7 @@ $(function(){
 								<td colspan="2">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_mail1" name="emailRecvYn01">
+											<input type="radio" id="member_mail1" name="emailRecvYn01" checked="checked">
 											<label for="member_mail1">예</label>
 										</span>
 										<span>
@@ -355,7 +396,7 @@ $(function(){
 										<option value="032">032</option>
 										<option value="033">033</option>
 										<option value="041">041</option>
-										<option value="042">042</option>
+										<option value="042" selected="selected">042</option>
 										<option value="043">043</option>
 										<option value="044">044</option>
 										<option value="051">051</option>
@@ -372,10 +413,10 @@ $(function(){
 									</select>
 									<span>-</span>
 
-								<c:set var="phone" value="${member.mem_phone} "></c:set>
-									<input type="text" name="phone2" class="form_short numInput" value=" ${fn:substring(phone,4,8)}" title="전화번호 가운데 자리" maxlength="4">
+								<c:set var="phone2" value="${member.mem_phone2} "></c:set>
+									<input type="text" name="phone2" class="form_short numInput" value=" ${fn:substring(phone2,4,7)}" title="전화번호 가운데 자리" maxlength="4">
 									<span>-</span>
-									<input type="text" name="phone3" class="form_short numInput" title="전화번호 마지막 자리" value="${fn:substring(phone,9,13)}"  vamaxlength="4">
+									<input type="text" name="phone3" class="form_short numInput" title="전화번호 마지막 자리" value="${fn:substring(phone2,8,14)}"  vamaxlength="4">
 									<span class="txt_add">(예 : 02-111-1111)</span>
 								</td>
 							</tr>
@@ -387,7 +428,7 @@ $(function(){
 									<label for="member_mobile" class="txt_phone">이동전화 번호</label>
 									<select id="member_mobile" name="phone1_1" class="form_short" title="핸드폰번호 첫번째 자리">
 										<option value="0">선택</option>
-										<option value="010">010</option>
+										<option value="010" selected="selected">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
 										<option value="017">017</option>
@@ -395,9 +436,10 @@ $(function(){
 										<option value="019">019</option>
 									</select>
 									<span>-</span>
-									<input type="text" name="phone1_2" class="form_short numInput" title="핸드폰번호 가운데 자리" maxlength="4" onkeyup="nextFocus('regMEM', 'mPhone02', 'mPhone03');">
+									<c:set var="phone" value="${member.mem_phone} "></c:set>
+									<input type="text" name="phone1_2" class="form_short numInput" value=" ${fn:substring(phone,4,8)}"  title="핸드폰번호 가운데 자리" maxlength="4" onkeyup="nextFocus('regMEM', 'mPhone02', 'mPhone03');">
 									<span>-</span>
-									<input type="text" name="phone1_3" class="form_short numInput" title="핸드폰번호 마지막 자리" maxlength="4">
+									<input type="text" name="phone1_3" class="form_short numInput" value="${fn:substring(phone,9,13)}" title="핸드폰번호 마지막 자리" maxlength="4">
 									<span class="txt_add">(예 : 010-1111-1111)</span>
 								</td>
 							</tr>
@@ -408,7 +450,7 @@ $(function(){
 								<td colspan="4">
 									<div class="group_form1">
 										<span>
-											<input type="radio" id="member_ser1" name="smsSvc001">
+											<input type="radio" id="member_ser1" name="smsSvc001" checked="checked">
 											<label for="member_ser1">예</label>
 										</span>
 										<span>
@@ -483,7 +525,7 @@ $(function(){
 				</div>
 				<div class="btn_center">
 					<button type="submit" id="formSubmit" class="btn2 btncolor2" ><span>완료</span></button>
-					<button type="button" id="formCancel" class="btn2 btncolor4"><span>취소</span></button>
+					<button type="button" id="formCancel" class="btn2 btncolor4" onclick="javascript:history.go(-1);"><span>취소</span></button>
 				</div>
 				</fieldset>
 				</form>

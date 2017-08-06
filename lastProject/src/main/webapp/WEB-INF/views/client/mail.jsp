@@ -39,7 +39,7 @@ body{
 function authMail(){
 	var email2 = document.getElementById("email").value;
 	if(email2 == ""){
- 		alert("이메일을 입력해주셔야합니다.")
+ 		alert("이메일을 입력해주셔야합니다.");
  	}else{
 		$.ajax({
 			url:"<%=request.getContextPath()%>/client/mailSend",
@@ -50,6 +50,7 @@ function authMail(){
 				console.log(res.ranNum);
 				email1 = res.email;
 				ranNum = res.ranNum;
+				alert("메일이 발송되었습니다.\n확인하시고 인증번호를 입력해주세요.");
 			}
 		});
 

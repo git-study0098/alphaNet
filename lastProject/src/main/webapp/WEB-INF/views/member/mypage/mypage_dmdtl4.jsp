@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 	* {	box-sizing: content-box;}
 	
@@ -72,13 +73,24 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td style="text-align: center !important;">1</td>
-							<td style="text-align: center !important;">정보처리기사</td>
-							<td style="text-align: center !important;">서류제공</td>
-							<td style="text-align: center !important;">N</td>
-							<td style="text-align: center !important;"><a href="<%=request.getContextPath()%>/member/documentSubmitForm">서류제출</a></td>
-						</tr>
+						<c:choose>
+							<c:when test="${num>=0}">
+								<c:forEach items="${result}" var="approve" varStatus="number">
+									<tr>
+										<td style="text-align: center !important;">${number.count }</td>
+										<td style="text-align: center !important;">정보처리기사</td>
+										<td style="text-align: center !important;">서류제공</td>
+										<td style="text-align: center !important;">${approve}</td>
+										<td style="text-align: center !important;"><a href="<%=request.getContextPath()%>/member/documentSubmitForm">서류제출</a></td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr>
+									<td style="text-align: center;">내용이 없습니다.</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
 					</tbody>
 					</table>
 				</div>

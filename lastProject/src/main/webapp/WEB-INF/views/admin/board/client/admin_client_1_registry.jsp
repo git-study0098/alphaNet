@@ -89,8 +89,7 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-<%-- 										value="${notice.admin_code}" readonly="readonly" --%>
-										value="${admin}" readonly="readonly"
+										value="정보화지원국 고객의소리" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td><c:set var="now" value="<%=new java.util.Date()%>" />

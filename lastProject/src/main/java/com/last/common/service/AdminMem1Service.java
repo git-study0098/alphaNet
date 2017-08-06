@@ -29,11 +29,9 @@ public class AdminMem1Service {
 			throws ServiceException {
 
 		int currentPageNumber = pageNumber;
-		System.out.println("휴먼회원서비스 리스트 " + pageNumber);
 		try {
 
 			int notice1TotalCount = adminMemDao.selectNotice1Count();
-			System.out.println("휴면계정회원 카운트서비스" + notice1TotalCount);
 
 			List<MemberVo> notice1List = null;
 			int firstRow = 0;
@@ -42,17 +40,11 @@ public class AdminMem1Service {
 				firstRow = (pageNumber - 1) * MEMBER_COUNT_PER_PAGE + 1; // 첫번째
 																			// 행
 				endRow = firstRow + MEMBER_COUNT_PER_PAGE - 1;
-				// notice1List = adminMemDao.selectNotice1List(firstRow,
-				// endRow);
 				notice1List = adminMemDao.selectMember1List(firstRow, endRow);
 			} else {
 				currentPageNumber = 0;
 				notice1List = Collections.emptyList();
 			}
-			// MemberVo vo = new MemberVo();
-			// vo.setId(id);
-			// vo.setName(name);
-			// vo.setMem_lately_log_date(mem_lately_log_date);
 
 			MemPagingVO vo = new MemPagingVO(notice1List, notice1TotalCount,
 					currentPageNumber, MEMBER_COUNT_PER_PAGE, firstRow, endRow);

@@ -47,10 +47,18 @@
 						<td><span>MEM002171AP</span></td>																															
 						<td><span class="bg_e9">MEM005171AP</span></td>																												
 						<td><span>MEM003171AP</span></td>																															
+								</tr>
+								<tr>																																								
+						<td><span class="bg_e9">MEM011171AP</span></td>																												
+						<td><span>MEM012171BP</span></td>																															
+						<td><span class="bg_e9">MEM013171AP</span></td>																												
+						<td><span>MEM014171AP</span></td>																															
+						<td><span class="bg_e9">MEM015171AP</span></td>																												
+						<td><span>MEM016171AP</span></td>																															
 								</tr>																																								
 							</tbody>																																								
 						</table>																																									
 					</div>																																												
-					<p class="list_failName" style="text-align: center"><strong>『 합격자 :  <span class="fc_b">6명</span> 』</strong></p>																				
+					<p class="list_failName" style="text-align: center"><strong>『 합격자 :  <span class="fc_b">12명</span> 』</strong></p>																				
 				</div><!-- // pop_content -->																																							
 </html>

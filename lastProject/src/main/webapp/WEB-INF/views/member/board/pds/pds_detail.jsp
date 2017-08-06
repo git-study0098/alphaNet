@@ -79,7 +79,8 @@
 												</td>
 											</tr>
 											<tr>
-												<td colspan="6" style="height:100px;">${vo.notice_content}</td>
+												<td colspan="15"><textarea name="noticeContent"
+                                 id="contents_text" style="width: 100%;resize:none;" rows="25" >${vo.notice_content}</textarea></td>
 											</tr>
 										</tbody>
 									</table>

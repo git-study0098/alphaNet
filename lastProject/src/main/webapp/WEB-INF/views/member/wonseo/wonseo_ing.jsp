@@ -67,38 +67,24 @@
 								<tbody>
 
 									<tr>
-										<td>2017년 제 12회 한국어교육능력검정시험 1,2차 동시</td>
-										<td class="txt_center">2017년 07월 17일(월) 09:00 ~ 2017년 07월
-											26일(수) 18:00</td>
+										<td>2017년 1회 정보처리기사 1차 필기</td>
+										<td class="txt_center">2017년 07월 21일(금) 09:00 ~ 2017년 08월 10일(목) 18:00</td>
 										<td class="center"><button type="button"
 												class="btn3_type2"
-												onclick="javascript:goNextDetailVeiw('36','Q','2017','12','PL2017457014','Y','20170717','S','Y');">
+												onclick="location.href='<%=request.getContextPath()%>/wonseo_ing2'">
 												<span>현황보기</span>
 											</button></td>
 									</tr>
 
 									<tr>
-										<td>2017년 제 25회 청소년지도사 필기</td>
-										<td class="txt_center">2017년 07월 17일(월) 09:00 ~ 2017년 07월
-											26일(수) 18:00</td>
+										<td>2017년 1회 정보처리기사 1차 실기</td>
+										<td class="txt_center">2017년 07월 22일(토) 09:00 ~ 2017년 08월 04일(금) 18:00</td>
 										<td class="center"><button type="button"
 												class="btn3_type2"
-												onclick="javascript:goNextDetailVeiw('66','Q','2017','25','PL2017457024','1','20170717','S','Y');">
+												onclick="location.href='<%=request.getContextPath()%>/wonseo_ing2'">
 												<span>현황보기</span>
 											</button></td>
 									</tr>
-
-									<tr>
-										<td>2017년 제 5회 행정사 2차</td>
-										<td class="txt_center">2017년 07월 17일(월) 09:00 ~ 2017년 07월
-											26일(수) 18:00</td>
-										<td class="center"><button type="button"
-												class="btn3_type2"
-												onclick="javascript:goNextDetailVeiw('31','Q','2017','5','PL2017459004','2','20170717','S','Y');">
-												<span>현황보기</span>
-											</button></td>
-									</tr>
-
 								</tbody>
 							</table>
 						</div>

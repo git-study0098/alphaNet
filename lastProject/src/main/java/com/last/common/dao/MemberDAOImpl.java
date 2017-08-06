@@ -55,13 +55,9 @@ public class MemberDAOImpl extends MemberDAO{
 //	}
 
 	@Override
-	public int insert(MemberVo vo) {
+	public int insert(MemberVo vo) throws SQLException{
 		int result = 0;
-		 try {
 			result=client.update("insertMember" ,vo);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		 return result;
 	}
 

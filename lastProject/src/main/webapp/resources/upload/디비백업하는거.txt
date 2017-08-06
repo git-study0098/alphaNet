@@ -1,0 +1,2 @@
+exp nonage/nonage file=c:\backup.dmp
+imp system/java fromuser=nonage touser=nonage file=c:\backup.dmp

@@ -2,8 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true"%>
 <script>
+
+
 $(function(){
 	$('#passExam').on('click',function(){
+	if($('#selExam').val()=="comp"){
 		var exkind_code = $('#comp').val();
 				console.log("들어오냐");
 		$.ajax({
@@ -29,6 +32,9 @@ $(function(){
 				     $('.aaaa').html(code);
 				}
 			})
+		}else{
+			alert($('#selExam').val());
+		}
 		})
 	})
 </script>
@@ -214,10 +220,9 @@ function go_hap() {
 								<div>
 									<select name="selExam" id="selExam" class="w350"
 										title="응시한 정기시험 선택">
-										<option value="">응시하신 시험을 선택해주세요.</option>
-
+										<option>응시하신 시험을 선택해주세요.</option>
 										<option value="comp" implsyscd="1"
-											schditemccd="35" id="comp">2017년 정보통신 정기시험 1회 실기</option>
+											schditemccd="35">2017년 정보통신 정기시험 1회 실기</option>
 										<option value="" implsyscd="1"
 											schditemccd="35">2017년 전자 정기시험 1회 실기</option>
 										<option value="" implsyscd="1"

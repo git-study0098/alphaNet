@@ -98,7 +98,7 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-										value="${admin}" readonly="readonly"
+										value="정보화지원국 자료담당" readonly="readonly"
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>
 									<td>

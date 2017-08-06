@@ -2,8 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<script src="https://apis.daum.net/maps/maps3.js?apikey=7048506f82f031130f0c67dc292d957e&libraries=services"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%
 	PlaceVO vo = (PlaceVO)request.getAttribute("place_nm");
 %>
@@ -14,6 +12,8 @@
 <div>
 	<button type="button" name ="close" onclick="javascript:self.close()">창닫기</button>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://apis.daum.net/maps/maps3.js?apikey=7048506f82f031130f0c67dc292d957e&libraries=services"></script>
 
 <script>
 	$(function(){

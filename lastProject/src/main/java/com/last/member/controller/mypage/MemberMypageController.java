@@ -87,7 +87,7 @@ public class MemberMypageController {
 	
 	@RequestMapping(value="/member/documentSubmit", headers = ("content-type=multipart/*"), method = RequestMethod.POST)
 	public String documentSubmit(HttpServletRequest request, Model model, @RequestParam("f") MultipartFile multipartFile){
-		String url = "member/mypage/mypage_dmdtl4";	
+		String url = "redirect:/member/docSubmit";	
 		
 		String mem_code = "";
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -114,19 +114,28 @@ public class MemberMypageController {
 				e.printStackTrace();
 			}
 		}
+		int count = 0;
+		try {
+			count = mypageService.countDocument();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
 		
 		SubjectVo vo = new SubjectVo();
-		vo.setAttach_file(fileName[0] + "." + fileName[1]);
+		vo.setSub_code(count+1+"");
 		vo.setMem_code(mem_code);
+		vo.setDocu_code("DOCU010");
+		vo.setAttach_file(fileName[0] + "." + fileName[1]);
+		vo.setApprove_at("N");
+		vo.setAdmin_code("ADM001");
 		
 		model.addAttribute(vo);
 		
 		try {
-			mypageService.updateDocument(vo);
+			mypageService.insertDocument(vo);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		
 		return url;		
 	}	

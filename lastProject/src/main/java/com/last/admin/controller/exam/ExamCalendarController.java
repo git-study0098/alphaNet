@@ -29,6 +29,15 @@ public class ExamCalendarController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
+		System.out.println(calList.get(0).getEm_nm());
+		System.out.println(calList.get(0).getNumg_app_receipt_begin());
+		System.out.println(calList.get(0).getNumg_app_receipt_end());
+		System.out.println(calList.get(0).getNumg_code());
+		System.out.println(calList.get(0).getNumg_color());
+		System.out.println(calList.get(0).getNumg_pass_p_anno_date());
+		System.out.println(calList.get(0).getNumg_stare_date());
+			
 		model.addAttribute("event" , calList);
 		
 		

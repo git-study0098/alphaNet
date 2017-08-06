@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.last.common.service.MypageService;
+import com.last.common.vo.DocVO;
 import com.last.common.vo.StareCertifiVO;
 
 @Controller
@@ -174,7 +175,6 @@ public class MypageRodlsController {
 		}
 		
 		return "member/mypage/mypage_stareCertifi3";
-//		return "member/mypage/mypage_stareCertifi2";
 	}
 	
 	
@@ -191,7 +191,28 @@ public class MypageRodlsController {
 		return "member/mypage/mypage_dmdtl3";
 	}
 	@RequestMapping("/member/docSubmit")
-	public String docSubmit(){
+	public String docSubmit(Model model){
+		String mem_code = "";
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		mem_code =user.getUsername();
+		
+		List<String> result = null; 
+		int num = 0;
+		
+		try {
+			result = mypageService.selectApproveAt(mem_code);
+			num = result.size();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		for(int i=0; i<result.size(); i++){
+			System.out.println(result.get(i));
+		}
+		System.out.println(num);
+		
+		model.addAttribute("result", result);
+		model.addAttribute("num",num);
+		
 		return "member/mypage/mypage_dmdtl4";
 	}
 	

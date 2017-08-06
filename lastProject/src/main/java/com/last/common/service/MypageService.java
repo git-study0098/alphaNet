@@ -77,9 +77,18 @@ public class MypageService {
 		return stareCertifiVO;
 	}
 	
-	public void updateDocument(SubjectVo vo) throws SQLException{
-		mypageDao.updateDocument(vo);
+	public void insertDocument(SubjectVo vo) throws SQLException{
+		mypageDao.insertDocument(vo);
 	}
 	
+	public int countDocument() throws SQLException{
+		int count = mypageDao.countDocument();
+		return count;
+	}
+	
+	public List<String> selectApproveAt(String mem_code) throws SQLException{
+		List<String> result = mypageDao.selectApproveAt(mem_code);
+		return result;
+	}
 	
 }

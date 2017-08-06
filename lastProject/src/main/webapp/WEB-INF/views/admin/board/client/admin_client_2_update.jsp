@@ -112,7 +112,7 @@
 						</textarea></td>
 								</tr>
 								<tr>
-									<th style="width:1000px;"><label>답변 내용을 입력하세요</label></th>
+									<th style="width:1000px;"><label>답변 내용을<br> 입력하세요</label></th>
 								</tr>
 								<tr>
 									<td colspan="6"><textarea name="client_reply_content"

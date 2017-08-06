@@ -73,7 +73,7 @@
 											<tr>
 												<th scope="row">첨부파일</th>
 												<td colspan="5">
-													<a href="file/1?attach_file=${vo.attach_file}" class="btn3_icon download" >${vo.attach_file}</a>
+													<a href="<%=request.getContextPath() %>/file/1?attach_file=응시자격서류심사접수신청서.hwp" class="btn3_icon download" >응시자격서류심사접수신청서.hwp</a>
 													<input type="hidden" name="attach_file" value="${vo.attach_file}">
 												</td>
 											</tr>
@@ -82,7 +82,7 @@
 												<td><input type="file" name="f"/></td>
 											</tr>
 											<tr>
-												<td colspan="6" style="height:100px;">위에 등록 되어있는 파일 양식을 다운로드 하시어 필요부분을 작성하시고 파일을 다시 올려주시면 검사 후 서류 통과여부를 표시해 드리겠습니다.</td>
+												<td colspan="6" style="height:100px; font-size:20px; font-weight: bold; ">위에 등록 되어있는 파일 양식을 다운로드 하시어 필요부분을 작성하시고 파일을 다시 올려주시면 검사 후 서류 통과여부를 표시해 드리겠습니다.</td>
 											</tr>
 											
 										</tbody>

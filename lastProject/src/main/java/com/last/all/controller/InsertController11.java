@@ -56,7 +56,6 @@ public class InsertController11 {
 	
 	@RequestMapping(value="insert11",headers=("content-type=multipart/*"),method = RequestMethod.POST)
 	public String insert(HttpServletRequest request,ClientVO vo,@RequestParam("f")MultipartFile multipartFile,@RequestParam(value="client_code", defaultValue="client11" )String client_code, HttpSession session) throws Exception {
-		System.out.println("컨트롤러 들어왕");
 		String message ="";
 		//파일 경로 디비저장
 		 String upload="C:/git/alpha_net/lastProject/src/main/webapp/resources/upload";
@@ -111,7 +110,7 @@ public class InsertController11 {
 			message="고객의소리를 남기는데 실패하였습니다.\n다시시도해주세요.";
 		}
 		session.setAttribute("message", message);
-		return "redirect:main";
+		return "redirect:/client/main";
 	}
 
 }

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.last.common.dao.MemberDAOImpl;
 import com.last.common.vo.MemberVo;
@@ -85,8 +84,9 @@ public class SignupController {
 			Model model,@RequestParam("f") MultipartFile multipartFile){
 		
 		 String upload="C:/git/alphaNet/lastProject/src/main/webapp/resources/upload/image";
-		 String url ="redirect:notice";
+		 String url ="";
 		 
+		 String message="";
 		 
 		 
 		 String year = request.getParameter("mem_bir1");
@@ -136,10 +136,15 @@ public class SignupController {
 		vo.setSch_code(request.getParameter("daschool2"));
 
 		vo.setMem_photo(fileName[0]+uuid.toString()+"."+fileName[1]);
-		
+		try{			
 		memberDaoImpl.insert(vo);
-		
-		return "member/signup4";
+		url = "redirect:signup4";
+		}catch(SQLException e){
+			message ="회원가입에 실패하셨습니다.";
+			url = "redirect:signup";
+		}
+		model.addAttribute("message", message);
+		return url;	
 	}
 	
 	@RequestMapping(value="idCheck", method=RequestMethod.POST)

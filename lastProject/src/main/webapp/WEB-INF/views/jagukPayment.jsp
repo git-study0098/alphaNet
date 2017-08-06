@@ -18,7 +18,7 @@ var IMP = window.IMP; // 생략가능
     pay_method : 'card',
     name : '자격증',
     merchant_uid : 'merchant_' + new Date().getTime(),
-    amount : 10,						//'${qualifi_certi_iss_pr}',
+    amount : '${qualifi_certi_iss_pr+2340}',						//'${qualifi_certi_iss_pr}',
     buyer_email : '${qualifi.mem_email}',
     buyer_name : '${qualifi.mem_nm}',
     buyer_tel : '${qualifi.mem_phone}',

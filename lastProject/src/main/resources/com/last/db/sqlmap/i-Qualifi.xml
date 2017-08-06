@@ -40,26 +40,6 @@
 			and qci.qualifi_certi_code = #qualifi_ceti_code#   
 	</select>
 	
-	<select id="selectQualifiCertiList" parameterClass="str" resultClass="qualifiCerti">
-		 select  distinct(qci.qualifi_certi_code),
-		        (select qci.qualifi_certi_iss_code 
-		        	from qualifi_certi_iss qci 
-		        	where rownum = 1) as qci_code,       
-			  (select s.ACTUAL_PASS_DATE  from stare s where substr(s.stare_code,11) = 'W') as written_pass_date,
-			  ex.exkind_nm,
-			  s.actual_pass_date,
-			  qc.qualifi_certi_count,
-			  qc.qualifi_certi_iss_pr
-			from qualifi_certi qc, qualifi_certi_iss qci,mem m ,stare s,em_info e,exkind ex
-			where qc.qualifi_certi_code = qci.qualifi_certi_code
-			and qci.mem_code = m.mem_code
-			and s.mem_code = m.mem_code
-			and e.em_info_code = s.em_info_code
-			and e.em_exkind = ex.exkind_code
-			and substr(s.stare_code,11) = 'P'
-			and qci.mem_code = #mem_code#
-	</select>
-	
 	<select id="selectQualifiPriceList" parameterClass="str" resultClass="qualifiCerti">
 		select
 			  distinct(qc.qualifi_certi_code),

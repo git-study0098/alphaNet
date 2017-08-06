@@ -118,7 +118,7 @@
 									<colgroup>
 										<col width="7%">
 										<col width="*">
-										<col width="16%">
+										<col width="20%">
 										<col width="11%">
 									</colgroup>
 									<thead>
@@ -141,7 +141,7 @@
 														<td>${viewData.firstRow+number.count-1}</td>
 														<!-- 글번호 -->
 														<td><a href="<%=request.getContextPath() %>/admin/clientUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
-														<td>${notice.admin_code}</td>
+														<td>정보화지원국 고객의소리</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
 													</tr>
 												</c:forEach>

@@ -20,7 +20,7 @@
 	</update>
 	
 	<select id="selectClientAll" resultClass="client">
-		select * from client
+		select * from client order by client_enroll_Date desc
 	</select>
 
 	<select id="selectClient1_Count" parameterClass="str" resultClass="int">
@@ -34,7 +34,7 @@
 			
 
 	<select id="selectClient1List" parameterClass="str" resultClass="client">
-		select * from client where substr(client_code,1,8)=#client_code#
+		select * from client where substr(client_code,1,8)=#client_code# 
 	</select>
 
 	<select id="selectClientCode" resultClass="str">
@@ -101,7 +101,7 @@
 	</select>
 	
 	<select id ="selectMyPage" parameterClass="str" resultClass="client">
-		select * from client where client_email =#client_email#
+		select * from client where client_email =#client_email# order by client_enroll_Date desc
 	</select>
 	<select id ="selectMyPageCount" parameterClass="str" resultClass="int">
 		select count(*) from client where client_email =#client_email#

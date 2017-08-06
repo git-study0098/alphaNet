@@ -30,7 +30,6 @@
 			<!-- 컨텐츠 시작 -->
 			<div class="content">
 				<h3 class="tit_content">자격증 발급 신청</h3>
-				<hr>
 				<div class="step">
 					<ul class="list06">
 						<li><img src="<%=request.getContextPath()%>/resources/images/step/step_license_off_01.gif"

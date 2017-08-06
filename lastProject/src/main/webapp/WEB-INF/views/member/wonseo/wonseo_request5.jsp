@@ -9,7 +9,7 @@
 </style>
 <script>
  function showCard() {
-	window.open("wonseoPayment?placeNm=${placeNm}&em_pay_pr=${placeData.em_pay_pr}" ,"pop","width:600px,height:300px");
+	window.open("wonseoPayment?placeNm=${placeNm}&em_pay_pr=${placeData.em_pay_pr}" ,"pop","left=650,top=150,width=850px,height=650px");
  }
  function paymentCheck(){
 	 location.href='<%=request.getContextPath()%>/member/wonseoReq6?placeNm=${placeNm}&em_info_code=${em_info_code}';

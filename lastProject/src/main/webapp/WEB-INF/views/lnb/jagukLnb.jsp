@@ -73,15 +73,22 @@
 						authentication.getName();
 						
 						User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+						
+						String name = "김진성";
+						if(user.getUsername().equals("MEM002")){
+							name = "김민선";									
+						}else if(user.getUsername().equals("MEM003")){
+							name = "황병준";									
+						}
 					%>
-						<p><span class="fc_b"><%=user.getUsername() %></span>님 반갑습니다.</p>
+						<p><span class="fc_b"><%=name %></span>님 반갑습니다.</p>
 					</div>
 					<div>
 						<a href="<%=request.getContextPath()%>/logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
-						<a href="<%=request.getContextPath()%>/updateMember" class="btn_login3 btncolor2"><span>정보수정</span></a>
+						<a href="<%=request.getContextPath()%>/member/myInfo" class="btn_login3 btncolor2"><span>정보수정</span></a>
 					</div>
 					<div class="my_list">
-						<a href=# class="golink01"><span>나의 접수내역 바로가기</span></a>
+						<a href="<%=request.getContextPath() %>/wonseo_ing" class="golink01"><span>나의 접수내역 바로가기</span></a>
 					</div>
 					</sec:authorize>
 					<!-- //로그인 후 -->
@@ -90,7 +97,7 @@
 					</form>
 				</div>
 
-			<h2 id="lnbTitle" class="tit_lnb">자격증/확인서</h2>
+			<h2 id="lnbTitle" class="tit_lnb">자격증</h2>
 			<!-- menu리스트 -->
 			<ul id="lnbNavi" class="lnb on">
 				<li class="low active on"><a>자격증 발급 안내</a>
@@ -98,32 +105,19 @@
 						<li class="on"><a href="<%=request.getContextPath() %>/infoReq">자격증발급/발급처</a></li>
 						<li><a href="<%=request.getContextPath() %>/infoNew">신규/인정/재발급</a></li>
 						<li><a href="<%=request.getContextPath() %>/infoFunc">기능사보기능사자격부여</a></li>
-						<li><a href="<%=request.getContextPath() %>/infoTarget">면허발급대상종목</a></li>
-						<li><a href="<%=request.getContextPath() %>/infoWarn">국가자격취득자주의사항</a></li>
-						<li><a href="<%=request.getContextPath() %>/infoEdu">보수교육갱신등록폐지</a></li>
-						<li><a href="<%=request.getContextPath() %>/infoNon">폐지종목자격증발급</a></li>
 					</ul></li>
 				<li class="low"><a>자격증 발급</a>
 					<ul style="display: block;">
 						<li><a href="<%=request.getContextPath() %>/request1">자격증발급신청</a></li>
 						<li><a href="<%=request.getContextPath() %>/member/jagukRequestSearch">자격증발급신청내역조회</a></li>
 					</ul></li>
-				<li class="low"><a>확인서 발급</a>
-					<ul style="display: block;">
-						<li><a href="<%=request.getContextPath() %>/confirmInfo">확인서발급안내</a></li>
-						<li><a href="<%=request.getContextPath() %>/member/confirmRequest">확인서발급신청</a></li>
-						<li><a href="<%=request.getContextPath() %>/member/confirmSelect">확인서발급신청내역조회</a></li>
-					</ul></li>
-				<li class="low"><a>자격취득/미발급 조회</a>
+				<li class="low"><a>자격취득 조회</a>
 					<ul style="display: block;">
 						<li><a href="<%=request.getContextPath() %>/member/jagukGet">자격증취득조회</a></li>
-						<li><a href="<%=request.getContextPath() %>/nonGet">자격증 미발급조회</a></li>
 					</ul></li>
-				<li class="low"><a>확인서/자격증 진위확인</a>
+				<li class="low"><a>자격증 진위확인</a>
 					<ul style="display: block;">
-						<li><a href="<%=request.getContextPath() %>/confirmTrue">확인서진위확인</a></li>
 						<li><a href="<%=request.getContextPath() %>/jagukTrue">자격증진위확인</a></li>
-						<li><a>단체진위확인</a></li>
 					</ul></li>
 			</ul>
 			<!-- menu리스트 끝 -->

@@ -248,7 +248,7 @@ public class MemberJagukRequestController {
 
 	@RequestMapping("/juso3")
 	public String juso_go(){
-		return "member/jusoPopup3";
+		return "member/juso/jusoPopup3";
 	}
 	
 	@RequestMapping("/member/jagukRequestSearch")

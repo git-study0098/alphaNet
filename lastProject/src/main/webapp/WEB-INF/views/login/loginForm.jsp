@@ -68,7 +68,6 @@
 					<div class="tabLayout type02" id="subTab">
 						<ul>
 							<li id="perOn" class="on"><a href="#" id="per" name="loginTab" title="개인 로그인"><span>개인 로그인</span></a></li>
-							<li id="grpOn"><a href="#" id="grp" name="loginTab"><span>단체 로그인</span></a></li>
 						</ul>
 					</div>
 
@@ -79,21 +78,16 @@
 								<p><span><label for="mem_pswd">비밀번호</label></span><input type="password" id="mem_pswd" name="mem_pswd" style="width:203px" maxlength="16"></p>
 							</div>
 							<div class="right">
-								<button class="btn_login"><span>로그인</span></button>
+								<button class="btn_login" style="margin-top: 5px"><span>로그인</span></button>
 							</div>
 							<p><a href="<%=request.getContextPath()%>/login/findIdForm" class="golink01"><span style="font-size:13px">아이디 찾기/비밀번호 재설정</span></a></p>
 						</div>
 						<div class="info">
-							<p>공인인증서로 로그인을 하시려면 회원가입 후 로그인하여<br>공인인증서를 등록하셔야 합니다.</p>
-							<p><a href="javascript:loginData();" class="btn btncolor1"><span>공인인증서 로그인</span></a> <button type="button" class="btn btncolor2" onclick="goJoin()"><span style="width:80px">회원가입하기</span></button></p>
+							 <button type="button" class="btn btncolor2" onclick="javascript:location.href='<%=request.getContextPath()%>/signup1'" style="margin-left: 40px"><span style="width:80px;">회원가입하기</span></button></p>
 						</div>
 						<span class="img"></span>
 					</div>
-					<div class="steup_exe mt10">
-						
-
- 						<a href="/ktnet/download/nxtspkisetup.exe" class="setup_app">공인인증모듈 수동설치 <strong>(수동설치 후 새로고침해 주십시오.)</strong></a>
-					</div>
+					
 				</div>
 				<input type="hidden" name="groupChk" value="N">
 				<input type="hidden" name="pageId" value="man001_03">

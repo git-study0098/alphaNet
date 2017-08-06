@@ -52,11 +52,11 @@ pageEncoding="UTF-8"%>
  
  
  function go_juso() {
-	var pop = window.open("<%=request.getContextPath()%>/juso","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+	var pop = window.open("<%=request.getContextPath()%>/juso3","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
 }
  
  
- function jusoCallBack(roadAddrPart1,addrDetail,roadAddrPart2,zipNo){
+ function jusoCallBack2(roadAddrPart1,addrDetail,roadAddrPart2,zipNo){
 		// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
 		document.frm.addr01.value = roadAddrPart1;
 		document.frm.resdTownBldNm.value = roadAddrPart2;
@@ -162,7 +162,7 @@ pageEncoding="UTF-8"%>
 											<em>자격증발급용 사진</em>
 											<p>
 											<!-- 가져와서 -->
-												<img id="viewImg" alt="자격증발급용 사진"	src="<%=request.getContextPath()%>/${viewData.mem_photo}">
+												<img id="viewImg" alt="자격증발급용 사진"	src="<%=request.getContextPath()%>/resources/upload/image/${viewData.mem_photo}">
 											</p>
 											<button title="사진등록" style="width: 100px; height: 30px;background-color:#3274c2" name="hiddenFrame"><span style="color: #fff">사진등록</span></button>
 										</div>
@@ -170,7 +170,7 @@ pageEncoding="UTF-8"%>
 											<em>최근 사진</em>
 											<p>
 											<!-- 가져와서 -->
-												<img id="viewImg" src="<%=request.getContextPath()%>/resources/images/step/sora.jpg" alt="황병준 최근 사진" width="55" height="73">
+												<img id="viewImg" src="<%=request.getContextPath()%>/resources/upload/image/${viewData.mem_photo}" alt="황병준 최근 사진" width="55" height="73">
 											</p>
 										</div>
 									</td>

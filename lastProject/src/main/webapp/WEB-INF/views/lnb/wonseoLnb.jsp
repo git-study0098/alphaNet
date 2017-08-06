@@ -81,15 +81,21 @@
 						authentication.getName();
 						
 						User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+						String name = "김진성";
+						if(user.getUsername().equals("MEM002")){
+							name = "김민선";									
+						}else if(user.getUsername().equals("MEM003")){
+							name = "황병준";									
+						}
 					%>
-						<p><span class="fc_b"><%=user.getUsername() %></span>님 반갑습니다.</p>
+						<p><span class="fc_b"><%=name%></span>님 반갑습니다.</p>
 					</div>
 					<div>
 						<a href="<%=request.getContextPath()%>/logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
-						<a href="<%=request.getContextPath()%>/updateMember" class="btn_login3 btncolor2"><span>정보수정</span></a>
+						<a href="<%=request.getContextPath()%>/member/myInfo" class="btn_login3 btncolor2"><span>정보수정</span></a>
 					</div>
 					<div class="my_list">
-						<a href=# class="golink01"><span>나의 접수내역 바로가기</span></a>
+						<a href="<%=request.getContextPath() %>/wonseo_ing" class="golink01"><span>나의 접수내역 바로가기</span></a>
 					</div>
 					</sec:authorize>
 					<!-- //로그인 후 -->

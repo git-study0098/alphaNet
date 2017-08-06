@@ -12,6 +12,12 @@
 	User user  = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 	
 	id = user.getUsername();
+	String name = "김진성";
+	if(id.equals("MEM002")){
+		name = "김민선";									
+	}else if(id.equals("MEM003")){
+		name = "황병준";									
+	}
 %>
 <script>
 	$(document).ready(function(){
@@ -76,14 +82,14 @@
 					<sec:authorize access="isAuthenticated()">
 					<div class="welcom">
 					
-						<p><span class="fc_b"><%=id %></span>님 반갑습니다.</p>
+						<p><span class="fc_b"><%=name %></span>님 반갑습니다.</p>
 					</div>
 					<div>
 						<a href="<%=request.getContextPath()%>/logout" class="btn_login3 btncolor1" onclick="logoutForm()"><span>로그아웃</span></a>
-						<a href="<%=request.getContextPath()%>/updateMember" class="btn_login3 btncolor2"><span>정보수정</span></a>
+						<a href="<%=request.getContextPath()%>/member/myInfo" class="btn_login3 btncolor2"><span>정보수정</span></a>
 					</div>
 					<div class="my_list">
-						<a href=# class="golink01"><span>나의 접수내역 바로가기</span></a>
+						<a href="<%=request.getContextPath() %>/wonseo_ing" class="golink01"><span>나의 접수내역 바로가기</span></a>
 					</div>
 					</sec:authorize>
 					<!-- //로그인 후 -->
@@ -115,7 +121,6 @@
 					<li class="low"><a>개인정보관리</a>
 						<ul style="display: block;">
 							<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보수정</a></li>
-							<li><a href="<%=request.getContextPath() %>/member/schJobInfo">학력/경력수정</a></li>
 							<li><a href="<%=request.getContextPath() %>/member/out">회원탈퇴</a></li>
 						</ul></li>
 				</ul>

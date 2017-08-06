@@ -232,7 +232,7 @@
 							</td>
 						</tr>
 						<tr>
-							<th>큐넷ID</th>
+							<th>알파넷ID</th>
 							<td colspan="3">
 								<div style="margin-bottom: 3px; margin-right: 195px; width: 500">
 									<input type="text" name="mem_code" id="mem_code"

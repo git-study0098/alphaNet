@@ -68,8 +68,6 @@ public class MemberWonseoRequestController {
 			e.printStackTrace();
 		}
 		
-		System.out.println(memberVo.getMem_phone());
-		
 		model.addAttribute("memberVo",memberVo);
 		model.addAttribute("em_nm",em_nm);
 		model.addAttribute("em_info_code",em_info_code);
@@ -230,8 +228,6 @@ public class MemberWonseoRequestController {
 		User user = (User)SecurityContextHolder.getContext().getAuthentication().getPrincipal(); 
 		String id = user.getUsername();
 		
-		
-		
 		MemberVo member = null;
 		
 		try {
@@ -239,7 +235,6 @@ public class MemberWonseoRequestController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
 		
 		model.addAttribute("placeNm", placeNm);
 		model.addAttribute("em_pay_pr", em_pay_pr);

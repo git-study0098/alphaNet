@@ -123,7 +123,7 @@
 										<tr>
 											<td>${viewData.firstRow+number.count-1}</td> <!-- 글번호 -->
 											<td><a href="<%=request.getContextPath() %>/boardUpdateForm?notice_code=${notice.notice_code }" >${notice.title}</a></td>
-											<td>${notice.admin_code}</td>
+											<td>정보화지원국 정보화사업1팀</td>
 											<td><fmt:formatDate value="${notice.enroll_date}"/></td>
 											<td><input type="hidden" value="${notice.notice_code}" name="noticeCode"/></td>
 										</tr>

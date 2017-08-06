@@ -22,6 +22,7 @@
 			mem_ph,
 			mem_photo,
 			mem_phone,
+			mem_phone2,
 			mem_email,
 			mem_lately_log_date,
 			mem_add1,
@@ -100,9 +101,14 @@
 	</update>
 	
 	<select id="selectCalendar" resultClass="calendar"> 
-			select n.numg_stare_date, n.numg_app_receipt_begin, n.numg_app_receipt_end , n.numg_pass_p_anno_date,t.em_nm ,n.numg_color
-			from numg n,em_info t
-			where numg_code = t.em_numg_code
+			select to_char(n.numg_stare_date,'yyyy-mm-dd') as numg_stare_date , 
+			to_char(n.numg_app_receipt_begin,'yyyy-mm-dd') as numg_app_receipt_begin, 
+			to_char(n.numg_app_receipt_end,'yyyy-mm-dd') as numg_app_receipt_end, 
+			to_char(n.numg_pass_p_anno_date,'yyyy-mm-dd') as numg_pass_p_anno_date,
+			t.em_nm,
+			n.numg_color
+			from numg n,em_info t		
+			where n.numg_code = t.em_numg_code
 	</select>
 		
 	<select id="selectSchool" resultClass="member">

@@ -15,12 +15,6 @@
 		<hr />
 		<!-- 내용 -->
 		<br>
-		<button type="button" class="btn" >
-			<a href="<%=request.getContextPath()%>/admin/examFullSch">전체일정</a>
-		</button>
-		<button type="button" class="btn" >
-			<a href="<%=request.getContextPath()%>/admin/examsch">일정등록</a>
-		</button>
 		<table class="table table-hover"
 			style="text-align: center; marign: 20px;">
 			<tbody>

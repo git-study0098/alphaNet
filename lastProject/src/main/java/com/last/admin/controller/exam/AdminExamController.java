@@ -44,7 +44,7 @@ public class AdminExamController {
 		String exkind_homepage = req.getParameter("exkind_homepage");
 		
 		ExkindVO vo = new ExkindVO();
-		String exkind_code = com1+com;
+		String exkind_code = com1+com+1;
 		
 		vo.setExkind_code(exkind_code);
 		vo.setExkind_nm(exkind_nm);

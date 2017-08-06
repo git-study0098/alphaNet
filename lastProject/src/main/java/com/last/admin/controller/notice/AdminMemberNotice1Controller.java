@@ -49,7 +49,6 @@ public class AdminMemberNotice1Controller {
 			}
 		}
 		model.addAttribute("viewData", viewData);
-		System.out.println("휴면고객의 총페이지수"+viewData.getPageTotalCount());
 		model.addAttribute("pageNumber", pageNumber);
 		return "admin/mem/ad_inactive_mem";
 	}
@@ -67,6 +66,7 @@ public class AdminMemberNotice1Controller {
 			e.printStackTrace();
 		}
 		model.addAttribute("vo", vo);
+		System.out.println("사진"+vo.getMem_photo());
 
 		return url;
 	}

@@ -121,7 +121,7 @@
 				</div>
 				<div class="btn_center mb40">
 					<button type="button" name="payBtn" id="payBtn"
-						class="btn2 btncolor1" onclick="location.href='main'">
+						class="btn2 btncolor1" onclick="location.href='<%=request.getContextPath()%>/main'">
 						<span>메인</span>
 					</button>
 				</div>

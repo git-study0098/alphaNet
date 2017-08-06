@@ -106,7 +106,7 @@
 									<colgroup>
 										<col width="7%">
 										<col width="*">
-										<col width="16%">
+										<col width="20%">
 										<col width="11%">
 										<col width="1%">
 									</colgroup>
@@ -131,7 +131,7 @@
 														<!-- 글번호 -->
 														<td><a
 															href="<%=request.getContextPath() %>/admin/useInfoUpdateForm?notice_code=${notice.notice_code }">${notice.title}</a></td>
-														<td>${notice.admin_code}</td>
+														<td>정보화지원국 정보화사업2팀</td>
 														<td><fmt:formatDate value="${notice.enroll_date}" /></td>
 														<td><input type="hidden"
 															value="${notice.notice_code}" name="noticeCode" /></td>

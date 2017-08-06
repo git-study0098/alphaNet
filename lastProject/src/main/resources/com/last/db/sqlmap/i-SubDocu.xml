@@ -55,6 +55,9 @@
 		where sub_code = #sub_code#
   	</update>
  
+ 	<select id="selectApproveAt" parameterClass="str" resultClass="str">
+ 		 select approve_at from sub where mem_code=#mem_code#
+ 	</select>
  
  
  </sqlMap>

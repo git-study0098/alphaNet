@@ -10,8 +10,8 @@
 	String inputYn = request.getParameter("inputYn"); 
 	String roadAddrPart1 = request.getParameter("roadAddrPart1"); 
 	String roadAddrPart2 = request.getParameter("roadAddrPart2"); 
-	String zipNo = request.getParameter("zipNo"); 
-	String addrDetail = request.getParameter("addrDetail"); 
+	String zipNo = request.getParameter("zipNo"); //우편
+	String addrDetail = request.getParameter("addrDetail"); //나머지 
 	
 %>
 </head>
@@ -32,7 +32,7 @@ function init(){
 		//document.form.action="http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do"; //모바일 웹인 경우, 인터넷망
 		document.form.submit();
 	}else{
-		opener.jusoCallBack2("<%=zipNo%>","<%=roadAddrPart1%>","<%=addrDetail%>");
+		opener.jusoCallBack2("<%=roadAddrPart1%>","<%=addrDetail%>","<%=roadAddrPart2%>","<%=zipNo%>");
 		window.close();	
 	}
 }

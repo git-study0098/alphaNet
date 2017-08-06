@@ -19,30 +19,32 @@
 		</div>
 		<hr />
 		<!-- 내용 -->
-		<div class="container" style="text-align: center;">
+		<div class="content" style="text-align: center">
+	
+			<div style="text-align:center; margin:0 auto;">
+				<button type="button" class="btn btn-primary" style="width: 300px; margin: 20px;">시험정보입력</button>
+			</div>
 
-			<button type="button" class="btn btn-primary"
-				style="width: 300px; margin: 20px;">시험정보입력</button>
-
-
-			<form class="form-horizontal" style="text-align: center;" action="insertExam">
+			<form class="form-horizontal" style="" action="insertExam">
 
 				<div>
-					<div class="form-inline" style="width: 100%;">
-						<div class="form-group" style="width: 50%;">
-							<label class="col-md-2 control-label">시험분류</label> <span
+					<div class="container" >
+						<div style="width:32%; float:left;">
+							<label style="width=157.16px;">시험분류</label>
+							<span
 								style="padding: 5px; margin: 5px;"> <select
 								style="width: 150px;" name="comp">
-									<option value="3">기사</option>
-									<option value="2">산업기사</option>
-									<option value="4">기술사</option>
 									<option value="1">기능사</option>
+									<option value="2">산업기사</option>
+									<option value="3">기사</option>
+									<option value="4">기술사</option>
 									<option value="전문자격시험">전문자격시험</option>
 							</select>
 							</span>
 						</div>
-						<div class="form-group" style="width: 50%;">
-							<label class="col-md-2 control-label">직업분류</label> <span
+						<div style="width: 32%; float:left;">
+							<label  style="width=157.16px;">직업분류</label> 
+							<span
 								style="padding: 5px; margin: 5px;"> <select
 								style="width: 150px;" name="comp1">
 									<option value="경비.청소">경비.청소</option>
@@ -64,41 +66,39 @@
 						</div>
 					</div>
 					<!-- 											<form class="form-inline"> -->
-					<div class="container">
-						<div class="row" style="text-align: center;">
-							<div class="form-group">
+					<div class="content">
+						<div class="form-group" style="text-align: center; margin-top:20px;">
 								<label class="col-md-2 control-label"> 시험명</label>
-								<div class="col-md-3">
+								<div class="col-md-8">
 									<input name="exkind_nm" class="form-control" type="text"
 										placeholder="시험명을 입력하세요">
 								</div>
-							</div>
 							<br>
 							</div>
 							<div class="form-group">
 								<label class="col-md-2 control-label">필기시험수수료</label>
-								<div class="col-md-3">
+								<div class="col-md-8">
 									<input name="exkind_wr_pay_pr" class="form-control" type="text"
 										placeholder="시험수수료를 입력하세요">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-2 control-label">실기시험수수료</label>
-								<div class="col-md-3">
+								<div class="col-md-8">
 									<input name="exkind_pr_pay_pr" class="form-control" type="text"
 										placeholder="시험수수료를 입력하세요">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-2 control-label">실시기관명</label>
-								<div class="col-md-3">
+								<div class="col-md-8">
 									<input name="exkind_agency_nm" class="form-control" type="text"
 										placeholder="실시기관명을 입력하세요">
 								</div>
 							</div>
 							<div class="form-group">
 								<label class="col-md-2 control-label">실시기관 홈페이지</label>
-								<div class="col-md-3">
+								<div class="col-md-8">
 									<input name="exkind_homepage" class="form-control" type="text"
 										placeholder="실시기관 홈페이지를 입력하세요">
 								</div>
@@ -107,7 +107,7 @@
 
 						<br>
 						<div class="container" style="text-align: center;">
-							<div class="left" style="text-align: center; width: 30%; margin-right: 20px; margin-left: 50px;">
+							<div class="left" style="text-align: center; width:34%; margin:0 20px 0;">
 								<div>
 									<button type="button" class="btn btn-primary"
 										style="width: 300px; margin: 20px;">필기과목입력</button>
@@ -149,7 +149,7 @@
 								</div>
 							</div>
 							<div class="left"
-								style="text-align: center; width: 30%; margin-right: 20px; margin-left: 50px;">
+								style="text-align: center; width: 34%; margin-right: 20px; margin-left: 50px;">
 								<div>
 									<button type="button" class="btn btn-primary"
 										style="width: 300px; margin: 20px;">실기과목입력</button>
@@ -193,9 +193,9 @@
 							</div>
 						</div>
 					</div>
-			<div class="left" style="width: 100%;">
+			<div >
 				<input type="submit" class="btn btn-primary"
-					style="width: 100px; margin: 20px;" value="등록하기">등록하기
+					style="width: 100px; margin: 20px;" value="등록하기">
 			</div>
 			</form>
 		</div>

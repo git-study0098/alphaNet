@@ -111,7 +111,7 @@ public class InsertController1 {
 			message="고객의소리를 남기는데 실패하였습니다.\n다시시도해주세요.";
 		}
 		session.setAttribute("message", message);
-		return "redirect:main";
+		return "redirect:/client/main";
 	}
 	
 	@RequestMapping("/client/juso")

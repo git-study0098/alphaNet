@@ -101,7 +101,7 @@
 								<c:forEach items="${viewData.notice1List }" var="mem"
 									varStatus="number">
 									<tr>
-										<td>${viewData.firstRow+number.count-1}</td>
+										<td>${ number.count}</td>
 										<!-- 글번호 -->
 										<td><a
 											href="<%=request.getContextPath() %>/admin/memDetail?id=${mem.id}">${mem.id}</a></td>

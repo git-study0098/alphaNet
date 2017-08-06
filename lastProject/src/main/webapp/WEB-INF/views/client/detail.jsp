@@ -118,7 +118,7 @@ function showAdmin(){
 						<td><input name="client_nm" type="text"
 							value="${fn:substring(name,0,1)}**" readonly="readonly"
 							style="width: 95%; background-color: #ffffff;"></td>
-						<th scope="row">등록일</th>
+						<th scope="row" style="padding-left: 10px">등록일</th>
 						<td><c:set var="enroll" value="${vo.client_enRoll_date}" />
 							<input name="registDate"
 							value="<fmt:formatDate value="${ enroll}"  pattern="yy/MM/dd"/>"
@@ -126,35 +126,40 @@ function showAdmin(){
 						<th scope="row">최종수정일</th>
 						<td><c:set var="now" value="<%=new java.util.Date()%>" /> <input
 							name="enrollDate"
-							value="<fmt:formatDate value="${now}"  pattern="yy/MM/dd" />" readonly="readonly"/></td>
+							value="<fmt:formatDate value="${now}"   pattern="yy/MM/dd" />"  style="margin-right: 5px" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<th scope="row">기존 첨부파일</th>
 						<td colspan="5"><input name="title"
 								readonly="readonly"
-								type="text" value="${vo.client_attach_file}"
+								type="text" value=""
 								style="width: 95%; background-color: #ffffff; margin-right: 50px; margin-bottom: 10px; margin-top: 10px;"></td>
 					</tr>
 					<tr>
 						<td colspan="6"><textarea name="noticeContent"
-								id="contents_text" style="width: 700px;" rows="10" readonly="readonly">${vo.client_consulting_content}
-						</textarea></td>
+								id="contents_text" style="width: 630px; margin-left: 70px;margin-bottom: 20px;" rows="10" readonly="readonly">${vo.client_consulting_content}
+						</textarea>
+						</td>
 					</tr>
 					<c:if test="${vo.client_reply_content != null}">
-						<tr>
+						
+						<tr style="margin-bottom: 30px;">
 							<th>담당자</th>
-							<td>${vo.client_manager_dep}</td>
+							<td><input type="text"  value="정보화지원국 정보화사업1팀" readonly="readonly" style="width: 95%"></td>
 							<th>답변일</th>
 							<td>
 								<input value="<fmt:formatDate value="${vo.client_reply_date}"  pattern="yy/MM/dd"/>" readonly="readonly"/>
 							</td>
 						</tr>
+						
 						<tr>
 							<th>답변내용</th>
 							<td colspan="6"><textarea name="noticeContent"
-									id="reply_contents_text" style="width: 100%;" rows="10">${vo.client_reply_content}
+									id="reply_contents_text" style="width: 95%;margin-right: 30px;margin-top: 10px;" rows="10">${vo.client_reply_content}
 								</textarea></td>
 						</tr>
+						
+						
 					</c:if>
 				</tbody>
 			</table>

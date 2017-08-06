@@ -34,6 +34,7 @@
 		select * 
 		from notice 
 		where substr(notice_code,1,8)=#notice_code#
+		order by enroll_date  desc
 	</select>
 	
 	<select id="selectNoticeCode" resultClass="str">

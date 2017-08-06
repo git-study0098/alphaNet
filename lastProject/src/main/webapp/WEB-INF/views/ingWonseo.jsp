@@ -22,7 +22,7 @@
 									<c:when test="${not empty viewData2}">
 										<c:forEach var="wonseoList" items="${viewData2}">
 											<li>
-												<a>
+												<a href="<%=request.getContextPath()%>/member/wonseoReq">
 													<strong>${wonseoList.em_nm }</strong>
 													<em>접수 : ${wonseoList.numg_app_receipt_begin} ~ ${wonseoList.numg_app_receipt_end}</em>
 												</a>

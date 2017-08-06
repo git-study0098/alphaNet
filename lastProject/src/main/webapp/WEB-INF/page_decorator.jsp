@@ -22,7 +22,7 @@
 <script>
 function goMinwon(){
 	var pop = window.open("<%=request.getContextPath()%>/client/main", "pop",
-	"width=1172,height=909, scrollbars=yes, resizable=yes");
+	"width=1200,height=909, scrollbars=yes, resizable=yes");
 
 }
 </script>
@@ -309,12 +309,12 @@ var speed = 800;
 			<div id="header">
 				<div class="center_area">
 				<!-- 경로 설정 -->
-					<h1><a id="lnkMoveToMain" href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/resources/images/alpha_logo.png" alt="Q-Net 자격의 모든것"></a></h1>
+					<h1><a id="lnkMoveToMain" href="<%=request.getContextPath() %>/main"><img src="<%=request.getContextPath()%>/resources/images/logo.png" alt="Q-Net 자격의 모든것" width="150" height="100"></a></h1>
 					<button type="button" class="mMenu_open" title="메뉴 열기"><img src="<%=request.getContextPath()%>/resources/images/btn_menu.png" alt="메뉴 열기"></button>
 					<ul class="left">
-						<li><button type="button" class="notice" id="topNoticeBtn" title="긴급공지 열기"><span>긴급공지</span></button></li>
-						<li><a href="#" target="_blank" title="본 링크를 클릭하시면 새 창이 열립니다." class="imgLink"><img src="<%=request.getContextPath()%>/resources/images/logo_hrdkorea.gif" alt="한국산업인력공단"></a></li>
-						<li><a><img alt="정부3.0" src="<%=request.getContextPath()%>/resources/images/logo_gov30_1 (1).jpg"></a></li>
+						<li><a href="/main">알파넷</a></li>
+						<li><a href="http://www.hrdkorea.or.kr/main/index.jsp" target="_blank" title="본 링크를 클릭하시면 새 창이 열립니다." class="imgLink"><img src="<%=request.getContextPath()%>/resources/images/logo_hrdkorea.gif" alt="한국산업인력공단"></a></li>
+						<li><a href="http://www.gov30.go.kr"><img alt="정부3.0" src="<%=request.getContextPath()%>/resources/images/logo_gov30_1 (1).jpg"></a></li>
 						<li><a href="javascript:goMinwon()">고객의소리</a></li>
 					</ul>
 					<ul class="right">
@@ -326,28 +326,12 @@ var speed = 800;
 						<li><a href="login">로그인</a></li>
 					</sec:authorize>
 						<li><a href="signup1">회원가입</a></li>
-						<li><a>English</a></li>
-						<li><a>이용안내</a></li>
-						<li><a>큐넷길라잡이</a></li>
+						<li><a href="/useInfo">이용안내</a></li>
 					<sec:authorize access="hasRole('ROLE_ADMIN')">
 						<li><a href="<%=request.getContextPath() %>/admin/login/main2">관리자 페이지</a></li>
 					</sec:authorize>
 					</ul>
-					<form method="get" class="header_form" role="search">
-						<fieldset class="total_search">
-							<span> <span class="dSelect"> <select name="w" id="total" title="구분 선택">
-										<option value="total">통합검색</option>
-										<option value="qual_info">자격정보</option>
-										<option value="exam_info">시험정보</option>
-										<option value="homepage">큐넷</option>
-										<option value="website">관련사이트</option>
-										<option value="contents">콘텐츠</option>
-										<option value="minwon">Q&amp;A</option>
-								</select>
-							</span> <input type="text" name="q" id="keyword" title="검색어 입력" value="검색어를 입력하세요">
-							</span> <input type="submit" value="검색">
-						</fieldset>
-					</form>
+					
 				</div>
 				<div class="gnb_area">
 					<div class="gnb" style="height: 34px;">
@@ -359,11 +343,11 @@ var speed = 800;
 											<a href="<%=request.getContextPath() %>/wonseoInfo">원서접수</a>
 											<ul style="min-height: 235px; left: 228px; display: none;">
 												<li><a href="<%=request.getContextPath() %>/wonseoInfo">원서접수안내</a></li>
-												<li><a href="<%=request.getContextPath()%>/member/wonseo/request">원서접수신청</a></li>
+												<li><a href="<%=request.getContextPath()%>/member/member/wonseoReq">원서접수신청</a></li>
 												<li><a href="<%=request.getContextPath() %>/wonseo_ing">원서접수현황</a></li>
 											</ul></li>
 										<li><a onclick="return NetFunnel_goUrl({},this.href);"
-											href="#">합격자/답안발표</a>
+											href="/wonseoPassSearch">합격자/답안발표</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
 												<li><a href="<%=request.getContextPath() %>/wonseoPassSearch">합격자 발표조회</a></li>
 												<li><a href="<%=request.getContextPath() %>/wonseoAnswer">가답안/확정답안</a></li>
@@ -373,12 +357,12 @@ var speed = 800;
 												<li><a href="<%=request.getContextPath()%>/calender">월간 시험일정</a></li>
 												<li><a href="<%=request.getContextPath()%>/wonseoExamDate">국가기술자격 시험일정</a></li>
 											</ul></li>
-										<li><a href="#">필기시험안내</a>
+										<li><a href="<%=request.getContextPath() %>/wonseoWriterInfo">필기시험안내</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
 												<li><a href="<%=request.getContextPath() %>/wonseoWriterInfo">필기시험 접수안내</a></li>
 												<li><a href="<%=request.getContextPath() %>/wonseoWriterPrice1">필기시험 수수료</a></li>
 											</ul></li>
-										<li><a href="#">실기시험안내</a>
+										<li><a href="<%=request.getContextPath()%>/wonseoFuncInfo">실기시험안내</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
 												<li><a href="<%=request.getContextPath()%>/wonseoFuncInfo">실기시험 접수안내</a></li>
 												<li><a href="<%=request.getContextPath()%>/wonseoWriterPrice1">실기시험 수수료</a></li>
@@ -386,7 +370,7 @@ var speed = 800;
 												<li><a href="<%=request.getContextPath()%>/wonseoFuncChangDate">실기시험 일정 변경기준</a></li>
 												<li><a href="<%=request.getContextPath()%>/wonseoFuncPlace">실기일정 및 타지사 이동사유</a></li>
 											</ul></li>
-										<li><a href="#">자격검정통계</a>
+										<li><a href="<%=request.getContextPath()%>/chart">자격검정통계</a>
 											<ul style="display: none; min-height: 235px; left: 228px;">
 												<li><a href="<%=request.getContextPath()%>/chart">총괄현황</a></li>
 											</ul></li>
@@ -412,38 +396,27 @@ var speed = 800;
 									<p class="blind">- 클릭하시면 해당 전문자격 홈페이지로 이동됩니다. -</p>
 								</div>
 							</li>								
-							<li class=""><a href="<%=request.getContextPath() %>/request1">자격증/확인서</a>
+							<li class=""><a href="<%=request.getContextPath() %>/request1">자격증</a>
 								<div class="sub03" style="display: none;">
 									<ul style="min-height: 145px;">
-										<li class=""><a href="infoRequest">자격증발급안내</a>
+										<li class=""><a href="<%=request.getContextPath()%>/request1">자격증발급안내</a>
 											<ul style="min-height: 145px; left: 180px; display: none;">
-												<li><a href="<%=request.getContextPath()%>/infoRequest">자격증발급/발급처</a></li>
+												<li><a href="<%=request.getContextPath() %>/request1">자격증발급/발급처</a></li>
 												<li><a href="<%=request.getContextPath()%>/infoNew">신규/인정/재발급</a></li>
 												<li><a href="<%=request.getContextPath()%>/infoFunc">기능사보기능자격부여</a></li>
-												<li><a href="<%=request.getContextPath()%>/infoTarget">면허발급대상종목</a></li>
-												<li><a href="<%=request.getContextPath()%>/infoWarn">국가자격취득자주의사항</a></li>
-												<li><a href="<%=request.getContextPath()%>/infoEdu">보수교육갱신등록폐지</a></li>
-												<li><a href="<%=request.getContextPath()%>/infoNon">폐지종목자격발급</a></li>
 											</ul></li>
 										<li><a href="request1">자격증발급</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="<%=request.getContextPath()%>/jaguk">자격증발급신청</a></li>
+												<li><a href="<%=request.getContextPath()%>/request1">자격증발급신청</a></li>
 												<li><a href="<%=request.getContextPath()%>/member/jagukRequestSearch">자격증발급내역</a></li>
 											</ul></li>
-										<li><a href="confirminfo">확인서발급</a>
-											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="<%=request.getContextPath()%>/confirminfo">확인서발급안내</a></li>
-												<li><a href="<%=request.getContextPath()%>/member/jaguk/confirmRequest">확인서발급신청</a></li>
-												<li><a href="<%=request.getContextPath()%>/member/jaguk/confirmSelect">확인서발급내역</a></li>
-											</ul></li>
-										<li><a href="member/get">자격취득/미발급조회</a>
+										
+										<li><a href="member/get">자격취득 조회</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
 												<li><a href="<%=request.getContextPath()%>/member/get">자격증취득조회</a></li>
-												<li><a href="<%=request.getContextPath()%>/nonGet">자격증미발급조회</a></li>
 											</ul></li>
-										<li><a href="jagukTrue">확인서/자격증진위확인</a>
+										<li><a href="jagukTrue">자격증진위확인</a>
 											<ul style="display: none; min-height: 145px; left: 180px;">
-												<li><a href="<%=request.getContextPath()%>/jagukTrue">확인서진위확인</a></li>
 												<li><a href="<%=request.getContextPath()%>/confirmTrue">자격증진위확인</a></li>
 											</ul></li>
 									</ul>
@@ -458,19 +431,19 @@ var speed = 800;
 							<li class=""><a id="lnkMoveToMypage" href="<%=request.getContextPath() %>/member/wonseoHistory">마이페이지</a>
 								<div class="sub04" style="display: none;">
 									<ul style="min-height: 145px;">
-										<li class=""><a href="#">원서접수관리</a>
+										<li class=""><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수관리</a>
 											<ul style="min-height: 145px; left: 130px; display: none;">
 												<li><a href="<%=request.getContextPath() %>/member/wonseoHistory">원서접수내역</a></li>
 												<li><a href="<%=request.getContextPath()%>/member/wonseoReq">원서접수신청</a></li>
 												<li><a href="<%=request.getContextPath()%>/member/changeImg">시험결과확인</a></li>
 											</ul></li>
-										<li><a href="#">응시자격</a>
+										<li><a href="<%=request.getContextPath() %>/member/selfTest">응시자격</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
 												<li><a href="<%=request.getContextPath() %>/member/selfTest">응시자격자가진단</a></li>
 												<li><a href="<%=request.getContextPath() %>/member/docCheck">응시자격제출서류확인</a></li>
 												<li><a href="<%=request.getContextPath() %>/member/docSubmit">응시자격서류 온라인 제출</a></li>
 											</ul></li>
-										<li><a href="#">발급조회현황</a>
+										<li><a href="<%=request.getContextPath() %>/member/jagukRequestSearch">발급조회현황</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
 												<li><a href="<%=request.getContextPath() %>/member/jagukRequestSearch">자격증발급내역</a></li>
 												<li><a href="<%=request.getContextPath() %>/member/jagukList">자격증취득조회</a></li>
@@ -478,7 +451,6 @@ var speed = 800;
 										<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보관리</a>
 											<ul style="display: none; min-height: 145px; left: 130px;">
 												<li><a href="<%=request.getContextPath() %>/member/myInfo">개인정보수정</a></li>
-												<li><a href="<%=request.getContextPath() %>/member/schJobInfo">학력/경력수정</a></li>
 												<li><a href="<%=request.getContextPath() %>/member/out">회원탈퇴</a></li>
 											</ul></li>
 									</ul>
@@ -491,7 +463,7 @@ var speed = 800;
 							<li class=""><a href="<%=request.getContextPath() %>/memberNotice1">고객지원</a>
 								<div class="sub05" style="display: none;">
 									<ul style="min-height: 295px;">
-										<li class="on"><a href="#">공지사항</a>
+										<li class="on"><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a>
 											<ul style="min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/memberNotice1">공지사항</a></li>
 												<li><a href="<%=request.getContextPath() %>/memberNotice2">자격제도</a></li>
@@ -499,20 +471,20 @@ var speed = 800;
 												<li><a href="<%=request.getContextPath() %>/memberNotice4">출제자료</a></li>
 												<li><a href="<%=request.getContextPath() %>/memberNotice5">서비스개선</a></li>
 											</ul></li>
-										<li><a href="#">이용안내</a>
+										<li><a href="<%=request.getContextPath() %>/useInfo">이용안내</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/useInfo">사이트 이용방법</a></li>
 												<li><a href="#" target="_blank"title="한국산업인력공단 고객센터 새 창">자주찾는질문</a></li>
 											</ul></li>
-										<li><a href="#">자료실</a>
+										<li><a href="<%=request.getContextPath() %>/pdsList">자료실</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/pdsList">각종서식자료</a></li>
 											</ul></li>
-										<li><a href="#">환불안내</a>
+										<li><a href="<%=request.getContextPath() %>/change">환불안내</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/change">기술자격환불안내</a></li>
 											</ul></li>
-										<li><a href="#">고객맞춤정보</a>
+										<li><a href="<%=request.getContextPath() %>/notice/getJob">고객맞춤정보</a>
 											<ul style="display: none; min-height: 295px; left: 154px;">
 												<li><a href="<%=request.getContextPath() %>/notice/getJob">취업/훈련/연수</a></li>
 												<li><a href="<%=request.getContextPath() %>/notice/college">대학생(중고생)장학금</a></li>
@@ -529,11 +501,7 @@ var speed = 800;
 							</li>							
 						</ul>
 					</div>
-					<div class="gnb_bg" style="height: 0px;"></div>
-					<button id="btnTotalMenu" class="total" type="button">
-						<span>전체메뉴</span>
-					</button>
-				</div>
+					
 			</div>
 		</header>
 
@@ -554,16 +522,16 @@ var speed = 800;
 						<li><a href="<%=request.getContextPath()%>/wonseoFuncInfo">실기시험안내</a></li>
 						<li><a href="<%=request.getContextPath()%>/chart">자격검정통계</a></li>
 					</ul></li>
-				<li><a href="#"><span>전문자격시험</span></a>
+				<li><a href="<%=request.getContextPath()%>/cbt"><span>CBT</span></a>
 					<ul style="display: none;">
-						<li><a href="" target="_blank" title="새 창">모의테스트</a></li>
+						<li><a href="<%=request.getContextPath()%>/" target="_blank" title="새 창">모의테스트</a></li>
 					</ul></li>
 				<li><a href="#"><span>자격증/확인서</span></a>
 					<ul style="display: none;">
-						<li><a href="<%=request.getContextPath()%>/infoRequest">자격증발급안내</a></li>
-						<li><a href="<%=request.getContextPath()%>/jaguk">자격증발급</a></li>
+						<li><a href="<%=request.getContextPath()%>/infoReq">자격증발급안내</a></li>
+						<li><a href="<%=request.getContextPath()%>/request1">자격증발급</a></li>
 						<li><a href="<%=request.getContextPath()%>/confirminfo">확인서발급</a></li>
-						<li><a href="<%=request.getContextPath()%>/member/get">자격취득/미발급조회</a></li>
+						<li><a href="<%=request.getContextPath()%>/member/jagukGet">자격취득조회</a></li>
 						<li><a href="<%=request.getContextPath()%>/confirmTrue">확인서/자격증진위확인</a></li>
 					</ul></li>
 				<li><a href="#"><span>마이페이지</span></a>
@@ -596,26 +564,8 @@ var speed = 800;
 			<div class="footer">
 				<div class="footer_top">
 					<div class="footer_menu">
-						<ul>
-							<li><a href="#"> <span style="color: red; font-weight: bold;">개인정보처리방침</span> </a></li>
-							<li><a href="#">이용약관</a></li>
-							<li><a href="javascript:;" onclick="popup2('http://www.hrdkorea.or.kr/5/6','aa1','1110','768','1','1','yes');" title="새 창">찾아오시는길</a></li>
-						</ul>
 					</div>
-					<div class="site_go">
-						<span class="site">
-							<select title="관련사이트 선택" name="relSite" id="relSite">
-								<option value="">관련사이트</option>
-								<option value="http://www.hrdkorea.or.kr">공단홈페이지</option>
-								<option value="http://www.tvworknet.or.kr">한국직업방송</option>
-								<option value="http://skill.hrdkorea.or.kr">국제기능올림픽대회 한국위원회</option>
-								<option value="http://www.ncs.go.kr">NCS 국가직무능력표준</option>
-								<option value="http://www.hrd.go.kr">HRD-Net 직업능력지식포털</option>
-							</select>
-							<button class="move" id="goRelSite" title="새 창"><span>이동</span></button>
-						</span>
-					</div>
-				</div>
+				</div>		
 				<div class="center_area">
 					<div class="address">
 						<strong class="logo"><img src="<%=request.getContextPath()%>/resources/images/footer_logo.gif" alt="한국산업인력공단"></strong>

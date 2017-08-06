@@ -71,7 +71,7 @@
 	</select>
 	
 	<select id="selectExkindAll" resultClass="exkind">
-		select * from exkind
+		select * from exkind order by regular_em_enroll_date desc
 	</select>
 	
 	<select id="selectExkindCount" resultClass="int">

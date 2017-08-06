@@ -81,7 +81,27 @@ public class MypageDAO {
 		return stareCertifiVO;
 	}
 
-	public void updateDocument(SubjectVo vo) throws SQLException {
-		client.update("updateDocument",vo);
+	/**
+	 * 회원이 제출한 서류 정보 입력하는 메서드
+	 * @param vo
+	 * @throws SQLException
+	 */
+	public void insertDocument(SubjectVo vo) throws SQLException{
+		client.update("insertDocument", vo);
+	}
+	
+	/**
+	 * 자격증 제출 서류 기본키 생성위한 전체글 갯수 가져오는 메서드
+	 * @return int
+	 * @throws SQLException
+	 */
+	public int countDocument() throws SQLException{
+		int count = (int) client.queryForObject("countDocument");
+		return count;
+	}
+
+	public List<String> selectApproveAt(String mem_code) throws SQLException{
+		List<String> result = (List<String>) client.queryForList("selectApproveAt", mem_code);
+		return result;
 	}
 }

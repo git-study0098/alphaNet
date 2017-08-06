@@ -40,10 +40,10 @@
 		<!-- 내용 -->
 		<br>
 		<button type="button" class="btn" >
-			<a href="<%=request.getContextPath()%>admin/examsch">전체일정</a>
+			<a href="<%=request.getContextPath()%>/admin/examsch">전체일정</a>
 		</button>
 		<button type="button" class="btn" >
-			<a href="<%=request.getContextPath()%>admin/schedule">일정등록</a>
+			<a href="<%=request.getContextPath()%>/admin/schedule">일정등록</a>
 		</button>
 		<table class="table table-hover"
 			style="text-align: center; marign: 20px;">

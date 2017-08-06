@@ -18,6 +18,12 @@ public class MemberWonseoController {
 			return "member/wonseo/wonseo_ing";
 		}
 		
+		//원서접수 상세현황
+		@RequestMapping("/wonseo_ing2")
+		public String wonseo_ing2(){
+			return "member/wonseo/wonseo_ing2";
+		}
+		
 		//장애 유형별 편의사항
 		@RequestMapping("/wonseoDisabled")
 		public String wonseoDisabled(){

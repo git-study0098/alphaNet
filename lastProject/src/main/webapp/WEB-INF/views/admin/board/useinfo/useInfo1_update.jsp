@@ -64,7 +64,6 @@
 				<div>
 					<div class="tbl_type2 leftPd">
 						<table summary="사이트 이용안내 소개">
-							<caption>사이트 이용안내 게시글 보기</caption>
 							<colgroup>
 								<col width="12%">
 								<col width="*">
@@ -83,7 +82,7 @@
 								<tr>
 									<th scope="row">담당부서</th>
 									<td><input name="adminCode" type="text"
-										value="${admin}" readonly="readonly"
+										value="정보화지원국 정보화사업2팀" readonly="readonly"
 <%-- 										value="${vo.admin_code}" --%>
 										style="width: 95%; background-color: #ffffff;"></td>
 									<th scope="row">등록일</th>

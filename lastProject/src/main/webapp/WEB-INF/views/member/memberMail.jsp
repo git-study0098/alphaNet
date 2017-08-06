@@ -50,6 +50,7 @@ function authMail(){
 				console.log(res.ranNum);
 				email1 = res.email;
 				ranNum = res.ranNum;
+				alert("메일이 발송되었습니다.\n확인하시고 인증번호를 입력해주세요.");
 			}
 		});
 
